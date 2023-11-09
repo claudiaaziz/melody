@@ -2,6 +2,7 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #181818;
@@ -26,10 +27,12 @@ svg {
   left: 10px;
   height: 40px;
   fill: white;
+  align-self: flex-start;
 }
 
 h1 {
   font-size: 2.5rem;
+  margin-top: 0
 }
 
 form {
@@ -46,6 +49,7 @@ ul {
   font-size: .5rem;
   font-weight: 100;
   display: flex;
+  border-color: red;
 }
 
 li {
@@ -53,11 +57,14 @@ li {
 }
 
 label {
+  display: block;
   margin-bottom: 10px;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 input {
+  width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 10px;
