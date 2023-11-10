@@ -1,8 +1,12 @@
 @import './reset.css';
 
 @font-face {
-  font-family: 'CircularSpotifyBold';
-  src: url('./_static/Circular-Font/CircularSpotifyText-Bold.otf') format('opentype');
+  font-family: 'CircularSpotifyBlack';
+  src: url('../public/Circular-Font/CircularSpotifyText-Black.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+}
+
+body {
+  font-family: 'CircularSpotifyBlack', sans-serif;
 }
