@@ -6,28 +6,37 @@ import "./LoginForm.css";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  const currentUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (currentUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         let data;
+
+        // attempting to clone res & parse it as JSON
         try {
-          // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if the server is down
+          // if this fails try to get res as plain text
+          data = await res.text();
         }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+
+        // if the res data contains errors
+        if (data?.errors) {
+          setErrors(data.errors);
+        } else if (data) {
+          setErrors([data]);
+        } else {
+          setErrors([res.statusText]);
+        }
       }
     );
   };
