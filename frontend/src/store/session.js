@@ -43,6 +43,15 @@ export const login =
     return response;
   };
 
+export const restoreSession = () => async (dispatch) => {
+  const response = await csrfFetch("/api/session");
+  storeCSRFToken(response);
+  const data = await response.json();
+  storeCurrentUser(data.user);
+  dispatch(setCurrentUser(data.user));
+  return response;
+};
+
 export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
   const response = await csrfFetch("/api/users", {
@@ -59,14 +68,16 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-export const restoreSession = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session");
-  storeCSRFToken(response);
-  const data = await response.json();
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch("/api/session", {
+    method: "DELETE"
+  });
+
+  storeCurrentUser(null);
+  dispatch(removeCurrentUser());
   return response;
 };
+
 
 const initialState = {
   user: JSON.parse(sessionStorage.getItem("currentUser")),
