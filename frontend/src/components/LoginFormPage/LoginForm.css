@@ -32,7 +32,6 @@ svg {
 h1 {
   font-size: 2.5rem;
   margin-top: 0;
-  font-family: 'CircularSpotifyBold';
 }
 
 form {
@@ -60,7 +59,6 @@ label {
   display: block;
   margin-bottom: 10px;
   font-size: 0.75rem;
-  font-family: 'CircularSpotifyBold';
 }
 
 input {
