@@ -73,7 +73,7 @@ input {
   color: white;
 }
 
-button {
+.signUpBtn {
   padding: 10px;
   background-color: #1db954;
   border: none;
