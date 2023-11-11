@@ -44,7 +44,7 @@ const SignupForm = () => {
               data = await res.text();
             }
 
-              // handling errors in the response data
+            // handling errors in the response data
             if (data?.errors) setErrors(data.errors);
             else if (data) setErrors([data]);
             else setErrors([res.statusText]);
