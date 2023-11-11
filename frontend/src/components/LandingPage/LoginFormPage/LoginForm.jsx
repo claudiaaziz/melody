@@ -7,15 +7,16 @@ import MelodyLogo from "../melodyLogo"
 const LoginFormPage = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
+
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (currentUser) return <Redirect to="/" />;
 
-  const handleGuestLogin = () => {
+  const handleGuestUser = () => {
     const guestCredentials = {
-      credential: "guest@guest.com", 
+      credential: "guest@guest.com",
       password: "guestpassword",
     };
 
@@ -53,9 +54,9 @@ const LoginFormPage = () => {
 
   return (
     <>
-      <div className="header">
+      <div className="loginHeader">
         <MelodyLogo />
-        <button type="submit" className="guestLoginBtn" onClick={handleGuestLogin}>
+        <button type="submit" className="guestLoginBtn" onClick={handleGuestUser}>
           Login As Guest
         </button>
       </div>
@@ -64,12 +65,13 @@ const LoginFormPage = () => {
         <h1>Log in to Spotify</h1>
         <hr />
 
+        <ul className="errors">
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+
         <form onSubmit={handleSubmit}>
-          <ul className="errors">
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
           <label>
             Email or username
             <input
@@ -101,7 +103,6 @@ const LoginFormPage = () => {
           <Link to="/signup">Sign up for Spotify.</Link>
         </p>
       </div>
-
     </>
   );
 };

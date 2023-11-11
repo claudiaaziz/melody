@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import MelodyLogo from "../melodyLogo"
 
 const SignupForm = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +15,15 @@ const SignupForm = () => {
   const [errors, setErrors] = useState([]);
 
   if (currentUser) return <Redirect to="/" />;
+
+  const handleGuestUser = () => {
+    const guestCredentials = {
+      credential: "guest@guest.com",
+      password: "guestpassword",
+    };
+
+    dispatch(sessionActions.login(guestCredentials));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,14 +38,13 @@ const SignupForm = () => {
             let data;
             try {
               // attempting to parse the response body as JSON
-              // .clone() allows reading the response body twice (useful for logging or handling errors)
               data = await res.clone().json();
             } catch {
               // if parsing as JSON fails, get the response body as text
               data = await res.text();
             }
 
-            // if the response data contains errors
+              // handling errors in the response data
             if (data?.errors) setErrors(data.errors);
             else if (data) setErrors([data]);
             else setErrors([res.statusText]);
@@ -50,15 +59,24 @@ const SignupForm = () => {
 
   return (
     <>
-      <MelodyLogo/>
+      <div className="signupHeader">
+        <MelodyLogo />
+        <button type="button" className="guestUserBtn" onClick={handleGuestUser}>
+          Guest
+        </button>
+      </div>
+
       <div className="signupContainer">
         <h1>Sign up to start listening</h1>
+        <hr/>
+
+        <ul className="errors">
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+
         <form onSubmit={handleSubmit}>
-          <ul className="errors">
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
           <label>
             Email
             <input
@@ -97,6 +115,11 @@ const SignupForm = () => {
           </label>
           <button type="submit" className="signUpBtn">Sign up</button>
         </form>
+
+        <hr/>
+        <p className="loginLink">
+          Already have an account? <Link to="/login">Log in here.</Link>
+        </p>
       </div>
     </>
   );

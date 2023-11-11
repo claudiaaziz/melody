@@ -4,7 +4,9 @@ import "./SignupForm.css";
 
 const SignupFormPage = () => {
   return (
+    <div className="signupForm">
       <SignupForm />
+    </div>
   );
 };
 
