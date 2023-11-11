@@ -8,6 +8,7 @@
 
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
+  # Unnecessary if using `rails db:seed:replant`
   rails db:seed:replant
 
   puts "Resetting primary keys..."
@@ -15,11 +16,11 @@ ApplicationRecord.transaction do
   ApplicationRecord.connection.reset_pk_sequence!('users')
 
   puts "Creating users..."
-  # Create one user with an easy to remember username, email, and password:
+  # Guest user
   User.create!(
-    username: 'Demo-lition', 
-    email: 'demo@user.io', 
-    password: 'password'
+    username: 'guest',
+    email: 'guest@guest.com',
+    password: 'guestpassword'
   )
 
   # More users

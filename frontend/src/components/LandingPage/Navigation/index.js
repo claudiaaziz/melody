@@ -14,9 +14,7 @@ const Navigation = () => {
         <ProfileButton user={currentUser} />
       ) : (
         <>
-          <NavLink exact to="/">
-            <MelodyLogo />
-          </NavLink>
+          <MelodyLogo />
           <ul>
             <li>
               <NavLink to="/signup" className="signup">

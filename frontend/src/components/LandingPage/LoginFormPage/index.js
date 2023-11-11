@@ -3,9 +3,7 @@ import LoginForm from "./LoginForm";
 import "./LoginForm.css";
 
 const LoginFormPage = () => {
-  return (
-      <LoginForm />
-  );
-}
+  return <LoginForm />;
+};
 
-export default LoginFormPage
+export default LoginFormPage;

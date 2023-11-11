@@ -13,6 +13,16 @@ const LoginFormPage = () => {
 
   if (currentUser) return <Redirect to="/" />;
 
+  const handleGuestLogin = () => {
+    const guestCredentials = {
+      credential: "guest@guest.com", 
+      password: "guestpassword",
+    };
+
+    dispatch(sessionActions.login(guestCredentials));
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -43,9 +53,12 @@ const LoginFormPage = () => {
 
   return (
     <>
-      <Link to="/" className="logoLink">
+      <div className="header">
         <MelodyLogo />
-      </Link>
+        <button type="submit" className="guestLoginBtn" onClick={handleGuestLogin}>
+          Login as Guest
+        </button>
+      </div>
       <div className="loginContainer">
         <h1>Log in to Spotify</h1>
         <form onSubmit={handleSubmit}>
@@ -74,8 +87,14 @@ const LoginFormPage = () => {
               required
             />
           </label>
-          <button type="submit" className="loginBtn">Log In</button>
+          <button type="submit" className="loginBtn">
+            Log In
+          </button>
         </form>
+        <p className="signupLink">
+          Don't have an account?{" "}
+          <Link to="/signup">Sign up for Spotify.</Link>
+        </p>
       </div>
     </>
   );

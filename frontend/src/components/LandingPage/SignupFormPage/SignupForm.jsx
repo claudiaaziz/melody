@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import MelodyLogo from "../melodyLogo"
 
 const SignupForm = () => {
@@ -50,9 +50,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <Link to="/">
-        <MelodyLogo/>
-      </Link>
+      <MelodyLogo/>
       <div className="signupContainer">
         <h1>Sign up to start listening</h1>
         <form onSubmit={handleSubmit}>
