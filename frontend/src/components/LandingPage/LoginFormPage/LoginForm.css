@@ -16,22 +16,8 @@ body {
   width: 50vw;
   background: black;
   color: white;
-  height: 90vh;
-  border-radius: 10px
-}
-
-svg {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  height: 40px;
-  fill: white;
-  align-self: flex-start;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-top: 0;
+  height: 80vh;
+  border-radius: 10px;
 }
 
 form {
@@ -45,7 +31,7 @@ form {
   margin: 0;
   color: white;
   background: red;
-  font-size: .5rem;
+  font-size: 0.5rem;
   font-weight: 100;
   display: flex;
   border-color: red;

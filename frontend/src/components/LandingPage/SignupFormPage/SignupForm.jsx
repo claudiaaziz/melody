@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import MelodyLogo from "../../svgs/melodyLogo/MelodyLogo";
+import MelodyLogo from "../melodyLogo"
 
 const SignupForm = () => {
   const dispatch = useDispatch();

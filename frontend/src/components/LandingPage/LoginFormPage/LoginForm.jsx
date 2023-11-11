@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import MelodyLogo from "../../svgs/melodyLogo/MelodyLogo";
+import MelodyLogo from "../melodyLogo"
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -43,8 +43,8 @@ const LoginFormPage = () => {
 
   return (
     <>
-      <Link to="/">
-        <MelodyLogo/>
+      <Link to="/" className="logoLink">
+        <MelodyLogo />
       </Link>
       <div className="loginContainer">
         <h1>Log in to Spotify</h1>
