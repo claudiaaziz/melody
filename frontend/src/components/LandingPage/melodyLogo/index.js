@@ -7,7 +7,7 @@ const MelodyLogo = () => {
   return (
     <Link to="/" className="logoLink">
       <div className="melodyLogoContainer">
-        <img src={spotifyIcon} alt="Spotify Icon" className="logoImage" />
+        <img src={spotifyIcon} alt="Spotify Icon" className="spotifyIcon" />
         <h2>Melody</h2>
       </div>
     </Link>

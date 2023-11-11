@@ -31,15 +31,15 @@ const LoginFormPage = () => {
       async (res) => {
         let data;
 
-        // attempting to clone res & parse it as JSON
+        // attempting to clone and parse the response as JSON
         try {
           data = await res.clone().json();
         } catch {
-          // if this fails try to get res as plain text
+          // if parsing fails, try to get the response as plain text
           data = await res.text();
         }
 
-        // if the res data contains errors
+        // handling errors in the response data
         if (data?.errors) {
           setErrors(data.errors);
         } else if (data) {
@@ -59,9 +59,11 @@ const LoginFormPage = () => {
           Login As Guest
         </button>
       </div>
+
       <div className="loginContainer">
         <h1>Log in to Spotify</h1>
         <hr />
+
         <form onSubmit={handleSubmit}>
           <ul className="errors">
             {errors.map((error) => (
@@ -92,12 +94,14 @@ const LoginFormPage = () => {
             Log In
           </button>
         </form>
+        
         <hr />
         <p className="signupLink">
           Don't have an account?
           <Link to="/signup">Sign up for Spotify.</Link>
         </p>
       </div>
+
     </>
   );
 };
