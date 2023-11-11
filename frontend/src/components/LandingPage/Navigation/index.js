@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import { ReactComponent as SpotifyLogoIcon } from "../svgs/logo.svg";
 
 const Navigation = () => {
   const currentUser = useSelector((state) => state.session.user);
@@ -14,7 +15,7 @@ const Navigation = () => {
       ) : (
         <>
           <NavLink exact to="/">
-            Home
+            <SpotifyLogoIcon/>
           </NavLink>
           <ul>
             <li>
@@ -35,3 +36,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
