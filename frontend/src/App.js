@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LandingPage/LoginFormPage";
-import SignupFormPage from "./components/LandingPage/SignupFormPage";
-import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import SignupFormPage from "./components/LandingPage/SignupFormPage";
+import LoginFormPage from "./components/LandingPage/LoginFormPage";
+import Navigation from "./components/LandingPage/Navigation";
 
 const App = () => {
   return (
