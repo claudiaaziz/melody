@@ -1,12 +1,13 @@
 .melodyLogoContainer {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
 .logoImage {
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
 .melodyLogoContainer h2 {

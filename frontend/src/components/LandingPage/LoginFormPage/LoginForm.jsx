@@ -56,11 +56,12 @@ const LoginFormPage = () => {
       <div className="header">
         <MelodyLogo />
         <button type="submit" className="guestLoginBtn" onClick={handleGuestLogin}>
-          Login as Guest
+          Login As Guest
         </button>
       </div>
       <div className="loginContainer">
         <h1>Log in to Spotify</h1>
+        <hr />
         <form onSubmit={handleSubmit}>
           <ul className="errors">
             {errors.map((error) => (
@@ -91,8 +92,9 @@ const LoginFormPage = () => {
             Log In
           </button>
         </form>
+        <hr />
         <p className="signupLink">
-          Don't have an account?{" "}
+          Don't have an account?
           <Link to="/signup">Sign up for Spotify.</Link>
         </p>
       </div>

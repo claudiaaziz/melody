@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #0e0e0e;
+  background: linear-gradient(#191919, black);
   font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
 }
 
@@ -16,7 +16,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 8vh;
+  height: 9vh;
   z-index: 1000;
   align-items: center;
 }
@@ -29,22 +29,30 @@ body {
   font-size: 1.5em;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
   cursor: pointer;
+  margin-right: 2vw;
 }
 
 .loginContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 50vw;
   background: black;
   color: white;
-  height: 80vh;
+  height: 77vh;
   border-radius: 10px;
 }
 
 .loginContainer h1 {
   font-size: 2.5rem;
+}
+
+.loginContainer hr {
+  width: 70%;
+  border: 1px solid #191919;
+      margin: -10%;
+      /* margin-bottom: 1%; */
 }
 
 form {
@@ -94,4 +102,15 @@ input {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.signupLink {
+  color: gray;
+  font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+}
+
+.signupLink a {
+  color: white;
+  margin-left: 1vh;
 }
