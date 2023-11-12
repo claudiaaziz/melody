@@ -27,6 +27,8 @@ button svg {
   position: absolute;
   background-color: black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  right: 50%;
+  transform: translateX(50%);
 }
 
 .profileDropdown button {
