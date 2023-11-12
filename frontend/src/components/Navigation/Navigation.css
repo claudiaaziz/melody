@@ -1,4 +1,4 @@
-.NavBar {
+.navBar {
   display: flex;
   align-items: center;
   background-color: #101010;
@@ -9,13 +9,13 @@
   z-index: 1000;
 }
 
-.NavBar ul {
+.navBar ul {
   list-style: none;
   display: flex;
   margin-right: 1.5%;
 }
 
-.NavBar a {
+.navBar a {
   text-decoration: none;
   white-space: nowrap;
   font-size: 1rem;
