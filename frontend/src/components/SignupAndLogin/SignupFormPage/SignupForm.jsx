@@ -17,6 +17,10 @@ const SignupForm = () => {
   if (currentUser) return <Redirect to="/" />;
 
   const handleGuestUser = () => {
+    setEmail("guest@guest.com")
+    setUsername("guest")
+    setPassword("guestpassword")
+    setConfirmPassword("guestpassword")
     const guestCredentials = {
       credential: "guest@guest.com",
       password: "guestpassword",
@@ -68,8 +72,8 @@ const SignupForm = () => {
 
       <div className="signupContainer">
         <h1>Sign up to start listening</h1>
-        <hr/>
 
+        <hr/>
         <ul className="signupErrors">
           {errors.map((error) => (
             <li key={error}>{error}</li>
@@ -115,8 +119,8 @@ const SignupForm = () => {
           </label>
           <button type="submit" className="signUpBtn">Sign up</button>
         </form>
-
         <hr/>
+
         <p className="loginLink">
           Already have an account? <Link to="/login">Log in here.</Link>
         </p>

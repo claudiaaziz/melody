@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import ProfileMenu from "./ProfileMenu";
 import "./Navigation.css";
+import ProfileMenu from "./ProfileMenu";
 import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 
 const Navigation = () => {
@@ -11,9 +11,11 @@ const Navigation = () => {
   return (
     <div className="navBar">
       {currentUser ? (
+        // loggedInNav
         <ProfileMenu />
       ) : (
         <>
+        {/* loggedOutNav */}
           <MelodyLogo />
           <ul>
             <li>

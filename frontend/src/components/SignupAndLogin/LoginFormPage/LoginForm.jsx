@@ -15,6 +15,9 @@ const LoginFormPage = () => {
   if (currentUser) return <Redirect to="/" />;
 
   const handleGuestUser = () => {
+    setCredential("guest@guest.com")
+    setPassword("guestpassword")
+
     const guestCredentials = {
       credential: "guest@guest.com",
       password: "guestpassword",
@@ -63,8 +66,8 @@ const LoginFormPage = () => {
 
       <div className="loginContainer">
         <h1>Log in to Spotify</h1>
-        <hr />
 
+        <hr />
         <ul className="loginErrors">
           {errors.map((error) => (
             <li key={error}>{error}</li>
@@ -96,8 +99,8 @@ const LoginFormPage = () => {
             Log In
           </button>
         </form>
-        
         <hr />
+        
         <p className="signupLink">
           Don't have an account?
           <Link to="/signup">Sign up for Spotify.</Link>
