@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
-import "./ProfileButton.css";
+import "./ProfileMenu.css";
 import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navigation/profile.svg";
 
 
@@ -37,7 +37,7 @@ const ProfileButton = () => {
         <ProfileBtnIcon/>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <ul className="profileDropdown">
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
