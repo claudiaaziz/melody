@@ -10,26 +10,30 @@ const Navigation = () => {
 
   return (
     <div className="navBar">
-        {currentUser ? (
-          <ProfileMenu />
-        ) : (
-          <>
-            <MelodyLogo />
-            <ul>
-              <li>
-                <NavLink to="/signup" className="signup">
+      {currentUser ? (
+        <ProfileMenu />
+      ) : (
+        <>
+          <MelodyLogo />
+          <ul>
+            <li>
+              <NavLink to="/signup">
+                <button id="signupBtn" className="navBarButton">
                   Sign Up
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/login" className="login">
+                </button>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">
+                <button id="loginBtn" className="navBarButton">
                   Log In
-                </NavLink>
-              </li>
-            </ul>
-          </>
-        )}
-      </div>
+                </button>
+              </NavLink>
+            </li>
+          </ul>
+        </>
+      )}
+    </div>
   );
 };
 

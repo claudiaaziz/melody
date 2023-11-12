@@ -21,17 +21,27 @@
   font-size: 1rem;
 }
 
-.signup {
+.navBarButton {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  font-family: 'CircularSpotifyBold';
+}
+
+.navBarButton:hover {
+  transform: scale(1.05);
+}
+
+#signupBtn {
   background-color: transparent;
   color: gray;
-  padding: 10px 20px;
-  border-radius: 20px;
 }
 
-.login {
+#signupBtn:hover {
+  color: white;
+}
+
+#loginBtn {
   background-color: white;
   color: black;
-  padding: 10px 20px;
-  border-radius: 20px;
 }
-

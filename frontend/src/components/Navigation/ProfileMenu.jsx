@@ -5,7 +5,7 @@ import "./ProfileMenu.css";
 import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navigation/profileBtn.svg";
 
 
-const ProfileButton = () => {
+const ProfileMenu = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -47,4 +47,4 @@ const ProfileButton = () => {
   );
 };
 
-export default ProfileButton;
+export default ProfileMenu;

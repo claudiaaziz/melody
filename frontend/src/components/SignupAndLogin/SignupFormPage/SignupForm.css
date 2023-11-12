@@ -61,12 +61,12 @@
 .loginLink {
   color: #a7a7a7;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
-  font-size: .75rem;
+  font-size: .8rem;
 }
 
 .loginLink a {
   color: white;
-  margin-left: 1vh;
+  margin-left: .5vh;
 }
 
 /* form */
@@ -110,7 +110,6 @@ list-style: none;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 700;
-  transition: transform 0.3s ease-in-out;
 }
 
 .signUpBtn:hover {
