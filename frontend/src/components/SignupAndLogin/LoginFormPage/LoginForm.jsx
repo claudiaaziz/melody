@@ -14,18 +14,29 @@ const LoginFormPage = () => {
 
   if (currentUser) return <Redirect to="/" />;
 
-  const handleGuestUser = () => {
-    setCredential("guest@guest.com")
-    setPassword("guestpassword")
+  const handleGuestUser = async () => {
+    // typing effect
+    const typingEffect = async (credential, setCredential) => {
+      for (const char of credential) {
+        // typing in the credential one char at a time
+        await new Promise((resolve) => setTimeout(() => {
+          setCredential((prev) => prev + char);
+          resolve();
+        }, 30)); 
+      }
+    };
 
-    const guestCredentials = {
+    await typingEffect("guest@guest.com", setCredential);
+    await new Promise((resolve) => setTimeout(resolve, 400)); // short pause before typing pass effect
+    await typingEffect("guestpassword", setPassword);
+
+    // login guest after typing effect is complete
+      const guestCredentials = {
       credential: "guest@guest.com",
       password: "guestpassword",
     };
-
     dispatch(sessionActions.login(guestCredentials));
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
