@@ -65,7 +65,7 @@ const LoginFormPage = () => {
         <h1>Log in to Spotify</h1>
         <hr />
 
-        <ul className="errors">
+        <ul className="loginErrors">
           {errors.map((error) => (
             <li key={error}>{error}</li>
           ))}

@@ -13,7 +13,6 @@
 
 .signupHeader {
   display: flex;
-  background-color: black;
   position: fixed;
   top: 0;
   width: 100%;
@@ -45,7 +44,6 @@
   align-items: center;
   justify-content: space-evenly;
   width: 50vw;
-  background: black;
   color: white;
   height: 77vh;
   border-radius: 10px;
@@ -73,12 +71,12 @@
 
 /* form */
 
-form {
+.signupContainer form {
   display: flex;
   flex-direction: column;
 }
 
-.errors {
+.signupErrors {
 list-style: none;
   color: red;
   font-size: 0.75rem;
@@ -86,13 +84,13 @@ list-style: none;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
 }
 
-label {
+.signupContainer label {
   display: block;
   margin-bottom: 10px;
   font-size: 0.75rem;
 }
 
-input {
+.signupContainer input {
   width: 100%;
   box-sizing: border-box;
   padding: 10px;

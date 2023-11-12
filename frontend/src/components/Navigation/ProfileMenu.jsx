@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileMenu.css";
-import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navigation/profile.svg";
+import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navigation/profileBtn.svg";
 
 
 const ProfileButton = () => {
@@ -32,7 +32,7 @@ const ProfileButton = () => {
   };
 
   return (
-    <div className="profileBtn">
+    <div className="profileBtnContainer">
       <button onClick={openMenu}>
         <ProfileBtnIcon/>
       </button>

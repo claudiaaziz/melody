@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const MelodyLogo = () => {
   return (
-    <Link to="/" className="logoLink">
+    <Link to="/" className="melodyLogoLink">
       <div className="melodyLogoContainer">
         <img src={spotifyIcon} alt="Spotify Icon" className="spotifyIcon" />
         <h2>Melody</h2>

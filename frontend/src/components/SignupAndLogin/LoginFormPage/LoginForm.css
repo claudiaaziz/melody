@@ -73,12 +73,12 @@
 
 /* form */
 
-form {
+.loginContainer form {
   display: flex;
   flex-direction: column;
 }
 
-.errors {
+.loginErrors {
   list-style: none;
   color: red;
   font-size: 0.75rem;
@@ -86,13 +86,13 @@ form {
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
 }
 
-label {
+.loginContainer label {
   display: block;
   margin-bottom: 10px;
   font-size: 0.75rem;
 }
 
-input {
+.loginContainer input {
   width: 100%;
   box-sizing: border-box;
   padding: 10px;

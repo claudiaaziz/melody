@@ -70,7 +70,7 @@ const SignupForm = () => {
         <h1>Sign up to start listening</h1>
         <hr/>
 
-        <ul className="errors">
+        <ul className="signupErrors">
           {errors.map((error) => (
             <li key={error}>{error}</li>
           ))}
