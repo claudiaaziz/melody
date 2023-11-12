@@ -1,0 +1,37 @@
+.NavBar {
+  display: flex;
+  align-items: center;
+  background-color: #101010;
+  position: fixed;
+  top: 0;
+  height: 8vh;
+  width: 100%;
+  z-index: 1000;
+}
+
+.NavBar ul {
+  list-style: none;
+  display: flex;
+  margin-right: 1.5%;
+}
+
+.NavBar a {
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+.signup {
+  background-color: transparent;
+  color: gray;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.login {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+}

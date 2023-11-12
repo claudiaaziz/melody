@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import LandingPage from "./components/LandingPage";
-import SignupFormPage from "./components/LandingPage/SignupFormPage";
-import LoginFormPage from "./components/LandingPage/LoginFormPage";
-import Navigation from "./components/Homepage/LoggedInNav";
+import AlbumIndex from "./components/AlbumIndex";
+import SignupFormPage from "./components/SignupAndLogin/SignupFormPage";
+import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
+import Navigation from "./components/Navigation";
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Navigation />
-          <LandingPage />
+          <AlbumIndex />
         </Route>
         <Route path="/login">
           <LoginFormPage />

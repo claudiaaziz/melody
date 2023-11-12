@@ -1,0 +1,35 @@
+/* .profileBtn {
+  position: relative;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profileBtn button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profileBtn button:focus {
+  outline: none;
+}
+
+.profileBtn:hover .profile-dropdown {
+  display: block;
+}
+
+.profile-dropdown li {
+  padding: 10px;
+  text-align: center;
+} */

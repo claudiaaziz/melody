@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import MelodyLogo from "../../LandingPage/melodyLogo";
+import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 
 const Navigation = () => {
   const currentUser = useSelector((state) => state.session.user);
@@ -11,7 +11,7 @@ const Navigation = () => {
   return (
     <div className="NavBar">
       {currentUser ? (
-        <ProfileButton user={currentUser} />
+        <ProfileButton />
       ) : (
         <>
           <MelodyLogo />
