@@ -15,6 +15,9 @@ const LoginFormPage = () => {
   if (currentUser) return <Redirect to="/" />;
 
   const handleGuestUser = async () => {
+    setCredential("")
+    setPassword("")
+    
     // typing effect
     const typingEffect = async (credential, setCredential) => {
       for (const char of credential) {
