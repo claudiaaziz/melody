@@ -42,6 +42,7 @@ const SignupForm = () => {
       credential: "guest@guest.com",
       password: "guestpassword",
     };
+    await new Promise((resolve) => setTimeout(resolve, 300)); // short pause 
     dispatch(sessionActions.login(guestCredentials));
   };
 

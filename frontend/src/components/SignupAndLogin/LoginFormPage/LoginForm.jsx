@@ -30,7 +30,6 @@ const LoginFormPage = () => {
     };
 
     await typingEffect("guest@guest.com", setCredential);
-    await new Promise((resolve) => setTimeout(resolve, 400)); // short pause before typing pass effect
     await typingEffect("guestpassword", setPassword);
 
     // login guest after typing effect is complete
@@ -38,6 +37,7 @@ const LoginFormPage = () => {
       credential: "guest@guest.com",
       password: "guestpassword",
     };
+    await new Promise((resolve) => setTimeout(resolve, 300)); // short pause 
     dispatch(sessionActions.login(guestCredentials));
   };
 
