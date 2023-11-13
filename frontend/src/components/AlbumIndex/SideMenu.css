@@ -9,6 +9,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  top: 0
 }
 
 .menuList {

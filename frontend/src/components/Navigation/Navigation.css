@@ -7,6 +7,7 @@
   height: 8vh;
   width: 77%;
   z-index: 1000;
+  top: 0
 }
 
 .navBar ul {

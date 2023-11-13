@@ -8,6 +8,8 @@
   justify-content: space-around;
   overflow-x: auto;
   margin-left: 23%;
+  position: relative;
+  margin-top: 8vh;
 }
 
 .album {

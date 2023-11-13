@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./AlbumIndex.css";
 import { fetchAlbums, getAlbums } from "../../store/albums";
-import SideMenu from "./SideMenu";
 
 const AlbumIndex = () => {
   const dispatch = useDispatch();
@@ -14,7 +13,6 @@ const AlbumIndex = () => {
 
   return (
     <>
-      <SideMenu />
       <div className="albumIndex">
         {albums.map((album) => (
           <div key={album.id} className="album">

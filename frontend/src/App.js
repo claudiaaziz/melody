@@ -4,6 +4,7 @@ import AlbumIndex from "./components/AlbumIndex";
 import SignupFormPage from "./components/SignupAndLogin/SignupFormPage";
 import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
 import Navigation from "./components/Navigation";
+import SideMenu from "./components/AlbumIndex/SideMenu";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Navigation />
+          <SideMenu />
           <AlbumIndex />
         </Route>
         <Route path="/login">
