@@ -10,5 +10,6 @@
 }
 
 .artistName {
-  color: #a7a7a7
+  color: #a7a7a7;
+  font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
 }

@@ -10,10 +10,10 @@ export const getAlbums = (state) => state.albums ? Object.values(state.albums) :
 export const fetchAlbums = () => async (dispatch) => {
   const res = await fetch("/api/albums");
 
-  if (res.ok) {
+  // if (res.ok) {
     const albums = await res.json();
     dispatch(receiveAlbums(albums));
-  }
+  // }
 };
 
 const albumsReducer = (state = {}, action) => {

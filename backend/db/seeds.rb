@@ -26,6 +26,18 @@ ApplicationRecord.transaction do
   Artist.create!(
     name: "Sami Yusuf"
   )
+  Artist.create!(
+    name: "Joseph Attieh"
+  )
+  Artist.create!(
+    name: "Mesut Kurtis"
+  )
+  Artist.create!(
+    name: "Yara"
+  )
+  Artist.create!(
+    name: "Najwa Karam"
+  )
 
   puts "Creating albums..."
   Album.create!(
@@ -33,6 +45,30 @@ ApplicationRecord.transaction do
     artist_id: 1,
     release_year: 2005,
     album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf.png'
+  )
+  Album.create!(
+    title: "Hobb W Mkattar",
+    artist_id: 2,
+    release_year: 2015,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Joseph_Attieh.png'
+  )
+  Album.create!(
+    title: "Tabassam",
+    artist_id: 3,
+    release_year: 2015,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Mesut+Kurtis.png'
+  )
+  Album.create!(
+    title: "Ya Ayech Bi Oyouni",
+    artist_id: 4,
+    release_year: 2016,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Yara.png'
+  )
+  Album.create!(
+    title: "هلليله مافي نوم",
+    artist_id: 5,
+    release_year: 2011,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Najwa+Karam.png'
   )
 
   puts "Done!"
