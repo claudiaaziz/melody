@@ -8,29 +8,32 @@
 
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
-  # Unnecessary if using `rails db:seed:replant`
-  rails db:seed:replant
+  User.destroy_all
+  Artist.destroy_all
+  Album.destroy_all
 
   puts "Resetting primary keys..."
-  # For easy testing, so that after seeding, the first `User` has `id` of 1
   ApplicationRecord.connection.reset_pk_sequence!('users')
 
-  puts "Creating users..."
-  # Guest user
+  puts "Creating guest user..."
   User.create!(
     username: 'guest',
     email: 'guest@guest.com',
     password: 'guestpassword'
   )
 
-  # More users
-  # 10.times do 
-  #   User.create!({
-  #     username: Faker::Internet.unique.username(specifier: 3),
-  #     email: Faker::Internet.unique.email,
-  #     password: 'password'
-  #   }) 
-  # end
+  puts "Creating artists..."
+  Artist.create!(
+    name: "Sami Yusuf"
+  )
+
+  puts "Creating albums..."
+  Album.create!(
+    title: "Al-Mu'allim",
+    artist_id: 1,
+    release_year: 2005,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf.png'
+  )
 
   puts "Done!"
 end
