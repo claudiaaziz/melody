@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navigation.css";
 import ProfileMenu from "./ProfileMenu";
-import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 
 const Navigation = () => {
   const currentUser = useSelector((state) => state.session.user);
@@ -16,7 +15,6 @@ const Navigation = () => {
       ) : (
         <>
         {/* loggedOutNav */}
-          <MelodyLogo />
           <ul>
             <li>
               <NavLink to="/signup">
