@@ -22,7 +22,7 @@
 }
 
 .guestUserBtn {
-  color: #DE599C;
+  color: #e7b8cf;
   background: transparent;
   border: none;
   white-space: nowrap;
@@ -46,7 +46,6 @@
   width: 50vw;
   color: white;
   height: 77vh;
-  border-radius: 10px;
 }
 
 .signupContainer h1 {

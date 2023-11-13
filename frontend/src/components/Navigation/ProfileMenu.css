@@ -23,7 +23,6 @@
 
 .profileDropdown {
   list-style: none;
-  padding: 0;
   position: absolute;
   background-color: black;
   right: 50%;
@@ -31,8 +30,9 @@
 }
 
 .profileDropdown button {
-  padding: 8px 14px;
+  padding: 8px 10px;
   color: white;
   white-space: nowrap;
   cursor: pointer;
+  font-size: .7rem;
 }

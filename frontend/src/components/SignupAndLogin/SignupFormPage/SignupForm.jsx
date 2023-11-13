@@ -82,7 +82,7 @@ const SignupForm = () => {
     <>
       <div className="signupHeader">
         <MelodyLogo />
-        <button type="button" className="guestUserBtn" onClick={handleGuestUser}>
+        <button className="guestUserBtn" onClick={handleGuestUser}>
           Guest
         </button>
       </div>

@@ -17,6 +17,10 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def logged_in?
+    !!current_user
+  end
+
   def login!(user)
     session[:session_token] = user.reset_session_token!
   end

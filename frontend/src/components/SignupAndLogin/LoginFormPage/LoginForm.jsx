@@ -73,7 +73,7 @@ const LoginFormPage = () => {
     <>
       <div className="loginHeader">
         <MelodyLogo />
-        <button type="submit" className="guestLoginBtn" onClick={handleGuestUser}>
+        <button className="guestLoginBtn" onClick={handleGuestUser}>
           Login As Guest
         </button>
       </div>

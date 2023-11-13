@@ -1,7 +1,7 @@
 import csrfFetch from "./csrf";
 
-const SET_CURRENT_USER = "session/setCurrentUser";
-const REMOVE_CURRENT_USER = "session/removeCurrentUser";
+const SET_CURRENT_USER = "session/SET_CURRENT_USER";
+const REMOVE_CURRENT_USER = "session/REMOVE_CURRENT_USER";
 
 const setCurrentUser = (user) => {
   return {
@@ -16,11 +16,9 @@ const removeCurrentUser = () => {
   };
 };
 
+// store csrf token & current user in sessionStorage
 const storeCSRFToken = (response) => {
-  // retrieve csrf token from response headers
   const csrfToken = response.headers.get("X-CSRF-Token");
-
-  // if csrf token is present store it in sessionStorage
   if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
 };
 
