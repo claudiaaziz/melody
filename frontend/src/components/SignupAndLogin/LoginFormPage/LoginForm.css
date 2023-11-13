@@ -49,6 +49,7 @@
   color: white;
   height: 77vh;
   border-radius: 10px;
+  min-width: 350px
 }
 
 .loginContainer h1 {

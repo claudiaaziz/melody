@@ -6,5 +6,9 @@
   align-items: center;
   background: linear-gradient(#191919, black);
   font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
+  color: white
 }
 
+.artistName {
+  color: #a7a7a7
+}
