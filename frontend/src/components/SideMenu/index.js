@@ -9,8 +9,10 @@ import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.s
 const SideMenu = () => {
   return (
     <div className="sideMenu">
-      <MelodyLogo />
       <ul className="menuList">
+        <li>
+          <MelodyLogo />
+        </li>
         <li>
           <NavLink exact to="/" className="menuLink">
             <HomeIcon />

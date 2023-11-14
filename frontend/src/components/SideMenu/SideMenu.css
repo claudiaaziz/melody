@@ -37,12 +37,12 @@
   color: white;
 }
 
-svg {
+.sideMenu svg {
   fill: transparent;
   stroke: gray;
   stroke-width: 1.5;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   margin-right: 8px;
   vertical-align: middle;
 }
@@ -51,3 +51,4 @@ svg {
   fill: white;
   stroke: transparent;
 }
+

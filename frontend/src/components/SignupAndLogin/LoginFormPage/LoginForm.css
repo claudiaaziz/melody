@@ -37,6 +37,14 @@
   color: white;
 }
 
+.loginHeader .melodyLogoLink {
+  margin-left: .5vw;
+}
+  
+.loginHeader .melodyLogoContainer {
+  margin-left: 1.5%;
+} 
+
 /* container */
 
 .loginContainer {
