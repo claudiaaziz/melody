@@ -15,12 +15,10 @@ const AlbumIndex = () => {
     <>
       <div className="albumIndex">
         {Object.values(albums).map((album) => (
-          <div key={album.id} className="albumContainer">
-            <div className="album">
-              <img src={album.albumCoverUrl} alt="" />
-              <h2 className="artistTitle">{album.title}</h2>
-              <p className="artistName">{album.artistName}</p>
-            </div>
+          <div className="album">
+            <img src={album.albumCoverUrl} alt="" />
+            <h2 className="artistTitle">{album.title}</h2>
+            <p className="artistName">{album.artistName}</p>
           </div>
         ))}
       </div>
