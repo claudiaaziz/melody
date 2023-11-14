@@ -38,6 +38,9 @@ ApplicationRecord.transaction do
   Artist.create!(
     name: "Najwa Karam"
   )
+  Artist.create!(
+    name: "Haife Wehbe"
+  )
 
   puts "Creating albums..."
   Album.create!(
@@ -69,6 +72,24 @@ ApplicationRecord.transaction do
     artist_id: 5,
     release_year: 2011,
     album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Najwa+Karam.png'
+  )
+  Album.create!(
+    title: "Sapiential",
+    artist_id: 1,
+    release_year: 2020,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential.png'
+  )
+  Album.create!(
+    title: "Hawwa",
+    artist_id: 6,
+    release_year: 2018,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Hawwa.png'
+  )
+  Album.create!(
+    title: "My Ummah",
+    artist_id: 1,
+    release_year: 2005,
+    album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah.png'
   )
 
   puts "Done!"
