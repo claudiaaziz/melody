@@ -15,7 +15,7 @@ const AlbumIndex = () => {
   return (
     <div className="albumIndex">
       {Object.values(albums).map((album) => (
-        <AlbumIndexItem album={album} />
+        <AlbumIndexItem key={album.id} album={album} />
       ))}
     </div>
   );

@@ -92,5 +92,48 @@ ApplicationRecord.transaction do
     album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah.png'
   )
 
+  puts "Creating songs..."
+  # Al-Mu'allim
+  Song.create!(
+    title: "Al-Mu'allim",
+    album_id: 1,
+    song_url: "song1"
+  )
+  Song.create!(
+    title: "Who Is The Loved One?",
+    album_id: 1,
+    song_url: "song2"
+  )
+  Song.create!(
+    title: "The Cave Of Hira",
+    album_id: 1,
+    song_url: "song3"
+  )
+  Song.create!(
+    title: "Allahu",
+    album_id: 1,
+    song_url: "song4"
+  )
+  Song.create!(
+    title: "The Creator",
+    album_id: 1,
+    song_url: "song5"
+  )
+  Song.create!(
+    title: "Meditation",
+    album_id: 1,
+    song_url: "song6"
+  )
+  Song.create!(
+    title: "Ya Mustafa",
+    album_id: 1,
+    song_url: "song7"
+  )
+  Song.create!(
+    title: "Supplication",
+    album_id: 1,
+    song_url: "song8"
+  )
+
   puts "Done!"
 end
