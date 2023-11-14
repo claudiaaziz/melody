@@ -15,14 +15,39 @@
 .menuList {
   padding: 0;
   margin: 20px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .menuList li {
-  text-decoration: none;
   margin-bottom: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.menuList li:hover {
-  color: white
+.menuLink {
+  text-decoration: none;
+  color: gray;
+  display: flex;
+  align-items: center;
+}
+
+.menuLink:hover {
+  color: white;
+}
+
+svg {
+  fill: transparent;
+  stroke: gray;
+  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.menuLink:hover svg {
+  fill: white;
+  stroke: transparent;
 }
