@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileMenu.css";
-import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navigation/profileBtn.svg";
+import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navbar/profileBtn.svg";
 
 
 const ProfileMenu = () => {

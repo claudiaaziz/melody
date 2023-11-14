@@ -1,4 +1,4 @@
-.navBar {
+.navbar {
   display: flex;
   align-items: center;
   background-color: #101010;
@@ -10,26 +10,26 @@
   top: 0
 }
 
-.navBar ul {
+.navbar ul {
   list-style: none;
   display: flex;
   margin-left: auto;
   margin-right: 1.5%;
 }
 
-.navBar a {
+.navbar a {
   text-decoration: none;
   font-size: 1rem;
 }
 
-.navBarButton {
+.navbarButton {
   border: none;
   padding: 12px 25px;
   border-radius: 20px;
   font-family: 'CircularSpotifyBold';
 }
 
-.navBarButton:hover {
+.navbarButton:hover {
   transform: scale(1.05);
 }
 

@@ -3,15 +3,15 @@ import { Route, Switch } from "react-router-dom";
 import AlbumIndex from "./components/AlbumIndex";
 import SignupFormPage from "./components/SignupAndLogin/SignupFormPage";
 import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
-import Navigation from "./components/Navigation";
-import SideMenu from "./components/AlbumIndex/SideMenu";
+import Navbar from "./components/Navbar";
+import SideMenu from "./components/SideMenu/SideMenu";
 
 const App = () => {
   return (
     <>
       <Switch>
         <Route path="/" exact>
-          <Navigation />
+          <Navbar />
           <SideMenu />
           <AlbumIndex />
         </Route>
