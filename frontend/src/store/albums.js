@@ -5,15 +5,13 @@ const receiveAlbums = (albums) => ({
   albums,
 });
 
-export const getAlbums = (state) => state.albums ? state.albums : []
+export const getAlbums = (state) => (state.albums ? state.albums : []);
 
 export const fetchAlbums = () => async (dispatch) => {
   const res = await fetch("/api/albums");
 
-  // if (res.ok) {
-    const albums = await res.json();
-    dispatch(receiveAlbums(albums));
-  // }
+  const albums = await res.json();
+  dispatch(receiveAlbums(albums));
 };
 
 const albumsReducer = (state = {}, action) => {

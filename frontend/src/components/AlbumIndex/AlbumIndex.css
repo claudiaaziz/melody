@@ -6,9 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* overflow-x: auto; */
   margin-left: 23%;
-  position: relative;
   margin-top: 8vh;
 }
 
@@ -16,20 +14,19 @@
   cursor: pointer;
   width: 18%;
   margin: 3% 0;
-  position: relative;
 }
 
 .album {
   background-color: #272525;
   border-radius: 8px;
   padding: 10px;
-  box-sizing: border-box;
-  height: 250px;
   transition: background-color 0.8s;
+  height: 80%;
+  box-sizing: border-box;
 }
 
 .album:hover {
-  background-color: #373737;
+  background: #373737;
 }
 
 .album img {
