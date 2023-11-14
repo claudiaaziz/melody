@@ -14,7 +14,12 @@ const SideMenu = () => {
           <MelodyLogo />
         </li>
         <li>
-          <NavLink exact to="/" className="menuLink">
+          <NavLink
+            exact
+            to="/"
+            className="menuLink"
+            activeClassName="activeLink"
+          >
             <HomeIcon />
             Home
           </NavLink>

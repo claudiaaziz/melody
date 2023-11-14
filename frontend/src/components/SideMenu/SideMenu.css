@@ -13,14 +13,13 @@
 }
 
 .menuList {
-  padding: 0;
-  margin: 20px 0;
+  margin: 12px;
   display: flex;
   flex-direction: column;
 }
 
 .menuList li {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -33,10 +32,6 @@
   align-items: center;
 }
 
-.menuLink:hover {
-  color: white;
-}
-
 .sideMenu svg {
   fill: transparent;
   stroke: gray;
@@ -47,8 +42,13 @@
   vertical-align: middle;
 }
 
-.menuLink:hover svg {
+.menuLink:hover,
+.menuLink.activeLink {
+  color: white;
+}
+
+.menuLink:hover svg,
+.menuLink.activeLink svg {
   fill: white;
   stroke: transparent;
 }
-
