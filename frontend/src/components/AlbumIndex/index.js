@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./AlbumIndex.css";
 import { fetchAlbums, getAlbums } from "../../store/albums";
+import AlbumIndexItem from "./AlbumIndexItem";
 
 const AlbumIndex = () => {
   const dispatch = useDispatch();
@@ -12,17 +13,11 @@ const AlbumIndex = () => {
   }, []);
 
   return (
-    <>
-      <div className="albumIndex">
-        {Object.values(albums).map((album) => (
-          <div className="album">
-            <img src={album.albumCoverUrl} alt="" />
-            <h2 className="artistTitle">{album.title}</h2>
-            <p className="artistName">{album.artistName}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="albumIndex">
+      {Object.values(albums).map((album) => (
+        <AlbumIndexItem album={album} />
+      ))}
+    </div>
   );
 };
 
