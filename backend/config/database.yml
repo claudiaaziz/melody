@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: melody_production
-  username: melody
-  password: <%= ENV["MELODY_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
