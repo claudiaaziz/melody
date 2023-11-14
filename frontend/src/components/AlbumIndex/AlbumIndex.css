@@ -6,16 +6,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   margin-left: 23%;
   position: relative;
   margin-top: 8vh;
 }
 
-.album {
+.albumContainer {
   cursor: pointer;
-  width: 25vh;
+  width: 18%;
   margin: 3% 0;
+  position: relative;
+}
+
+.album {
+  background-color: #272525;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 250px;
 }
 
 .album img {
@@ -26,11 +35,11 @@
 .album h2 {
   margin: 8px 0;
   color: white;
+  font-size: .8rem;
 }
 
 .artistName {
   color: #a7a7a7;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
-  font-size: 1em;
+  font-size: .7em;
 }
-
