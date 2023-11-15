@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbum, getAlbum } from "../../store/albums";
 import "./AlbumShowPage.css";
 import { useParams } from "react-router-dom";
-import SongListItem from "./SongList";
+import SongListItem from "./SongListItem";
 
 const AlbumShowPage = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const AlbumShowPage = () => {
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
-  }, [albumId]);
+  }, [dispatch, albumId]);
 
   return (
     <>
@@ -31,7 +31,11 @@ const AlbumShowPage = () => {
 
       {album &&
         Object.values(album.songs).map((song) => (
-          <SongListItem key={song.id} album={album} song={song} />
+          <SongListItem
+            key={song.id}
+            song={song}
+            artistName={album.artistName}
+          />
         ))}
     </>
   );
