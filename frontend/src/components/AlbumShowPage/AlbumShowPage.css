@@ -3,7 +3,7 @@
   margin-left: 23%;
   margin-top: 8vh;
   width: 77%;
-  background: linear-gradient(#141414, black);
+  background: linear-gradient(#202020, black);
   display: flex;
   flex-direction: column;
   color: white;
@@ -15,7 +15,6 @@
   height: 40%;
   top: 0;
   gap: 20px;
-  background-color: #141414;
   width: 100%;
 }
 
@@ -23,12 +22,12 @@
   height: 250px;
   margin-bottom: 20px;
   margin-left: 15px;
-} 
+}
 
 .albumShowHeader img:hover {
   transform: scale(1.03);
   transition: transform 0.3s ease-in-out;
-} 
+}
 
 .albumDetails {
   margin-top: 20px;
@@ -48,18 +47,40 @@
   font-size: 12px;
 }
 
+/* song list */
+
 .songList {
   cursor: pointer;
   transition: background-color 0.8s;
   margin-bottom: 10px;
 }
 
-.songList li:hover {
-  background: #282828;
-  transition: background-color 0.8s;
+.songList li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .songItem {
-  margin-bottom: 10px;
+  margin: 5px;
 }
 
+.songId {
+  margin: 5px 15px;
+  color: gray;
+}
+
+.songTitle {
+  font-size: .9rem;
+}
+
+.artistName {
+  color :gray;
+  margin-top: 5px;
+}
+
+.songList:hover {
+  background: #282828;
+  transition: background-color 0.8s;
+}

@@ -43342,3 +43342,283 @@ Processing by Api::AlbumsController#show as JSON
 Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 1.4ms | Allocations: 3722)
 
 
+Started GET "/api/albums/3" for 127.0.0.1 at 2023-11-15 17:37:22 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAlbum Load (1.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.5ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 3.6ms | Allocations: 2844)
+Completed 200 OK in 17ms (Views: 2.5ms | ActiveRecord: 7.7ms | Allocations: 6555)
+
+
+Started GET "/api/albums/3" for 127.0.0.1 at 2023-11-15 17:39:32 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 2.5ms | Allocations: 2838)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.8ms | Allocations: 3746)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-11-15 17:40:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 4781)
+
+
+Started GET "/api/albums" for 127.0.0.1 at 2023-11-15 17:40:48 -0500
+Processing by Api::AlbumsController#index as JSON
+  Rendering api/albums/index.json.jbuilder
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/api/albums/index.json.jbuilder:1
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  Rendered api/albums/index.json.jbuilder (Duration: 23.1ms | Allocations: 18392)
+Completed 200 OK in 123ms (Views: 107.7ms | ActiveRecord: 11.6ms | Allocations: 301339)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-11-15 17:41:25 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"guest@guest.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"guest@guest.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@guest.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "guest@guest.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-11-15 22:41:26.195702"], ["id", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 225)
+Completed 200 OK in 285ms (Views: 1.3ms | ActiveRecord: 7.8ms | Allocations: 11099)
+
+
+Started GET "/api/albums" for 127.0.0.1 at 2023-11-15 17:41:26 -0500
+Processing by Api::AlbumsController#index as JSON
+  Rendering api/albums/index.json.jbuilder
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/api/albums/index.json.jbuilder:1
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  Rendered api/albums/index.json.jbuilder (Duration: 6.0ms | Allocations: 6504)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.8ms | Allocations: 6999)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 17:41:28 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.5ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 17.4ms | Allocations: 14737)
+Completed 200 OK in 20ms (Views: 14.0ms | ActiveRecord: 4.0ms | Allocations: 16599)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 17:45:19 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 3.2ms | Allocations: 2649)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.8ms | Allocations: 3639)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 17:50:54 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (1.0ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.5ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 3.9ms | Allocations: 2646)
+Completed 200 OK in 24ms (Views: 3.1ms | ActiveRecord: 13.0ms | Allocations: 6567)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 17:58:37 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.4ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 3.1ms | Allocations: 2648)
+Completed 200 OK in 17ms (Views: 2.5ms | ActiveRecord: 7.2ms | Allocations: 6405)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 17:58:41 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 3.0ms | Allocations: 2640)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.8ms | Allocations: 3527)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 18:00:25 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.1ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 2.9ms | Allocations: 2640)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.7ms | Allocations: 3521)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 18:04:08 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 2.7ms | Allocations: 2640)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 1.2ms | Allocations: 3524)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 18:05:17 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 2.8ms | Allocations: 2641)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.9ms | Allocations: 3505)
+
+
+Started GET "/api/albums/1" for 127.0.0.1 at 2023-11-15 18:07:13 -0500
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:2
+  [1m[36mSong Pluck (0.1ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:4
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:8
+  Rendered api/albums/show.json.jbuilder (Duration: 2.6ms | Allocations: 2641)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.7ms | Allocations: 3513)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-11-15 18:08:27 -0500
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "guest@guest.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-11-15 23:08:28.016662"], ["id", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 5833)
+
+

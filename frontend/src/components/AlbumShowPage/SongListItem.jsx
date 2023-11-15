@@ -4,8 +4,11 @@ const SongListItem = ({ artistName, song }) => {
   return (
     <ul className="songList">
       <li className="songItem">
-        {song.title}
-        {artistName}
+        <div className="songId">{song.id}</div>
+        <div className="songContent">
+          <div className="songTitle">{song.title}</div>
+          <div className="artistName">{artistName}</div>
+        </div>
       </li>
     </ul>
   );
