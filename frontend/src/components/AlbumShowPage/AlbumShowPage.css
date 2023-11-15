@@ -49,7 +49,6 @@
 .albumShow hr {
   width: 90%;
   border: 1px solid #191919;
-  margin: 3px;
 }
 
 /* song list */
@@ -72,8 +71,12 @@
 }
 
 .songId {
-  margin: 5px 15px;
+  margin-left: 15px;
   color: gray;
+}
+
+.songContent {
+  margin-left: 17px;
 }
 
 .songTitle {
