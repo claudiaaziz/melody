@@ -15,19 +15,19 @@ const AlbumShowPage = () => {
   }, [dispatch, albumId]);
 
   return (
-    <>
-      <div className="albumShow">
-        <h2>Album</h2>
-        {album ? (
-          <div className="albumDetails">
-            <img src={album.albumCoverUrl} alt=""></img>
-            <h2>{album.title}</h2>
-            <span>{album.artistName} ‧</span>
-            <span>{album.releaseYear} ‧</span>
-            <span>{Object.values(album.songs).length} songs</span>
-          </div>
-        ) : undefined}
-      </div>
+    <div className="albumShow">
+      <h2>Album</h2>
+      {album ? (
+        <div className="albumDetails">
+          <img src={album.albumCoverUrl} alt=""></img>
+          <h2>{album.title}</h2>
+          <span>{album.artistName}</span>
+          <span className="albumDetailsDivider">‧</span>
+          <span>{album.releaseYear}</span>
+          <span className="albumDetailsDivider">‧</span>
+          <span>{Object.values(album.songs).length} songs</span>
+        </div>
+      ) : undefined}
 
       {album &&
         Object.values(album.songs).map((song) => (
@@ -37,7 +37,7 @@ const AlbumShowPage = () => {
             artistName={album.artistName}
           />
         ))}
-    </>
+    </div>
   );
 };
 
