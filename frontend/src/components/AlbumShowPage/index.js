@@ -22,11 +22,11 @@ const AlbumShowPage = () => {
           <div className="albumDetails">
             <p>Album</p>
             <h2>{album.title}</h2>
-            <div className="inlineAlbumDetails">
+            <div>
               <span>{album.artistName}</span>
-              <span className="albumDetailsDivider">‧</span>
+              <span>‧</span>
               <span>{album.releaseYear}</span>
-              <span className="albumDetailsDivider">‧</span>
+              <span>‧</span>
               <span>{Object.values(album.songs).length} songs</span>
             </div>
           </div>

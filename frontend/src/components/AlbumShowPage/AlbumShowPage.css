@@ -19,9 +19,8 @@
 }
 
 .albumShowHeader img {
-  height: 250px;
-  margin-bottom: 20px;
-  margin-left: 15px;
+  max-height: 250px;
+  margin: 20px 15px;
 }
 
 .albumShowHeader img:hover {
