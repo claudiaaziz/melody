@@ -23,6 +23,8 @@ const App = () => {
           <SignupFormPage />
         </Route>
         <Route path="/albums/:albumId">
+          <Navbar />
+          <SideMenu />
           <AlbumShowPage />
         </Route>
       </Switch>
