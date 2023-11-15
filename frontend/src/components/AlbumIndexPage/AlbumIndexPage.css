@@ -4,12 +4,12 @@
   width: 77%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin-left: 23%;
+  justify-content: space-around; 
+  margin-left: 23%; 
   margin-top: 8vh;
   padding-top: 10px;
   align-items: start;
-  gap: 28px
+  gap: 28px;
 }
 
 .album {
@@ -18,8 +18,9 @@
   box-sizing: border-box;
   cursor: pointer;
   width: 18%;
-  height: max-content;
-  min-height: 250px;
+  height: 100%;
+  height: max-content; 
+  min-height: 250px; 
   background-color: #181818;
   transition: background-color 0.8s;
 }

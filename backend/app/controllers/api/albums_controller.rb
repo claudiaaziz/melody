@@ -6,8 +6,6 @@ class Api::AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
-    # need access to all songs in album
-    @songs = @album.songs
   end
 
   private

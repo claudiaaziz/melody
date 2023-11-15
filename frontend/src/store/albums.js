@@ -5,6 +5,7 @@ const receiveAlbums = (albums) => ({
   type: RECEIVE_ALBUMS,
   albums,
 });
+
 const receiveAlbum = (album) => ({
   type: RECEIVE_ALBUM,
   album,
@@ -15,22 +16,22 @@ export const getAlbum = (albumId) => state => (state.albums ? state.albums[album
 
 export const fetchAlbums = () => async (dispatch) => {
   const res = await fetch("/api/albums");
-
   const albums = await res.json();
   dispatch(receiveAlbums(albums));
 };
 
-export const fetchAlbum = () => async (dispatch) => {
-  const res = await fetch(`/api/albums/${}`);
-
-  const albums = await res.json();
-  dispatch(receiveAlbums(albums));
+export const fetchAlbum = (albumId) => async (dispatch) => {
+  const res = await fetch(`/api/albums/${albumId}`);
+  const album = await res.json();
+  dispatch(receiveAlbum(album));
 };
 
 const albumsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALBUMS:
       return { ...action.albums };
+    case RECEIVE_ALBUM:
+      return {...state, [action.album.id]: action.album}
     default:
       return state;
   }
