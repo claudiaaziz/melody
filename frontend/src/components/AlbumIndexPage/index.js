@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./AlbumIndexPage.css";
 import { fetchAlbums, getAlbums } from "../../store/albums";
@@ -15,7 +16,9 @@ const AlbumIndexPage = () => {
   return (
     <div className="albumIndex">
       {Object.values(albums).map((album) => (
-        <AlbumIndexItem key={album.id} album={album} />
+        <Link to={`/albums/${album.id}`} key={album.id}>
+          <AlbumIndexItem album={album} />
+        </Link>
       ))}
     </div>
   );

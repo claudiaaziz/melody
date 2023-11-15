@@ -4,16 +4,19 @@
   margin-top: 8vh;
   width: 77%;
   background: linear-gradient(#141414, black);
+  display: flex;
+  align-items: center;
   color: white
 }
 
-.albumDetails img:hover {
+.albumShow img:hover {
   transform: scale(1.03);
   transition: transform 0.3s ease-in-out;
 } 
 
 .albumDetails {
   margin-top: 20px;
+  display: flex;
 }
 
 .albumDetails h2 {
@@ -24,8 +27,6 @@
   margin-right: 5px;
   font-size: 12px;
 }
-
-
 
 .songList {
   display: flex;

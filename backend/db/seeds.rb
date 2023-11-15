@@ -134,6 +134,107 @@ ApplicationRecord.transaction do
     album_id: 1,
     song_url: "song8"
   )
-
+  # Hobb W Mkattar
+  Song.create!(
+    title: "Hob W Mkattar",
+    album_id: 2,
+    song_url: "song1"
+  )
+  Song.create!(
+    title: "Min Jdid",
+    album_id: 2,
+    song_url: "song2"
+  )
+  Song.create!(
+    title: "Eiwiha",
+    album_id: 2,
+    song_url: "song3"
+  )
+  Song.create!(
+    title: "La Tkhallini",
+    album_id: 2,
+    song_url: "song4"
+  )
+  Song.create!(
+    title: "Kel Ma El Masa Bi Tol",
+    album_id: 2,
+    song_url: "song5"
+  )
+  Song.create!(
+    title: "Dam3ato",
+    album_id: 2,
+    song_url: "song6"
+  )
+  Song.create!(
+    title: "Kilme Elak",
+    album_id: 2,
+    song_url: "song7"
+  )
+  Song.create!(
+    title: "Ya Kezabi",
+    album_id: 2,
+    song_url: "song8"
+  )
+  Song.create!(
+    title: "Weilak",
+    album_id: 2,
+    song_url: "song9"
+  )
+  # Tabassam
+  Song.create!(
+    title: "Rouhi Fidak",
+    album_id: 3,
+    song_url: "song1"
+  )
+  Song.create!(
+    title: "Tabassam",
+    album_id: 3,
+    song_url: "song2"
+  )
+  Song.create!(
+    title: "Alhamdu Lillah",
+    album_id: 3,
+    song_url: "song3"
+  )
+  Song.create!(
+    title: "Adnani",
+    album_id: 3,
+    song_url: "song4"
+  )
+  Song.create!(
+    title: "Ghar Hira",
+    album_id: 3,
+    song_url: "song5"
+  )
+  Song.create!(
+    title: "Eidun Saeed Feat. Maher Zain",
+    album_id: 3,
+    song_url: "song6"
+  )
+  Song.create!(
+    title: "Assalatu Wassalamu",
+    album_id: 3,
+    song_url: "song7"
+  )
+  Song.create!(
+    title: "Ya Man Bihali",
+    album_id: 3,
+    song_url: "song8"
+  )
+  Song.create!(
+    title: "Farha",
+    album_id: 3,
+    song_url: "song9"
+  )
+  Song.create!(
+    title: "Ataytu Bithanbi",
+    album_id: 3,
+    song_url: "song10"
+  )
+  Song.create!(
+    title: "Du'a",
+    album_id: 3,
+    song_url: "song11"
+  )
   puts "Done!"
 end
