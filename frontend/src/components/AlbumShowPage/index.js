@@ -17,28 +17,30 @@ const AlbumShowPage = () => {
   return (
     <div className="albumShow">
       {album ? (
-        <>
+        <div className="albumShowHeader">
           <img src={album.albumCoverUrl} alt=""></img>
+          <div className="albumDetails">
           <p>Album</p>
           <h2>{album.title}</h2>
-          <div className="albumDetails">
+          <div className="inlineAlbumDetails">
             <span>{album.artistName}</span>
             <span className="albumDetailsDivider">‧</span>
             <span>{album.releaseYear}</span>
             <span className="albumDetailsDivider">‧</span>
             <span>{Object.values(album.songs).length} songs</span>
+            </div>
           </div>
-        </>
+        </div>
       ) : undefined}
 
-      {album &&
+      {/* {album &&
         Object.values(album.songs).map((song) => (
           <SongListItem
             key={song.id}
             song={song}
             artistName={album.artistName}
           />
-        ))}
+        ))} */}
     </div>
   );
 };

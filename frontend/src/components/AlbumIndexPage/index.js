@@ -16,9 +16,9 @@ const AlbumIndexPage = () => {
   return (
     <div className="albumIndex">
       {Object.values(albums).map((album) => (
-        <Link to={`/albums/${album.id}`} key={album.id}>
+        // <Link to={`/albums/${album.id}`} key={album.id}>
           <AlbumIndexItem album={album} />
-        </Link>
+        // {/* </Link> */}
       ))}
     </div>
   );
