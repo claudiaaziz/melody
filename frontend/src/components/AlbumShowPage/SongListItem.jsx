@@ -2,9 +2,11 @@ import React from "react";
 
 const SongListItem = ({ artistName, song }) => {
   return (
-    <ul>
-      <li>{song.title}</li>
-      <li>{artistName}</li>
+    <ul className="songList">
+      <li className="songItem">
+        {song.title}
+        {artistName}
+      </li>
     </ul>
   );
 };
