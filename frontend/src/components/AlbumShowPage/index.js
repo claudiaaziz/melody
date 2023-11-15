@@ -33,11 +33,14 @@ const AlbumShowPage = () => {
         </div>
       ) : undefined}
 
+      <hr/>
+
       {album &&
-        Object.values(album.songs).map((song) => (
+        Object.values(album.songs).map((song, idx) => (
           <SongListItem
             key={song.id}
             song={song}
+            songId={idx+1}
             artistName={album.artistName}
           />
         ))}
