@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { pauseSong } from '../../store/playbar';
+import { ReactComponent as PauseBtn } from "../LogoAndSVGS/playbar/pauseBtn.svg";
 
 const PauseSong = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,9 @@ const PauseSong = () => {
   };
 
   return (
-    <button onClick={handlePause}>Pause</button>
+    <button onClick={handlePause} className='playAndPauseBtn'>
+      <PauseBtn className='playAndPauseIcon' />
+    </button>
   );
 };
 
