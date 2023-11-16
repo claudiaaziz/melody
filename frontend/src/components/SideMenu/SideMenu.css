@@ -1,54 +1,50 @@
 .sideMenu {
   position: fixed;
+  top: 0;
   left: 0;
-  width: 23%;
   height: 100vh;
-  background-color: black;
-  color: gray;
-  padding: .5%;
+  width: 23%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  top: 0
+  padding: .5%;
+  background-color: black;
+  color: gray;
 }
 
 .menuList {
   margin: 12px;
-  display: flex;
-  flex-direction: column;
 }
 
 .menuList li {
   margin-bottom: 15px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
 }
 
-.menuLink {
+.menuItem {
   text-decoration: none;
   color: gray;
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
-.sideMenu svg {
+.menuItem:hover,
+.menuItem.activeLink {
+  color: white;
+}
+
+.menuItem svg {
   fill: transparent;
   stroke: gray;
   stroke-width: 1.5;
   width: 25px;
   height: 25px;
-  margin-right: 8px;
-  vertical-align: middle;
+  margin-right: 10px;
 }
 
-.menuLink:hover,
-.menuLink.activeLink {
-  color: white;
-}
-
-.menuLink:hover svg,
-.menuLink.activeLink svg {
+.menuItem:hover svg,
+.menuItem.activeLink svg {
   fill: white;
   stroke: transparent;
 }
+

@@ -9,30 +9,37 @@ import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.s
 const SideMenu = () => {
   return (
     <div className="sideMenu">
-      <ul className="menuList">
-        <li>
-          <MelodyLogo />
-        </li>
-        <li>
-          <NavLink
-            exact
-            to="/"
-            className="menuLink"
-            activeClassName="activeLink"
-          >
-            <HomeIcon />
-            Home
-          </NavLink>
-        </li>
-        <li className="menuLink">
-          <SearchIcon />
-          Search
-        </li>
-        <li className="menuLink">
-          <LibraryIcon />
-          Your Library
-        </li>
-      </ul>
+      <div className="linkSection">
+        <ul className="menuList">
+          <li>
+            <MelodyLogo />
+          </li>
+          <li>
+            <NavLink
+              exact
+              to="/"
+              className="menuItem"
+              activeClassName="activeLink"
+            >
+              <HomeIcon />
+              Home
+            </NavLink>
+          </li>
+          <li className="menuItem">
+            <SearchIcon />
+            Search
+          </li>
+        </ul>
+      </div>
+
+      <div className="librarySection">
+        <ul className="menuList">
+          <li className="menuItem">
+            <LibraryIcon />
+            Your Library
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
