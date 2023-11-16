@@ -4,8 +4,8 @@
   width: 77%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; 
-  margin-left: 23%; 
+  justify-content: space-around;
+  margin-left: 23%;
   margin-top: 8vh;
   padding-top: 10px;
   align-items: start;
@@ -17,10 +17,10 @@
   padding: 10px;
   box-sizing: border-box;
   cursor: pointer;
-  width: 18%;
-  height: 100%;
-  height: max-content; 
-  min-height: 250px; 
+  width: 14vw;
+  height: 250px;
+  max-height: 250px;
+  min-height: 250px;
   background-color: #181818;
   transition: background-color 0.8s;
 }
@@ -44,4 +44,8 @@
   color: #a7a7a7;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
   font-size: .7em;
+}
+
+.albumLink {
+  text-decoration: none;
 }
