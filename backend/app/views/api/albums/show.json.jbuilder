@@ -1,7 +1,9 @@
-json.extract! @album, :id, :album_cover_url, :title, :release_year 
-json.set! 'artist_name', @album.artist.name
-json.set! 'album_songs' do
-  json.array! @album.songs.pluck(:id)
+json.album do 
+  json.extract! @album, :id, :album_cover_url, :title, :release_year 
+    json.set! 'artist_name', @album.artist.name
+    json.set! 'album_songs' do
+      json.array! @album.songs.pluck(:id)
+  end
 end
 
 json.songs do 

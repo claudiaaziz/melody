@@ -4,15 +4,22 @@ import { fetchAlbum, getAlbum } from "../../store/albums";
 import "./AlbumShowPage.css";
 import { useParams } from "react-router-dom";
 import SongListItem from "./SongListItem";
+import { getSongs } from "../../store/songs";
 
 const AlbumShowPage = () => {
   const dispatch = useDispatch();
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
+  const songs = useSelector(getSongs)
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
+
+  const allAlbumSongs =
+    album && album.albumSongs
+      ? album.albumSongs.map((songId) => songs[songId])
+      : [];
 
   return (
     <div className="albumShow">
@@ -27,20 +34,22 @@ const AlbumShowPage = () => {
               <span>‧</span>
               <span>{album.releaseYear}</span>
               <span>‧</span>
-              <span>{Object.values(album.songs).length} songs</span>
+              <span>
+                {allAlbumSongs ? Object.values(allAlbumSongs).length : 0} songs
+              </span>
             </div>
           </div>
         </div>
       ) : undefined}
 
-      <hr/>
+      <hr />
 
       {album &&
-        Object.values(album.songs).map((song, idx) => (
+        Object.values(allAlbumSongs).map((song, idx) => (
           <SongListItem
             key={song.id}
             song={song}
-            songId={idx+1}
+            songId={idx + 1}
             artistName={album.artistName}
           />
         ))}

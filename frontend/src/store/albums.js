@@ -31,7 +31,7 @@ const albumsReducer = (state = {}, action) => {
     case RECEIVE_ALBUMS:
       return { ...action.albums };
     case RECEIVE_ALBUM:
-      return {...state, [action.album.id]: action.album}
+      return {...state, [action.album.album.id]: action.album.album}
     default:
       return state;
   }
