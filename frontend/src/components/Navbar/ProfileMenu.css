@@ -4,21 +4,18 @@
   margin-left: auto;
 }
 
-.profileBtnContainer button {
+.profileBtn {
+  background-color: black;
+  border-radius: 50%;
+  padding: 8px;
   border: none;
   cursor: pointer;
 }
 
-.profileBtnContainer button svg {
+.profileBtn svg {
   fill: white;
   width: 20px;
   height: 20px;
-}
-
-.profileBtnContainer button {
-  background-color: black;
-  border-radius: 50%;
-  padding: 8px;
 }
 
 .profileDropdown {
@@ -29,10 +26,17 @@
   transform: translateX(50%);
 }
 
-.profileDropdown button {
+.logoutBtn {
   padding: 8px 10px;
   color: white;
   white-space: nowrap;
   cursor: pointer;
   font-size: .7rem;
+  border: none;
+  background-color: black;
 }
+
+.logoutBtn:hover {
+  background: #282828;
+}
+

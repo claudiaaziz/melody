@@ -33,13 +33,13 @@ const ProfileMenu = () => {
 
   return (
     <div className="profileBtnContainer">
-      <button onClick={openMenu}>
+      <button className="profileBtn" onClick={openMenu}>
         <ProfileBtnIcon/>
       </button>
       {showMenu && (
         <ul className="profileDropdown">
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button className="logoutBtn" onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
