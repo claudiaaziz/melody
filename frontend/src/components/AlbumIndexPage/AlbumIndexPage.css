@@ -18,9 +18,7 @@
   box-sizing: border-box;
   cursor: pointer;
   width: 14vw;
-  height: 250px;
-  max-height: 250px;
-  min-height: 250px;
+  padding-bottom: 25px;
   background-color: #181818;
   transition: background-color 0.8s;
 }
