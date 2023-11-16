@@ -55,7 +55,7 @@
 }
 
 .librarySection {
-  border-radius: 10px;
   background-color: #121212;
+  border-radius: 8px;
   flex: 1;
 }

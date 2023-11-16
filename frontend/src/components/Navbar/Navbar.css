@@ -1,13 +1,20 @@
+.navbarContainer {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 77%;
+  z-index: 1000;
+}
+
 .navbar {
   display: flex;
   align-items: center;
-  background-color: #121212;
-  position: fixed;
-  right: 0;
+  position: relative;
+  border-radius: 8px;
   height: 8vh;
-  width: 77%;
-  z-index: 1000;
-  top: 0
+  width: 100%;
+  background-color: #121212;
 }
 
 .navbar ul {
