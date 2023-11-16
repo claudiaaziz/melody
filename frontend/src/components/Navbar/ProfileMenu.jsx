@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileMenu.css";
-import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navigation/profileBtn.svg";
+import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navbar/profileBtn.svg";
 
 
 const ProfileMenu = () => {
@@ -33,13 +33,13 @@ const ProfileMenu = () => {
 
   return (
     <div className="profileBtnContainer">
-      <button onClick={openMenu}>
+      <button className="profileBtn" onClick={openMenu}>
         <ProfileBtnIcon/>
       </button>
       {showMenu && (
         <ul className="profileDropdown">
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button className="logoutBtn" onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}

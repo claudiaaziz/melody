@@ -22,7 +22,7 @@
 }
 
 .guestUserBtn {
-  color: #DE599C;
+  color: #e7b8cf;
   background: transparent;
   border: none;
   white-space: nowrap;
@@ -36,6 +36,14 @@
   color: white;
 }
 
+.signupHeader .melodyLogoLink {
+  margin-left: .5vw;
+}
+
+.signupHeader .melodyLogoContainer {
+  margin-left: 1.5%;
+}
+
 /* container */
 
 .signupContainer {
@@ -46,7 +54,6 @@
   width: 50vw;
   color: white;
   height: 77vh;
-  border-radius: 10px;
 }
 
 .signupContainer h1 {

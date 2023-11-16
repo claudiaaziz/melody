@@ -1,7 +1,12 @@
+.melodyLogoLink {
+  width: 100%;
+  text-decoration: none;
+  color: white;
+}
+
 .melodyLogoContainer {
   display: flex;
   align-items: center;
-  margin-left: 1.5%;
 }
 
 .spotifyIcon {
@@ -15,9 +20,3 @@
   font-family: 'CircularSpotifyBold';
 }
 
-.melodyLogoLink {
-  margin-left: .5vw;
-  width: 100%;
-  text-decoration: none;
-  color: white;
-}

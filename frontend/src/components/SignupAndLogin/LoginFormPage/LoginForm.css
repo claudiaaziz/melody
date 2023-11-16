@@ -23,7 +23,7 @@
 }
 
 .guestLoginBtn {
-  color: #DE599C;
+  color: #e7b8cf;
   background: transparent;
   border: none;
   white-space: nowrap;
@@ -37,6 +37,14 @@
   color: white;
 }
 
+.loginHeader .melodyLogoLink {
+  margin-left: .5vw;
+}
+  
+.loginHeader .melodyLogoContainer {
+  margin-left: 1.5%;
+} 
+
 /* container */
 
 .loginContainer {
@@ -49,6 +57,7 @@
   color: white;
   height: 77vh;
   border-radius: 10px;
+  min-width: 350px
 }
 
 .loginContainer h1 {
@@ -82,7 +91,6 @@
   list-style: none;
   color: red;
   font-size: 0.75rem;
-  border-radius: 5px;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
 }
 

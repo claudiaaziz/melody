@@ -1,0 +1,61 @@
+.sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 23%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: .5%;
+  background-color: black;
+  color: gray;
+}
+
+.menuList {
+  margin: 12px;
+}
+
+.menuList li {
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.menuItem {
+  text-decoration: none;
+  color: gray;
+  align-items: center;
+  display: flex;
+}
+
+.menuItem:hover,
+.menuItem.activeLink {
+  color: white;
+}
+
+.menuItem svg {
+  fill: transparent;
+  stroke: gray;
+  stroke-width: 1.5;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.menuItem:hover svg,
+.menuItem.activeLink svg {
+  fill: white;
+  stroke: transparent;
+}
+
+.linkSection {
+  background-color: #121212;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.librarySection {
+  background-color: #121212;
+  border-radius: 8px;
+  flex: 1;
+}
