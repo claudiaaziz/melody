@@ -5,14 +5,15 @@
   right: 0;
   width: 77%;
   z-index: 1000;
+  padding-top: 1vh;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   position: relative;
-  border-radius: 8px;
-  height: 8vh;
+  border-radius: 8px 8px 0 0;
+  height: 7vh;
   width: 100%;
   background-color: #121212;
 }
