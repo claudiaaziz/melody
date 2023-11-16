@@ -48,3 +48,14 @@
   stroke: transparent;
 }
 
+.linkSection {
+  background-color: #121212;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.librarySection {
+  border-radius: 10px;
+  background-color: #121212;
+  flex: 1;
+}
