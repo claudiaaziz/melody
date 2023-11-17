@@ -12,7 +12,8 @@ const Playbar = () => {
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
-  const currentSong = useSelector((state) => state.playbar.currentSong);
+  let currentSong = useSelector((state) => state.playbar.currentSong);
+  // const defaultSongContainer = useSelector((state) => Object.values(state.albums)[1])
   const albumCover = useSelector(
     (state) => state.albums[album?.id]?.albumCoverUrl
   );
@@ -32,8 +33,9 @@ const Playbar = () => {
         </div>
       ) : 
       <div>
-      <MelodyLogo className="noCurrentSong"/>
+        <MelodyLogo/>
       </div>
+      // currentSong = defaultSongContainer
       }
 
       <Actions isPlaying={isPlaying} currentSong={currentSong} />
