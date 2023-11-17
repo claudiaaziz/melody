@@ -6,12 +6,12 @@ import { ReactComponent as PlayBtn } from "../LogoAndSVGS/playbar/playBtn.svg";
 const PlaySong = ({ song }) => {
   const dispatch = useDispatch();
 
-  const handlePlay = () => {
-    dispatch(playSong(song));
-  };
+  const handlePlay = () => (song && song.id) ? dispatch(playSong(song)) : null;
 
   return (
-    <button onClick={handlePlay} className='playAndPauseBtn'><PlayBtn className="playAndPauseIcon"/></button>
+    <button onClick={handlePlay} className='playAndPauseBtn'>
+      <PlayBtn className="playAndPauseIcon" />
+    </button>
   );
 };
 

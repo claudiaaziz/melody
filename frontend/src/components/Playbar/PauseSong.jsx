@@ -6,9 +6,7 @@ import { ReactComponent as PauseBtn } from "../LogoAndSVGS/playbar/pauseBtn.svg"
 const PauseSong = () => {
   const dispatch = useDispatch();
 
-  const handlePause = () => {
-    dispatch(pauseSong());
-  };
+  const handlePause = () => dispatch(pauseSong());
 
   return (
     <button onClick={handlePause} className='playAndPauseBtn'>

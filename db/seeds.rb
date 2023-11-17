@@ -97,7 +97,7 @@ ApplicationRecord.transaction do
   Song.create!(
     title: "Al-Mu'allim",
     album_id: 1,
-    song_url: "song1"
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Elvana+Gjata+-+POW.mp3"
   )
   Song.create!(
     title: "Who Is The Loved One?",

@@ -5,6 +5,7 @@ import "./AlbumShowPage.css";
 import { useParams } from "react-router-dom";
 import SongListItem from "./SongListItem";
 import { getSongs } from "../../store/songs";
+import { playSong } from "../../store/playbar";
 
 const AlbumShowPage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const AlbumShowPage = () => {
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
+
+  const handleSongClick = (song) => dispatch(playSong(song));
 
   const allAlbumSongs =
     album && album.albumSongs
@@ -49,8 +52,9 @@ const AlbumShowPage = () => {
           <SongListItem
             key={song.id}
             song={song}
-            songId={idx + 1}
+            songNum={idx + 1}
             artistName={album.artistName}
+            onClick={() => handleSongClick(song)}
           />
         ))}
     </div>
