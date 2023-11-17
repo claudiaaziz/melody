@@ -50,7 +50,6 @@ require "open-uri"
     artist_id: 1,
     release_year: 2005,
     album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf.png'
-    # needavariable.photo.attach(io: URI.open("https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf.png"), filename: "song.png")
   )
   Album.create!(
     title: "Hobb W Mkattar",
