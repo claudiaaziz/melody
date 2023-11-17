@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Actions from "./Actions";
 import AudioPlayer from "../Playbar/AudioPlayer";
+import VolumeControl from "../Playbar/VolumeControl"; 
 import "./Playbar.css";
 
 const Playbar = () => {
@@ -12,6 +13,7 @@ const Playbar = () => {
     <div className="playbar">
       <Actions isPlaying={isPlaying} currentSong={currentSong} />
       <AudioPlayer />
+      <VolumeControl />
     </div>
   );
 };
