@@ -1,8 +1,8 @@
 export const PLAY_SONG = "PLAY_SONG";
 export const PAUSE_SONG = "PAUSE_SONG";
 // export const RESTART_SONG = "RESTART_SONG";
-// export const REWIND_SONG = "REWIND_SONG";
-// export const SKIP_SONG = "SKIP_SONG";
+export const REWIND_SONG = "REWIND_SONG";
+export const SKIP_SONG = "SKIP_SONG";
 
 export const playSong = (song) => ({
   type: PLAY_SONG,
@@ -17,13 +17,13 @@ export const pauseSong = () => ({
 //   type: RESTART_SONG,
 // });
 
-// export const rewindSong = () => ({
-//   type: REWIND_SONG,
-// });
+export const rewindSong = () => ({
+  type: REWIND_SONG,
+});
 
-// export const skipSong = () => ({
-//   type: SKIP_SONG,
-// });
+export const skipSong = () => ({
+  type: SKIP_SONG,
+});
 
 const playbarReducer = (state = {}, action) => {
   switch (action.type) {

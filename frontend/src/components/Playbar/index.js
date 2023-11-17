@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Actions from "./Actions";
 import AudioPlayer from "../Playbar/AudioPlayer";
-import PlaySong from "./PlaySong";
-import PauseSong from "./PauseSong";
 import "./Playbar.css";
 
 const Playbar = () => {
@@ -11,7 +10,7 @@ const Playbar = () => {
 
   return (
     <div className="playbar">
-      {isPlaying ? <PauseSong /> : <PlaySong song={currentSong} />}
+      <Actions isPlaying={isPlaying} currentSong={currentSong} />
       <AudioPlayer />
     </div>
   );

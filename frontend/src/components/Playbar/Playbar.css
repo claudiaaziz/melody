@@ -12,6 +12,11 @@
   align-items: center
 }
 
+.actionsContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
 .playAndPauseBtn {
   background-color: white;
   border: none;
@@ -26,6 +31,22 @@
 
 .playAndPauseIcon {
   fill: black;
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
 }
+
+.rewindBtn,
+.skipBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+.rewindIcon,
+.skipIcon {
+  fill: gray;
+  width: 17px;
+  height: 17px;
+}
+
