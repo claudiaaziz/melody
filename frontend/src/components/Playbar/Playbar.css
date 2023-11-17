@@ -8,9 +8,8 @@
   color: white;
   box-sizing: border-box;
   display: flex;
-  /* justify-content: center; */
-  justify-content: space-around;
-  align-items: center
+  justify-content: center;
+  align-items: center;
 }
 
 .actionsContainer {
@@ -73,12 +72,15 @@
 
 .currentSongContainer {
   display: flex;
-  align-items: center;
   gap: 10px;
+  align-items: center;
 }
 
 .albumCover {
-  width: 15%;
+  height: auto;
+  width: auto;
+  max-height: 60px;
+  min-width: 60px;
 }
 
 .currentSongDetails {
