@@ -4,6 +4,7 @@ import Actions from "./Actions";
 import AudioPlayer from "../Playbar/AudioPlayer";
 import VolumeControl from "../Playbar/VolumeControl";
 import "./Playbar.css";
+import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 
 const Playbar = () => {
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
@@ -25,7 +26,11 @@ const Playbar = () => {
             <span className="currentSongArtistName">{artistName}</span>
           </div>
         </div>
-      ) : null}
+      ) : 
+      <div>
+      <MelodyLogo className="noCurrentSong"/>
+      </div>
+      }
 
       <Actions isPlaying={isPlaying} currentSong={currentSong} />
       <AudioPlayer />

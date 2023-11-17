@@ -8,13 +8,14 @@
   color: white;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .actionsContainer {
   display: flex;
   justify-content: space-around;
+  margin-left: 200px;
 }
 
 .playAndPauseBtn {
@@ -54,6 +55,7 @@
   width: 7%;
   appearance: none;
   cursor: pointer;
+  margin-right: 40px;
 }
 
 .volumeSlider::-webkit-slider-runnable-track {
@@ -74,6 +76,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-left: 40px;
 }
 
 .albumCover {
