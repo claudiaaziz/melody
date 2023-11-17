@@ -4,3 +4,5 @@
     json.set! 'artist_name', album.artist.name
   end
 end
+
+
