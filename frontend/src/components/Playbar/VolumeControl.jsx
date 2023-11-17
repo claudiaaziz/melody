@@ -21,6 +21,7 @@ const VolumeControl = () => {
       step="0.01"
       value={volume || 0.5} 
       onChange={handleVolumeChange}
+      className="volumeSlider" // Add a custom class for styling
     />
   );
 };

@@ -50,3 +50,22 @@
   height: 17px;
 }
 
+.volumeSlider {
+  width: 7%;
+  appearance: none;
+  cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-runnable-track {
+  height: 3px;
+  background: white;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  margin-top: -4.5%;
+}
