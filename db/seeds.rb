@@ -104,12 +104,12 @@ require "open-uri"
   Song.create!(
     title: "Who Is The Loved One?",
     album_id: 1,
-    song_url: "song2"
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_Who_Is_Loved_One.mp3"
   )
   Song.create!(
     title: "The Cave Of Hira",
     album_id: 1,
-    song_url: "song3"
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_The_Cave_Of_Hira.mp3"
   )
   Song.create!(
     title: "Allahu",

@@ -11,33 +11,10 @@ import { getAlbum } from "../../store/albums";
 const Playbar = () => {
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
   const { albumId } = useParams();
-  const album = useSelector(getAlbum(albumId));
   let currentSong = useSelector((state) => state.playbar.currentSong);
-  // const defaultSongContainer = useSelector((state) => Object.values(state.albums)[1])
-  const albumCover = useSelector(
-    (state) => state.albums[album?.id]?.albumCoverUrl
-  );
-  const artistName = useSelector(
-    (state) => state.albums[currentSong?.id]?.artistName
-  );
 
   return (
     <div className="playbar">
-      {currentSong ? (
-        <div className="currentSongContainer">
-          <img src={albumCover} alt="" className="albumCover" />
-          <div className="currentSongDetails">
-            <span className="currentSongTitle">{currentSong.title}</span>
-            <span className="currentSongArtistName">{artistName}</span>
-          </div>
-        </div>
-      ) : 
-      <div>
-        <MelodyLogo/>
-      </div>
-      // currentSong = defaultSongContainer
-      }
-
       <Actions isPlaying={isPlaying} currentSong={currentSong} />
       <AudioPlayer />
       <VolumeControl />

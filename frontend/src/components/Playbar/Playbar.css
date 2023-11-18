@@ -72,7 +72,31 @@
   margin-top: -4.5%;
 }
 
-.currentSongContainer {
+/* after finish playbar functionality
+
+
+    const album=useSelector(getAlbum(albumId)); 
+    // const defaultSongContainer = useSelector((state) => Object.values(state.albums)[1])
+    const albumCover=useSelector((state)=> state.albums[album?.id]?.albumCoverUrl);
+    const artistName=useSelector((state)=> state.albums[currentSong?.id]?.artistName); */
+
+/* {
+  currentSong ? (<div className="currentSongContainer" > <img src= {
+      albumCover
+    }
+
+    alt="" className="albumCover" /> <div className="currentSongDetails" > <span className="currentSongTitle" > {
+      currentSong.title
+    }
+
+    </span> <span className="currentSongArtistName" > {
+      artistName
+    }
+
+    </span> </div> </div>) : <div><MelodyLogo/></div> // currentSong = defaultSongContainer
+} */
+
+/* .currentSongContainer {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -100,4 +124,4 @@
 .currentSongArtistName {
   font-size: .6rem;
   color: gray
-}
+} */
