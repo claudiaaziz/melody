@@ -1,7 +1,7 @@
 export const SET_VOLUME = "SET_VOLUME";
 export const PLAY_SONG = "PLAY_SONG";
 export const PAUSE_SONG = "PAUSE_SONG";
-export const REWIND_SONG = "REWIND_SONG";
+export const PREVIOUS_SONG = "PREVIOUS_SONG";
 export const SKIP_SONG = "SKIP_SONG";
 export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
 
@@ -19,8 +19,8 @@ export const pauseSong = () => ({
   type: PAUSE_SONG,
 });
 
-export const rewindSong = () => ({
-  type: REWIND_SONG,
+export const previousSong = () => ({
+  type: PREVIOUS_SONG,
 });
 
 export const skipSong = () => ({
@@ -42,7 +42,7 @@ const playbarReducer = (state = {}, action) => {
       return { ...state, isPlaying: false };
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
-    // case REWIND_SONG:
+    // case PREVIOUS_SONG:
 
     // case SKIP_SONG:
 
