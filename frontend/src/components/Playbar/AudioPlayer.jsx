@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setVolume } from "../../store/playbar";
+import { setVolume, updateProgress } from "../../store/playbar";
+import ProgressSlider from "../Playbar/ProgressSlider";
 
 const AudioPlayer = () => {
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
@@ -12,7 +13,7 @@ const AudioPlayer = () => {
   const audioRef = useRef(null);
   const [isAudioReady, setIsAudioReady] = useState(false);
 
-  // play/ pause audio based on if the audio is ready and it should be playing
+  // play/ pause audio 
   useEffect(() => {
     if (isAudioReady && isPlaying) {
       audioRef.current.play();
@@ -44,7 +45,9 @@ const AudioPlayer = () => {
         ref={audioRef}
         onLoadedMetadata={handleLoadedMetadata}
         onVolumeChange={(e) => dispatch(setVolume(e.target.volume))}
+        onTimeUpdate={() => dispatch(updateProgress(audioRef.current.currentTime))}
       />
+      <ProgressSlider audioRef={audioRef} />
     </div>
   );
 };
