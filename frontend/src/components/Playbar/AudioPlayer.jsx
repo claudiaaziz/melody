@@ -40,7 +40,7 @@ const AudioPlayer = () => {
   const handleLoadedMetadata = () => setIsAudioReady(true);
 
   return (
-    <div>
+    <>
       <audio
         ref={audioRef}
         onLoadedMetadata={handleLoadedMetadata}
@@ -48,7 +48,7 @@ const AudioPlayer = () => {
         onTimeUpdate={() => dispatch(updateProgress(audioRef.current.currentTime))}
       />
       <ProgressSlider audioRef={audioRef} />
-    </div>
+    </>
   );
 };
 
