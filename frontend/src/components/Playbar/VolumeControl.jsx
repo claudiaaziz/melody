@@ -8,9 +8,7 @@ const VolumeControl = () => {
 
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
-    if (newVolume) {
-      dispatch(setVolume(newVolume));
-    }
+    if (newVolume) dispatch(setVolume(newVolume))
   };
 
   return (

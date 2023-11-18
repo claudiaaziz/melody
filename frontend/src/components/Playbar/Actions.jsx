@@ -10,9 +10,9 @@ const Actions = () => {
   const dispatch = useDispatch();
 
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
-  const currentSong = useSelector((state) => state.playbar.currentSong);
+  const currentSongId = useSelector((state) => state.playbar.currentSongId);
 
-  const handlePlay = () => (currentSong?.id) ? dispatch(playSong(currentSong)) : null;
+  const handlePlay = () => dispatch(playSong(currentSongId));
   const handlePause = () => dispatch(pauseSong());
   const handleRewind = () => dispatch(rewindSong());
   const handleSkip = () => dispatch(skipSong());
@@ -33,3 +33,4 @@ const Actions = () => {
 };
 
 export default Actions;
+

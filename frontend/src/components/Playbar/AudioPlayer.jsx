@@ -4,7 +4,8 @@ import { setVolume } from "../../store/playbar";
 
 const AudioPlayer = () => {
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
-  const currentSong = useSelector((state) => state.playbar.currentSong);
+  const currentSongId = useSelector((state) => state.playbar.currentSongId);
+  const currentSongUrl = useSelector((state) => state.songs[currentSongId]?.songUrl);
   const volume = useSelector((state) => state.playbar.volume);
   const dispatch = useDispatch();
 
@@ -20,13 +21,13 @@ const AudioPlayer = () => {
     }
   }, [isPlaying, isAudioReady]);
 
-  // update src if currentSong changes
+  // update src if currentSongUrl changes
   useEffect(() => {
-    if (currentSong) {
+    if (currentSongUrl) {
       setIsAudioReady(false);
-      audioRef.current.src = currentSong.songUrl;
+      audioRef.current.src = currentSongUrl;
     }
-  }, [currentSong]);
+  }, [currentSongUrl]);
 
   // update volume if volume state changes
   useEffect(() => {

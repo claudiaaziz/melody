@@ -10,9 +10,9 @@ export const setVolume = (volume) => ({
   volume,
 });
 
-export const playSong = (song) => ({
+export const playSong = (songId) => ({
   type: PLAY_SONG,
-  song,
+  songId,
 });
 
 export const pauseSong = () => ({
@@ -32,8 +32,7 @@ const playbarReducer = (state = {}, action) => {
     case SET_VOLUME:
       return { ...state, volume: action.volume };
     case PLAY_SONG:
-      return { ...state, isPlaying: true, currentSong: action.song };
-    // refactor to only use action.song.id
+      return { ...state, isPlaying: true, currentSongId: action.songId };
     case PAUSE_SONG:
       return { ...state, isPlaying: false };
     // case REWIND_SONG:

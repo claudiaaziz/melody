@@ -11,24 +11,23 @@ const AlbumShowPage = () => {
   const dispatch = useDispatch();
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
-  const songs = useSelector(getSongs)
+  const songs = useSelector(getSongs);
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
-  const handleSongClick = (song) => dispatch(playSong(song));
+  const handleSongClick = (songId) => dispatch(playSong(songId));
 
-  const allAlbumSongs =
-    album && album.albumSongs
-      ? album.albumSongs.map((songId) => songs[songId])
-      : [];
+  const allAlbumSongs = album?.albumSongs
+    ? album.albumSongs.map((songId) => songs[songId])
+    : [];
 
   return (
     <div className="albumShow">
       {album ? (
         <div className="albumShowHeader">
-          <img src={album.albumCoverUrl} alt=""></img>
+          <img src={album.albumCoverUrl} alt="" />
           <div className="albumDetails">
             <p>Album</p>
             <h2>{album.title}</h2>
@@ -54,7 +53,7 @@ const AlbumShowPage = () => {
             song={song}
             songNum={idx + 1}
             artistName={album.artistName}
-            onClick={() => handleSongClick(song)}
+            onClick={() => handleSongClick(song.id)}
           />
         ))}
     </div>
