@@ -8,8 +8,17 @@
   color: white;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+}
+
+.actionsAndProgressSliderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  gap: 7px;
 }
 
 /* btns */
@@ -17,7 +26,6 @@
 .actionsContainer {
   display: flex;
   justify-content: space-around;
-  /* margin-left: 200px; */
 }
 
 .playAndPauseBtn {
@@ -53,37 +61,10 @@
   height: 17px;
 }
 
-/* volumeSlider */
-
-.volumeSlider {
-  width: 7%;
-  appearance: none;
-  cursor: pointer;
-  margin-right: 40px;
-}
-
-.volumeSlider::-webkit-slider-runnable-track {
-  height: 3px;
-  background: white;
-}
-
-.volumeSlider::-webkit-slider-runnable-track:hover {
-  background: #1cd760;
-}
-
-.volumeSlider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  background-color: white;
-  border-radius: 50%;
-  margin-top: -4.5%;
-}
-
 /* progressSlider */
 
 .progressSliderContainer {
-  width: 40%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +72,7 @@
 }
 
 .progressSlider {
-  width: 100%;
+  width: 70%;
   appearance: none;
   cursor: pointer;
 }
@@ -119,43 +100,39 @@
   color: gray;
 }
 
+/* volumeSlider */
 
+.volumeSlider {
+  width: 7%;
+  appearance: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
+.volumeSlider::-webkit-slider-runnable-track {
+  height: 3px;
+  background: white;
+}
 
-/* after finish playbar functionality
+.volumeSlider::-webkit-slider-runnable-track:hover {
+  background: #1cd760;
+}
 
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  margin-top: -4.5%;
+}
 
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { getAlbum } from "../../store/albums";
-import MelodyLogo from "../LogoAndSVGS/melodyLogo";
-
-const { albumId } = useParams();
-const album=useSelector(getAlbum(albumId)); 
-// const defaultSongContainer = useSelector((state) => Object.values(state.albums)[1])
-const albumCover=useSelector((state)=> state.albums[album?.id]?.albumCoverUrl);
-const artistName=useSelector((state)=> state.albums[currentSong?.id]?.artistName);
-
-{
-  currentSong ? (<div className="currentSongContainer" > <img src= {
-      albumCover
-    }
-
-    alt="" className="albumCover" /> <div className="currentSongDetails" > <span className="currentSongTitle" > {
-      currentSong.title
-    }
-
-    </span> <span className="currentSongArtistName" > {
-      artistName
-    }
-
-    </span> </div> </div>) : <div><MelodyLogo/></div> // currentSong = defaultSongContainer
-}  
+/* currentSongContainer */
 
 .currentSongContainer {
   display: flex;
   gap: 10px;
   align-items: center;
-  margin-left: 40px;
 }
 
 .albumCover {
@@ -179,4 +156,4 @@ const artistName=useSelector((state)=> state.albums[currentSong?.id]?.artistName
 .currentSongArtistName {
   font-size: .6rem;
   color: gray
-} */
+}
