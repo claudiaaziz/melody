@@ -11,7 +11,7 @@ const AudioPlayer = () => {
   const audioRef = useRef(null);
   const [isAudioReady, setIsAudioReady] = useState(false);
 
-  // play/ pause audio 
+  // play/ pause audio based on if the audio is ready and it should be playing
   useEffect(() => {
     if (isAudioReady && isPlaying) {
       audioRef.current.play();
@@ -28,7 +28,7 @@ const AudioPlayer = () => {
     }
   }, [currentSong]);
 
-  // update volume 
+  // update volume if volume state changes
   useEffect(() => {
     if (volume) {
       audioRef.current.volume = volume;

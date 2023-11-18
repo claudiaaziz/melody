@@ -9,7 +9,7 @@ import { ReactComponent as SkipBtn } from "../LogoAndSVGS/playbar/skipBtn.svg";
 const Actions = ({ isPlaying, currentSong }) => {
   const dispatch = useDispatch();
 
-  const handlePlay = () => (currentSong && currentSong.id) ? dispatch(playSong(currentSong)) : null;
+  const handlePlay = () => (currentSong?.id) ? dispatch(playSong(currentSong)) : null;
   const handlePause = () => dispatch(pauseSong());
   const handleRewind = () => dispatch(rewindSong());
   const handleSkip = () => dispatch(skipSong());

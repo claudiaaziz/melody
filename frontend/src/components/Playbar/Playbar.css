@@ -63,6 +63,10 @@
   background: white;
 }
 
+.volumeSlider::-webkit-slider-runnable-track:hover {
+  background: #1cd760;
+}
+
 .volumeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 12px;
