@@ -12,6 +12,8 @@
   align-items: center;
 }
 
+/* btns */
+
 .actionsContainer {
   display: flex;
   justify-content: space-around;
@@ -36,7 +38,7 @@
   height: 17px;
 }
 
-.rewindBtn,
+.previousBtn,
 .skipBtn {
   background-color: transparent;
   border: none;
@@ -44,12 +46,14 @@
   padding: 0 20px;
 }
 
-.rewindIcon,
+.previousIcon,
 .skipIcon {
   fill: gray;
   width: 17px;
   height: 17px;
 }
+
+/* volumeSlider */
 
 .volumeSlider {
   width: 7%;
