@@ -8,6 +8,7 @@ const AudioPlayer = () => {
   const currentSongId = useSelector((state) => state.playbar.currentSongId);
   const currentSongUrl = useSelector((state) => state.songs[currentSongId]?.songUrl);
   const volume = useSelector((state) => state.playbar.volume);
+  const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const audioRef = useRef(null);
@@ -15,12 +16,12 @@ const AudioPlayer = () => {
 
   // play/ pause audio 
   useEffect(() => {
-    if (isAudioReady && isPlaying) {
+    if (isAudioReady && isPlaying && currentUser) {
       audioRef.current.play();
     } else {
       audioRef.current.pause();
     }
-  }, [isPlaying, isAudioReady]);
+  }, [isPlaying, isAudioReady, currentUser]);
 
   // update src if currentSongUrl changes
   useEffect(() => {
