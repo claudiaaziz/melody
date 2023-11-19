@@ -15,19 +15,19 @@ const Playbar = () => {
   const currentSong = Object.values(songs).find(
     (song) => song.id === currentSongId
   );
-  // const albumId = currentSong?.albumId;
-  // const album = useSelector(getAlbum(albumId));
+  const albumId = currentSong?.albumId;
+  const album = useSelector(getAlbum(albumId));
 
   return (
     <div className="playbar">
       {currentSongId ? (
         <div className="currentSongContainer">
-          {/* <img src={album?.albumCoverUrl} alt="" className="albumCover" /> */}
+          <img src={album?.albumCoverUrl} alt="" className="albumCover" />
           <div className="currentSongDetails">
             <span className="currentSongTitle">{currentSong.title}</span>
-            {/* <span className="currentSongArtistName">
+            <span className="currentSongArtistName">
               {album?.artistName}
-            </span> */}
+            </span>
           </div>
         </div>
       ) : (
