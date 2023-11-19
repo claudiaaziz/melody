@@ -13,4 +13,3 @@ json.songs do
     end
   end
 end
-
