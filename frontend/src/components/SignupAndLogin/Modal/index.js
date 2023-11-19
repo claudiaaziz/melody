@@ -1,5 +1,6 @@
 import React from "react";
 import "./SignupModal.css";
+import { Link } from "react-router-dom";
 
 const SignUpModal = ({ onClose }) => {
   return (
@@ -7,10 +8,17 @@ const SignUpModal = ({ onClose }) => {
       <div className="modal">
         <div className="modalHeader">
           <h3>Start listening with a free Spotify account</h3>
-          <button onClick={onClose}>Close</button>
         </div>
-        <div className="modalContent">{/* put buttons */}</div>
+          <button type="submit" className="signupModalBtn">
+            Sign up free
+          </button>
+          <p className="signupModalLoginLink">
+            Already have an account? <Link to="/login">Log in</Link>
+          </p>
       </div>
+      <button onClick={onClose} className="signupModalCloseBtn">
+        Close
+      </button>
     </div>
   );
 };
