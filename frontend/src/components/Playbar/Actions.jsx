@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { playSong, pauseSong, skipSong, previousSong } from '../../store/playbar';
+import { playSong, pauseSong } from '../../store/playbar';
 import { ReactComponent as PlayBtn } from "../LogoAndSVGS/playbar/playBtn.svg";
 import { ReactComponent as PauseBtn } from "../LogoAndSVGS/playbar/pauseBtn.svg";
 import { ReactComponent as PreviousBtn } from "../LogoAndSVGS/playbar/previousBtn.svg";
@@ -14,10 +14,18 @@ const Actions = ({currentSongIdx, setCurrentSongIdx, queue}) => {
 
   const handlePlay = () => dispatch(playSong(currentSongId));
   const handlePause = () => dispatch(pauseSong());
-  const handlePrevious = () => dispatch(previousSong())
+  const handlePrevious = () => {
+    if (currentSongIdx > 0) {
+      setCurrentSongIdx(currentSongIdx - 1);
+    } else {
+      setCurrentSongIdx(currentSongIdx);
+    }
+  };
   const handleSkip = () => {
     if (currentSongIdx < queue.length - 1) {
-      setCurrentSongIdx(currentSongIdx + 1) 
+    setCurrentSongIdx(currentSongIdx + 1) 
+    } else {
+      setCurrentSongIdx(currentSongIdx);
     }
   }
 
@@ -37,4 +45,3 @@ const Actions = ({currentSongIdx, setCurrentSongIdx, queue}) => {
 };
 
 export default Actions;
-

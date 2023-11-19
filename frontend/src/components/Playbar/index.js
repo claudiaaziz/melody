@@ -18,6 +18,8 @@ const Playbar = () => {
   // const albumId = currentSong?.albumId;
   // const album = useSelector(getAlbum(albumId));
 
+
+  // check
   const queue = useSelector((state) => state.playbar.queue);
   const [currentSongIdx, setCurrentSongIdx] = useState(
     queue.indexOf(currentSongId)
