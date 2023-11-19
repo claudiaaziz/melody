@@ -8,9 +8,12 @@
   color: white;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 10%;
 }
+
+/* actionsAndProgressSlider */
 
 .actionsAndProgressSliderContainer {
   display: flex;
@@ -20,8 +23,6 @@
   width: 50%;
   gap: 7px;
 }
-
-/* btns */
 
 .actionsContainer {
   display: flex;
