@@ -9,7 +9,7 @@ end
 json.songs do 
   @album.songs.each do |song|
     json.set! song.id do
-      json.extract! song, :id, :title, :song_url
+      json.extract! song, :id, :title, :song_url, :album_id
     end
   end
 end

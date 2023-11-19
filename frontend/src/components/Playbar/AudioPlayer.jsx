@@ -5,14 +5,15 @@ import ProgressSlider from "../Playbar/ProgressSlider";
 import { getSong } from "../../store/songs";
 
 const AudioPlayer = ({currentSongIdx, setCurrentSongIdx}) => {
-  const queue = useSelector((state) => state.playbar.queue)
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
+  
+  const queue = useSelector((state) => state.playbar.queue)
   const currentSongId = useSelector((state) => state.playbar.currentSongId);
   const songId = queue[currentSongIdx]
   const song = useSelector(getSong(songId))
 
   const currentSongUrl = useSelector((state) => state.songs[songId]?.songUrl);
-  debugger
+  // debugger
   const volume = useSelector((state) => state.playbar.volume);
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
