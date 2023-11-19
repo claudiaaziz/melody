@@ -32,7 +32,15 @@ export const updateProgress = (progress) => ({
   progress,
 });
 
-const playbarReducer = (state = {}, action) => {
+const initialState = {
+  volume: 0.5,
+  isPlaying: false,
+  currentSongId: null,
+  progress: 0,
+  // queue: [],
+};
+
+const playbarReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_VOLUME:
       return { ...state, volume: action.volume };
