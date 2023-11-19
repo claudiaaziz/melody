@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileMenu.css";
 import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navbar/profileBtn.svg";
+import { pauseSong } from "../../store/playbar";
 
 
 const ProfileMenu = () => {
@@ -29,6 +30,7 @@ const ProfileMenu = () => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(pauseSong())
   };
 
   return (
