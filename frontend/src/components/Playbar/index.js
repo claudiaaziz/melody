@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Actions from "./Actions";
 import AudioPlayer from "../Playbar/AudioPlayer";
 import VolumeControl from "../Playbar/VolumeControl";
@@ -17,6 +17,11 @@ const Playbar = () => {
   );
   // const albumId = currentSong?.albumId;
   // const album = useSelector(getAlbum(albumId));
+
+  const queue = useSelector((state) => state.playbar.queue);
+  const [currentSongIdx, setCurrentSongIdx] = useState(
+    queue.indexOf(currentSongId)
+  );
 
   return (
     <div className="playbar">
@@ -37,8 +42,15 @@ const Playbar = () => {
       )}
 
       <div className="actionsAndProgressSliderContainer">
-        <Actions />
-        <AudioPlayer />
+        <Actions
+          currentSongIdx={currentSongIdx}
+          setCurrentSongIdx={setCurrentSongIdx}
+        />
+        <AudioPlayer
+          currentSongIdx={currentSongIdx}
+          setCurrentSongIdx={setCurrentSongIdx}
+          queue={queue}
+        />
       </div>
       <VolumeControl />
     </div>

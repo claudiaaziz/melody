@@ -4,6 +4,7 @@ export const PAUSE_SONG = "PAUSE_SONG";
 export const PREVIOUS_SONG = "PREVIOUS_SONG";
 export const SKIP_SONG = "SKIP_SONG";
 export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
+export const SET_QUEUE = "SET_QUEUE";
 
 export const setVolume = (volume) => ({
   type: SET_VOLUME,
@@ -32,12 +33,17 @@ export const updateProgress = (progress) => ({
   progress,
 });
 
+export const setQueue = (album) => ({
+  type: SET_QUEUE,
+  album,
+});
+
 const initialState = {
   volume: 0.5,
   isPlaying: false,
   currentSongId: null,
   progress: 0,
-  // queue: [],
+  queue: []
 };
 
 const playbarReducer = (state = initialState, action) => {
@@ -50,6 +56,8 @@ const playbarReducer = (state = initialState, action) => {
       return { ...state, isPlaying: false };
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
+    case SET_QUEUE:
+      return {...state, queue: action.album.albumSongs}
     // case PREVIOUS_SONG:
 
     // case SKIP_SONG:

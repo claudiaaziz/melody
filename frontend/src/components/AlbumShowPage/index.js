@@ -5,7 +5,7 @@ import "./AlbumShowPage.css";
 import { useParams } from "react-router-dom";
 import SongListItem from "./SongListItem";
 import { getSongs } from "../../store/songs";
-import { playSong } from "../../store/playbar";
+import { playSong, setQueue } from "../../store/playbar";
 import SignUpModal from "../SignupAndLogin/Modal";
 
 const AlbumShowPage = () => {
@@ -23,6 +23,7 @@ const AlbumShowPage = () => {
   const handleSongClick = (songId) => {
     if (currentUser) {
       dispatch(playSong(songId));
+      dispatch(setQueue(album))
     } else {
       setShowSignUpModal(true);
     }

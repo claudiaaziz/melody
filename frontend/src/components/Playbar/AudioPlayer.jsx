@@ -2,11 +2,17 @@ import React, { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setVolume, updateProgress } from "../../store/playbar";
 import ProgressSlider from "../Playbar/ProgressSlider";
+import { getSong } from "../../store/songs";
 
-const AudioPlayer = () => {
+const AudioPlayer = ({currentSongIdx, setCurrentSongIdx}) => {
+  const queue = useSelector((state) => state.playbar.queue)
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
   const currentSongId = useSelector((state) => state.playbar.currentSongId);
-  const currentSongUrl = useSelector((state) => state.songs[currentSongId]?.songUrl);
+  const songId = queue[currentSongIdx]
+  const song = useSelector(getSong(songId))
+
+  const currentSongUrl = useSelector((state) => state.songs[songId]?.songUrl);
+  debugger
   const volume = useSelector((state) => state.playbar.volume);
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
