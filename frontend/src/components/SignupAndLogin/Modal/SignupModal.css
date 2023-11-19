@@ -46,6 +46,11 @@
   transform: scale(1.05);
 }
 
+.signupModalSignupLink {
+  text-decoration: none;
+  color: black;
+}
+
 .signupModalLoginLink {
   color: #a7a7a7;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
@@ -58,12 +63,17 @@
   text-decoration: none;
 }
 
+.signupModalLoginLink a:hover {
+  text-decoration: underline;
+}
+
 .signupModalCloseBtn {
   margin-top: 20px;
   background-color: transparent;
   color: gray;
   border: none;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .signupModalCloseBtn:hover {
