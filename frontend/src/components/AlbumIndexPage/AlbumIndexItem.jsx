@@ -4,7 +4,7 @@ const AlbumIndexItem = ({album}) => {
   return (
     <div className="album">
       <img src={album.albumCoverUrl} alt="" />
-      <h2 className="artistTitle">{album.title}</h2>
+      <h2 className="albumTitle">{album.title}</h2>
       <p className="artistName">{album.artistName}</p>
     </div>
   );

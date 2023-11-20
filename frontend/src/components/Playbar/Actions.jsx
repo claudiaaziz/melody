@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { playSong, pauseSong } from '../../store/playbar';
+import { playAlbumSong, pauseSong, playSong } from '../../store/playbar';
 import { ReactComponent as PlayBtn } from "../LogoAndSVGS/playbar/playBtn.svg";
 import { ReactComponent as PauseBtn } from "../LogoAndSVGS/playbar/pauseBtn.svg";
 import { ReactComponent as PreviousBtn } from "../LogoAndSVGS/playbar/previousBtn.svg";
@@ -11,8 +11,9 @@ const Actions = ({currentSongIdx, setCurrentSongIdx, queue}) => {
 
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
   const currentSongId = useSelector((state) => state.playbar.currentSongId);
+  const currentAlbumId = useSelector((state) => state.playbar.currentAlbumId)
 
-  const handlePlay = () => dispatch(playSong(currentSongId));
+  const handlePlay = () => dispatch(playSong());
   const handlePause = () => dispatch(pauseSong());
   const handlePrevious = () => {
     if (currentSongIdx > 0) {

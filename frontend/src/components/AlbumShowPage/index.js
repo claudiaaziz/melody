@@ -5,7 +5,7 @@ import "./AlbumShowPage.css";
 import { useParams } from "react-router-dom";
 import SongListItem from "./SongListItem";
 import { getSongs } from "../../store/songs";
-import { playSong, setQueue } from "../../store/playbar";
+import { playAlbumSong, setQueue } from "../../store/playbar";
 import SignUpModal from "../SignupAndLogin/Modal";
 
 const AlbumShowPage = () => {
@@ -28,12 +28,12 @@ const AlbumShowPage = () => {
   const currentSongId = useSelector((state) => state.playbar.currentSongId);
   const currentSong = useSelector((state) => state.songs[currentSongId]);
   // debugger
-  const currentQueueAlbum = useSelector(getAlbum(currentSong?.albumId))
+  // const currentQueueAlbum = useSelector(getAlbum(currentSong?.albumId))
   const handleSongClick = (songId) => {
     if (currentUser) {
       // needs access to currentSongIdx
-      dispatch(playSong(songId));
-      dispatch(setQueue(currentQueueAlbum));
+      dispatch(playAlbumSong(songId, albumId));
+      // dispatch(setQueue(currentQueueAlbum));
     } else {
       setShowSignUpModal(true);
     }
