@@ -25,9 +25,7 @@ const Playbar = () => {
           <img src={album?.albumCoverUrl} alt="" className="albumCover" />
           <div className="currentSongDetails">
             <span className="currentSongTitle">{currentSong.title}</span>
-            <span className="currentSongArtistName">
-              {album?.artistName}
-            </span>
+            <span className="currentSongArtistName">{album?.artistName}</span>
           </div>
         </div>
       ) : (
@@ -40,7 +38,9 @@ const Playbar = () => {
         <Actions />
         <AudioPlayer />
       </div>
-      <VolumeControl />
+      <div className="volumeControlContainer">
+        <VolumeControl />
+      </div>
     </div>
   );
 };

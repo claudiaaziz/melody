@@ -103,11 +103,18 @@
 
 /* volumeSlider */
 
+.volumeControlContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 11%;
+}
+
 .volumeSlider {
-  width: 7%;
+  width: 50%;
   appearance: none;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 17px;
 }
 
 .volumeSlider::-webkit-slider-runnable-track {
@@ -134,7 +141,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  width: 200px;
+  width: 11%;
 }
 
 .albumCover {
