@@ -1,10 +1,10 @@
 import React from "react";
 
-const SongListItem = ({ artistName, song, songId }) => {
+const SongListItem = ({ artistName, song, songNum, onClick }) => {
   return (
-    <ul className="songList">
+    <ul className="songList" onClick={onClick}>
       <li className="songItem">
-        <div className="songId">{songId}</div>
+        <div className="songNum">{songNum}</div>
         <div className="songContent">
           <div className="songTitle">{song.title}</div>
           <div className="artistName">{artistName}</div>
@@ -13,5 +13,6 @@ const SongListItem = ({ artistName, song, songId }) => {
     </ul>
   );
 };
+
 
 export default SongListItem;

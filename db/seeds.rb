@@ -1,3 +1,5 @@
+require "open-uri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,7 +8,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ApplicationRecord.transaction do 
+# ApplicationRecord.transaction do 
   puts "Destroying tables..."
   User.destroy_all
   Artist.destroy_all
@@ -97,17 +99,17 @@ ApplicationRecord.transaction do
   Song.create!(
     title: "Al-Mu'allim",
     album_id: 1,
-    song_url: "song1"
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Elvana+Gjata+-+POW.mp3"
   )
   Song.create!(
     title: "Who Is The Loved One?",
     album_id: 1,
-    song_url: "song2"
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_Who_Is_Loved_One.mp3"
   )
   Song.create!(
     title: "The Cave Of Hira",
     album_id: 1,
-    song_url: "song3"
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_The_Cave_Of_Hira.mp3"
   )
   Song.create!(
     title: "Allahu",
@@ -237,4 +239,4 @@ ApplicationRecord.transaction do
     song_url: "song11"
   )
   puts "Done!"
-end
+# end

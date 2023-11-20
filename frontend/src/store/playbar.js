@@ -1,39 +1,56 @@
+export const SET_VOLUME = "SET_VOLUME";
 export const PLAY_SONG = "PLAY_SONG";
 export const PAUSE_SONG = "PAUSE_SONG";
-export const RESTART_SONG = "RESTART_SONG";
-export const REWIND_SONG = "REWIND_SONG";
+export const PREVIOUS_SONG = "PREVIOUS_SONG";
 export const SKIP_SONG = "SKIP_SONG";
+export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
 
-export const playSong = (song) => ({
+export const setVolume = (volume) => ({
+  type: SET_VOLUME,
+  volume,
+});
+
+export const playSong = (songId) => ({
   type: PLAY_SONG,
-  song,
+  songId,
 });
 
 export const pauseSong = () => ({
   type: PAUSE_SONG,
 });
 
-export const restartSong = () => ({
-  type: RESTART_SONG,
-});
-
-export const rewindSong = () => ({
-  type: REWIND_SONG,
+export const previousSong = () => ({
+  type: PREVIOUS_SONG,
 });
 
 export const skipSong = () => ({
   type: SKIP_SONG,
 });
 
-const playbarReducer = (state = {}, action) => {
+export const updateProgress = (progress) => ({
+  type: UPDATE_PROGRESS,
+  progress,
+});
+
+const initialState = {
+  volume: 0.5,
+  isPlaying: false,
+  currentSongId: null,
+  progress: 0,
+  // queue: [],
+};
+
+const playbarReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_VOLUME:
+      return { ...state, volume: action.volume };
     case PLAY_SONG:
-      return { ...state, isPlaying: true, currentSong: action.song };
+      return { ...state, isPlaying: true, currentSongId: action.songId };
     case PAUSE_SONG:
       return { ...state, isPlaying: false };
-    // case RESTART_SONG:
-
-    // case REWIND_SONG:
+    case UPDATE_PROGRESS:
+      return { ...state, progress: action.progress };
+    // case PREVIOUS_SONG:
 
     // case SKIP_SONG:
 

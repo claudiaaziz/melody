@@ -3,9 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupAndLogin/SignupFormPage";
 import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
 import Navbar from "./components/Navbar";
-import SideMenu from "./components/SideMenu"; 
+import SideMenu from "./components/SideMenu";
 import AlbumIndexPage from "./components/AlbumIndexPage";
 import AlbumShowPage from "./components/AlbumShowPage";
+import Playbar from "./components/Playbar";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" exact>
           <Navbar />
           <SideMenu />
+          <Playbar />
           <AlbumIndexPage />
         </Route>
         <Route path="/login">
@@ -25,6 +27,7 @@ const App = () => {
         <Route path="/albums/:albumId">
           <Navbar />
           <SideMenu />
+          <Playbar />
           <AlbumShowPage />
         </Route>
       </Switch>

@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   color: white;
+  /* temp fix */
+  padding-bottom: 33vh;
 }
 
 .albumShowHeader {
@@ -70,7 +72,7 @@
   margin: 6px;
 }
 
-.songId {
+.songNum {
   margin-left: 15px;
   color: gray;
 }

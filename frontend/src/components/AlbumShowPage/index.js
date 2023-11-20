@@ -5,27 +5,38 @@ import "./AlbumShowPage.css";
 import { useParams } from "react-router-dom";
 import SongListItem from "./SongListItem";
 import { getSongs } from "../../store/songs";
+import { playSong } from "../../store/playbar";
+import SignUpModal from "../SignupAndLogin/Modal";
 
 const AlbumShowPage = () => {
   const dispatch = useDispatch();
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
-  const songs = useSelector(getSongs)
+  const songs = useSelector(getSongs);
+  const currentUser = useSelector((state) => state.session.user);
+  const [showSignUpModal, setShowSignUpModal] = React.useState(false);
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
-  const allAlbumSongs =
-    album && album.albumSongs
-      ? album.albumSongs.map((songId) => songs[songId])
-      : [];
+  const handleSongClick = (songId) => {
+    if (currentUser) {
+      dispatch(playSong(songId));
+    } else {
+      setShowSignUpModal(true);
+    }
+  };
+
+  const allAlbumSongs = album?.albumSongs
+    ? album.albumSongs.map((songId) => songs[songId])
+    : [];
 
   return (
     <div className="albumShow">
       {album ? (
         <div className="albumShowHeader">
-          <img src={album.albumCoverUrl} alt=""></img>
+          <img src={album.albumCoverUrl} alt="" />
           <div className="albumDetails">
             <p>Album</p>
             <h2>{album.title}</h2>
@@ -49,10 +60,14 @@ const AlbumShowPage = () => {
           <SongListItem
             key={song.id}
             song={song}
-            songId={idx + 1}
+            songNum={idx + 1}
             artistName={album.artistName}
+            onClick={() => handleSongClick(song.id)}
           />
         ))}
+      {showSignUpModal && (
+        <SignUpModal onClose={() => setShowSignUpModal(false)} />
+      )}
     </div>
   );
 };

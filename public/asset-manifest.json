@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0bafbc9d.css",
+    "main.js": "/static/js/main.54cba1d2.js",
+    "static/media/CircularSpotifyText-Bold.otf": "/static/media/CircularSpotifyText-Bold.f8952626140be9495d1b.otf",
+    "static/media/CircularSpotifyText-Book.otf": "/static/media/CircularSpotifyText-Book.27bc05ead5cc509ef2ba.otf",
+    "static/media/spotifyIcon.png": "/static/media/spotifyIcon.21cde1495fdae169e83f.png",
+    "static/media/profileBtn.svg": "/static/media/profileBtn.d616bc13b64208bbc2d0377e0135a1aa.svg",
+    "index.html": "/index.html",
+    "static/media/search.svg": "/static/media/search.ff616eac034a4b0747a801f519b1344a.svg",
+    "static/media/library.svg": "/static/media/library.1148d9df1b6c86351d6156637c387c64.svg",
+    "static/media/home.svg": "/static/media/home.bdac3156f7cd0120404d7c3160716270.svg",
+    "static/media/pauseBtn.svg": "/static/media/pauseBtn.3c6551197213c870020bb065b200239c.svg",
+    "static/media/playBtn.svg": "/static/media/playBtn.bbeae2a0486ffbb02d36084420e87fb6.svg",
+    "main.0bafbc9d.css.map": "/static/css/main.0bafbc9d.css.map",
+    "main.54cba1d2.js.map": "/static/js/main.54cba1d2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0bafbc9d.css",
+    "static/js/main.54cba1d2.js"
+  ]
+}

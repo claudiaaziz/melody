@@ -34,9 +34,7 @@
 }
 
 .menuItem svg {
-  fill: transparent;
-  stroke: gray;
-  stroke-width: 1.5;
+  fill: gray;
   width: 25px;
   height: 25px;
   margin-right: 10px;
