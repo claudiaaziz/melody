@@ -16,12 +16,13 @@ const Actions = () => {
   const album = useSelector(getAlbum(currentAlbumId))
   const albumSongs = album?.albumSongs
   const currentSongIdx = albumSongs?.indexOf(currentSongId)
+  const newCurrentSongId = albumSongs[currentSongIdx]
 
   const handlePlay = () => dispatch(playSong());
   const handlePause = () => dispatch(pauseSong());
   const handlePrevious = () => {
     if (currentSongIdx > 0) {
-      dispatch(playAlbumSong(currentSongIdx - 2, currentAlbumId));
+      dispatch(playAlbumSong(currentSongId+currentSongIdx - 1, currentAlbumId));
     } else {
       dispatch(playAlbumSong(currentSongIdx, currentAlbumId));
     }
@@ -31,9 +32,9 @@ const Actions = () => {
 // 3 dispatch action to play albumsong w next song id
   const handleNext = () => {
     if (currentSongIdx < albumSongs.length - 1) {
-      dispatch(playAlbumSong(currentSongIdx+2, currentAlbumId)); 
+      dispatch(playAlbumSong(newCurrentSongId + 1, currentAlbumId)); 
     } else {
-      dispatch(playAlbumSong(currentSongIdx, currentAlbumId));
+      dispatch(playAlbumSong(1, currentAlbumId));
     }
   }
 
