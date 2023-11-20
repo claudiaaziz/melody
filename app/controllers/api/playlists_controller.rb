@@ -10,6 +10,20 @@ class Api::PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(playlist_params)
     if @playlist.save
+      render :show
+    else
+      render json: { errors: @playlist.errors.full_messages }, status: :unprocessable_content
+  end
+
+  def update 
+    @playlist = Playlist.find(params[:id])
+    @playlist.update(playlist_params)
+    render :show
+  end
+
+  def destroy
+    @playlist = Playlist.find(params[:id])
+    @playlist.destroy 
   end
 
   private
