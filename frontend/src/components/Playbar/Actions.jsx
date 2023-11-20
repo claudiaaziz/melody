@@ -21,7 +21,7 @@ const Actions = () => {
   const handlePause = () => dispatch(pauseSong());
   const handlePrevious = () => {
     if (currentSongIdx > 0) {
-      dispatch(playAlbumSong(currentSongIdx - 1, currentAlbumId));
+      dispatch(playAlbumSong(currentSongIdx - 2, currentAlbumId));
     } else {
       dispatch(playAlbumSong(currentSongIdx, currentAlbumId));
     }
@@ -31,7 +31,7 @@ const Actions = () => {
 // 3 dispatch action to play albumsong w next song id
   const handleNext = () => {
     if (currentSongIdx < albumSongs.length - 1) {
-      dispatch(playAlbumSong(currentSongIdx+1, currentAlbumId)); 
+      dispatch(playAlbumSong(currentSongIdx+2, currentAlbumId)); 
     } else {
       dispatch(playAlbumSong(currentSongIdx, currentAlbumId));
     }
