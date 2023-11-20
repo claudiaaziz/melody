@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 import "./SideMenu.css";
 import { NavLink } from "react-router-dom";
@@ -6,8 +6,17 @@ import { ReactComponent as HomeIcon } from "../LogoAndSVGS/sideMenu/home.svg";
 import { ReactComponent as SearchIcon } from "../LogoAndSVGS/sideMenu/search.svg";
 import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.svg";
 import { ReactComponent as PlusIcon } from "../LogoAndSVGS/sideMenu/plus.svg";
+import { ReactComponent as CreatePlaylistIcon } from "../LogoAndSVGS/sideMenu/createPlaylist.svg";
 
 const SideMenu = () => {
+  const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
+
+const toggleCreatePlaylist = () => {
+  console.log("Toggle Playlist Clicked");
+  setCreatePlaylistOpen(!isCreatePlaylistOpen);
+};
+
+
   return (
     <div className="sideMenu">
       <div className="linkSection">
@@ -41,13 +50,16 @@ const SideMenu = () => {
               Your Library
             </li>
             <li className="menuItem">
-              <NavLink
-                to="/"
-                className="plusButton"
-                activeClassName="activeLink"
-              >
+              <button className="plusButton" onClick={toggleCreatePlaylist}>
                 <PlusIcon />
-              </NavLink>
+              </button>
+              {isCreatePlaylistOpen && (
+                <div className="createPlaylistDropdown">
+                  <p>
+                    <CreatePlaylistIcon />Create a new playlist
+                  </p>
+                </div>
+              )}
             </li>
           </div>
         </ul>

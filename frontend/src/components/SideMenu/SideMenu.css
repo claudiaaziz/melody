@@ -63,6 +63,8 @@
   justify-content: space-between;
 }
 
+/* create playlist */
+
 .plusButton {
   display: flex;
   align-items: center;
@@ -72,6 +74,7 @@
   border-radius: 50%;
   background-color: transparent;
   position: relative;
+  border: none
 }
 
 .plusButton:hover {
@@ -86,3 +89,28 @@
   transform: translate(-50%, -50%);
   width: 50%;
 }
+
+.createPlaylistDropdown {
+  position: absolute;
+  width: 50%;
+  top: 27%;
+  background-color: #282828;
+  color: white;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: .8rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createPlaylistDropdown:hover {
+  background: #282828;
+  transition: background-color 0.8s;
+}
+
+.createPlaylistDropdown svg {
+  width: 12%
+}
+
