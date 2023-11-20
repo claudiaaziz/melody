@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { ReactComponent as HomeIcon } from "../LogoAndSVGS/sideMenu/home.svg";
 import { ReactComponent as SearchIcon } from "../LogoAndSVGS/sideMenu/search.svg";
 import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.svg";
+import { ReactComponent as PlusIcon } from "../LogoAndSVGS/sideMenu/plus.svg";
 
 const SideMenu = () => {
   return (
@@ -34,10 +35,21 @@ const SideMenu = () => {
 
       <div className="librarySection">
         <ul className="menuList">
-          <li className="menuItem">
-            <LibraryIcon />
-            Your Library
-          </li>
+          <div className="libraryContainer">
+            <li className="menuItem">
+              <LibraryIcon />
+              Your Library
+            </li>
+            <li className="menuItem">
+              <NavLink
+                to="/"
+                className="plusButton"
+                activeClassName="activeLink"
+              >
+                <PlusIcon />
+              </NavLink>
+            </li>
+          </div>
         </ul>
       </div>
     </div>

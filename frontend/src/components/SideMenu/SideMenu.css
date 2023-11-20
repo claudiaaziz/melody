@@ -57,3 +57,32 @@
   border-radius: 8px;
   flex: 1;
 }
+
+.libraryContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plusButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  position: relative;
+}
+
+.plusButton:hover {
+  background: #282828;
+  transition: background-color 0.8s;
+}
+
+.plusButton svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
