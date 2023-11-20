@@ -13,6 +13,7 @@ class Api::PlaylistsController < ApplicationController
       render :show
     else
       render json: { errors: @playlist.errors.full_messages }, status: :unprocessable_content
+    end
   end
 
   def update 
