@@ -5,28 +5,35 @@ import { ReactComponent as PlayBtn } from "../LogoAndSVGS/playbar/playBtn.svg";
 import { ReactComponent as PauseBtn } from "../LogoAndSVGS/playbar/pauseBtn.svg";
 import { ReactComponent as PreviousBtn } from "../LogoAndSVGS/playbar/previousBtn.svg";
 import { ReactComponent as SkipBtn } from "../LogoAndSVGS/playbar/skipBtn.svg";
+import { getAlbum } from '../../store/albums';
 
-const Actions = ({currentSongIdx, setCurrentSongIdx, queue}) => {
+const Actions = () => {
   const dispatch = useDispatch();
 
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
   const currentSongId = useSelector((state) => state.playbar.currentSongId);
-  const currentAlbumId = useSelector((state) => state.playbar.currentAlbumId)
+  const currentAlbumId = useSelector((state) => state.playbar?.currentAlbumId)
+  const album = useSelector(getAlbum(currentAlbumId))
+  const albumSongs = album?.albumSongs
+  const currentSongIdx = albumSongs?.indexOf(currentSongId)
 
   const handlePlay = () => dispatch(playSong());
   const handlePause = () => dispatch(pauseSong());
   const handlePrevious = () => {
     if (currentSongIdx > 0) {
-      setCurrentSongIdx(currentSongIdx - 1);
+      dispatch(playAlbumSong(currentSongIdx - 1, currentAlbumId));
     } else {
-      setCurrentSongIdx(currentSongIdx);
+      dispatch(playAlbumSong(currentSongIdx, currentAlbumId));
     }
   };
+// 1 find the idx of currentSong in albumssongs arr 
+// 2 return idx of next song in albumsongs arr
+// 3 dispatch action to play albumsong w next song id
   const handleSkip = () => {
-    if (currentSongIdx < queue.length - 1) {
-    setCurrentSongIdx(currentSongIdx + 1) 
+    if (currentSongIdx < albumSongs.length - 1) {
+      dispatch(playAlbumSong(currentSongIdx+1, currentAlbumId)); 
     } else {
-      setCurrentSongIdx(currentSongIdx);
+      dispatch(playAlbumSong(currentSongIdx, currentAlbumId));
     }
   }
 

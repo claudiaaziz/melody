@@ -47,8 +47,7 @@ const initialState = {
   volume: 0.5,
   isPlaying: false,
   currentSongId: null,
-  progress: 0,
-  queue: []
+  progress: 0
 };
 
 const playbarReducer = (state = initialState, action) => {
