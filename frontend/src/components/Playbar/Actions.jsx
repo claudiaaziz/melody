@@ -16,15 +16,15 @@ const Actions = () => {
   const album = useSelector(getAlbum(currentAlbumId))
   const albumSongs = album?.albumSongs
   const currentSongIdx = albumSongs?.indexOf(currentSongId)
-  const newCurrentSongId = albumSongs[currentSongIdx]
+  const newCurrentSongId = albumSongs?.[currentSongIdx]
 
   const handlePlay = () => dispatch(playSong());
   const handlePause = () => dispatch(pauseSong());
   const handlePrevious = () => {
     if (currentSongIdx > 0) {
-      dispatch(playAlbumSong(currentSongId+currentSongIdx - 1, currentAlbumId));
+      dispatch(playAlbumSong(newCurrentSongId-1, currentAlbumId));
     } else {
-      dispatch(playAlbumSong(currentSongIdx, currentAlbumId));
+      dispatch(playAlbumSong(albumSongs[albumSongs.length-1], currentAlbumId));
     }
   };
 // 1 find the idx of currentSong in albumssongs arr 
@@ -34,7 +34,7 @@ const Actions = () => {
     if (currentSongIdx < albumSongs.length - 1) {
       dispatch(playAlbumSong(newCurrentSongId + 1, currentAlbumId)); 
     } else {
-      dispatch(playAlbumSong(1, currentAlbumId));
+      dispatch(playAlbumSong(albumSongs[0], currentAlbumId));
     }
   }
 
