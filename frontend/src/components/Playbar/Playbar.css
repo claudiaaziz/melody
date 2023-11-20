@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10%;
+  gap: 12%;
 }
 
 /* actionsAndProgressSlider */
@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  gap: 7px;
+  gap: 9px;
 }
 
 .actionsContainer {
