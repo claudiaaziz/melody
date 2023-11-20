@@ -4,7 +4,7 @@ import { playAlbumSong, pauseSong, playSong } from '../../store/playbar';
 import { ReactComponent as PlayBtn } from "../LogoAndSVGS/playbar/playBtn.svg";
 import { ReactComponent as PauseBtn } from "../LogoAndSVGS/playbar/pauseBtn.svg";
 import { ReactComponent as PreviousBtn } from "../LogoAndSVGS/playbar/previousBtn.svg";
-import { ReactComponent as SkipBtn } from "../LogoAndSVGS/playbar/skipBtn.svg";
+import { ReactComponent as NextBtn } from "../LogoAndSVGS/playbar/nextBtn.svg";
 import { getAlbum } from '../../store/albums';
 
 const Actions = () => {
@@ -29,7 +29,7 @@ const Actions = () => {
 // 1 find the idx of currentSong in albumssongs arr 
 // 2 return idx of next song in albumsongs arr
 // 3 dispatch action to play albumsong w next song id
-  const handleSkip = () => {
+  const handleNext = () => {
     if (currentSongIdx < albumSongs.length - 1) {
       dispatch(playAlbumSong(currentSongIdx+1, currentAlbumId)); 
     } else {
@@ -39,14 +39,14 @@ const Actions = () => {
 
   return (
     <div className="actionsContainer">
-      <button onClick={handleSkip} className='skipBtn'>
-        <SkipBtn className='skipIcon' />
+      <button onClick={handlePrevious} className='previousBtn'>
+        <PreviousBtn className='previousIcon' />
       </button>
       <button onClick={isPlaying ? handlePause : handlePlay} className='playAndPauseBtn'>
         {isPlaying ? <PauseBtn className='playAndPauseIcon' /> : <PlayBtn className="playAndPauseIcon" />}
       </button>
-      <button onClick={handlePrevious} className='previousBtn'>
-        <PreviousBtn className='previousIcon' />
+      <button onClick={handleNext} className='nextBtn'>
+        <NextBtn className='nextIcon' />
       </button>
     </div>
   );
