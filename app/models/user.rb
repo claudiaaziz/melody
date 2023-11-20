@@ -36,4 +36,6 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= generate_unique_session_token
   end
+
+  has_many :playlists
 end
