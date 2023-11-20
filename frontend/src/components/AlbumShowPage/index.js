@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbum, getAlbum } from "../../store/albums";
 import "./AlbumShowPage.css";
 import { useParams } from "react-router-dom";
 import SongListItem from "./SongListItem";
 import { getSongs } from "../../store/songs";
-import { playSong } from "../../store/playbar";
+import { playAlbumSong } from "../../store/playbar";
 import SignUpModal from "../SignupAndLogin/Modal";
 
 const AlbumShowPage = () => {
@@ -14,23 +14,24 @@ const AlbumShowPage = () => {
   const album = useSelector(getAlbum(albumId));
   const songs = useSelector(getSongs);
   const currentUser = useSelector((state) => state.session.user);
-  const [showSignUpModal, setShowSignUpModal] = React.useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
+  const allAlbumSongs = album?.albumSongs
+    ? album.albumSongs.map((songId) => songs[songId])
+    : [];
+
+  // play song logic
   const handleSongClick = (songId) => {
     if (currentUser) {
-      dispatch(playSong(songId));
+      dispatch(playAlbumSong(songId, albumId));
     } else {
       setShowSignUpModal(true);
     }
   };
-
-  const allAlbumSongs = album?.albumSongs
-    ? album.albumSongs.map((songId) => songs[songId])
-    : [];
 
   return (
     <div className="albumShow">

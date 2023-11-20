@@ -48,7 +48,7 @@
 }
 
 .previousBtn,
-.skipBtn {
+.nextBtn {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -56,7 +56,7 @@
 }
 
 .previousIcon,
-.skipIcon {
+.nextIcon {
   fill: gray;
   width: 17px;
   height: 17px;

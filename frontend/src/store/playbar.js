@@ -1,8 +1,7 @@
 export const SET_VOLUME = "SET_VOLUME";
-export const PLAY_SONG = "PLAY_SONG";
+export const PLAY_ALBUM_SONG = "PLAY_ALBUM_SONG";
 export const PAUSE_SONG = "PAUSE_SONG";
-export const PREVIOUS_SONG = "PREVIOUS_SONG";
-export const SKIP_SONG = "SKIP_SONG";
+export const PLAY_SONG = "PLAY_SONG";
 export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
 
 export const setVolume = (volume) => ({
@@ -10,21 +9,17 @@ export const setVolume = (volume) => ({
   volume,
 });
 
-export const playSong = (songId) => ({
-  type: PLAY_SONG,
-  songId,
+export const playAlbumSong = (songId, albumId) => ({
+  type: PLAY_ALBUM_SONG,
+  data: { songId, albumId },
 });
 
 export const pauseSong = () => ({
   type: PAUSE_SONG,
 });
 
-export const previousSong = () => ({
-  type: PREVIOUS_SONG,
-});
-
-export const skipSong = () => ({
-  type: SKIP_SONG,
+export const playSong = () => ({
+  type: PLAY_SONG,
 });
 
 export const updateProgress = (progress) => ({
@@ -37,23 +32,25 @@ const initialState = {
   isPlaying: false,
   currentSongId: null,
   progress: 0,
-  // queue: [],
 };
 
 const playbarReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_VOLUME:
       return { ...state, volume: action.volume };
-    case PLAY_SONG:
-      return { ...state, isPlaying: true, currentSongId: action.songId };
+    case PLAY_ALBUM_SONG:
+      return {
+        ...state,
+        isPlaying: true,
+        currentSongId: action.data.songId,
+        currentAlbumId: action.data.albumId,
+      };
     case PAUSE_SONG:
       return { ...state, isPlaying: false };
+    case PLAY_SONG:
+      return { ...state, isPlaying: true };
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
-    // case PREVIOUS_SONG:
-
-    // case SKIP_SONG:
-
     default:
       return state;
   }
