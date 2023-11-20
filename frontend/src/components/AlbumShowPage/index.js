@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbum, getAlbum } from "../../store/albums";
 import "./AlbumShowPage.css";
@@ -14,24 +14,30 @@ const AlbumShowPage = () => {
   const album = useSelector(getAlbum(albumId));
   const songs = useSelector(getSongs);
   const currentUser = useSelector((state) => state.session.user);
-  const [showSignUpModal, setShowSignUpModal] = React.useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
+  const allAlbumSongs = album?.albumSongs
+    ? album.albumSongs.map((songId) => songs[songId])
+    : [];
+
+  // play song logic
+  const currentSongId = useSelector((state) => state.playbar.currentSongId);
+  const currentSong = useSelector((state) => state.songs[currentSongId]);
+  // debugger
+  const currentQueueAlbum = useSelector(getAlbum(currentSong?.albumId))
   const handleSongClick = (songId) => {
     if (currentUser) {
+      // needs access to currentSongIdx
       dispatch(playSong(songId));
-      dispatch(setQueue(album))
+      dispatch(setQueue(currentQueueAlbum));
     } else {
       setShowSignUpModal(true);
     }
   };
-
-  const allAlbumSongs = album?.albumSongs
-    ? album.albumSongs.map((songId) => songs[songId])
-    : [];
 
   return (
     <div className="albumShow">
