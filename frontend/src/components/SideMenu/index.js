@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import MelodyLogo from "../LogoAndSVGS/melodyLogo";
+import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
 import "./SideMenu.css";
 import { NavLink, Redirect } from "react-router-dom";
-import { ReactComponent as HomeIcon } from "../LogoAndSVGS/sideMenu/home.svg";
-import { ReactComponent as SearchIcon } from "../LogoAndSVGS/sideMenu/search.svg";
-import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.svg";
-import { ReactComponent as PlusIcon } from "../LogoAndSVGS/sideMenu/plus.svg";
-import { ReactComponent as CreatePlaylistIcon } from "../LogoAndSVGS/sideMenu/createPlaylist.svg";
+import { ReactComponent as HomeIcon } from "../../static/LogoAndSVGS/sideMenu/home.svg";
+import { ReactComponent as SearchIcon } from "../../static/LogoAndSVGS/sideMenu/search.svg";
+import { ReactComponent as LibraryIcon } from "../../static/LogoAndSVGS/sideMenu/library.svg";
+import { ReactComponent as PlusIcon } from "../../static/LogoAndSVGS/sideMenu/plus.svg";
+import { ReactComponent as CreatePlaylistIcon } from "../../static/LogoAndSVGS/sideMenu/createPlaylist.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createPlaylist,

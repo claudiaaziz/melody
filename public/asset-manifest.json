@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.544b6fea.css",
-    "main.js": "/static/js/main.b39d78df.js",
+    "main.css": "/static/css/main.010ebaf8.css",
+    "main.js": "/static/js/main.6d6e962d.js",
     "static/media/CircularSpotifyText-Bold.otf": "/static/media/CircularSpotifyText-Bold.f8952626140be9495d1b.otf",
     "static/media/CircularSpotifyText-Book.otf": "/static/media/CircularSpotifyText-Book.27bc05ead5cc509ef2ba.otf",
     "static/media/spotifyIcon.png": "/static/media/spotifyIcon.21cde1495fdae169e83f.png",
@@ -16,11 +16,11 @@
     "static/media/previousBtn.svg": "/static/media/previousBtn.f8773f76f9169dbced5589e32fd6d013.svg",
     "static/media/plus.svg": "/static/media/plus.650ac5c9f40785c63156e87ee949afc1.svg",
     "static/media/playBtn.svg": "/static/media/playBtn.bbeae2a0486ffbb02d36084420e87fb6.svg",
-    "main.544b6fea.css.map": "/static/css/main.544b6fea.css.map",
-    "main.b39d78df.js.map": "/static/js/main.b39d78df.js.map"
+    "main.010ebaf8.css.map": "/static/css/main.010ebaf8.css.map",
+    "main.6d6e962d.js.map": "/static/js/main.6d6e962d.js.map"
   },
   "entrypoints": [
-    "static/css/main.544b6fea.css",
-    "static/js/main.b39d78df.js"
+    "static/css/main.010ebaf8.css",
+    "static/js/main.6d6e962d.js"
   ]
 }

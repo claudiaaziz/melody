@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "./PlaylistShowPage.css";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import playlistCover from "../../../static/images/playlistCover.png";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 // import SongListItem from "./SongListItem";
 // import { getSongs } from "../../../store/songs";
 // import { playAlbumSong } from "../../../store/playbar";
@@ -14,10 +15,6 @@ const PlaylistShowPage = () => {
   const playlist = useSelector(getPlaylist(playlistId));
   const currentUser = useSelector((state) => state.session.user);
 
-  useEffect(() => {
-    dispatch(fetchPlaylist(playlistId));
-  }, [dispatch, playlistId]);
-
   // const handleSongClick = (songId) => {
   //   if (currentUser) {
   //     dispatch(playAlbumSong(songId, playlistId));
@@ -26,9 +23,17 @@ const PlaylistShowPage = () => {
   //   }
   // };
 
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(fetchPlaylist(playlistId));
+    }
+  }, [dispatch, currentUser, playlistId]);
+
+  if (!currentUser) return <Redirect to="/" />;
+
   return (
     <div className="playlistShowPage">
-      {playlist ? (
+      {playlist && currentUser ? (
         <div className="playlistShowHeader">
           <img src={playlistCover} alt="" className="playlistShowHeaderImg" />
           <div className="playlistDetails">

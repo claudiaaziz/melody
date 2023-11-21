@@ -5,7 +5,7 @@ import VolumeControl from "../Playbar/VolumeControl";
 import "./Playbar.css";
 import { getAlbum } from "../../store/albums";
 import { useSelector } from "react-redux";
-import MelodyLogo from "../LogoAndSVGS/melodyLogo";
+import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
 
 const Playbar = () => {
   let currentSongId = useSelector(

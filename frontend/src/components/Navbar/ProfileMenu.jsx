@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileMenu.css";
-import { ReactComponent as ProfileBtnIcon } from "../LogoAndSVGS/navbar/profileBtn.svg";
+import { ReactComponent as ProfileBtnIcon } from "../../static/LogoAndSVGS/navbar/profileBtn.svg";
 import { pauseSong } from "../../store/playbar";
 
 
