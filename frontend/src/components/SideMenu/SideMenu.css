@@ -114,16 +114,19 @@
   width: 12%
 }
 
-
-
-
+/* temp playlistIndex */
 .playlistList {
   list-style-type: none;
-  /* Remove default list styling */
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Align items in the center horizontally */
+}
+
+.playlistListItem {
+  text-decoration: none;
+  color: white;
+  margin-bottom: 15px;
+  cursor: pointer;
 }

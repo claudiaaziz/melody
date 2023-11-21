@@ -87,10 +87,10 @@ const SideMenu = () => {
           </div>
           <ul className="playlistList">
             {playlists.map((playlist) => (
-              <li key={playlist.id} className="menuItem">
+              <li key={playlist.id}>
                 <NavLink
                   to={`/playlists/${playlist.id}`}
-                  activeClassName="activeLink"
+                  className="playlistListItem"
                 >
                   {playlist.name}
                 </NavLink>
