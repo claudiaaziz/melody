@@ -1,6 +1,8 @@
 class Api::PlaylistsController < ApplicationController 
+  before_action :require_logged_in
+
   def index
-    @playlists = Playlist.all
+    @playlists = current_user.playlists
   end
 
   def show
