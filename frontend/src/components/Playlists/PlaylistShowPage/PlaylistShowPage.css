@@ -1,4 +1,96 @@
 .playlistShowPage {
-  color: pink;
-  font-size: 200px;
+  height: 100vh;
+  margin-left: 23%;
+  margin-top: 8vh;
+  width: 77%;
+  background: linear-gradient(#121212, black);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  /* temp fix */
+  padding-bottom: 33vh;
 }
+
+.playlistShowHeader {
+  display: flex;
+  align-items: flex-end;
+  height: 40%;
+  top: 0;
+  gap: 20px;
+  width: 100%;
+}
+
+.playlistShowHeader img {
+  max-height: 250px;
+  margin: 20px 15px;
+}
+
+.playlistShowHeader img:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}
+
+.playlistDetails {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.playlistDetails h2 {
+  font-size: 5em;
+  font-family: 'CircularSpotifyBold';
+}
+
+.playlistDetails span {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.playlistShowPage hr {
+  width: 90%;
+  border: 1px solid #191919;
+}
+
+/* song list
+
+.songList {
+  cursor: pointer;
+  transition: background-color 0.8s;
+  margin-bottom: 10px;
+}
+
+.songList li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.songItem {
+  margin: 6px;
+}
+
+.songNum {
+  margin-left: 15px;
+  color: gray;
+}
+
+.songContent {
+  margin-left: 17px;
+}
+
+.songTitle {
+  font-size: .9rem;
+}
+
+.artistName {
+  color: gray;
+  margin-top: 5px;
+}
+
+.songList:hover {
+  background: #282828;
+  transition: background-color 0.8s;
+} */
