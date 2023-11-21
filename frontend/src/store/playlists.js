@@ -8,7 +8,7 @@ const receivePlaylists = (playlists) => ({
   type: RECEIVE_PLAYLISTS,
   playlists,
 });
- 
+
 const receivePlaylist = (playlist) => ({
   type: RECEIVE_PLAYLIST,
   playlist,
@@ -20,7 +20,9 @@ const removePlaylist = (playlistId) => ({
 });
 
 export const getPlaylists = (state) =>
-  state?.playlists ? Object.values(state.playlists) : [];
+  state?.playlists
+    ? Object.values(state.playlists).sort((a, b) => b.id - a.id)
+    : [];
 
 export const getPlaylist = (playlistId) => (state) =>
   state.playlists ? state.playlists[playlistId] : null;
@@ -59,7 +61,7 @@ export const createPlaylist = (playlist) => async (dispatch) => {
 
     const createdPlaylist = await res.json();
     dispatch(receivePlaylist(createdPlaylist));
-    return createdPlaylist; 
+    return createdPlaylist;
   } catch (error) {
     console.error("Error creating playlist:", error);
     return null;

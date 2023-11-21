@@ -46,8 +46,9 @@ const SideMenu = () => {
   const [createdPlaylist, setCreatedPlaylist] = useState(null);
 
   const handleCreatePlaylist = async () => {
+    const amtPlaylists = playlists.length;
     const createPlaylistData = {
-      name: "My Playlist #1",
+      name: `My Playlist #${amtPlaylists + 1}`,
       user_id: currentUser.id,
     };
 
