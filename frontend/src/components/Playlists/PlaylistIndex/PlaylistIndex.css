@@ -1,7 +1,7 @@
 .playlistList {
   display: flex;
   flex-direction: column;
-  max-height: 100%;
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -12,13 +12,25 @@
   padding: 3%;
   display: flex;
   align-items: center;
+  border-radius: 5px;
 }
 
 .playlistListItem:hover, .activePlaylistItem {
-  background: #282828;
+  background: #232323;
   transition: background-color 0.8s;
+}
+
+.playlistCover {
+  width: 15%;
+  margin-right: 10px;
 }
 
 .playlistName {
   font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+
+.playlistList .username {
+  font-size: 0.8rem;
+  color: gray
 }
