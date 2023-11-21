@@ -1,21 +1,41 @@
 import React, { useState } from "react";
 import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 import "./SideMenu.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { ReactComponent as HomeIcon } from "../LogoAndSVGS/sideMenu/home.svg";
 import { ReactComponent as SearchIcon } from "../LogoAndSVGS/sideMenu/search.svg";
 import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.svg";
 import { ReactComponent as PlusIcon } from "../LogoAndSVGS/sideMenu/plus.svg";
 import { ReactComponent as CreatePlaylistIcon } from "../LogoAndSVGS/sideMenu/createPlaylist.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { createPlaylist } from "../../store/playlists";
 
 const SideMenu = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.session.user);
+
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
+  const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
+  const [createdPlaylist, setCreatedPlaylist] = useState(null);
 
-const toggleCreatePlaylist = () => {
-  console.log("Toggle Playlist Clicked");
-  setCreatePlaylistOpen(!isCreatePlaylistOpen);
-};
+  const toggleCreatePlaylist = () => {
+    setCreatePlaylistOpen(!isCreatePlaylistOpen);
+  };
 
+  const handleCreatePlaylist = async () => {
+    const createPlaylistData = {
+      name: "My Playlist #1",
+      user_id: currentUser.id,
+    };
+
+    const playlist = await dispatch(createPlaylist(createPlaylistData));
+
+    if (playlist) {
+      console.log("Created Playlist:", playlist);
+      setCreatedPlaylist(playlist);
+      setRedirectToPlaylist(true);
+    }
+  };
 
   return (
     <div className="sideMenu">
@@ -41,7 +61,6 @@ const toggleCreatePlaylist = () => {
           </li>
         </ul>
       </div>
-
       <div className="librarySection">
         <ul className="menuList">
           <div className="libraryContainer">
@@ -54,9 +73,13 @@ const toggleCreatePlaylist = () => {
                 <PlusIcon />
               </button>
               {isCreatePlaylistOpen && (
-                <div className="createPlaylistDropdown">
+                <div
+                  className="createPlaylistDropdown"
+                  onClick={handleCreatePlaylist}
+                >
                   <p>
-                    <CreatePlaylistIcon />Create a new playlist
+                    <CreatePlaylistIcon />
+                    Create a new playlist
                   </p>
                 </div>
               )}
@@ -64,6 +87,9 @@ const toggleCreatePlaylist = () => {
           </div>
         </ul>
       </div>
+      {redirectToPlaylist && createdPlaylist && (
+        <Redirect to={`/playlists/${createdPlaylist.id}`} />
+      )}
     </div>
   );
 };
