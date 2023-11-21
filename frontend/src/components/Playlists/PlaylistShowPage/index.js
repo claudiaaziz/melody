@@ -31,6 +31,7 @@ const PlaylistShowPage = () => {
         <div className="playlistShowHeader">
           {/* <img src={album.albumCoverUrl} alt="" /> */}
           <div className="playlistDetails">
+            <p>Playlist</p>
             <h2>{playlist.name}</h2>
             <div>
               <span>{currentUser.username}</span>

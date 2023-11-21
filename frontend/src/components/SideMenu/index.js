@@ -14,6 +14,7 @@ import {
   getPlaylists,
 } from "../../store/playlists";
 import SignUpModal from "../SignupAndLogin/Modal";
+import PlaylistIndex from "../Playlists/PlaylistIndex";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
@@ -122,20 +123,7 @@ const SideMenu = () => {
               )}
             </li>
           </div>
-          <ul className="playlistList">
-            {currentUser
-              ? playlists.map((playlist) => (
-                  <li key={playlist.id}>
-                    <NavLink
-                      to={`/playlists/${playlist.id}`}
-                      className="playlistListItem"
-                    >
-                      {playlist.name}
-                    </NavLink>
-                  </li>
-                ))
-              : undefined}
-          </ul>
+          <PlaylistIndex />
         </ul>
       </div>
       {redirectToPlaylist && createdPlaylist && (
