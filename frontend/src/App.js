@@ -4,9 +4,10 @@ import SignupFormPage from "./components/SignupAndLogin/SignupFormPage";
 import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
 import Navbar from "./components/Navbar";
 import SideMenu from "./components/SideMenu";
-import AlbumIndexPage from "./components/AlbumIndexPage";
-import AlbumShowPage from "./components/AlbumShowPage";
 import Playbar from "./components/Playbar";
+import AlbumIndexPage from "./components/Albums/AlbumIndexPage";
+import AlbumShowPage from "./components/Albums/AlbumShowPage";
+import PlaylistShowPage from "./components/Playlists/PlaylistShowPage";
 
 const App = () => {
   return (
@@ -28,7 +29,13 @@ const App = () => {
           <Navbar />
           <SideMenu />
           <Playbar />
-          <AlbumShowPage />
+          <AlbumShowPage/>
+        </Route>
+        <Route path="/playlists/:playlistId">
+          <Navbar />
+          <SideMenu />
+          <Playbar />
+          <PlaylistShowPage/>
         </Route>
       </Switch>
     </>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 import "./SideMenu.css";
 import { NavLink } from "react-router-dom";
