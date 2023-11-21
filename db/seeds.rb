@@ -99,17 +99,17 @@ require "open-uri"
   Song.create!(
     title: "Al-Mu'allim",
     album_id: 1,
-    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Elvana+Gjata+-+POW.mp3"
+    song_url: "song1"
   )
   Song.create!(
     title: "Who Is The Loved One?",
     album_id: 1,
-    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_Who_Is_Loved_One.mp3"
+    song_url: "song2"
   )
   Song.create!(
     title: "The Cave Of Hira",
     album_id: 1,
-    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_The_Cave_Of_Hira.mp3"
+    song_url: "song3"
   )
   Song.create!(
     title: "Allahu",
@@ -240,3 +240,50 @@ require "open-uri"
   )
   puts "Done!"
 # end
+
+# test Sapiential
+  Song.create!(
+    title: "One",
+    album_id: 6,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Elvana+Gjata+-+POW.mp3"
+  )
+  Song.create!(
+    title: "The Centre",
+    album_id: 6,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Mesut+Kurtis+Ya-Man-Bihali.mp3"
+  )
+  Song.create!(
+    title: "Cadence",
+    album_id: 6,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Yara+Ma-Baaref.mp3"
+  )
+  Song.create!(
+  title: "no song 1",
+  album_id: 6,
+  song_url: "song4"
+  )
+  Song.create!(
+  title: "no song 2",
+  album_id: 6,
+  song_url: "song5"
+  )
+  Song.create!(
+  title: "no song 3",
+  album_id: 6,
+  song_url: "song6"
+  )
+  Song.create!(
+  title: "no song 4",
+  album_id: 6,
+  song_url: "song7"
+  )
+  Song.create!(
+  title: "no song 5",
+  album_id: 6,
+  song_url: "song8"
+  )
+  Song.create!(
+  title: "no song 6",
+  album_id: 6,
+  song_url: "song9"
+  )

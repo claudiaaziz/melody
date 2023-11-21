@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MelodyLogo from "../LogoAndSVGS/melodyLogo";
 import "./SideMenu.css";
 import { NavLink, Redirect } from "react-router-dom";
@@ -15,13 +15,35 @@ const SideMenu = () => {
   const currentUser = useSelector((state) => state.session.user);
   const playlists = useSelector(getPlaylists);
 
+  // for create playlist dropdown
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
-  const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
-  const [createdPlaylist, setCreatedPlaylist] = useState(null);
 
   const toggleCreatePlaylist = () => {
     setCreatePlaylistOpen(!isCreatePlaylistOpen);
   };
+
+  const closeCreatePlaylistModal = () => {
+    setCreatePlaylistOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isCreatePlaylistOpen 
+      ) {
+        closeCreatePlaylistModal();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isCreatePlaylistOpen]);
+
+  const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
+  const [createdPlaylist, setCreatedPlaylist] = useState(null);
 
   const handleCreatePlaylist = async () => {
     const createPlaylistData = {
