@@ -32,3 +32,11 @@
   font-size: 0.8rem;
   color: gray
 }
+
+.dotsIcon {
+  margin-left: auto;
+  cursor: pointer;
+  width: 6%;
+  transform: scaleX(0.75);
+  fill: white;
+}

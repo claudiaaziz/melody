@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import {REMOVE_CURRENT_USER} from "./session"
 
 export const RECEIVE_PLAYLISTS = `RECEIVE_PLAYLISTS`;
 export const RECEIVE_PLAYLIST = `RECEIVE_PLAYLIST`;
@@ -20,9 +21,7 @@ const removePlaylist = (playlistId) => ({
 });
 
 export const getPlaylists = (state) =>
-  state?.playlists
-    ? Object.values(state.playlists).sort((a, b) => b.id - a.id)
-    : [];
+  state?.playlists ? state.playlists : [];
 
 export const getPlaylist = (playlistId) => (state) =>
   state.playlists ? state.playlists[playlistId] : null;
@@ -103,6 +102,8 @@ const playlistsReducer = (state = {}, action) => {
       const newState = { ...state };
       delete newState[action.playlistId];
       return newState;
+    case REMOVE_CURRENT_USER:
+      return {}
     default:
       return state;
   }

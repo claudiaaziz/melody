@@ -51,7 +51,7 @@ const SideMenu = () => {
   const [createdPlaylist, setCreatedPlaylist] = useState(null);
 
   const handleCreatePlaylist = async () => {
-    const amtPlaylists = playlists.length;
+    const amtPlaylists = Object.values(playlists).length;
     const createPlaylistData = {
       name: `My Playlist #${amtPlaylists + 1}`,
       user_id: currentUser.id,
@@ -66,8 +66,8 @@ const SideMenu = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchPlaylists());
-  }, [dispatch]);
+    if (currentUser) dispatch(fetchPlaylists());
+  }, [dispatch, currentUser]);
 
   return (
     <div className="sideMenu">
