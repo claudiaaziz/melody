@@ -13,6 +13,7 @@ require "open-uri"
   User.destroy_all
   Artist.destroy_all
   Album.destroy_all
+  Playlist.destroy_all
 
   puts "Resetting primary keys..."
   ApplicationRecord.connection.reset_pk_sequence!('users')

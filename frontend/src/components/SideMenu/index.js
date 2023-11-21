@@ -8,7 +8,7 @@ import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.s
 import { ReactComponent as PlusIcon } from "../LogoAndSVGS/sideMenu/plus.svg";
 import { ReactComponent as CreatePlaylistIcon } from "../LogoAndSVGS/sideMenu/createPlaylist.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { createPlaylist, getPlaylists } from "../../store/playlists";
+import { createPlaylist, fetchPlaylists, getPlaylists } from "../../store/playlists";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
@@ -58,6 +58,10 @@ const SideMenu = () => {
       setRedirectToPlaylist(true);
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchPlaylists());
+  }, [dispatch]);
 
   return (
     <div className="sideMenu">

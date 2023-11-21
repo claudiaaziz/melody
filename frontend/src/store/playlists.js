@@ -8,7 +8,7 @@ const receivePlaylists = (playlists) => ({
   type: RECEIVE_PLAYLISTS,
   playlists,
 });
-
+ 
 const receivePlaylist = (playlist) => ({
   type: RECEIVE_PLAYLIST,
   playlist,
