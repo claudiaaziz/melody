@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./PlaylistShowPage.css";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
+import newPlaylistCover from "../../../static/images/newPlaylistCover.png";
 // import SongListItem from "./SongListItem";
 // import { getSongs } from "../../../store/songs";
 // import { playAlbumSong } from "../../../store/playbar";
@@ -29,7 +30,11 @@ const PlaylistShowPage = () => {
     <div className="playlistShowPage">
       {playlist ? (
         <div className="playlistShowHeader">
-          {/* <img src={album.albumCoverUrl} alt="" /> */}
+          <img
+            src={newPlaylistCover}
+            alt=""
+            className="playlistShowHeaderImg"
+          />
           <div className="playlistDetails">
             <p>Playlist</p>
             <h2>{playlist.name}</h2>

@@ -113,17 +113,3 @@
 .createPlaylistDropdown svg {
   width: 12%
 }
-
-/* temp playlistIndex */
-.playlistList {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.playlistListItem {
-  text-decoration: none;
-  color: white;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
