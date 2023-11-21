@@ -20,7 +20,7 @@ const removePlaylist = (playlistId) => ({
 });
 
 export const getPlaylists = (state) =>
-  state.playlists ? Object.values(state.playlists) : [];
+  state?.playlists ? Object.values(state.playlists) : [];
 
 export const getPlaylist = (playlistId) => (state) =>
   state.playlists ? state.playlists[playlistId] : null;

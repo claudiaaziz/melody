@@ -8,11 +8,12 @@ import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.s
 import { ReactComponent as PlusIcon } from "../LogoAndSVGS/sideMenu/plus.svg";
 import { ReactComponent as CreatePlaylistIcon } from "../LogoAndSVGS/sideMenu/createPlaylist.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { createPlaylist } from "../../store/playlists";
+import { createPlaylist, getPlaylists } from "../../store/playlists";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
+  const playlists = useSelector(getPlaylists);
 
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
   const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
@@ -31,7 +32,6 @@ const SideMenu = () => {
     const playlist = await dispatch(createPlaylist(createPlaylistData));
 
     if (playlist) {
-      console.log("Created Playlist:", playlist);
       setCreatedPlaylist(playlist);
       setRedirectToPlaylist(true);
     }
@@ -85,6 +85,18 @@ const SideMenu = () => {
               )}
             </li>
           </div>
+          <ul className="playlistList">
+            {playlists.map((playlist) => (
+              <li key={playlist.id} className="menuItem">
+                <NavLink
+                  to={`/playlists/${playlist.id}`}
+                  activeClassName="activeLink"
+                >
+                  {playlist.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         </ul>
       </div>
       {redirectToPlaylist && createdPlaylist && (
