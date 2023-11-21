@@ -1,12 +1,12 @@
 import React from "react";
 import "./SignupModal.css";
-import {getAlbum} from "../../../store/albums"
-import {useSelector} from "react-redux"
+import { getAlbum } from "../../../store/albums";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 const SignUpModal = ({ onClose }) => {
-  const {albumId} = useParams()
-  const album = useSelector(getAlbum(albumId))
+  const { albumId } = useParams();
+  const album = useSelector(getAlbum(albumId));
 
   return (
     <div className="modalOverlay" onClick={onClose}>

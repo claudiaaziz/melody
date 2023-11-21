@@ -8,7 +8,12 @@ import { ReactComponent as LibraryIcon } from "../LogoAndSVGS/sideMenu/library.s
 import { ReactComponent as PlusIcon } from "../LogoAndSVGS/sideMenu/plus.svg";
 import { ReactComponent as CreatePlaylistIcon } from "../LogoAndSVGS/sideMenu/createPlaylist.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { createPlaylist, fetchPlaylists, getPlaylists } from "../../store/playlists";
+import {
+  createPlaylist,
+  fetchPlaylists,
+  getPlaylists,
+} from "../../store/playlists";
+import SignUpModal from "../SignupAndLogin/Modal";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
@@ -17,6 +22,7 @@ const SideMenu = () => {
 
   // for create playlist dropdown
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   const toggleCreatePlaylist = () => {
     setCreatePlaylistOpen(!isCreatePlaylistOpen);
@@ -28,9 +34,7 @@ const SideMenu = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        isCreatePlaylistOpen 
-      ) {
+      if (isCreatePlaylistOpen) {
         closeCreatePlaylistModal();
       }
     };
@@ -102,7 +106,13 @@ const SideMenu = () => {
               {isCreatePlaylistOpen && (
                 <div
                   className="createPlaylistDropdown"
-                  onClick={handleCreatePlaylist}
+                  onClick={() => {
+                    if (currentUser) {
+                      handleCreatePlaylist();
+                    } else {
+                      setShowSignUpModal(true);
+                    }
+                  }}
                 >
                   <p>
                     <CreatePlaylistIcon />
@@ -113,21 +123,26 @@ const SideMenu = () => {
             </li>
           </div>
           <ul className="playlistList">
-            {playlists.map((playlist) => (
-              <li key={playlist.id}>
-                <NavLink
-                  to={`/playlists/${playlist.id}`}
-                  className="playlistListItem"
-                >
-                  {playlist.name}
-                </NavLink>
-              </li>
-            ))}
+            {currentUser
+              ? playlists.map((playlist) => (
+                  <li key={playlist.id}>
+                    <NavLink
+                      to={`/playlists/${playlist.id}`}
+                      className="playlistListItem"
+                    >
+                      {playlist.name}
+                    </NavLink>
+                  </li>
+                ))
+              : undefined}
           </ul>
         </ul>
       </div>
       {redirectToPlaylist && createdPlaylist && (
         <Redirect to={`/playlists/${createdPlaylist.id}`} />
+      )}
+      {showSignUpModal && (
+        <SignUpModal onClose={() => setShowSignUpModal(false)} />
       )}
     </div>
   );
