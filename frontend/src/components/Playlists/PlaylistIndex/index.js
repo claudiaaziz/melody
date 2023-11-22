@@ -5,15 +5,23 @@ import { deletePlaylist, getPlaylists } from "../../../store/playlists";
 import "./PlaylistIndex.css";
 import playlistCover from "../../../static/images/playlistCover.png";
 import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
+import { useHistory } from "react-router-dom";
 
 const PlaylistIndex = () => {
   const playlists = useSelector(getPlaylists);
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch()
+  const history = useHistory();
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+
+  const handleDeletePlaylist = async (playlistId) => {
+    await dispatch(deletePlaylist(playlistId));
+    setShowDeleteModal(false);
+    history.push("/");
+  };
 
   return (
     <div>
@@ -46,7 +54,7 @@ const PlaylistIndex = () => {
         <div className="deleteModalContainer">
           <div
             className="deleteModal"
-            onClick={() => dispatch(deletePlaylist(selectedPlaylist))}
+            onClick={() => handleDeletePlaylist(selectedPlaylist)}
           >
             <p>Delete</p>
           </div>
