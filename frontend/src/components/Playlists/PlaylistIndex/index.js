@@ -32,9 +32,10 @@ const PlaylistIndex = () => {
               </div>
               <DotsIcon
                 className="dotsIcon"
-                onClick={() =>
-                  setShowDeleteModal(true) && setSelectedPlaylist(playlist.id)
-                }
+                onClick={() => {
+                  setSelectedPlaylist(playlist.id);
+                  setShowDeleteModal(true);
+                }}
               />
             </NavLink>
           </li>

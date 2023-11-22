@@ -68,7 +68,7 @@ export const createPlaylist = (playlist) => async (dispatch) => {
 };
 
 export const updatePlaylist = (playlist) => async (dispatch) => {
-  const res = await fetch(`/api/playlists/${playlist.id}`, {
+  const res = await csrfFetch(`/api/playlists/${playlist.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -83,14 +83,15 @@ export const updatePlaylist = (playlist) => async (dispatch) => {
 };
 
 export const deletePlaylist = (playlistId) => async (dispatch) => {
-  const res = await fetch(`/api/playlists/${playlistId}`, {
+  const res = await csrfFetch(`/api/playlists/${playlistId}`, {
     method: "DELETE",
   });
 
   if (res.ok) {
     dispatch(removePlaylist(playlistId));
-  }
+  } 
 };
+
 
 const playlistsReducer = (state = {}, action) => {
   switch (action.type) {
