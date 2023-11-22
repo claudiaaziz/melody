@@ -11,11 +11,12 @@ const PlaylistIndex = () => {
   const playlists = useSelector(getPlaylists);
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
   const currentUser = useSelector((state) => state.session.user);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+  const [selectedPlaylistIndex, setSelectedPlaylistIndex] = useState(null);
 
   const handleDeletePlaylist = async (playlistId) => {
     await dispatch(deletePlaylist(playlistId));
@@ -42,6 +43,7 @@ const PlaylistIndex = () => {
                 className="dotsIcon"
                 onClick={() => {
                   setSelectedPlaylist(playlist.id);
+                  setSelectedPlaylistIndex(sortedPlaylists.length-1);
                   setShowDeleteModal(true);
                 }}
               />
@@ -52,11 +54,17 @@ const PlaylistIndex = () => {
 
       {showDeleteModal && (
         <div className="deleteModalContainer">
-          <div
-            className="deleteModal"
-            onClick={() => handleDeletePlaylist(selectedPlaylist)}
-          >
-            <p>Delete</p>
+          <div className="deleteModal">
+            <p>
+              Delete from Your Library? This will delete
+              {selectedPlaylistIndex &&
+                ` My Playlist #${selectedPlaylistIndex + 1} `}
+              from Your Library.
+            </p>
+            <button onClick={() => handleDeletePlaylist(selectedPlaylist)}>
+              Delete
+            </button>
+            <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
           </div>
         </div>
       )}
