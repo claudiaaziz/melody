@@ -15,8 +15,10 @@ const PlaylistIndex = () => {
   const history = useHistory();
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-  const [selectedPlaylistIndex, setSelectedPlaylistIndex] = useState(null);
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
+  const selectedPlaylist = Object.values(playlists).find(
+    (playlist) => playlist.id === selectedPlaylistId
+  );
 
   const handleDeletePlaylist = async (playlistId) => {
     await dispatch(deletePlaylist(playlistId));
@@ -27,7 +29,7 @@ const PlaylistIndex = () => {
   return (
     <div>
       <ul className="playlistList">
-        {sortedPlaylists.map((playlist) => (
+        {sortedPlaylists.map((playlist, idx) => (
           <li key={playlist.id}>
             <NavLink
               to={`/playlists/${playlist.id}`}
@@ -42,8 +44,7 @@ const PlaylistIndex = () => {
               <DotsIcon
                 className="dotsIcon"
                 onClick={() => {
-                  setSelectedPlaylist(playlist.id);
-                  setSelectedPlaylistIndex(sortedPlaylists.length-1);
+                  setSelectedPlaylistId(playlist.id);
                   setShowDeleteModal(true);
                 }}
               />
@@ -55,16 +56,16 @@ const PlaylistIndex = () => {
       {showDeleteModal && (
         <div className="deleteModalContainer">
           <div className="deleteModal">
+            <div>Delete from Your Library?</div>
             <p>
-              Delete from Your Library? This will delete
-              {selectedPlaylistIndex &&
-                ` My Playlist #${selectedPlaylistIndex + 1} `}
+              This will delete
+              {selectedPlaylist && ` ${selectedPlaylist.name} `}
               from Your Library.
             </p>
-            <button onClick={() => handleDeletePlaylist(selectedPlaylist)}>
+            <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
+            <button onClick={() => handleDeletePlaylist(selectedPlaylistId)}>
               Delete
             </button>
-            <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
           </div>
         </div>
       )}
