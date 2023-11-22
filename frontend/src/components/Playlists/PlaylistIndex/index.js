@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getPlaylists } from "../../../store/playlists";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePlaylist, getPlaylists } from "../../../store/playlists";
 import "./PlaylistIndex.css";
 import playlistCover from "../../../static/images/playlistCover.png";
 import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
@@ -10,14 +10,10 @@ const PlaylistIndex = () => {
   const playlists = useSelector(getPlaylists);
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
   const currentUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch()
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-
-  const handleDeletePlaylist = async () => {
-    console.log(`Deleting playlist: ${selectedPlaylist.name}`);
-    setShowDeleteModal(false);
-  };
 
   return (
     <div>
@@ -36,7 +32,9 @@ const PlaylistIndex = () => {
               </div>
               <DotsIcon
                 className="dotsIcon"
-                onClick={() => setShowDeleteModal(true)}
+                onClick={() =>
+                  setShowDeleteModal(true) && setSelectedPlaylist(playlist.id)
+                }
               />
             </NavLink>
           </li>
@@ -47,7 +45,7 @@ const PlaylistIndex = () => {
         <div className="deleteModalContainer">
           <div
             className="deleteModal"
-            onClick={() => setShowDeleteModal(false)}
+            onClick={() => dispatch(deletePlaylist(selectedPlaylist))}
           >
             <p>Delete</p>
           </div>
