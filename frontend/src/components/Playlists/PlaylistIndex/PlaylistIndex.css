@@ -36,7 +36,7 @@
 .dotsIcon {
   margin-left: auto;
   cursor: pointer;
-  width: 6%;
-  transform: scaleX(0.75);
+  width: 5%;
   fill: white;
+  position: relative;
 }

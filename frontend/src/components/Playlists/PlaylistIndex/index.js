@@ -8,7 +8,7 @@ import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg
 
 const PlaylistIndex = () => {
   const playlists = useSelector(getPlaylists);
-  const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id)
+  const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
   const currentUser = useSelector((state) => state.session.user);
 
   return (
@@ -26,7 +26,9 @@ const PlaylistIndex = () => {
                 <div className="playlistName">{playlist.name}</div>
                 <div className="username">{currentUser?.username}</div>
               </div>
-              <DotsIcon className="dotsIcon" />
+              <DotsIcon
+                className="dotsIcon"
+              />
             </NavLink>
           </li>
         ))}
