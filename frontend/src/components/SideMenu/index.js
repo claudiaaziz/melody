@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
 import "./SideMenu.css";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { ReactComponent as HomeIcon } from "../../static/LogoAndSVGS/sideMenu/home.svg";
 import { ReactComponent as SearchIcon } from "../../static/LogoAndSVGS/sideMenu/search.svg";
 import { ReactComponent as LibraryIcon } from "../../static/LogoAndSVGS/sideMenu/library.svg";
@@ -13,17 +13,16 @@ import {
   fetchPlaylists,
   getPlaylists,
 } from "../../store/playlists";
-import SignUpModal from "../SignupAndLogin/Modal";
 import PlaylistIndex from "../Playlists/PlaylistIndex";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const currentUser = useSelector((state) => state.session.user);
   const playlists = useSelector(getPlaylists);
 
   // for create playlist dropdown
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   const toggleCreatePlaylist = () => {
     setCreatePlaylistOpen(!isCreatePlaylistOpen);
@@ -111,7 +110,7 @@ const SideMenu = () => {
                     if (currentUser) {
                       handleCreatePlaylist();
                     } else {
-                      setShowSignUpModal(true);
+                      history.push("/signup");
                     }
                   }}
                 >
@@ -128,9 +127,6 @@ const SideMenu = () => {
       </div>
       {redirectToPlaylist && createdPlaylist && (
         <Redirect to={`/playlists/${createdPlaylist.id}`} />
-      )}
-      {showSignUpModal && (
-        <SignUpModal onClose={() => setShowSignUpModal(false)} />
       )}
     </div>
   );
