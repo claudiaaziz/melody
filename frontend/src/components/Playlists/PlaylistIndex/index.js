@@ -56,16 +56,28 @@ const PlaylistIndex = () => {
       {showDeleteModal && (
         <div className="deleteModalContainer">
           <div className="deleteModal">
-            <div>Delete from Your Library?</div>
-            <p>
+            <h2 className="deleteModalBold ">Delete from Your Library?</h2>
+            <p className="deleteModalWarning">
               This will delete
-              {selectedPlaylist && ` ${selectedPlaylist.name} `}
-              from Your Library.
+              <span className="deleteModalBold">
+                {selectedPlaylist && ` ${selectedPlaylist.name} `}
+              </span>
+              from <span className="deleteModalBold">Your Library.</span>
             </p>
-            <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
-            <button onClick={() => handleDeletePlaylist(selectedPlaylistId)}>
-              Delete
-            </button>
+            <div className="deleteModalBtns">
+              <button
+                className="cancelBtn"
+                onClick={() => setShowDeleteModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="deleteBtn"
+                onClick={() => handleDeletePlaylist(selectedPlaylistId)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       )}

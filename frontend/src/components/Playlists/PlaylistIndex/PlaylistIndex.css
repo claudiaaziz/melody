@@ -53,14 +53,55 @@
 }
 
 .deleteModal {
-  background-color: #282828;
-  color: white;
-  padding: 12px;
+  background-color: white;
+  color: black;
+  padding: 40px 20px;
   border-radius: 8px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 10px;
+  width: 28%;
 }
 
-.deleteModal:hover {
-  background-color: #282828;
-  transition: background-color 0.8s;
+.deleteModalBold {
+  font-family: 'CircularSpotifyBold';
+}
+
+.deleteModalBtns {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.deleteModalBtns button {
+  margin: 0 10px;
+  padding: 12px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'CircularSpotifyBold';
+  border: none
+}
+
+.deleteModalBtns button.deleteBtn {
+  background-color: #1BD760;
+  color: black;
+}
+
+.deleteModalBtns button.cancelBtn {
+  background-color: transparent;
+  color: black;
+}
+
+.cancelBtn:hover, .deleteBtn:hover {
+  transform: scale(1.05);
+}
+
+.deleteModalWarning {
+  font-size: .8rem;
+}
+
+.deleteModal h2 {
+  font-size: 1.2rem;
 }
