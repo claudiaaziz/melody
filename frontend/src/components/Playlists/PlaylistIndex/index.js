@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getPlaylists } from "../../../store/playlists";
@@ -10,6 +10,14 @@ const PlaylistIndex = () => {
   const playlists = useSelector(getPlaylists);
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
   const currentUser = useSelector((state) => state.session.user);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+
+  const handleDeletePlaylist = async () => {
+    console.log(`Deleting playlist: ${selectedPlaylist.name}`);
+    setShowDeleteModal(false);
+  };
 
   return (
     <div>
@@ -28,11 +36,23 @@ const PlaylistIndex = () => {
               </div>
               <DotsIcon
                 className="dotsIcon"
+                onClick={() => setShowDeleteModal(true)}
               />
             </NavLink>
           </li>
         ))}
       </ul>
+
+      {showDeleteModal && (
+        <div className="deleteModalContainer">
+          <div
+            className="deleteModal"
+            onClick={() => setShowDeleteModal(false)}
+          >
+            <p>Delete</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
