@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import "./PlaylistShowPage.css";
-import playlistCover from "../../../static/images/playlistCover.png";
+import PlaylistShowPageHeader from "./PlaylistShowPageHeader";
 // import PlaylistShowPageSongListItem from "./PlaylistShowPageSongListItem";
 
 const PlaylistShowPage = () => {
@@ -23,20 +23,11 @@ const PlaylistShowPage = () => {
   return (
     <div className="playlistShowPage">
       {playlist && currentUser && (
-        <div className="playlistShowHeader">
-          <img src={playlistCover} alt="" className="playlistShowHeaderImg" />
-          <div className="playlistDetails">
-            <p>Playlist</p>
-            <h2>{playlist.name}</h2>
-            <div>
-              <span>{currentUser.username}</span>
-            </div>
-          </div>
-        </div>
+        <PlaylistShowPageHeader playlist={playlist} currentUser={currentUser} />
       )}
 
       <hr />
-      
+
       {/* {playlist &&
         Object.values(playlist.songs).map((song, idx) => (
           <PlaylistShowPageSongListItem
