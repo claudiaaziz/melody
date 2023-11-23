@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchAlbum, getAlbum } from "../../../store/albums";
 import "./AlbumShowPage.css";
-import AlbumShowPageSongListItem from "./AlbumShowPageSongListItem";
 import { getSongs } from "../../../store/songs";
 import { playQueue } from "../../../store/playbar";
+import AlbumShowPageHeader from "./AlbumShowPageHeader";
+import AlbumShowPageSongListItem from "./AlbumShowPageSongListItem";
 import SignUpModal from "../../SignupAndLogin/Modal";
 
 const AlbumShowPage = () => {
@@ -35,24 +36,7 @@ const AlbumShowPage = () => {
 
   return (
     <div className="albumShowPage">
-      {album ? (
-        <div className="albumShowPageHeader">
-          <img src={album.albumCoverUrl} alt="" />
-          <div className="albumDetails">
-            <p>Album</p>
-            <h2>{album.title}</h2>
-            <div>
-              <span>{album.artistName}</span>
-              <span>‧</span>
-              <span>{album.releaseYear}</span>
-              <span>‧</span>
-              <span>
-                {allAlbumSongs ? Object.values(allAlbumSongs).length : 0} songs
-              </span>
-            </div>
-          </div>
-        </div>
-      ) : undefined}
+      {album && <AlbumShowPageHeader album={album} />}
 
       <hr />
 
