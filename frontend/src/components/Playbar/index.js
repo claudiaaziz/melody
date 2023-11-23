@@ -20,7 +20,11 @@ const Playbar = () => {
     <div className="playbar">
       {currentSongId ? (
         <div className="currentSongContainer">
-          <img src={album?.albumCoverUrl} alt="" className="albumCover" />
+          <img
+            src={album?.albumCoverUrl}
+            alt=""
+            className="currentSongAlbumCover"
+          />
           <div className="currentSongDetails">
             <span className="currentSongTitle">{currentSong.title}</span>
             <span className="currentSongArtistName">{album?.artistName}</span>
