@@ -10,7 +10,6 @@
   padding: .5%;
   background-color: black;
   color: gray;
-  /* overflow-y: scroll; */
 }
 
 .menuList {
@@ -113,4 +112,10 @@
 
 .createPlaylistDropdown svg {
   width: 12%
+}
+
+.createPlaylist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

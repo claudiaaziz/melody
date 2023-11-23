@@ -114,10 +114,10 @@ const SideMenu = () => {
                     }
                   }}
                 >
-                  <p>
+                  <div className="createPlaylist">
                     <CreatePlaylistIcon />
                     Create a new playlist
-                  </p>
+                  </div>
                 </div>
               )}
             </li>
