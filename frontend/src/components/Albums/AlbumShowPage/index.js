@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { fetchAlbum, getAlbum } from "../../../store/albums";
 import "./AlbumShowPage.css";
 import { getSongs } from "../../../store/songs";

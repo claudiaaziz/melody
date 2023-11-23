@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import "./PlaylistShowPage.css";
 import PlaylistShowPageHeader from "./PlaylistShowPageHeader";
@@ -11,6 +11,7 @@ const PlaylistShowPage = () => {
   const { playlistId } = useParams();
   const playlist = useSelector(getPlaylist(playlistId));
   const currentUser = useSelector((state) => state.session.user);
+  if (!currentUser) return <Redirect to="/" />;
 
   // const handleSongClick = (songId) => {
   //  dispatch(playQueue(songId, playlistId));
