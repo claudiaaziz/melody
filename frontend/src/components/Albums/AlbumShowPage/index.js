@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { fetchAlbum, getAlbum } from "../../../store/albums";
 import "./AlbumShowPage.css";
-import { useParams } from "react-router-dom";
 import SongListItem from "./SongListItem";
 import { getSongs } from "../../../store/songs";
 import { playQueue } from "../../../store/playbar";
@@ -24,7 +24,7 @@ const AlbumShowPage = () => {
     ? album.albumSongs.map((songId) => songs[songId])
     : [];
 
-  // play song logic
+  // play album song logic
   const handleSongClick = (songId) => {
     if (currentUser) {
       dispatch(playQueue(songId, albumId));
@@ -34,9 +34,9 @@ const AlbumShowPage = () => {
   };
 
   return (
-    <div className="albumShow">
+    <div className="albumShowPage">
       {album ? (
-        <div className="albumShowHeader">
+        <div className="albumShowPageHeader">
           <img src={album.albumCoverUrl} alt="" />
           <div className="albumDetails">
             <p>Album</p>

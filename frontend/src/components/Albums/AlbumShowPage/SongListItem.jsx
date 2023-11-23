@@ -2,8 +2,8 @@ import React from "react";
 
 const SongListItem = ({ artistName, song, songNum, onClick }) => {
   return (
-    <ul className="songList" onClick={onClick}>
-      <li className="songItem">
+    <ul className="songListItem" onClick={onClick}>
+      <li>
         <div className="songNum">{songNum}</div>
         <div className="songContent">
           <div className="songTitle">{song.title}</div>
