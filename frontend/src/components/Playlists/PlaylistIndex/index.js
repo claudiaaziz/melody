@@ -43,7 +43,8 @@ const PlaylistIndex = () => {
               </div>
               <DotsIcon
                 className="dotsIcon"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   setSelectedPlaylistId(playlist.id);
                   setShowDeleteModal(true);
                 }}
