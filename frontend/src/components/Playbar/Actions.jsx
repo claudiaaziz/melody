@@ -1,3 +1,5 @@
+// playbar actions (play, pause, prev, next)
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { playQueue, pauseSong, playSong } from '../../store/playbar';

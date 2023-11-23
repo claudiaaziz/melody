@@ -38,6 +38,7 @@ const AudioPlayer = () => {
     }
   }, [isPlaying, isAudioReady, volume]);
 
+  // when metadata is loaded for the audio
   const handleLoadedMetadata = () => setIsAudioReady(true);
 
   return (

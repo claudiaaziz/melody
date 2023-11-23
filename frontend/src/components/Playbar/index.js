@@ -8,15 +8,13 @@ import { useSelector } from "react-redux";
 import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
 
 const Playbar = () => {
-  let currentSongId = useSelector(
-    (state) => state.playbar && state.playbar.currentSongId
-  );
+  const currentSongId = useSelector((state) => state?.playbar.currentSongId);
   const songs = useSelector((state) => state?.songs);
   const currentSong = Object.values(songs).find(
     (song) => song.id === currentSongId
   );
-  const albumId = currentSong?.albumId;
-  const album = useSelector(getAlbum(albumId));
+  const currentAlbumId = useSelector((state) => state?.playbar.currentAlbumId);
+  const album = useSelector(getAlbum(currentAlbumId));
 
   return (
     <div className="playbar">
