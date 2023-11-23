@@ -21,7 +21,7 @@ const SideMenu = () => {
   const currentUser = useSelector((state) => state.session.user);
   const playlists = useSelector(getPlaylists);
 
-  // for create playlist dropdown
+  // start logic for create playlist dropdown
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
 
   const toggleCreatePlaylist = () => {
@@ -64,6 +64,8 @@ const SideMenu = () => {
     }
   };
 
+  // end logic for create playlist dropdown
+
   useEffect(() => {
     if (currentUser) dispatch(fetchPlaylists());
   }, [dispatch, currentUser]);
@@ -92,6 +94,8 @@ const SideMenu = () => {
           </li>
         </ul>
       </div>
+
+      {/* library */}
       <div className="librarySection">
         <ul className="menuList">
           <div className="libraryContainer">
@@ -103,6 +107,7 @@ const SideMenu = () => {
               <button className="plusButton" onClick={toggleCreatePlaylist}>
                 <PlusIcon />
               </button>
+              {/* create playlist dropdown */}
               {isCreatePlaylistOpen && (
                 <div
                   className="createPlaylistDropdown"
