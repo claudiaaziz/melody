@@ -1,3 +1,5 @@
+// can delete & just reuse SongListItem for both
+
 // import React from "react";
 // import "./PlaylistShowPageSongListItem.css"
 
@@ -16,5 +18,3 @@
 // };
 
 // export default PlaylistShowPageSongListItem;
-
-// PlaylistShowPageSongListItem.js
