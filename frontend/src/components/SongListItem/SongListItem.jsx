@@ -1,7 +1,7 @@
 import React from "react";
-import "./AlbumShowPageSongListItem.css"
+import "./SongListItem.css"
 
-const AlbumShowPageSongListItem = ({ artistName, song, songNum, onClick }) => {
+const SongListItem = ({ artistName, song, songNum, onClick }) => {
   return (
     <ul className="songListItem" onClick={onClick}>
       <li>
@@ -15,4 +15,4 @@ const AlbumShowPageSongListItem = ({ artistName, song, songNum, onClick }) => {
   );
 };
 
-export default AlbumShowPageSongListItem;
+export default SongListItem;

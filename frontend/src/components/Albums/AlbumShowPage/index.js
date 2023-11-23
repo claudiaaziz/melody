@@ -6,7 +6,7 @@ import "./AlbumShowPage.css";
 import { getSongs } from "../../../store/songs";
 import { playQueue } from "../../../store/playbar";
 import AlbumShowPageHeader from "./AlbumShowPageHeader";
-import AlbumShowPageSongListItem from "./AlbumShowPageSongListItem";
+import SongListItem from "../../SongListItem/SongListItem.jsx";
 import SignUpModal from "../../SignupAndLogin/Modal";
 
 const AlbumShowPage = () => {
@@ -42,7 +42,7 @@ const AlbumShowPage = () => {
 
       {album &&
         Object.values(allAlbumSongs).map((song, idx) => (
-          <AlbumShowPageSongListItem
+          <SongListItem
             key={song.id}
             song={song}
             songNum={idx + 1}
