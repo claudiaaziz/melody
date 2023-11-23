@@ -27,7 +27,9 @@
 ## Implementation Details
 
 
-### The playbarReducer ensures smooth transitions and accurate representation of the player's state, contributing to a cohesive music playback experience.
+### Managing Play State 
+
+The playbarReducer ensures smooth transitions of the playbars's state, contributing to a seamless music playback experience.
 
 ```javascript
 const playbarReducer = (state = initialState, action) => {
@@ -49,7 +51,9 @@ const playbarReducer = (state = initialState, action) => {
 };
 ```
 
-### Managing audio playback, updating song source, and ensuring responsive volume control 
+### Managing Audio Playback and State Updates
+
+These useEffect hooks collectively contribute to the dynamic and responsive management of audio playback.
 
 ```javascript
 // Play/ pause audio
