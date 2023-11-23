@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchAlbum, getAlbum } from "../../../store/albums";
 import "./AlbumShowPage.css";
-import SongListItem from "./SongListItem";
+import AlbumShowPageSongListItem from "./AlbumShowPageSongListItem";
 import { getSongs } from "../../../store/songs";
 import { playQueue } from "../../../store/playbar";
 import SignUpModal from "../../SignupAndLogin/Modal";
@@ -58,7 +58,7 @@ const AlbumShowPage = () => {
 
       {album &&
         Object.values(allAlbumSongs).map((song, idx) => (
-          <SongListItem
+          <AlbumShowPageSongListItem
             key={song.id}
             song={song}
             songNum={idx + 1}

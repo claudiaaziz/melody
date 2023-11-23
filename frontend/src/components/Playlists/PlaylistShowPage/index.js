@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import "./PlaylistShowPage.css";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
+import "./PlaylistShowPage.css";
 import playlistCover from "../../../static/images/playlistCover.png";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-// import SongListItem from "./SongListItem";
-// import { getSongs } from "../../../store/songs";
-// import { playQueue } from "../../../store/playbar";
+// import PlaylistShowPageSongListItem from "./PlaylistShowPageSongListItem";
 
 const PlaylistShowPage = () => {
   const dispatch = useDispatch();
@@ -16,24 +13,16 @@ const PlaylistShowPage = () => {
   const currentUser = useSelector((state) => state.session.user);
 
   // const handleSongClick = (songId) => {
-  //   if (currentUser) {
-  //     dispatch(playQueue(songId, playlistId));
-  //   } else {
-  //     setShowSignUpModal(true);
-  //   }
+  //  dispatch(playQueue(songId, playlistId));
   // };
 
-  useEffect(() => {
-    if (currentUser) {
-      dispatch(fetchPlaylist(playlistId));
-    }
-  }, [dispatch, currentUser, playlistId]);
-
-  if (!currentUser) return <Redirect to="/" />;
+  // useEffect(() => {
+  //   dispatch(fetchPlaylist(playlistId));
+  // }, [dispatch, playlistId]);
 
   return (
     <div className="playlistShowPage">
-      {playlist && currentUser ? (
+      {playlist && currentUser && (
         <div className="playlistShowHeader">
           <img src={playlistCover} alt="" className="playlistShowHeaderImg" />
           <div className="playlistDetails">
@@ -41,30 +30,23 @@ const PlaylistShowPage = () => {
             <h2>{playlist.name}</h2>
             <div>
               <span>{currentUser.username}</span>
-              {/* <span>‧</span> */}
-              {/* <span>{album.releaseYear}</span>
-              <span>‧</span> */}
-              {/* <span>
-                {allAlbumSongs ? Object.values(allAlbumSongs).length : 0} songs
-              </span> */}
             </div>
           </div>
         </div>
-      ) : undefined}
+      )}
+
       <hr />
+      
       {/* {playlist &&
-        Object.values(allAlbumSongs).map((song, idx) => (
-          <SongListItem
+        Object.values(playlist.songs).map((song, idx) => (
+          <PlaylistShowPageSongListItem
             key={song.id}
             song={song}
             songNum={idx + 1}
-            artistName={album.artistName}
+            artistName={song.artistName}
             onClick={() => handleSongClick(song.id)}
           />
-        ))}
-      {showSignUpModal && (
-        <SignUpModal onClose={() => setShowSignUpModal(false)} />
-      )} */}
+        ))} */}
     </div>
   );
 };
