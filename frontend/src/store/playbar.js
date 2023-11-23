@@ -1,3 +1,5 @@
+import { REMOVE_CURRENT_USER } from "./session";
+
 export const SET_VOLUME = "SET_VOLUME";
 export const PLAY_QUEUE = "PLAY_QUEUE";
 export const PAUSE_SONG = "PAUSE_SONG";
@@ -51,6 +53,8 @@ const playbarReducer = (state = initialState, action) => {
       return { ...state, isPlaying: true };
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
+    case REMOVE_CURRENT_USER:
+      return { ...initialState };
     default:
       return state;
   }

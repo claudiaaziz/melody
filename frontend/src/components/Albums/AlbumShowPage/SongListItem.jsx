@@ -1,4 +1,5 @@
 import React from "react";
+import "./SongListItem.css"
 
 const SongListItem = ({ artistName, song, songNum, onClick }) => {
   return (
@@ -13,6 +14,5 @@ const SongListItem = ({ artistName, song, songNum, onClick }) => {
     </ul>
   );
 };
-
 
 export default SongListItem;

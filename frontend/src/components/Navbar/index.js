@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
-import ProfileMenu from "./ProfileMenu";
+import ProfileBtn from "./ProfileBtn";
 
 const Navbar = () => {
   const currentUser = useSelector((state) => state.session.user);
@@ -12,21 +12,21 @@ const Navbar = () => {
       <div className="navbar">
         {currentUser ? (
           // loggedInNav
-          <ProfileMenu />
+          <ProfileBtn />
         ) : (
           <>
             {/* loggedOutNav */}
             <ul>
               <li>
                 <NavLink to="/signup">
-                  <button id="signupBtn" className="navbarButton">
+                  <button id="navbarSignupBtn" className="navbarButton">
                     Sign Up
                   </button>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/login">
-                  <button id="loginBtn" className="navbarButton">
+                  <button id="navbarLoginBtn" className="navbarButton">
                     Log In
                   </button>
                 </NavLink>

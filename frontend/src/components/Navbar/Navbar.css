@@ -42,16 +42,16 @@
   transform: scale(1.05);
 }
 
-#signupBtn {
+#navbarSignupBtn {
   background-color: transparent;
   color: gray;
 }
 
-#signupBtn:hover {
+#navbarSignupBtn:hover {
   color: white;
 }
 
-#loginBtn {
+#navbarLoginBtn {
   background-color: white;
   color: black;
 }
