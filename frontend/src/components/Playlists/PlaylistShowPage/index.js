@@ -7,7 +7,7 @@ import playlistCover from "../../../static/images/playlistCover.png";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 // import SongListItem from "./SongListItem";
 // import { getSongs } from "../../../store/songs";
-// import { playAlbumSong } from "../../../store/playbar";
+// import { playQueue } from "../../../store/playbar";
 
 const PlaylistShowPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const PlaylistShowPage = () => {
 
   // const handleSongClick = (songId) => {
   //   if (currentUser) {
-  //     dispatch(playAlbumSong(songId, playlistId));
+  //     dispatch(playQueue(songId, playlistId));
   //   } else {
   //     setShowSignUpModal(true);
   //   }
