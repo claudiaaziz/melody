@@ -87,6 +87,8 @@
   background: #1cd760;
 }
 
+/* change this to only appear on hover */
+
 .progressSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 12px;

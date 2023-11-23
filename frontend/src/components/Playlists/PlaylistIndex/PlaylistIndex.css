@@ -38,6 +38,7 @@
   cursor: pointer;
   width: 5%;
   fill: white;
+  z-index: 1000;
 }
 
 .deleteModalContainer {

@@ -10,6 +10,7 @@
   padding-top: 10px;
   align-items: start;
   gap: 27px;
+  /* z-index: 1; */
 }
 
 .album {

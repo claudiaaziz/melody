@@ -17,7 +17,7 @@ const SignUpModal = ({ onClose }) => {
           <h3>Start listening with a free Spotify account</h3>
           <button
             className="signupModalBtn"
-            onClick={() => history.push("/signup")} // Use history.push to navigate
+            onClick={() => history.push("/signup")} 
           >
             Sign up free
           </button>
