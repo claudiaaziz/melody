@@ -1,6 +1,6 @@
 # Canvas
 
-[Melody](https://claudiaaziz.github.io/melody/), a Spotify clone, is a music streaming platform that lets users listen to a vast library of songs. Users can explore albums, listen to it's songs and create playlists.
+[Melody](https://melody-y6yi.onrender.com/), a Spotify clone, is a music streaming platform that lets users listen to a vast library of songs. Users can explore albums, listen to it's songs and create playlists.
 
 ![Melody Interface](./frontend/src/static/images/readme/melody-interface.png)
 

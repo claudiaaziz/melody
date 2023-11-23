@@ -16,24 +16,17 @@ const Actions = () => {
   const album = useSelector(getAlbum(currentAlbumId))
   const albumSongs = album?.albumSongs
   const currentSongIdx = albumSongs?.indexOf(currentSongId)
-  const newCurrentSongId = albumSongs?.[currentSongIdx]
 
   const handlePlay = () => dispatch(playSong());
   const handlePause = () => dispatch(pauseSong());
   const handlePrevious = () => {
-    if (currentSongIdx > 0) {
-      dispatch(playAlbumSong(newCurrentSongId-1, currentAlbumId));
-    } else {
-      dispatch(playAlbumSong(albumSongs[albumSongs.length-1], currentAlbumId));
-    }
+    const newIdx = (currentSongIdx - 1 + albumSongs.length) % albumSongs.length;
+    dispatch(playAlbumSong(albumSongs[newIdx], currentAlbumId));
   };
   const handleNext = () => {
-    if (currentSongIdx < albumSongs.length - 1) {
-      dispatch(playAlbumSong(newCurrentSongId + 1, currentAlbumId)); 
-    } else {
-      dispatch(playAlbumSong(albumSongs[0], currentAlbumId));
-    }
-  }
+    const newIdx = (currentSongIdx + 1) % albumSongs.length;
+    dispatch(playAlbumSong(albumSongs[newIdx], currentAlbumId));
+  };
 
   return (
     <div className="actionsContainer">
