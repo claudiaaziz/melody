@@ -13,6 +13,7 @@ const AlbumShowPage = () => {
   const dispatch = useDispatch();
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
+
   const songs = useSelector(getSongs);
   const currentUser = useSelector((state) => state.session.user);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
@@ -21,9 +22,7 @@ const AlbumShowPage = () => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
-  const allAlbumSongs = album?.albumSongs
-    ? album.albumSongs.map((songId) => songs[songId])
-    : [];
+  const albumSongs = album.albumSongs.map((songId) => songs[songId]);
 
   // play album song logic
   const handleSongClick = (songId) => {
@@ -41,15 +40,17 @@ const AlbumShowPage = () => {
       <hr />
 
       {album &&
-        Object.values(allAlbumSongs).map((song, idx) => (
-          <SongListItem
-            key={song.id}
-            song={song}
-            songNum={idx + 1}
-            artistName={album.artistName}
-            onClick={() => handleSongClick(song.id)}
-          />
-        ))}
+        albumSongs
+          .filter((song) => song) // filter out undefined songs
+          .map((song, idx) => (
+            <SongListItem
+              key={song.id}
+              song={song}
+              songNum={idx + 1}
+              artistName={album.artistName}
+              onClick={() => handleSongClick(song.id)}
+            />
+          ))}
       {showSignUpModal && (
         <SignUpModal onClose={() => setShowSignUpModal(false)} />
       )}
