@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./EditPlaylistModal.css"
 import { updatePlaylist } from "../../../../store/playlists";
 import { useDispatch } from "react-redux";
+import { ReactComponent as CloseIcon } from "../../../../static/LogoAndSVGS/close.svg";
 
 const EditPlaylistModal = ({ playlistId, onClose, currentPlaylistName }) => {
   const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const EditPlaylistModal = ({ playlistId, onClose, currentPlaylistName }) => {
         <div className="editPlaylistModalHeader">
           <h3>Edit Details</h3>
           <button onClick={onClose} className="closeEditPlaylistModal">
-            <h3>X</h3>
+            <CloseIcon />
           </button>
         </div>
           <label htmlFor="playlistName">Name:</label>

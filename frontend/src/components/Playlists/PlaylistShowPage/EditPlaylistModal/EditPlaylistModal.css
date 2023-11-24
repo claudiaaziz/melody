@@ -34,22 +34,31 @@
 } */
 
 .closeEditPlaylistModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   background-color: transparent;
-  border: none;
-  color: gray;
+  position: relative;
+  border: none
 }
 
-.editPlaylistModalHeader {
-  font-size: 1rem;
+.closeEditPlaylistModal:hover {
+  background: #3E3D3D;
+  transition: background-color 0.8s;
 }
 
-/* .plusButton svg {
+.closeEditPlaylistModal svg {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
-} */
+  fill: #C5C5C5
+}
+
 
 /* .deletePlaylistModalWarning {
   font-size: .8rem;
