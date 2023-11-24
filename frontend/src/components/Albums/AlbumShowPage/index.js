@@ -22,7 +22,7 @@ const AlbumShowPage = () => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
-  const albumSongs = album.albumSongs?.map((songId) => songs[songId]);
+  const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
 
   // play album song logic
   const handleSongClick = (songId) => {
@@ -41,6 +41,7 @@ const AlbumShowPage = () => {
 
       {album &&
         albumSongs
+          .filter((song) => song) // filter out undefined songs
           .map((song, idx) => (
             <SongListItem
               key={song.id}
