@@ -59,7 +59,7 @@
 
 .editPlaylistDropdown {
   position: absolute;
-  width: 7%;
+  width: 9%;
   background-color: #282828;
   color: white;
   border-radius: 5px;
@@ -67,7 +67,7 @@
   font-size: .8rem;
   z-index: 1000;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
@@ -81,9 +81,6 @@
   width: 13%;
   fill: #A7A7A7;
 }
-
-
-
 
 /* rest */
 

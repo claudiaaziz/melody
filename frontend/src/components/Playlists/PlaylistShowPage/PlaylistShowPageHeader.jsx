@@ -50,7 +50,7 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
         {isEditPlaylistDropdownOpen && (
           <div onClick={openEditPlaylistModal} className="editPlaylistDropdown">
             <EditPlaylistIcon />
-            <p>Edit Details</p>
+            <p>Edit playlist name</p>
           </div>
         )}
         {isEditPlaylistModalOpen && (
