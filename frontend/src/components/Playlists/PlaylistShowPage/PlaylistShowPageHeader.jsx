@@ -63,6 +63,7 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
           <EditPlaylistModal
             onClose={closeEditPlaylistModal}
             currentPlaylistName={playlist.name}
+            playlistId={playlist.id}
           />
         )}
       </div>

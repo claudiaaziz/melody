@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import "./EditPlaylistModal.css"
+import { updatePlaylist } from "../../../../store/playlists";
+import { useDispatch } from "react-redux";
 
-const EditPlaylistModal = ({ onClose, currentPlaylistName }) => {
+const EditPlaylistModal = ({ playlistId, onClose, currentPlaylistName }) => {
+  const dispatch = useDispatch()
   const [newPlaylistName, setNewPlaylistName] = useState(currentPlaylistName);
 
   const handleNameChange = (e) => {
     setNewPlaylistName(e.target.value);
   };
 
-  const updatePlaylistName = () => {
+  const updatePlaylistName = async () => {
+    await dispatch(updatePlaylist({ id: playlistId, name: newPlaylistName }));
     onClose();
   };
+
 
   return (
     <div className="editPlaylistModalOverlay">
