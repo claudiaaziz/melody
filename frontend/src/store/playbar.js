@@ -54,7 +54,7 @@ const playbarReducer = (state = initialState, action) => {
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
     case REMOVE_CURRENT_USER:
-      return { ...initialState };
+      return {}
     default:
       return state;
   }
