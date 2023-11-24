@@ -48,6 +48,8 @@
   font-size: 12px;
 }
 
+/* edit playlist */
+
 .playlistShowPage .dotsIcon {
   cursor: pointer;
   width: 2%;
@@ -55,10 +57,39 @@
   margin-left: 1.8%;
 }
 
+.editPlaylistDropdown {
+  position: absolute;
+  width: 7%;
+  background-color: #282828;
+  color: white;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: .8rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.editPlaylistDropdown:hover {
+  background: #282828;
+  transition: background-color 0.8s;
+}
+
+.editPlaylistDropdown svg {
+  width: 13%;
+  fill: #A7A7A7;
+}
+
+/* .EditPlaylist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* rest */
+
 .playlistShowPage hr {
   width: 90%;
   border: 1px solid #191919;
 }
-
-
-
