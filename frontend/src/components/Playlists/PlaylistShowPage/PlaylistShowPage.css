@@ -48,7 +48,17 @@
   font-size: 12px;
 }
 
+.playlistShowPage .dotsIcon {
+  cursor: pointer;
+  width: 2%;
+  fill: lightgray;
+  margin-left: 1.8%;
+}
+
 .playlistShowPage hr {
   width: 90%;
   border: 1px solid #191919;
 }
+
+
+
