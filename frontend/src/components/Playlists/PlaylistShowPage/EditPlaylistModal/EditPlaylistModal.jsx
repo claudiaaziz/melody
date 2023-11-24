@@ -11,18 +11,19 @@ const EditPlaylistModal = ({ playlistId, onClose, currentPlaylistName }) => {
     setNewPlaylistName(e.target.value);
   };
 
-  const updatePlaylistName = async () => {
-    await dispatch(updatePlaylist({ id: playlistId, name: newPlaylistName }));
+  const updatePlaylistName = () => {
+    dispatch(updatePlaylist({ id: playlistId, name: newPlaylistName }));
     onClose();
   };
-
 
   return (
     <div className="editPlaylistModalOverlay">
       <div className="editPlaylistModal">
         <div className="editPlaylistModalHeader">
           <h3>Edit Details</h3>
-          <button onClick={onClose}>X</button>
+          <button onClick={onClose} className="closeEditPlaylistModal">
+            <h3>X</h3>
+          </button>
         </div>
           <label htmlFor="playlistName">Name:</label>
           <input

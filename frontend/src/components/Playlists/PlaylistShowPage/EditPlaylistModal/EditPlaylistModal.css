@@ -33,6 +33,24 @@
   font-size: 1.3rem;
 } */
 
+.closeEditPlaylistModal {
+  background-color: transparent;
+  border: none;
+  color: gray;
+}
+
+.editPlaylistModalHeader {
+  font-size: 1rem;
+}
+
+/* .plusButton svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+} */
+
 /* .deletePlaylistModalWarning {
   font-size: .8rem;
   margin-bottom: 10px;

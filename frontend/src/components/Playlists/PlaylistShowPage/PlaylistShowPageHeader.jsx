@@ -5,28 +5,14 @@ import { ReactComponent as EditPlaylistIcon } from "../../../static/LogoAndSVGS/
 import EditPlaylistModal from "./EditPlaylistModal/EditPlaylistModal"; 
 
 const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
+  // edit dropdown
   const [isEditPlaylistDropdownOpen, setIsEditPlaylistDropdownOpen] = useState(false);
-  const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
+  const toggleEditPlaylistDropdown = () => setIsEditPlaylistDropdownOpen(!isEditPlaylistDropdownOpen);
+  const closeEditPlaylistDropdown = () => setIsEditPlaylistDropdownOpen(false);
 
-  const toggleEditPlaylistDropdown = () => {
-    setIsEditPlaylistDropdownOpen(!isEditPlaylistDropdownOpen);
-  };
-
-  const openEditPlaylistModal = () => {
-    setIsEditPlaylistModalOpen(true);
-    setIsEditPlaylistDropdownOpen(false); 
-  };
-
-  const closeEditPlaylistDropdown = () => {
-    setIsEditPlaylistDropdownOpen(false);
-  };
-
-  const closeEditPlaylistModal = () => {
-    setIsEditPlaylistModalOpen(false);
-  };
-
+  // if the user clicks off edit dropdown
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = () => {
       if (isEditPlaylistDropdownOpen) {
         closeEditPlaylistDropdown();
       }
@@ -38,6 +24,14 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isEditPlaylistDropdownOpen]);
+  
+  // edit modal
+  const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
+  const openEditPlaylistModal = () => {
+    setIsEditPlaylistModalOpen(true);
+    setIsEditPlaylistDropdownOpen(false); 
+  };
+  const closeEditPlaylistModal = () => setIsEditPlaylistModalOpen(false);
 
   return (
     <>
