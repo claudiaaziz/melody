@@ -2,16 +2,27 @@ import React, { useEffect, useState } from "react";
 import playlistCover from "../../../static/images/playlistCover.png";
 import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
 import { ReactComponent as EditPlaylistIcon } from "../../../static/LogoAndSVGS/playlists/editPlaylist.svg";
+import EditPlaylistModal from "./EditPlaylistModal"; 
 
 const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
   const [isEditPlaylistDropdownOpen, setIsEditPlaylistDropdownOpen] = useState(false);
+  const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
 
   const toggleEditPlaylistDropdown = () => {
     setIsEditPlaylistDropdownOpen(!isEditPlaylistDropdownOpen);
   };
 
+  const openEditPlaylistModal = () => {
+    setIsEditPlaylistModalOpen(true);
+    setIsEditPlaylistDropdownOpen(false); 
+  };
+
   const closeEditPlaylistDropdown = () => {
     setIsEditPlaylistDropdownOpen(false);
+  };
+
+  const closeEditPlaylistModal = () => {
+    setIsEditPlaylistModalOpen(false);
   };
 
   useEffect(() => {
@@ -43,10 +54,16 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
       <div className="dotsContainer">
         <DotsIcon className="dotsIcon" onClick={toggleEditPlaylistDropdown} />
         {isEditPlaylistDropdownOpen && (
-          <div className="editPlaylistDropdown">
-            <EditPlaylistIcon/>
+          <div onClick={openEditPlaylistModal} className="editPlaylistDropdown">
+            <EditPlaylistIcon />
             <p>Edit Details</p>
           </div>
+        )}
+        {isEditPlaylistModalOpen && (
+          <EditPlaylistModal
+            onClose={closeEditPlaylistModal}
+            currentPlaylistName={playlist.name}
+          />
         )}
       </div>
     </>
