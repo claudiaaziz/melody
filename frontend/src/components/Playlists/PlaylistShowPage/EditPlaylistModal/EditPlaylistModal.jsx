@@ -21,19 +21,17 @@ const EditPlaylistModal = ({ playlistId, onClose, currentPlaylistName }) => {
     <div className="editPlaylistModalOverlay">
       <div className="editPlaylistModal">
         <div className="editPlaylistModalHeader">
-          <h3>Edit Details</h3>
+          <h3>Edit playlist name</h3>
           <button onClick={onClose} className="closeEditPlaylistModal">
             <CloseIcon />
           </button>
         </div>
-          <label htmlFor="playlistName">Name:</label>
           <input
             type="text"
-            id="playlistName"
             value={newPlaylistName}
             onChange={handleNameChange}
           />
-          <button onClick={updatePlaylistName}>Save</button>
+          <button className="updatePlaylistName" onClick={updatePlaylistName}>Save</button>
       </div>
     </div>
   );
