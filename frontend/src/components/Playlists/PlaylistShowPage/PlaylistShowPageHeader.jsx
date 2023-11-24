@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import playlistCover from "../../../static/images/playlistCover.png";
 import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
 import { ReactComponent as EditPlaylistIcon } from "../../../static/LogoAndSVGS/playlists/editPlaylist.svg";
@@ -6,9 +6,27 @@ import { ReactComponent as EditPlaylistIcon } from "../../../static/LogoAndSVGS/
 const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
   const [isEditPlaylistDropdownOpen, setIsEditPlaylistDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
+  const toggleEditPlaylistDropdown = () => {
     setIsEditPlaylistDropdownOpen(!isEditPlaylistDropdownOpen);
   };
+
+  const closeEditPlaylistDropdown = () => {
+    setIsEditPlaylistDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isEditPlaylistDropdownOpen) {
+        closeEditPlaylistDropdown();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isEditPlaylistDropdownOpen]);
 
   return (
     <>
@@ -23,7 +41,7 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
         </div>
       </div>
       <div className="dotsContainer">
-        <DotsIcon className="dotsIcon" onClick={toggleDropdown} />
+        <DotsIcon className="dotsIcon" onClick={toggleEditPlaylistDropdown} />
         {isEditPlaylistDropdownOpen && (
           <div className="editPlaylistDropdown">
             <EditPlaylistIcon/>

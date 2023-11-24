@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deletePlaylist, getPlaylists } from "../../../store/playlists";
 import PlaylistIndexItem from "./PlaylistIndexItem";
-import DeletePlaylistModal from "./DeletePlaylistModal";
+import DeletePlaylistModal from "./DeletePlaylistModal/DeletePlaylistModal";
 import "./PlaylistIndex.css";
 
 const PlaylistIndex = () => {
