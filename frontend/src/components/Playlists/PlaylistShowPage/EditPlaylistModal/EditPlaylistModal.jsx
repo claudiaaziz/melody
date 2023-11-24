@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./EditPlaylistModal.css"
 
 const EditPlaylistModal = ({ onClose, currentPlaylistName }) => {
   const [newPlaylistName, setNewPlaylistName] = useState(currentPlaylistName);

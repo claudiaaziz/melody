@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import playlistCover from "../../../static/images/playlistCover.png";
 import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
 import { ReactComponent as EditPlaylistIcon } from "../../../static/LogoAndSVGS/playlists/editPlaylist.svg";
-import EditPlaylistModal from "./EditPlaylistModal"; 
+import EditPlaylistModal from "./EditPlaylistModal/EditPlaylistModal"; 
 
 const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
   const [isEditPlaylistDropdownOpen, setIsEditPlaylistDropdownOpen] = useState(false);
