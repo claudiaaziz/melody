@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
 import ProfileBtn from "./ProfileBtn";
+import NavLinks from "../../static/LogoAndSVGS/NavLinks";
 
 const Navbar = () => {
   const currentUser = useSelector((state) => state.session.user);
@@ -10,6 +11,7 @@ const Navbar = () => {
   return (
     <div className="navbarContainer">
       <div className="navbar">
+      <NavLinks/>
         {currentUser ? (
           // loggedInNav
           <ProfileBtn />
