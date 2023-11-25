@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./SongListItem.css";
+import { useSelector } from "react-redux";
 
 const SongListItem = ({ artistName, song, songNum, onClick }) => {
-
+  const currentSongId = useSelector((state) => state.playbar.currentSongId === song.id);
   // get song duration from AWS
   const [duration, setDuration] = useState(null);
 
@@ -26,9 +27,9 @@ const SongListItem = ({ artistName, song, songNum, onClick }) => {
   return (
     <ul className="songListItem" onClick={onClick}>
       <li>
-        <div className="songNum">{songNum}</div>
+        <div className={`songNum ${currentSongId ? 'currentSongId' : ''}`}>{songNum}</div>
         <div className="songContent">
-          <div className="songTitle">{song.title}</div>
+          <div className={`songTitle ${currentSongId ? 'currentSongId' : ''}`}>{song.title}</div>
           <div className="artistName">{artistName}</div>
         </div>
         <div className="songDuration">{formatDuration(duration)}</div>

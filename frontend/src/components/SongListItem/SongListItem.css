@@ -37,8 +37,12 @@
 }
 
 .songDuration {
-margin-left: auto;
-margin-right: 15px;
-color: gray;
+  margin-left: auto;
+  margin-right: 15px;
+  color: gray;
   font-size: .8rem;
+}
+
+.currentSongId {
+  color: #1AD55F;
 }
