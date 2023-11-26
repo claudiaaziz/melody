@@ -3,8 +3,9 @@
 }
 
 .navLinksIcon {
-  width: 8%;
-  margin-right: 1%;
+  width: 30px;
+  height: 30px;
+  padding-right: 2px;
   transition: transform 0.3s ease-in-out;
 }
 
