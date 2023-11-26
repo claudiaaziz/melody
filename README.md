@@ -21,11 +21,8 @@
 - Click on an album to explore and play its songs
 - Play, pause, rewind to previous song, skip to next song in album/ playlist, adjust the volume of the song via a slider and jump to different parts of the song via a slider
 - Create, update & delete personal playlists
-  - Add/ remove songs from personal playlists
-- Search for songs & albums
 
 ## Implementation Details
-
 
 ### Managing Play State 
 
@@ -79,4 +76,20 @@ useEffect(() => {
     audioRef.current.volume = volume;
   }
 }, [isPlaying, isAudioReady, volume]);
+```
+
+### Previous and Next Song Navigation/ Song Queue Handling:
+
+Taking into account the current song index and the total number of songs in the album/ playlist efficiently handles previous and next song actions. Ensuring a smooth transition between songs.
+
+```javascript
+const handlePrevious = () => {
+  const newIdx = (currentSongIdx - 1 + albumSongs.length) % albumSongs.length;
+  dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
+};
+
+const handleNext = () => {
+  const newIdx = (currentSongIdx + 1) % albumSongs.length;
+  dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
+};
 ```
