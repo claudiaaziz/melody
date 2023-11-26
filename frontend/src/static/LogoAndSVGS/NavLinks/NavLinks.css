@@ -1,0 +1,14 @@
+.navLinksContainer {
+  margin-left: 1.5%;
+}
+
+.navLinksIcon {
+  width: 30px;
+  height: 30px;
+  padding-right: 2px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navLinksIcon:hover {
+  transform: scale(1.1);
+}

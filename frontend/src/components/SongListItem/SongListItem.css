@@ -1,0 +1,48 @@
+.songListItem {
+  cursor: pointer;
+  transition: background-color 0.8s;
+  margin-bottom: 10px;
+}
+
+.songListItem:hover {
+  background: #282828;
+  transition: background-color 0.8s;
+}
+
+.songListItem li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin: 6px;
+}
+
+.songNum {
+  margin-left: 15px;
+  color: gray;
+}
+
+.songContent {
+  margin-left: 17px;
+}
+
+.songListItem .songTitle {
+  font-size: .9rem;
+}
+
+.songListItem .artistName {
+  color: gray;
+  margin-top: 6px;
+  font-size: .8rem;
+}
+
+.songDuration {
+  margin-left: auto;
+  margin-right: 15px;
+  color: gray;
+  font-size: .8rem;
+}
+
+.currentSongId {
+  color: #1cd760;;
+}

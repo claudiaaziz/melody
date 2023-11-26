@@ -1,0 +1,90 @@
+.playlistShowPage {
+  height: 100vh;
+  margin-left: 23%;
+  margin-top: 8vh;
+  width: 77%;
+  background: linear-gradient(#121212, black);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  /* temp fix */
+  padding-bottom: 33vh;
+}
+
+.playlistShowHeader {
+  display: flex;
+  align-items: flex-end;
+  height: 40%;
+  top: 0;
+  gap: 20px;
+  width: 100%;
+}
+
+.playlistShowHeaderImg {
+  max-height: 250px;
+  margin: 20px 15px;
+}
+
+.playlistShowHeader img:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}
+
+.playlistDetails {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.playlistDetails h2 {
+  font-size: 5em;
+  font-family: 'CircularSpotifyBold';
+}
+
+.playlistDetails span {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+/* edit playlist */
+
+.playlistShowPage .dotsIcon {
+  cursor: pointer;
+  width: 2%;
+  fill: lightgray;
+  margin-left: 1.8%;
+}
+
+.editPlaylistDropdown {
+  position: absolute;
+  width: 9%;
+  background-color: #282828;
+  color: white;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: .8rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.editPlaylistDropdown:hover {
+  background: #3E3D3D;
+  transition: background-color 0.8s;
+}
+
+.editPlaylistDropdown svg {
+  width: 13%;
+  fill: #A7A7A7;
+}
+
+/* rest */
+
+.playlistShowPage hr {
+  width: 90%;
+  border: 1px solid #191919;
+}

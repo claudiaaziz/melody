@@ -1,0 +1,42 @@
+.playlistIndex {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlistIndexItem {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  padding: 3%;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.playlistIndexItem:hover, .activePlaylistIndexItem {
+  background: #232323;
+  transition: background-color 0.8s;
+}
+
+.playlistIndex .playlistCover {
+  width: 15%;
+  margin-right: 10px;
+}
+
+.playlistContent .playlistName {
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+
+.playlistContent .username {
+  font-size: 0.8rem;
+  color: gray
+}
+
+.playlistIndex .dotsIcon {
+  margin-left: auto;
+  cursor: pointer;
+  width: 5%;
+  fill: white;
+  z-index: 1000;
+}

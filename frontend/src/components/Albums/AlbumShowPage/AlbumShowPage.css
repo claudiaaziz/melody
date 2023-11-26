@@ -1,0 +1,54 @@
+.albumShowPage {
+  height: 100vh;
+  margin-left: 23%;
+  margin-top: 8vh;
+  width: 77%;
+  background: linear-gradient(#121212, black);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  /* temp fix */
+  padding-bottom: 33vh;
+}
+
+.albumShowPageHeader {
+  display: flex;
+  align-items: flex-end;
+  height: 40%;
+  top: 0;
+  gap: 18px;
+  width: 100%;
+}
+
+.albumShowPageHeader img {
+  max-height: 250px;
+  margin: 20px 15px;
+}
+
+.albumShowPageHeader img:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}
+
+.albumShowPageHeader .albumDetails {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.albumShowPageHeader .albumDetails h2 {
+  font-size: 5em;
+  font-family: 'CircularSpotifyBold';
+}
+
+.albumShowPageHeader .albumDetails span {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.albumShowPage hr {
+  width: 90%;
+  border: 1px solid #191919;
+}

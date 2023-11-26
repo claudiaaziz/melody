@@ -1,0 +1,53 @@
+.albumIndexPage {
+  font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
+  background: linear-gradient(#141414, black);
+  width: 77%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 23%;
+  margin-top: 8vh;
+  padding-top: 10px;
+  align-items: start;
+  gap: 27px;
+}
+
+.albumIndexPage .albumLink {
+  text-decoration: none;
+}
+
+.albumIndexItem {
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 14vw;
+  padding-bottom: 25px;
+  background-color: #181818;
+  transition: background-color 0.8s;
+
+}
+
+.albumIndexItem:hover {
+  background: #282828;
+}
+
+.albumIndexItem img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.albumIndexItem h2 {
+  margin: 8px 0;
+  color: white;
+  font-size: .8rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.albumIndexItem .artistName {
+  color: #a7a7a7;
+  font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+  font-size: .7em;
+}

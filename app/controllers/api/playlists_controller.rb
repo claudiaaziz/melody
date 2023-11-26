@@ -1,6 +1,8 @@
 class Api::PlaylistsController < ApplicationController 
+  before_action :require_logged_in
+
   def index
-    @playlists = Playlist.all
+    @playlists = current_user.playlists
   end
 
   def show
@@ -30,6 +32,6 @@ class Api::PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit(:name, :user_id)
   end
 end

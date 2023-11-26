@@ -4,7 +4,6 @@
   top: 0;
   right: 0;
   width: 77%;
-  z-index: 1000;
   padding-top: 1vh;
 }
 
@@ -42,16 +41,16 @@
   transform: scale(1.05);
 }
 
-#signupBtn {
+#navbarSignupBtn {
   background-color: transparent;
   color: gray;
 }
 
-#signupBtn:hover {
+#navbarSignupBtn:hover {
   color: white;
 }
 
-#loginBtn {
+#navbarLoginBtn {
   background-color: white;
   color: black;
 }

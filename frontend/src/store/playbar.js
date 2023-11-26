@@ -1,5 +1,7 @@
+import { REMOVE_CURRENT_USER } from "./session";
+
 export const SET_VOLUME = "SET_VOLUME";
-export const PLAY_ALBUM_SONG = "PLAY_ALBUM_SONG";
+export const PLAY_QUEUE = "PLAY_QUEUE";
 export const PAUSE_SONG = "PAUSE_SONG";
 export const PLAY_SONG = "PLAY_SONG";
 export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
@@ -9,8 +11,8 @@ export const setVolume = (volume) => ({
   volume,
 });
 
-export const playAlbumSong = (songId, albumId) => ({
-  type: PLAY_ALBUM_SONG,
+export const playQueue = (songId, albumId) => ({
+  type: PLAY_QUEUE,
   data: { songId, albumId },
 });
 
@@ -38,7 +40,7 @@ const playbarReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_VOLUME:
       return { ...state, volume: action.volume };
-    case PLAY_ALBUM_SONG:
+    case PLAY_QUEUE:
       return {
         ...state,
         isPlaying: true,
@@ -51,6 +53,8 @@ const playbarReducer = (state = initialState, action) => {
       return { ...state, isPlaying: true };
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
+    case REMOVE_CURRENT_USER:
+      return {}
     default:
       return state;
   }
