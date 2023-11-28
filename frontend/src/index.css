@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: 'CircularSpotifyBook';
-  src: url('../build/Circular-Font/CircularSpotifyText-Book.otf') format('opentype');
+  /* src: url('../build/Circular-Font/CircularSpotifyText-Book.otf') format('opentype'); */
 }
 
 @font-face {
   font-family: 'CircularSpotifyBold';
-  src: url('../build/Circular-Font/CircularSpotifyText-Bold.otf') format('opentype');
+  /* src: url('../build/Circular-Font/CircularSpotifyText-Bold.otf') format('opentype'); */
 }
 
 html, body {
