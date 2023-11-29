@@ -15,10 +15,11 @@ puts "Destroying tables..."
   Album.destroy_all
   Artist.destroy_all
   User.destroy_all
-  ApplicationRecord.connection.reset_pk_sequence!(‘artists’)
-  ApplicationRecord.connection.reset_pk_sequence!(‘users’)
-  ApplicationRecord.connection.reset_pk_sequence!(‘albums’)
-  ApplicationRecord.connection.reset_pk_sequence!(‘playlists’)
+
+  ApplicationRecord.connection.reset_pk_sequence!('artists')
+  ApplicationRecord.connection.reset_pk_sequence!('users')
+  ApplicationRecord.connection.reset_pk_sequence!('albums')
+  ApplicationRecord.connection.reset_pk_sequence!('playlists')
 
   puts "Creating guest user..."
   User.create!(
