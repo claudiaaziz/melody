@@ -1,61 +1,102 @@
-  require "open-uri"
+require "open-uri"
 
-  # This file should contain all the record creation needed to seed the database with its default values.
-  # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-  #
-  # Examples:
-  #
-  #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-  #   Character.create(name: "Luke", movie: movies.first)
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
 
-  # ApplicationRecord.transaction do 
-  puts "Destroying tables..."
-  Playlist.destroy_all
-  Song.destroy_all
-  Album.destroy_all
-  Artist.destroy_all
-  User.destroy_all
+# ApplicationRecord.transaction do 
+puts "Destroying tables..."
+Playlist.destroy_all
+Song.destroy_all
+Album.destroy_all
+Artist.destroy_all
+User.destroy_all
 
-  ApplicationRecord.connection.reset_pk_sequence!('artists')
-  ApplicationRecord.connection.reset_pk_sequence!('users')
-  ApplicationRecord.connection.reset_pk_sequence!('albums')
-  ApplicationRecord.connection.reset_pk_sequence!('playlists')
-  ApplicationRecord.connection.reset_pk_sequence!('songs')
+ApplicationRecord.connection.reset_pk_sequence!('artists')
+ApplicationRecord.connection.reset_pk_sequence!('users')
+ApplicationRecord.connection.reset_pk_sequence!('albums')
+ApplicationRecord.connection.reset_pk_sequence!('playlists')
+ApplicationRecord.connection.reset_pk_sequence!('songs')
 
-  puts "Creating guest user..."
-  guest = User.create!(
-    username: 'guest',
-    email: 'guest@guest.com',
-    password: 'guestpassword'
-  )
+puts "Creating guest user..."
+guest = User.create!(
+  username: 'guest',
+  email: 'guest@guest.com',
+  password: 'guestpassword'
+)
 
-  puts "Creating artists..."
-  artists = [
-    { name: "Sami Yusuf" },
-    { name: "Joseph Attieh" },
-    { name: "Mesut Kurtis" },
-    { name: "Yara" },
-    { name: "Najwa Karam" },
-    { name: "Haife Wehbe" }
-  ]
+puts "Creating artists..."
+sami_yusuf = Artist.create!(name: "Sami Yusuf")
+joseph_attieh = Artist.create!(name: "Joseph Attieh")
+mesut_kurtis = Artist.create!(name: "Mesut Kurtis")
+yara = Artist.create!(name: "Yara")
+najwa_karam = Artist.create!(name: "Najwa Karam")
+haife_wehbe = Artist.create!(name: "Haife Wehbe")
 
-  all_artists = []
-  artists.each { |artist| all_artists << Artist.create!(artist) }
+puts "Creating albums..."
+al_muallim = Album.create!(
+  title: "Al-Mu'allim",
+  artist_id: sami_yusuf.id,
+  release_year: 2005,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf.png'
+)
 
-  puts "Creating albums..."
-  albums= [
-    { title: "Al-Mu'allim", artist_id: artists[0].id, release_year: 2005, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf.png' },
-    { title: "Hobb W Mkattar", artist_id: artists[1].id, release_year: 2015, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Joseph_Attieh.png' },
-    { title: "Tabassam", artist_id: artists[2].id, release_year: 2015, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Mesut+Kurtis.png' },
-    { title: "Ya Ayech Bi Oyouni", artist_id: artists[3].id, release_year: 2016, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Yara.png' },
-    { title: "هلليله مافي نوم", artist_id: artists[4].id, release_year: 2011, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Najwa+Karam.png' },
-    { title: "Sapiential", artist_id: artists[0].id, release_year: 2020, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential.png' },
-    { title: "Hawwa", artist_id: artists[5].id, release_year: 2018, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Hawwa.png' },
-    { title: "My Ummah", artist_id: artists[0].id, release_year: 2005, cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah.png' }
-  ]
+hobb_w_mkattar = Album.create!(
+  title: "Hobb W Mkattar",
+  artist_id: joseph_attieh.id,
+  release_year: 2015,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Joseph_Attieh.png'
+)
 
-  all_albums = []
-  albums.each { |album| all_albums << Album.create!(album) }
+tabassam = Album.create!(
+  title: "Tabassam",
+  artist_id: mesut_kurtis.id,
+  release_year: 2015,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Mesut+Kurtis.png'
+)
+
+ya_ayech_bi_oyouni = Album.create!(
+  title: "Ya Ayech Bi Oyouni",
+  artist_id: yara.id,
+  release_year: 2016,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Yara.png'
+)
+
+hillelha_mafi_nawm = Album.create!(
+  title: "هلليله مافي نوم",
+  artist_id: najwa_karam.id,
+  release_year: 2011,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Najwa+Karam.png'
+)
+
+sapiential = Album.create!(
+  title: "Sapiential",
+  artist_id: sami_yusuf.id,
+  release_year: 2020,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential.png'
+)
+
+hawwa = Album.create!(
+  title: "Hawwa",
+  artist_id: haife_wehbe.id,
+  release_year: 2018,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Hawwa.png'
+)
+
+my_ummah = Album.create!(
+  title: "My Ummah",
+  artist_id: sami_yusuf.id,
+  release_year: 2005,
+  album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah.png'
+)
+
+
+
+
 
 
   puts "Creating songs..."
