@@ -1,25 +1,31 @@
 import React from "react";
-import "./DeletePlaylistModal.css"
+import "./DeletePlaylistModal.css";
 
-const DeletePlaylistModal = ({ selectedPlaylist, onCancel, onDelete }) => (
-  <div className="deletePlaylistModalOverlay">
-    <div className="deletePlaylistModal">
-      <h2 className="deletePlaylistModalBold">Delete from Your Library?</h2>
-      <p className="deletePlaylistModalWarning">
-        This will delete
-        <span className="deletePlaylistModalBold">{selectedPlaylist && ` ${selectedPlaylist.name} `}</span>
-        from <span className="deletePlaylistModalBold">Your Library.</span>
-      </p>
-      <div className="deletePlaylistModalBtns">
-        <button className="deletePlaylistCancelBtn" onClick={onCancel}>
-          Cancel
-        </button>
-        <button className="deletePlaylistDeleteBtn" onClick={onDelete}>
-          Delete
-        </button>
+const DeletePlaylistModal = ({ selectedPlaylist, onCancel, onDelete }) => {
+  const handleOutsideClick = (e) => {
+    if (e.target.classList.contains("deletePlaylistModalOverlay")) onCancel();
+  };
+
+  return (
+    <div className="deletePlaylistModalOverlay" onClick={handleOutsideClick}>
+      <div className="deletePlaylistModal">
+        <h2 className="deletePlaylistModalBold">Delete from Your Library?</h2>
+        <p className="deletePlaylistModalWarning">
+          This will delete
+          <span className="deletePlaylistModalBold">{selectedPlaylist && ` ${selectedPlaylist.name} `}</span>
+          from <span className="deletePlaylistModalBold">Your Library.</span>
+        </p>
+        <div className="deletePlaylistModalBtns">
+          <button className="deletePlaylistCancelBtn" onClick={onCancel}>
+            Cancel
+          </button>
+          <button className="deletePlaylistDeleteBtn" onClick={onDelete}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default DeletePlaylistModal;
