@@ -121,7 +121,7 @@ const SideMenu = () => {
                 >
                   <div className="createPlaylist">
                     <CreatePlaylistIcon />
-                    Create a new playlist
+                    <p className="create-a-new-playlist">Create a new playlist</p>
                   </div>
                 </div>
               )}

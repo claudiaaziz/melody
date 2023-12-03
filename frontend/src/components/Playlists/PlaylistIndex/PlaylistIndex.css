@@ -38,5 +38,5 @@
   cursor: pointer;
   width: 5%;
   fill: white;
-  z-index: 1000;
+  z-index: 100;
 }
