@@ -27,8 +27,8 @@ const Actions = () => {
     dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
   };
   const handleNext = () => {
-    // if (!currentSongId) return
-    const newIdx = (currentSongIdx + 1) % albumSongs.length;
+    if (!currentSongId) return;
+    const newIdx = (currentSongIdx + 1) % albumSongs?.length;
     dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
   };
 

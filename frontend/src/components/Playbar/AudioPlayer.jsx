@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setVolume, updateProgress } from "../../store/playbar";
+import { playQueue, setVolume, updateProgress } from "../../store/playbar";
 import ProgressSlider from "../Playbar/ProgressSlider";
+import { getAlbum } from "../../store/albums";
 
 const AudioPlayer = () => {
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
@@ -37,6 +38,25 @@ const AudioPlayer = () => {
       audioRef.current.volume = volume;
     }
   }, [isPlaying, isAudioReady, volume]);
+
+
+  // after audio ends go to next song
+  const currentAlbumId = useSelector((state) => state.playbar?.currentAlbumId)
+  const album = useSelector(getAlbum(currentAlbumId))
+  const albumSongs = album?.albumSongs
+  const currentSongIdx = albumSongs?.indexOf(currentSongId)
+
+  useEffect(() => {
+  const handleNext = () => {
+    const newIdx = (currentSongIdx + 1) % albumSongs?.length;
+    dispatch(playQueue(albumSongs?.[newIdx], currentAlbumId));
+  };
+  const audioEle = document.querySelector("audio")
+      audioEle.addEventListener("ended", (event) => {
+      handleNext()
+  });
+
+  }, [audioRef, albumSongs, currentAlbumId, currentSongIdx, dispatch])
 
   // when metadata is loaded for the audio
   const handleLoadedMetadata = () => setIsAudioReady(true);
