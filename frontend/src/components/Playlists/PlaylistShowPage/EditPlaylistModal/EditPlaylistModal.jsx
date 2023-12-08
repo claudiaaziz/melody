@@ -35,7 +35,7 @@ const EditPlaylistModal = ({ playlistId, onClose, currentPlaylistName }) => {
             value={newPlaylistName}
             onChange={handleNameChange}
           />
-          <button className="updatePlaylistName" onClick={updatePlaylistName}>Save</button>
+          <button disabled={newPlaylistName === ""} className="updatePlaylistName" onClick={updatePlaylistName}>Save</button>
       </div>
     </div>
   );

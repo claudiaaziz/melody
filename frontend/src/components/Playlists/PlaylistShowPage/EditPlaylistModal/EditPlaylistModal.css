@@ -82,3 +82,9 @@
 .updatePlaylistName:hover {
   transform: scale(1.05);
 }
+
+.updatePlaylistName:disabled,
+.editPlaylistModal button:disabled {
+  background-color: gray;
+  transform: none;
+}
