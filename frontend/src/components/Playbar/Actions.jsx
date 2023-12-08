@@ -22,23 +22,25 @@ const Actions = () => {
   const handlePlay = () => dispatch(playSong());
   const handlePause = () => dispatch(pauseSong());
   const handlePrevious = () => {
+    if (!currentSongId) return
     const newIdx = (currentSongIdx - 1 + albumSongs.length) % albumSongs.length;
     dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
   };
   const handleNext = () => {
+    // if (!currentSongId) return
     const newIdx = (currentSongIdx + 1) % albumSongs.length;
     dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
   };
 
   return (
-    <div className="actionsContainer">
+    <div className="actionsContainer" disabled={!currentSongId}>
       <button onClick={handlePrevious} className='previousBtn'>
         <PreviousBtn className='previousIcon' />
       </button>
-      <button onClick={isPlaying ? handlePause : handlePlay} className='playAndPauseBtn'>
+      <button onClick={isPlaying ? handlePause : handlePlay} className='playAndPauseBtn' disabled={!currentSongId}>
         {isPlaying ? <PauseBtn className='playAndPauseIcon' /> : <PlayBtn className="playAndPauseIcon" />}
       </button>
-      <button onClick={handleNext} className='nextBtn'>
+      <button onClick={handleNext} className='nextBtn' disabled={!currentSongId}>
         <NextBtn className='nextIcon' />
       </button>
     </div>
