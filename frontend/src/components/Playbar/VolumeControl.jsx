@@ -5,6 +5,7 @@ import { setVolume } from "../../store/playbar";
 const VolumeControl = () => {
   const volume = useSelector((state) => state.playbar.volume);
   const dispatch = useDispatch();
+  const currentSongId = useSelector((state) => state.playbar.currentSongId);
 
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
@@ -13,6 +14,7 @@ const VolumeControl = () => {
 
   return (
     <input
+      disabled={!currentSongId}
       type="range"
       min="0"
       max="1"
