@@ -32,7 +32,7 @@ const Playbar = () => {
         </div>
       ) : (
         <div className="currentSongContainer">
-          <MelodyLogo />
+          {/* <MelodyLogo /> */}
         </div>
       )}
 
