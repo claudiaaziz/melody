@@ -1,0 +1,28 @@
+.search-album {
+  background-color: #242424;
+  height: 30px;
+  position: absolute;
+  top: 15px;
+  left: 470px;
+  width: 280px;
+  border-radius: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0 8px;
+}
+
+.search-album svg {
+  fill: white;
+  height: 20px;
+}
+
+.search-album input {
+  height: 100%;
+  width: 80%;
+  border: none;
+  color: white;
+  background-color: transparent;
+  outline: none;
+}
+

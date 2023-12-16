@@ -8,6 +8,7 @@ import Playbar from "./components/Playbar";
 import AlbumIndexPage from "./components/Albums/AlbumIndexPage";
 import AlbumShowPage from "./components/Albums/AlbumShowPage";
 import PlaylistShowPage from "./components/Playlists/PlaylistShowPage";
+import SearchAlbums from "./components/SearchAlbums";
 
 const App = () => {
   return (
@@ -25,17 +26,23 @@ const App = () => {
         <Route path="/signup">
           <SignupFormPage />
         </Route>
+        <Route path="/search" exact>
+          <Navbar />
+          <SideMenu />
+          <Playbar />
+          <SearchAlbums/>
+        </Route>
         <Route path="/albums/:albumId">
           <Navbar />
           <SideMenu />
           <Playbar />
-          <AlbumShowPage/>
+          <AlbumShowPage />
         </Route>
         <Route path="/playlists/:playlistId">
           <Navbar />
           <SideMenu />
           <Playbar />
-          <PlaylistShowPage/>
+          <PlaylistShowPage />
         </Route>
       </Switch>
     </>

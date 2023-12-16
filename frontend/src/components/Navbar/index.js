@@ -11,10 +11,10 @@ const Navbar = () => {
   return (
     <div className="navbarContainer">
       <div className="navbar">
-      <NavLinks/>
+        <NavLinks />
         {currentUser ? (
           // loggedInNav
-          <ProfileBtn />
+            <ProfileBtn />
         ) : (
           <>
             {/* loggedOutNav */}

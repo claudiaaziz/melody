@@ -89,8 +89,15 @@ const SideMenu = () => {
             </NavLink>
           </li>
           <li className="menuItem">
-            <SearchIcon />
-            Search
+            <NavLink
+              exact
+              to="/search"
+              className="menuItem"
+              activeClassName="activeLink"
+            >
+              <SearchIcon />
+              Search
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -121,7 +128,9 @@ const SideMenu = () => {
                 >
                   <div className="createPlaylist">
                     <CreatePlaylistIcon />
-                    <p className="create-a-new-playlist">Create a new playlist</p>
+                    <p className="create-a-new-playlist">
+                      Create a new playlist
+                    </p>
                   </div>
                 </div>
               )}
