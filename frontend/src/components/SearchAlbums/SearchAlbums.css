@@ -2,8 +2,8 @@
   background-color: #242424;
   height: 30px;
   position: absolute;
-  top: 15px;
-  left: 470px;
+  top: 13px;
+  left: 450px;
   width: 280px;
   border-radius: 30px;
   padding: 10px;
@@ -13,7 +13,7 @@
 }
 
 .search-album svg {
-  fill: white;
+  fill: gray;
   height: 20px;
 }
 
@@ -24,5 +24,10 @@
   color: white;
   background-color: transparent;
   outline: none;
+  font-size: .9rem;
+}
+
+.search-album:hover svg {
+  fill: white;
 }
 
