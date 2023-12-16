@@ -10,8 +10,8 @@
   flex-wrap: wrap;
   margin-left: 23%;
   margin-top: 8vh;
-  gap: 15px;
-  padding: 15px;
+  gap: 33px;
+  padding: 20px;
 }
 
 .albumIndexPage .albumLink {
@@ -23,7 +23,7 @@
   padding: 10px;
   box-sizing: border-box;
   cursor: pointer;
-  width: 14vw;
+  width: 13vw;
   padding-bottom: 25px;
   background-color: #181818;
   transition: background-color 0.8s;
