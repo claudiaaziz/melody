@@ -47,13 +47,13 @@
 }
 
 .linkSection {
-  background-color: #121212;
+  background-color: #141414;
   border-radius: 8px;
   margin-bottom: 8px;
 }
 
 .librarySection {
-  background-color: #121212;
+  background-color: #141414;
   border-radius: 8px;
   flex: 1;
 }
@@ -124,3 +124,4 @@
   background: #3E3D3D;
   transition: background-color 0.8s;
 }
+
