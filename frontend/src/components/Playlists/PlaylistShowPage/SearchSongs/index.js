@@ -25,29 +25,33 @@ const SearchSongs = () => {
 
   return (
     <div className="search-songs-div">
-      {/* <div className="album-index-items"> */}
-        <div>Let's find something for your playlist</div>
-        <div className="search-bar">
-          <SearchIcon />
-          <input
-            type="text"
-            placeholder="Search for songs"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+      <div>Let's find something for your playlist</div>
+      <div className="search-bar">
+        <SearchIcon />
+        <input
+          type="text"
+          placeholder="Search for songs"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+      {searchQuery && (
+        <div>
+          {filteredSongs.length === 0 ? (
+            <div className="no-songs-results-div">
+              <h2>No results found for "{searchQuery}"</h2>
+              <p>
+                Please make sure your words are spelled correctly, or use fewer
+                or different keywords.
+              </p>
+            </div>
+          ) : (
+            filteredSongs.map((song) => (
+              <PlaylistSongListItem key={song.id} song={song} />
+            ))
+          )}
         </div>
-        {filteredSongs.length === 0 ? (
-          <div className="no-songs-results-div">
-            <h2>No results found for "{searchQuery}"</h2>
-            <p>
-              Please make sure your words are spelled correctly, or use fewer or
-              different keywords.
-            </p>
-          </div>
-        ) : (
-          filteredSongs.map((song) => <PlaylistSongListItem song={song} />)
-        )}
-      {/* </div> */}
+      )}
     </div>
   );
 };

@@ -1,40 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./PlaylistSongListItem.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAlbums, getAlbum } from "../../../store/albums";
 
-const PlaylistSongListItem = ({ artistName, song, songNum, onClick }) => {
-  // get song duration from AWS
-  const [duration, setDuration] = useState(null);
-
-  const fetchSongDuration = async (url) => {
-    const audio = new Audio(url);
-    audio.addEventListener("loadedmetadata", () => {
-      setDuration(audio.duration);
-    });
-  };
+const PlaylistSongListItem = ({ song }) => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (song.songUrl) fetchSongDuration(song.songUrl);
-  }, [song.songUrl]);
+    dispatch(fetchAlbums());
+  }, [dispatch]);
 
-  const formatDuration = (duration) => {
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
+  const albumId = song.albumId;
+  // console.log(albumId)
+  const album = useSelector(getAlbum(albumId))
+
+
 
   return (
-    <ul className="songListItem" onClick={onClick}>
+    <ul className="playlist-song-list-item">
       <li>
-        <div className="songNum">
-          {songNum}
-        </div>
         <div className="songContent">
-          <div className="songTitle">
-            {song.title}
-          </div>
-          <div className="artistName">{artistName}</div>
+          <img className="albumCoverUrl" src={album?.albumCoverUrl} alt="" />
+          <div className="songTitle">{song.title}</div>
+          <div className="artistName">{album?.artistName}</div>
+          <div className="artistName">{album?.title}</div>
         </div>
-        <div className="songDuration">{formatDuration(duration)}</div>
       </li>
     </ul>
   );
