@@ -84,18 +84,18 @@
 }
 
 .playlist-name-error {
-  list-style: none;
   background-color: #e91529;
   /* position: absolute;
   top: 240px; */
   height: 35px;
-  width: 94%;
+  width: 97%;
   color: white;
   font-size: .75rem;
   display: flex;
-  padding: 0 10px;
+  padding: 0 5px;
   align-items: center;
-  gap: 10px;
+  border-radius: 5px;
+  gap: 5px;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
 }
 
