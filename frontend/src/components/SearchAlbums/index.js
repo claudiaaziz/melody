@@ -25,28 +25,24 @@ const SearchAlbums = () => {
   }, [searchQuery, albums]);
 
   return (
-    <>
-      <div className="albumIndexPage search-albums">
+    <div className="albumIndexPage">
+      <div className="album-index-items">
         <div className="search-album">
-          <SearchIcon/>
+          <SearchIcon />
           <input
             type="text"
             placeholder="What do you want to listen to?"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          </div>
-          {filteredAlbums.map((album) => (
-            <Link
-              to={`/albums/${album.id}`}
-              key={album.id}
-              className="albumLink"
-            >
-              <AlbumIndexItem album={album} />
-            </Link>
-          ))}
         </div>
-    </>
+        {filteredAlbums.map((album) => (
+          <Link to={`/albums/${album.id}`} key={album.id} className="albumLink">
+            <AlbumIndexItem album={album} />
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };
 

@@ -2,16 +2,19 @@
   font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
   background: linear-gradient(#141414, black);
   /* background-color: pink; */
-  /* height: 100vh; */
+  height: 78vh;
   width: 77%;
-  display: flex;
-  /* justify-content: start;
-  align-items: start; */
-  flex-wrap: wrap;
   margin-left: 23%;
   margin-top: 8vh;
-  gap: 33px;
   padding: 20px;
+}
+
+.album-index-items {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 33px;
 }
 
 .albumIndexPage .albumLink {

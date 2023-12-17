@@ -15,11 +15,13 @@ const AlbumIndexPage = () => {
 
   return (
     <div className="albumIndexPage">
+      <div className="album-index-items">
       {Object.values(albums).map((album) => (
         <Link to={`/albums/${album.id}`} key={album.id} className="albumLink">
           <AlbumIndexItem album={album} />
         </Link>
       ))}
+      </div>
     </div>
   );
 };
