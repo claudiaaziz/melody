@@ -3,7 +3,6 @@ import playlistCover from "../../../static/images/playlistCover.png";
 import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
 import { ReactComponent as EditPlaylistIcon } from "../../../static/LogoAndSVGS/playlists/editPlaylist.svg";
 import EditPlaylistModal from "./EditPlaylistModal/EditPlaylistModal"; 
-import SearchSongs from "./SearchSongs";
 
 const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
   // edit dropdown
@@ -61,7 +60,6 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
             playlistId={playlist.id}
           />
         )}
-        <SearchSongs/>
       </div>
     </>
   );

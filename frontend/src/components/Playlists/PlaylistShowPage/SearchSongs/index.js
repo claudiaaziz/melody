@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./SearchSongs.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSongs, getSongs } from "../../../../store/songs";
-// import AlbumIndexItem from "../Albums/AlbumIndexPage/AlbumIndexItem";
 import { ReactComponent as SearchIcon } from "../../../../static/LogoAndSVGS/sideMenu/search.svg";
 import PlaylistSongListItem from "../../PlaylistSongListItem";
 
@@ -25,19 +24,20 @@ const SearchSongs = () => {
   }, [searchQuery, songs]);
 
   return (
-    <div className="albumIndexPage">
-      <div className="album-index-items">
-        <div className="search-album">
+    <div className="search-songs-div">
+      {/* <div className="album-index-items"> */}
+        <div>Let's find something for your playlist</div>
+        <div className="search-bar">
           <SearchIcon />
           <input
             type="text"
-            placeholder="What do you want to listen to?"
+            placeholder="Search for songs"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         {filteredSongs.length === 0 ? (
-          <div className="no-results-div">
+          <div className="no-songs-results-div">
             <h2>No results found for "{searchQuery}"</h2>
             <p>
               Please make sure your words are spelled correctly, or use fewer or
@@ -45,12 +45,9 @@ const SearchSongs = () => {
             </p>
           </div>
         ) : (
-          filteredSongs.map((song) => (
-              // <AlbumIndexItem album={album} />
-            <PlaylistSongListItem song={song}/>
-          ))
+          filteredSongs.map((song) => <PlaylistSongListItem song={song} />)
         )}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

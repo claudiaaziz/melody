@@ -1,0 +1,63 @@
+.search-songs-div {
+  border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.search-bar {
+  background-color: #242424;
+  height: 29px;
+  /* position: absolute;
+  top: 11px;
+  left: 450px;
+  width: 280px; */
+  border-radius: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0 8px;
+}
+
+.search-bar svg {
+  fill: gray;
+  height: 20px;
+}
+
+.search-bar input {
+  height: 100%;
+  width: 80%;
+  border: none;
+  color: white;
+  background-color: transparent;
+  outline: none;
+  font-size: .9rem;
+}
+
+.search-bar:hover svg {
+  fill: white;
+}
+
+.no-songs-results-div {
+  /* position: absolute;
+  top: 0;
+  left: 13%; */
+  height: 100%;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 10px;
+}
+
+.no-songs-results-div h2 {
+  font-size: 1.5rem;
+}
+
+.no-songs-results-div p {
+  font-size: 1rem;
+  font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+}

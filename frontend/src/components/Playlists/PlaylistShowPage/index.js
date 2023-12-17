@@ -4,6 +4,7 @@ import { useParams, Redirect } from "react-router-dom";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import "./PlaylistShowPage.css";
 import PlaylistShowPageHeader from "./PlaylistShowPageHeader";
+import SearchSongs from "./SearchSongs";
 // import PlaylistShowPageSongListItem from "./PlaylistShowPageSongListItem";
 
 const PlaylistShowPage = () => {
@@ -39,6 +40,7 @@ const PlaylistShowPage = () => {
             onClick={() => handleSongClick(song.id)}
           />
         ))} */}
+      <SearchSongs />
     </div>
   );
 };
