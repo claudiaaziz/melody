@@ -89,9 +89,22 @@
 
 .loginErrors {
   list-style: none;
-  color: red;
-  font-size: 0.75rem;
+  background-color: #e91529;
+  position: absolute;
+  top: 240px;
+  height: 45px;
+  width: 40%;
+  color: white;
+  font-size: .9rem;
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  gap: 10px;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+}
+
+.loginErrors svg {
+  fill: white;
 }
 
 .loginContainer label {

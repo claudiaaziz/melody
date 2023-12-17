@@ -3,6 +3,7 @@ import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import MelodyLogo from "../../../static/LogoAndSVGS/melodyLogo"
+import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/sessions/error.svg";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -82,11 +83,14 @@ const LoginFormPage = () => {
         <h1>Log in to Spotify</h1>
 
         <hr />
-        <ul className="loginErrors">
+      {errors.length > 0 && (
+        <div className="loginErrors">
+          <ErrorIcon/>
           {errors.map((error) => (
             <li key={error}>{error}</li>
           ))}
-        </ul>
+        </div>
+      )}
 
         <form onSubmit={handleSubmit}>
           <label>
