@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./SongListItem.css";
+import "./AlbumSongListItem.css";
 import { useSelector } from "react-redux";
 
-const SongListItem = ({ artistName, song, songNum, onClick }) => {
+const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
   const currentSongId = useSelector((state) => state.playbar.currentSongId === song.id);
   // get song duration from AWS
   const [duration, setDuration] = useState(null);
@@ -38,4 +38,4 @@ const SongListItem = ({ artistName, song, songNum, onClick }) => {
   );
 };
 
-export default SongListItem;
+export default AlbumSongListItem;

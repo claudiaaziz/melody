@@ -6,8 +6,8 @@ import "./AlbumShowPage.css";
 import { getSongs } from "../../../store/songs";
 import { playQueue } from "../../../store/playbar";
 import AlbumShowPageHeader from "./AlbumShowPageHeader";
-import SongListItem from "../../SongListItem/SongListItem.jsx";
 import SignUpModal from "../../SignupAndLogin/Modal";
+import AlbumSongListItem from "../AlbumSongListItem/AlbumSongListItem";
 
 const AlbumShowPage = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const AlbumShowPage = () => {
         albumSongs
           .filter((song) => song) // filter out undefined songs
           .map((song, idx) => (
-            <SongListItem
+            <AlbumSongListItem
               key={song.id}
               song={song}
               songNum={idx + 1}
