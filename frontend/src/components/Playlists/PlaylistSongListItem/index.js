@@ -11,22 +11,18 @@ const PlaylistSongListItem = ({ song }) => {
   }, [dispatch]);
 
   const albumId = song.albumId;
-  // console.log(albumId)
-  const album = useSelector(getAlbum(albumId))
-
-
+  const album = useSelector(getAlbum(albumId));
 
   return (
-    <ul className="playlist-song-list-item">
-      <li>
-        <div className="songContent">
-          <img className="albumCoverUrl" src={album?.albumCoverUrl} alt="" />
-          <div className="songTitle">{song.title}</div>
-          <div className="artistName">{album?.artistName}</div>
-          <div className="artistName">{album?.title}</div>
-        </div>
-      </li>
-    </ul>
+    <div className="playlist-song-list-item">
+      <img className="albumCoverUrl" src={album?.albumCoverUrl} alt="" />
+      <div className="title-and-name">
+        <div className="songTitle">{song.title}</div>
+        <div className="artistName">{album?.artistName}</div>
+      </div>
+      <div className="playlist-song-album-title">{album?.title}</div>
+      <button className="add-song">Add</button>
+    </div>
   );
 };
 

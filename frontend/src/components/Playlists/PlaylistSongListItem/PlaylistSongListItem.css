@@ -1,7 +1,11 @@
 .playlist-song-list-item {
-  cursor: pointer;
   transition: background-color 0.8s;
-  margin-bottom: 10px;
+  display: flex;
+  /* border: 1px solid red; */
+  align-items: center;
+  padding: 7px;
+  border-radius: 5px;
+  text-align: start;
 }
 
 .playlist-song-list-item:hover {
@@ -9,27 +13,22 @@
   transition: background-color 0.8s;
 }
 
-.playlist-song-list-item li {
-  list-style: none;
+.playlist-song-list-item .albumCoverUrl {
+  width: 40px;
+  /* border: 1px solid blue; */
+  border-radius: 5px;
+}
+
+.playlist-song-list-item .title-and-name {
   display: flex;
-  align-items: center;
-  margin-top: 10px;
-  margin: 6px;
-}
-
-/* .playlist-song-list-item .albumCoverUrl */
-
-.songNum {
-  margin-left: 15px;
-  color: gray;
-}
-
-.songContent {
-  margin-left: 17px;
+  flex-direction: column;
+  padding-left: 10px;
 }
 
 .playlist-song-list-item .songTitle {
   font-size: .9rem;
+  width: 250px;
+  /* border: 1px solid red; */
 }
 
 .playlist-song-list-item .artistName {
@@ -38,14 +37,21 @@
   font-size: .8rem;
 }
 
-.songDuration {
+.playlist-song-list-item .playlist-song-album-title {
   margin-left: auto;
-  margin-right: 15px;
+  margin-right: auto;
   color: gray;
   font-size: .8rem;
+  width: 100px;
+text-align: left;
 }
 
-.currentSongId {
-  color: #1cd760;
-  ;
+.playlist-song-list-item .add-song {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 40px;
+  padding: 5px 12px;
+  font-weight: bold;
+  margin-left: auto;
 }
