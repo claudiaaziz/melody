@@ -95,7 +95,7 @@ const SignupForm = () => {
 
         <form onSubmit={handleSubmit}>
           <label>
-            Email
+            Email address
             <input
               type="text"
               value={email}
@@ -104,7 +104,14 @@ const SignupForm = () => {
             />
             {errors.map((error) => {
               if (error.includes("Email is invalid")) {
-                return <p key={error} className="error">This email is invalid. Make sure it's written like example@email.com</p>;
+                return  <div key={error} className="error-div">
+                          <div>
+                          <ErrorIcon/>
+                          </div>
+                          <div>
+                          This email is invalid. Make sure it's written like example@email.com
+                          </div>
+                        </div>
               }
               return null;
             })}
@@ -120,7 +127,10 @@ const SignupForm = () => {
             />
             {errors.map((error) => {
               if (error.includes("Username")) {
-                return <p key={error} className="error">{error}</p>;
+                return <div key={error} className="error-div">
+                    <div><ErrorIcon/></div>
+                    <div>Username should contain at least 3 characters</div>
+                  </div>;
               }
               return null;
             })}
@@ -136,14 +146,17 @@ const SignupForm = () => {
             />
             {errors.map((error) => {
               if (error.includes("Password")) {
-                return <p key={error} className="error">{error}</p>;
+                return <div key={error} className="error-div">
+                    <div><ErrorIcon/></div>
+                    <div>Password should contain at least 8 characters</div>
+                </div>;
               }
               return null;
             })}
           </label>
           
           <label>
-            Confirm Password
+            Confirm password
             <input
               type="password"
               value={confirmPassword}
@@ -152,7 +165,10 @@ const SignupForm = () => {
             />
             {errors.map((error) => {
               if (error.includes("Confirm Password")) {
-                return <p key={error} className="error"><ErrorIcon/> {error}</p>;
+                return <div key={error} className="error-div">
+                    <div><ErrorIcon/></div>
+                    <div>{error}</div>
+                  </div>;
               }
               return null;
             })}
