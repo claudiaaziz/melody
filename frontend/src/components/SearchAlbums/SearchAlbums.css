@@ -31,3 +31,26 @@
   fill: white;
 }
 
+.no-results-div {
+  position: absolute;
+  top: 0;
+  left: 13%;
+  height: 100%;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 10px;
+}
+
+.no-results-div h2 {
+  font-size: 1.5rem;
+}
+
+.no-results-div p {
+  font-size: 1rem;
+  font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+}

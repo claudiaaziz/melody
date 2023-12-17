@@ -36,11 +36,25 @@ const SearchAlbums = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        {filteredAlbums.map((album) => (
-          <Link to={`/albums/${album.id}`} key={album.id} className="albumLink">
-            <AlbumIndexItem album={album} />
-          </Link>
-        ))}
+        {filteredAlbums.length === 0 ? (
+          <div className="no-results-div">
+            <h2>No results found for "{searchQuery}"</h2>
+            <p>
+              Please make sure your words are spelled correctly, or use fewer or
+              different keywords.
+            </p>
+          </div>
+        ) : (
+          filteredAlbums.map((album) => (
+            <Link
+              to={`/albums/${album.id}`}
+              key={album.id}
+              className="albumLink"
+            >
+              <AlbumIndexItem album={album} />
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );
