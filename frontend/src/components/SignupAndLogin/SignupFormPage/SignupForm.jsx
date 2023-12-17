@@ -3,6 +3,7 @@ import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import MelodyLogo from "../../../static/LogoAndSVGS/melodyLogo"
+import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/sessions/error.svg";
 
 const SignupForm = () => {
   const dispatch = useDispatch();
@@ -91,11 +92,6 @@ const SignupForm = () => {
         <h1>Sign up to start listening</h1>
 
         <hr/>
-        <ul className="signupErrors">
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
 
         <form onSubmit={handleSubmit}>
           <label>
@@ -106,7 +102,14 @@ const SignupForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            {errors.map((error) => {
+              if (error.includes("Email is invalid")) {
+                return <p key={error} className="error">This email is invalid. Make sure it's written like example@email.com</p>;
+              }
+              return null;
+            })}
           </label>
+          
           <label>
             Username
             <input
@@ -115,7 +118,14 @@ const SignupForm = () => {
               onChange={(e) => setUsername(e.target.value)}
               required
             />
+            {errors.map((error) => {
+              if (error.includes("Username")) {
+                return <p key={error} className="error">{error}</p>;
+              }
+              return null;
+            })}
           </label>
+          
           <label>
             Password
             <input
@@ -124,7 +134,14 @@ const SignupForm = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            {errors.map((error) => {
+              if (error.includes("Password")) {
+                return <p key={error} className="error">{error}</p>;
+              }
+              return null;
+            })}
           </label>
+          
           <label>
             Confirm Password
             <input
@@ -133,9 +150,17 @@ const SignupForm = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+            {errors.map((error) => {
+              if (error.includes("Confirm Password")) {
+                return <p key={error} className="error"><ErrorIcon/> {error}</p>;
+              }
+              return null;
+            })}
           </label>
+          
           <button type="submit" className="signUpBtn">Sign up</button>
         </form>
+
         <hr/>
 
         <p className="loginLink">

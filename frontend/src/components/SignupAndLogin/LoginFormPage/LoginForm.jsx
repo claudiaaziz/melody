@@ -84,11 +84,9 @@ const LoginFormPage = () => {
 
         <hr />
       {errors.length > 0 && (
-        <div className="loginErrors">
+        <div className="loginError">
           <ErrorIcon/>
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
+          {errors}
         </div>
       )}
 

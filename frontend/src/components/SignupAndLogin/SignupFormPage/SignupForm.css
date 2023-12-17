@@ -53,7 +53,7 @@
   justify-content: space-evenly;
   width: 50vw;
   color: white;
-  height: 77vh;
+  height: 80vh;
 }
 
 .signupContainer h1 {
@@ -81,14 +81,19 @@
 .signupContainer form {
   display: flex;
   flex-direction: column;
+  /* border: 1px solid pink; */
+  gap: 15px;
 }
 
-.signupErrors {
-list-style: none;
-  color: red;
+.error {
+  width: 250px;
+  color: #f15e6c;
   font-size: 0.75rem;
-  border-radius: 5px;
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+}
+
+.error svg {
+  fill: #f15e6c
 }
 
 .signupContainer label {
