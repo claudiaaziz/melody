@@ -83,8 +83,23 @@
   transform: scale(1.05);
 }
 
-.updatePlaylistName:disabled,
-.editPlaylistModal button:disabled {
-  background-color: gray;
-  transform: none;
+.playlist-name-error {
+  list-style: none;
+  background-color: #e91529;
+  /* position: absolute;
+  top: 240px; */
+  height: 35px;
+  width: 94%;
+  color: white;
+  font-size: .75rem;
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  gap: 10px;
+  font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+}
+
+.playlist-name-error svg {
+  fill: white;
+  height: 20px;
 }
