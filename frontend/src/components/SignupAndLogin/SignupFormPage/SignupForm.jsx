@@ -97,7 +97,7 @@ const SignupForm = () => {
           <label>
             Email address
             <input
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -148,7 +148,7 @@ const SignupForm = () => {
               if (error.includes("Password")) {
                 return <div key={error} className="error-div">
                     <div><ErrorIcon/></div>
-                    <div>Password should contain at least 8 characters</div>
+                    <div>Password should contain at least 6 characters</div>
                 </div>;
               }
               return null;

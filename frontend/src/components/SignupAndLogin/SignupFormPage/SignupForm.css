@@ -76,6 +76,10 @@
   margin-left: .5vh;
 }
 
+.loginLink a:hover {
+  color: #1cd760;
+}
+
 /* form */
 
 .signupContainer form {
