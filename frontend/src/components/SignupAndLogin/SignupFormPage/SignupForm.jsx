@@ -109,7 +109,7 @@ const SignupForm = () => {
                           <ErrorIcon/>
                           </div>
                           <div>
-                          This email is invalid. Make sure it's written like example@email.com
+                          This email is invalid. Make sure it's written like example@email.com.
                           </div>
                         </div>
               }
@@ -129,7 +129,7 @@ const SignupForm = () => {
               if (error.includes("Username")) {
                 return <div key={error} className="error-div">
                     <div><ErrorIcon/></div>
-                    <div>Username should contain at least 3 characters</div>
+                    <div>Username should contain at least 3 characters.</div>
                   </div>;
               }
               return null;
@@ -148,7 +148,7 @@ const SignupForm = () => {
               if (error.includes("Password")) {
                 return <div key={error} className="error-div">
                     <div><ErrorIcon/></div>
-                    <div>Password should contain at least 6 characters</div>
+                    <div>Password should contain at least 6 characters.</div>
                 </div>;
               }
               return null;
