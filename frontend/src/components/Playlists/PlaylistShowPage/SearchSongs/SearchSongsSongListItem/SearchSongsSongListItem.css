@@ -47,7 +47,7 @@
   color: gray;
   font-size: .8rem;
   width: 100px;
-text-align: left;
+  /* text-align: left; */
 }
 
 .playlist-song-list-item .add-song {
@@ -58,4 +58,5 @@ text-align: left;
   padding: 5px 12px;
   font-weight: bold;
   margin-left: auto;
+  cursor: pointer;
 }
