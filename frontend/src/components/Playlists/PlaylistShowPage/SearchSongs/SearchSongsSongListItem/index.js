@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import "./PlaylistSongListItem.css";
+import "./SearchSongsSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAlbums, getAlbum } from "../../../store/albums";
+import { fetchAlbums, getAlbum } from "../../../../../store/albums"
 
-const PlaylistSongListItem = ({ song }) => {
+const SearchSongsSongListItem = ({ song }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const PlaylistSongListItem = ({ song }) => {
   );
 };
 
-export default PlaylistSongListItem;
+export default SearchSongsSongListItem;

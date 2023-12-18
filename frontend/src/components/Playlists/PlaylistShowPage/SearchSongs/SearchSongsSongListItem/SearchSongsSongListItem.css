@@ -8,6 +8,10 @@
   text-align: start;
 }
 
+.playlist-song-list-item:first-child {
+  margin-top: 10px;
+}
+
 .playlist-song-list-item:hover {
   background: #282828;
   transition: background-color 0.8s;

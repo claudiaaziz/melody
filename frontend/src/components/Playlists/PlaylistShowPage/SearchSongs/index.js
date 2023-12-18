@@ -3,7 +3,7 @@ import "./SearchSongs.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSongs, getSongs } from "../../../../store/songs";
 import { ReactComponent as SearchIcon } from "../../../../static/LogoAndSVGS/sideMenu/search.svg";
-import PlaylistSongListItem from "../../PlaylistSongListItem";
+import SearchSongsSongListItem from "./SearchSongsSongListItem";
 
 const SearchSongs = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const SearchSongs = () => {
 
   return (
     <div className="search-songs-div">
-      <div>Let's find something for your playlist</div>
+      <h2>Let's find something for your playlist</h2>
       <div className="search-bar">
         <SearchIcon />
         <input
@@ -47,7 +47,7 @@ const SearchSongs = () => {
             </div>
           ) : (
             filteredSongs.map((song) => (
-              <PlaylistSongListItem key={song.id} song={song} />
+              <SearchSongsSongListItem key={song.id} song={song} />
             ))
           )}
         </div>
