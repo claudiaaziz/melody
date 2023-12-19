@@ -98,9 +98,10 @@ const playlistsReducer = (state = {}, action) => {
       return { ...action.playlists };
     case RECEIVE_PLAYLIST:
       // debugger
+      console.log("11", action)
       return {
         ...state,
-        [action.playlist.playlist.id]: action.playlist.playlist,
+        [action.playlist.playlist.id]: action.playlist.playlist
       };
     case REMOVE_PLAYLIST:
       const newState = { ...state };

@@ -7,41 +7,40 @@ import PlaylistShowPageHeader from "./PlaylistShowPageHeader";
 import SearchSongs from "./SearchSongs";
 import { fetchPlaylistSongs, getPlaylistSongs } from "../../../store/playlistSongs";
 import { fetchSong, fetchSongs, getSong, getSongs } from "../../../store/songs";
+import PlaylistShowPageSongListItem from "./PlaylistShowPageSongListItem";
 // import PlaylistShowPageSongListItem from "./PlaylistShowPageSongListItem";
 
 const PlaylistShowPage = () => {
   const dispatch = useDispatch();
   const { playlistId } = useParams();
-  // console.log("eff" , playlistId)
   const playlist = useSelector(getPlaylist(playlistId))
-  // const playlistSongs = useSelector(getPlaylistSongs);
-  // console.log("playlist_songs", playlistSongs)
+  const playlistSongs = playlist?.playlistSongs;
   const currentUser = useSelector((state) => state.session.user);
-  // const songs = useSelector(getSongs)
-  // console.log("songs", songs)
+  const songs = useSelector(getSongs)
 
-    // const first = Object.values(playlistSongs)[0]
-    // console.log("first", first)
-    // const song = useSelector(getSong(first.songId))
+    const songsInThisPlaylist = Object.values(songs).filter((song) =>
+      playlistSongs?.includes(song.id)
+    );
+
+    console.log("songsInThisPlaylist", songsInThisPlaylist);
   
   useEffect(() => {
     dispatch(fetchPlaylist(playlistId));
-    console.log("fetching", playlistId)
-  }, [dispatch]);
+  }, [dispatch, playlistId]);
 
-  useEffect(() => {
-    dispatch(fetchPlaylistSongs());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   songsInThisPlaylist
+  // }, []);
 
-  //   useEffect(() => {
-  //   dispatch(fetchSongs());
+  // useEffect(() => {
+  //   dispatch(fetchPlaylistSongs());
   // }, [dispatch]);
 
-  // const songsInThisPlaylist = Object.values(playlistSongs).filter((song) => (
-  //   (song.playlistId === Number(playlistId))
-  // ));
+    useEffect(() => {
+    dispatch(fetchSongs());
+  }, [dispatch]);
 
-  // console.log("songsInThisPlaylist", songsInThisPlaylist)
+
   
   // const filteredSongs = Object.values(songs).filter((song) => {
   //   return song.id 
@@ -81,8 +80,7 @@ const PlaylistShowPage = () => {
         <PlaylistShowPageHeader playlist={playlist} currentUser={currentUser} />
       )}
 
-{/* <div>{song}</div> */}
-      
+      {/* <div>{song}</div> */}
 
       {/* <div>
         {Object.values(playlistSongs).map((playlistSong) =>
@@ -92,19 +90,16 @@ const PlaylistShowPage = () => {
 
       <hr />
 
-
-
-      {/* {playlist &&
-        Object.values(playlist.songs).map((song, idx) => (
+      {playlist &&
+        Object.values(songsInThisPlaylist).map((song, idx) => (
           <PlaylistShowPageSongListItem
             key={song.id}
             song={song}
             songNum={idx + 1}
-            artistName={song.artistName}
-            onClick={() => handleSongClick(song.id)}
+            // artistName={song.artistName}
+            // onClick={() => handleSongClick(song.id)}
           />
-        ))} */}
-      {}
+        ))}
       <SearchSongs />
     </div>
   );
