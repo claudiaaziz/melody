@@ -79,7 +79,6 @@ export const deletePlaylistSong = (playlistSongId) => async (dispatch) => {
 };
 
 const playlistSongsReducer = (state = {}, action) => {
-  console.log(action)
   switch (action.type) {
     case RECEIVE_PLAYLIST_SONGS:
       return { ...action.playlistSongs };

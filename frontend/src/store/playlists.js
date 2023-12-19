@@ -37,7 +37,6 @@ export const fetchPlaylists = () => async (dispatch) => {
 
 export const fetchPlaylist = (playlistId) => async (dispatch) => {
   const res = await fetch(`/api/playlists/${playlistId}`);
-
   if (res.ok) {
     const playlist = await res.json();
     dispatch(receivePlaylist(playlist));
@@ -98,7 +97,11 @@ const playlistsReducer = (state = {}, action) => {
     case RECEIVE_PLAYLISTS:
       return { ...action.playlists };
     case RECEIVE_PLAYLIST:
-      return { ...state, [action.playlist.id]: action.playlist };
+      // debugger
+      return {
+        ...state,
+        [action.playlist.playlist.id]: action.playlist.playlist,
+      };
     case REMOVE_PLAYLIST:
       const newState = { ...state };
       delete newState[action.playlistId];

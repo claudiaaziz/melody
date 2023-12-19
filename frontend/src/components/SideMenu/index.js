@@ -57,9 +57,10 @@ const SideMenu = () => {
     };
 
     const playlist = await dispatch(createPlaylist(createPlaylistData));
+    // debugger
 
-    if (playlist) {
-      setCreatedPlaylist(playlist);
+    if (playlist.playlist) {
+      setCreatedPlaylist(playlist.playlist);
       setRedirectToPlaylist(true);
     }
   };

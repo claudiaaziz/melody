@@ -14,10 +14,10 @@ const PlaylistShowPage = () => {
   const { playlistId } = useParams();
   // console.log("eff" , playlistId)
   const playlist = useSelector(getPlaylist(playlistId))
-  const playlistSongs = useSelector(getPlaylistSongs);
+  // const playlistSongs = useSelector(getPlaylistSongs);
   // console.log("playlist_songs", playlistSongs)
   const currentUser = useSelector((state) => state.session.user);
-  const songs = useSelector(getSongs)
+  // const songs = useSelector(getSongs)
   // console.log("songs", songs)
 
     // const first = Object.values(playlistSongs)[0]
@@ -25,12 +25,17 @@ const PlaylistShowPage = () => {
     // const song = useSelector(getSong(first.songId))
   
   useEffect(() => {
+    dispatch(fetchPlaylist(playlistId));
+    console.log("fetching", playlistId)
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(fetchPlaylistSongs());
   }, [dispatch]);
 
-    useEffect(() => {
-    dispatch(fetchSongs());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //   dispatch(fetchSongs());
+  // }, [dispatch]);
 
   // const songsInThisPlaylist = Object.values(playlistSongs).filter((song) => (
   //   (song.playlistId === Number(playlistId))
