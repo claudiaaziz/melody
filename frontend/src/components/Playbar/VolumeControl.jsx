@@ -5,7 +5,8 @@ import { setVolume } from "../../store/playbar";
 const VolumeControl = () => {
   const volume = useSelector((state) => state.playbar.volume);
   const dispatch = useDispatch();
-  const currentSongId = useSelector((state) => state.playbar.currentSongId);
+  const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx)
+  const currentSongId = useSelector((state) => state.playbar.queue[currentQueueIdx]);
 
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);

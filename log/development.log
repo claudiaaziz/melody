@@ -22906,3 +22906,132 @@ Processing by StaticPagesController#frontend_index as */*
 Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 292)
 
 
+Started GET "/albums/song8" for 127.0.0.1 at 2023-12-21 14:48:15 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song8"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Started GET "/albums/song7" for 127.0.0.1 at 2023-12-21 14:48:18 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song7"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Started GET "/albums/song6" for 127.0.0.1 at 2023-12-21 14:48:19 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song6"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Started GET "/albums/song5" for 127.0.0.1 at 2023-12-21 14:48:19 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song5"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Started GET "/albums/song4" for 127.0.0.1 at 2023-12-21 14:48:19 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song4"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Started GET "/albums/song3" for 127.0.0.1 at 2023-12-21 14:48:19 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song3"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Started GET "/albums/song2" for 127.0.0.1 at 2023-12-21 14:48:22 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song2"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Started GET "/albums/song1" for 127.0.0.1 at 2023-12-21 14:48:23 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song1"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 293)
+
+
+Started GET "/api/albums" for 127.0.0.1 at 2023-12-21 14:48:24 -0500
+Processing by Api::AlbumsController#index as JSON
+  Rendering api/albums/index.json.jbuilder
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/api/albums/index.json.jbuilder:1
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.5ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 2]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  [1m[36mArtist Load (1.6ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.4ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 4]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.1ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 5]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.1ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 6]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 7]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/index.json.jbuilder:4
+  [1m[36mSong Pluck (0.1ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 8]]
+  ↳ app/views/api/albums/index.json.jbuilder:6
+  Rendered api/albums/index.json.jbuilder (Duration: 25.4ms | Allocations: 11926)
+Completed 200 OK in 27ms (Views: 21.8ms | ActiveRecord: 4.4ms | Allocations: 12313)
+
+
+Started GET "/albums/song9" for 127.0.0.1 at 2023-12-21 14:48:25 -0500
+Started GET "/api/albums/6" for 127.0.0.1 at 2023-12-21 14:48:25 -0500
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"albums/song9"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Processing by Api::AlbumsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/albums_controller.rb:8:in `show'
+  Rendering api/albums/show.json.jbuilder
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/albums/show.json.jbuilder:3
+  [1m[36mSong Pluck (0.2ms)[0m  [1m[34mSELECT "songs"."id" FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 6]]
+  ↳ app/views/api/albums/show.json.jbuilder:5
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."album_id" = $1[0m  [["album_id", 6]]
+  ↳ app/views/api/albums/show.json.jbuilder:10
+  Rendered api/albums/show.json.jbuilder (Duration: 4.8ms | Allocations: 2847)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.9ms | Allocations: 3751)
+
+

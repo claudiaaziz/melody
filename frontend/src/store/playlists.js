@@ -1,12 +1,12 @@
 import csrfFetch from "./csrf";
 import {REMOVE_CURRENT_USER} from "./session"
 import {merge} from "lodash"
-import { RECEIVE_PLAYLIST_SONG } from "./playlistSongs";
+import { ADD_SONG_TO_PLAYLIST } from "./playlistSongs";
 
 export const RECEIVE_PLAYLISTS = `RECEIVE_PLAYLISTS`;
 export const RECEIVE_PLAYLIST = `RECEIVE_PLAYLIST`;
 export const REMOVE_PLAYLIST = `REMOVE_PLAYLIST`;
-export const REMOVE_PLAYLIST_SONG = `REMOVE_PLAYLIST_SONG`;
+export const REMOVE_SONG_FROM_PLAYLIST = `REMOVE_SONG_FROM_PLAYLIST`;
 
 const receivePlaylists = (playlists) => ({
   type: RECEIVE_PLAYLISTS,
@@ -23,10 +23,10 @@ const removePlaylist = (playlistId) => ({
   playlistId,
 });
 
-const removePlaylistSong = (playlistSongId, playlistId) => ({
-  type: REMOVE_PLAYLIST_SONG,
+const removeSongFromPlaylist = (playlistSongId, playlistId) => ({
+  type: REMOVE_SONG_FROM_PLAYLIST,
   playlistSongId,
-  playlistId
+  playlistId,
 });
 
 export const getPlaylists = (state) =>
@@ -101,13 +101,12 @@ export const deletePlaylist = (playlistId) => async (dispatch) => {
 };
 
 export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
-
   const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
     method: "DELETE",
   });
 
   if (res.ok) {
-    dispatch(removePlaylistSong(playlistSongId, playlistId));
+    dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
   }
 };
 
@@ -120,29 +119,35 @@ const playlistsReducer = (state = {}, action) => {
       return { ...action.playlists };
     case RECEIVE_PLAYLIST:
       return {
-        ...state, 
+        ...state,
         [action.playlist.playlist.id]: action.playlist.playlist,
       };
     case REMOVE_PLAYLIST:
       delete newState[action.playlistId];
       return newState;
-    case REMOVE_PLAYLIST_SONG:
-      console.log("1", action);
-      console.log("2", newState);
-      let indexToDelete = null
-      for (let i = 0; i < newState[action.playlistId].playlistSongs.length; i++) {
+    case REMOVE_SONG_FROM_PLAYLIST:
+      let indexToDelete = null;
+      for (
+        let i = 0;
+        i < newState[action.playlistId].playlistSongs.length;
+        i++
+      ) {
         let array = newState[action.playlistId].playlistSongs[i];
         if (array && array[1] === action.playlistSongId) {
-          indexToDelete = i
-          break
-        } 
+          indexToDelete = i;
+          break;
+        }
       }
-      newState[action.playlistId].playlistSongs =
-        newState[action.playlistId].playlistSongs.slice(0, indexToDelete).concat(newState[action.playlistId].playlistSongs.slice(indexToDelete + 1))
-        
+      newState[action.playlistId].playlistSongs = newState[
+        action.playlistId
+      ].playlistSongs
+        .slice(0, indexToDelete)
+        .concat(
+          newState[action.playlistId].playlistSongs.slice(indexToDelete + 1)
+        );
       return newState;
-    case RECEIVE_PLAYLIST_SONG:
-      return newState
+    case ADD_SONG_TO_PLAYLIST:
+      return newState;
     case REMOVE_CURRENT_USER:
       return {};
     default:

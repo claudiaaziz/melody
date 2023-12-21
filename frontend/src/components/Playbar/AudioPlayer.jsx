@@ -6,7 +6,8 @@ import { getAlbum } from "../../store/albums";
 
 const AudioPlayer = () => {
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
-  const currentSongId = useSelector((state) => state.playbar.currentSongId);
+  const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx)
+  const currentSongId = useSelector((state) => state.playbar.queue[currentQueueIdx]);
   const currentSongUrl = useSelector((state) => state.songs[currentSongId]?.songUrl);
   const volume = useSelector((state) => state.playbar.volume);
   const currentUser = useSelector((state) => state.session.user);

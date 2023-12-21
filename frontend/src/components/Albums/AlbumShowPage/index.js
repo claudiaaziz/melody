@@ -27,7 +27,8 @@ const AlbumShowPage = () => {
   // play album song logic
   const handleSongClick = (songId) => {
     if (currentUser) {
-      dispatch(playQueue(songId, albumId));
+      const currentQueueIdx = album.albumSongs.indexOf(songId)
+      dispatch(playQueue(album.albumSongs, currentQueueIdx));
     } else {
       setShowSignUpModal(true);
     }
