@@ -17,19 +17,21 @@ const SearchSongsSongListItem = ({ song }) => {
   const album = useSelector(getAlbum(albumId));
 
   const handleCreatePlaylistSong = () => {
-    console.log(song.id)
+    // console.log("handleCreatePlaylistSong", song.id, playlistId);
     dispatch(createPlaylistSong(song.id, playlistId));
   }
 
   return (
-    <div className="playlist-song-list-item">
+    <div className="search-songs-song-list-item">
       <img className="albumCoverUrl" src={album?.albumCoverUrl} alt="" />
       <div className="title-and-name">
         <div className="songTitle">{song.title}</div>
         <div className="artistName">{album?.artistName}</div>
       </div>
-      <div className="playlist-song-album-title">{album?.title}</div>
-      <button className="add-song" onClick={handleCreatePlaylistSong}>Add</button>
+      <div className="search-songs-album-title">{album?.title}</div>
+      <button className="add-song" onClick={handleCreatePlaylistSong}>
+        Add
+      </button>
     </div>
   );
 };

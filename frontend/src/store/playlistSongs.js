@@ -4,7 +4,6 @@ import { REMOVE_CURRENT_USER } from "./session";
 
 export const RECEIVE_PLAYLIST_SONGS = `RECEIVE_PLAYLIST_SONGS`;
 export const RECEIVE_PLAYLIST_SONG = `RECEIVE_PLAYLIST_SONG`;
-export const REMOVE_PLAYLIST_SONG = `REMOVE_PLAYLIST_SONG`;
 
 const receivePlaylistSongs = (playlistSongs) => ({
   type: RECEIVE_PLAYLIST_SONGS,
@@ -14,11 +13,6 @@ const receivePlaylistSongs = (playlistSongs) => ({
 const receivePlaylistSong = (playlistSong) => ({
   type: RECEIVE_PLAYLIST_SONG,
   playlistSong,
-});
-
-const removePlaylistSong = (playlistSongId) => ({
-  type: REMOVE_PLAYLIST_SONG,
-  playlistSongId,
 });
 
 export const getPlaylistSongs = (state) =>
@@ -71,26 +65,12 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
   }
 };
 
-export const deletePlaylistSong = (playlistSongId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
-    method: "DELETE",
-  });
-
-  if (res.ok) {
-    dispatch(removePlaylistSong(playlistSongId));
-  }
-};
-
 const playlistSongsReducer = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_PLAYLIST_SONGS:
-      return { ...action.playlistSongs };
-    case RECEIVE_PLAYLIST_SONG:
-      return { ...state, [action.playlistSong.songId]: action.playlistSongs };
-    case REMOVE_PLAYLIST_SONG:
-      const newState = { ...state };
-      delete newState[action.playlistSongId];
-      return newState;
+    // case RECEIVE_PLAYLIST_SONGS:
+    //   return { ...action.playlistSongs };
+    // case RECEIVE_PLAYLIST_SONG:
+    //   return { ...state, [action.playlistSong.songId]: action.playlistSongs };
     case REMOVE_CURRENT_USER:
       return {};
     default:

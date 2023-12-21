@@ -1,9 +1,12 @@
 import csrfFetch from "./csrf";
 import {REMOVE_CURRENT_USER} from "./session"
+import {merge} from "lodash"
+import { RECEIVE_PLAYLIST_SONG } from "./playlistSongs";
 
 export const RECEIVE_PLAYLISTS = `RECEIVE_PLAYLISTS`;
 export const RECEIVE_PLAYLIST = `RECEIVE_PLAYLIST`;
 export const REMOVE_PLAYLIST = `REMOVE_PLAYLIST`;
+export const REMOVE_PLAYLIST_SONG = `REMOVE_PLAYLIST_SONG`;
 
 const receivePlaylists = (playlists) => ({
   type: RECEIVE_PLAYLISTS,
@@ -20,11 +23,17 @@ const removePlaylist = (playlistId) => ({
   playlistId,
 });
 
+const removePlaylistSong = (playlistSongId, playlistId) => ({
+  type: REMOVE_PLAYLIST_SONG,
+  playlistSongId,
+  playlistId
+});
+
 export const getPlaylists = (state) =>
   state?.playlists ? state.playlists : [];
 
 export const getPlaylist = (playlistId) => (state) =>
-  state.playlists ? state.playlists[playlistId] : null;
+  state.playlists ? state.playlists[playlistId] : {};
 
 export const fetchPlaylists = () => async (dispatch) => {
   const res = await fetch("/api/playlists");
@@ -91,24 +100,51 @@ export const deletePlaylist = (playlistId) => async (dispatch) => {
   } 
 };
 
+export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
+
+  const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
+    method: "DELETE",
+  });
+
+  if (res.ok) {
+    dispatch(removePlaylistSong(playlistSongId, playlistId));
+  }
+};
+
 
 const playlistsReducer = (state = {}, action) => {
+  let newState = merge({}, state)
+  
   switch (action.type) {
     case RECEIVE_PLAYLISTS:
       return { ...action.playlists };
     case RECEIVE_PLAYLIST:
-      // debugger
-      console.log("11", action)
       return {
-        ...state,
-        [action.playlist.playlist.id]: action.playlist.playlist
+        ...state, 
+        [action.playlist.playlist.id]: action.playlist.playlist,
       };
     case REMOVE_PLAYLIST:
-      const newState = { ...state };
       delete newState[action.playlistId];
       return newState;
+    case REMOVE_PLAYLIST_SONG:
+      console.log("1", action);
+      console.log("2", newState);
+      let indexToDelete = null
+      for (let i = 0; i < newState[action.playlistId].playlistSongs.length; i++) {
+        let array = newState[action.playlistId].playlistSongs[i];
+        if (array && array[1] === action.playlistSongId) {
+          indexToDelete = i
+          break
+        } 
+      }
+      newState[action.playlistId].playlistSongs =
+        newState[action.playlistId].playlistSongs.slice(0, indexToDelete).concat(newState[action.playlistId].playlistSongs.slice(indexToDelete + 1))
+        
+      return newState;
+    case RECEIVE_PLAYLIST_SONG:
+      return newState
     case REMOVE_CURRENT_USER:
-      return {}
+      return {};
     default:
       return state;
   }

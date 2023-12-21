@@ -1,0 +1,75 @@
+.playlist-song-list-item {
+  transition: background-color 0.8s;
+  display: flex;
+  /* border: 1px solid red; */
+  align-items: center;
+  padding: 7px;
+  border-radius: 5px;
+  text-align: start;
+  cursor: pointer;
+}
+
+.playlist-song-list-item:hover {
+  background: #282828;
+  transition: background-color 0.8s;
+}
+
+.playlist-song-list-item .playlist-song-num {
+  margin-left: 15px;
+  color: gray;
+  width: 10px;
+} 
+
+.playlist-song-list-item .playlist-song-album-cover-url {
+  width: 40px;
+  /* border: 1px solid blue; */
+  border-radius: 5px;
+  margin-left: 15px;
+}
+
+.playlist-song-list-item .playlist-song-title-and-name {
+  display: flex;
+  flex-direction: column;
+  /* padding-left: 15px; */
+  margin-left: 15px;
+  /* border: 1px solid red; */
+}
+
+.playlist-song-list-item .playlist-song-song-title {
+  font-size: .9rem;
+  width: 250px;
+  /* border: 1px solid red; */
+}
+
+.playlist-song-list-item .playlist-song-artist-name {
+  color: gray;
+  margin-top: 6px;
+  font-size: .8rem;
+}
+
+.playlist-song-list-item .playlist-song-album-title {
+  margin-left: auto;
+  margin-right: auto;
+  color: gray;
+  font-size: .8rem;
+  width: 100px;
+  /* text-align: left; */
+}
+
+.playlist-song-list-item .song-duration {
+  margin-left: auto;
+  margin-right: 15px;
+  color: gray;
+  font-size: .8rem;
+}
+
+/* .playlist-song-list-item .add-song {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 40px;
+  padding: 5px 12px;
+  font-weight: bold;
+  margin-left: auto;
+  cursor: pointer;
+} */

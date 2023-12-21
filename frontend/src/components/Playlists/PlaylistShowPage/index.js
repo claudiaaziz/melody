@@ -1,78 +1,57 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import "./PlaylistShowPage.css";
 import PlaylistShowPageHeader from "./PlaylistShowPageHeader";
 import SearchSongs from "./SearchSongs";
-import { fetchPlaylistSongs, getPlaylistSongs } from "../../../store/playlistSongs";
+import {
+  fetchPlaylistSongs,
+  getPlaylistSongs,
+} from "../../../store/playlistSongs";
 import { fetchSong, fetchSongs, getSong, getSongs } from "../../../store/songs";
-import PlaylistShowPageSongListItem from "./PlaylistShowPageSongListItem";
-// import PlaylistShowPageSongListItem from "./PlaylistShowPageSongListItem";
+import PlaylistShowPageSongListItem from "./PlaylistSongListItem";
+import PlaylistSongListItem from "./PlaylistSongListItem";
 
 const PlaylistShowPage = () => {
   const dispatch = useDispatch();
   const { playlistId } = useParams();
-  const playlist = useSelector(getPlaylist(playlistId))
+  const playlist = useSelector(getPlaylist(playlistId));
   const playlistSongs = playlist?.playlistSongs;
   const currentUser = useSelector((state) => state.session.user);
-  const songs = useSelector(getSongs)
+  const songs = useSelector(getSongs);
+  const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
+  const [boolean, setBoolean] = useState(false);
 
-    const songsInThisPlaylist = Object.values(songs).filter((song) =>
-      playlistSongs?.includes(song.id)
-    );
+  let array = [];
 
-    console.log("songsInThisPlaylist", songsInThisPlaylist);
-  
   useEffect(() => {
     dispatch(fetchPlaylist(playlistId));
-  }, [dispatch, playlistId]);
+  }, [dispatch, playlistId, songs]);
 
-  // useEffect(() => {
-  //   songsInThisPlaylist
-  // }, []);
+  useEffect(() => {
+    setSongsInThisPlaylist([]);
+    array = []
+    const theSongsInThisPlaylist = Object.values(songs)
+      .map((song) => {
+        playlistSongs?.forEach((playlistSongsId) => {
+          if (playlistSongsId[0] === song.id) {
+            song.playlistSongId = playlistSongsId[1];
+            song.playlistId = playlistId;
+            array.push(song.id)
+          }
+        });
+        return song;
+      })
+      .filter((song) => song.playlistSongId && song.playlistId === playlistId && array.includes(song.id));
+    setSongsInThisPlaylist(theSongsInThisPlaylist);
+  }, [dispatch, boolean, playlistId, playlistSongs, songs, playlist]);
 
-  // useEffect(() => {
-  //   dispatch(fetchPlaylistSongs());
-  // }, [dispatch]);
-
-    useEffect(() => {
+  useEffect(() => {
     dispatch(fetchSongs());
   }, [dispatch]);
 
-
-  
-  // const filteredSongs = Object.values(songs).filter((song) => {
-  //   return song.id 
-  // })
-
-  // useEffect(() => {
-  //   dispatch(fetchSong(first?.songId));
-  // }, [first.songId]);
-
-  // const playlistSongsSongs = Object.values(songs).filter((song) => 
-
-
-  //   const playlistSongsSongs = Object.values(playlistSongs).filter((playlistSongsSong) =>
-  //     playlistSongsSong.id === 
-  //   );
-
-
-
-
-
-  
   if (!currentUser) return <Redirect to="/" />;
-  
-  // const handleSongClick = (songId) => {
-    //  dispatch(playQueue(songId, playlistId));
-    // };
-    
-    // const playlistSongs = Object.values(playlistSongs).map((playlistSong) =>
-    //   console.log(playlistSong)
-    // );
-    
-
 
   return (
     <div className="playlistShowPage">
@@ -80,22 +59,17 @@ const PlaylistShowPage = () => {
         <PlaylistShowPageHeader playlist={playlist} currentUser={currentUser} />
       )}
 
-      {/* <div>{song}</div> */}
-
-      {/* <div>
-        {Object.values(playlistSongs).map((playlistSong) =>
-        playlistSong
-    )}
-    </div> */}
-
       <hr />
 
       {playlist &&
-        Object.values(songsInThisPlaylist).map((song, idx) => (
-          <PlaylistShowPageSongListItem
+        songsInThisPlaylist.map((song, idx) => (
+          <PlaylistSongListItem
             key={song.id}
             song={song}
             songNum={idx + 1}
+            playlist={playlist}
+            playlistSongId={song.playlistSongId}
+            boolean={setBoolean}
             // artistName={song.artistName}
             // onClick={() => handleSongClick(song.id)}
           />
