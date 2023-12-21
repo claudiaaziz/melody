@@ -25,7 +25,7 @@ const AlbumShowPage = () => {
   const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
 
   // play album song logic
-  const handleSongClick = (songId) => {
+  const handleAlbumSongClick = (songId) => {
     if (currentUser) {
       const currentQueueIdx = album.albumSongs.indexOf(songId)
       dispatch(playQueue(album.albumSongs, currentQueueIdx));
@@ -49,7 +49,7 @@ const AlbumShowPage = () => {
               song={song}
               songNum={idx + 1}
               artistName={album.artistName}
-              onClick={() => handleSongClick(song.id)}
+              onClick={() => handleAlbumSongClick(song.id)}
             />
           ))}
       {showSignUpModal && (

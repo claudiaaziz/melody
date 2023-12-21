@@ -15,20 +15,14 @@ const Actions = () => {
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx)
   const currentSongId = useSelector((state) => state.playbar.queue[currentQueueIdx]);
 
-  const handlePlay = () => dispatch(playSong());
-  const handlePause = () => dispatch(pauseSong());
-  const handlePrevious = () => {
-    if (!currentSongId) return
-    dispatch(playPrev())
-  };
-  const handleNext = () => {
-    if (!currentSongId) return;
-    dispatch(playNext())
-  };
+  const handlePlay = () => dispatch(playSong())
+  const handlePause = () => dispatch(pauseSong())
+  const handlePrevious = () => dispatch(playPrev())
+  const handleNext = () => dispatch(playNext())
 
   return (
-    <div className="actionsContainer" disabled={!currentSongId}>
-      <button onClick={handlePrevious} className='previousBtn'>
+    <div className="actionsContainer">
+      <button onClick={handlePrevious} className='previousBtn' disabled={!currentSongId}>
         <PreviousBtn className='previousIcon' />
       </button>
       <button onClick={isPlaying ? handlePause : handlePlay} className='playAndPauseBtn' disabled={!currentSongId}>

@@ -16,8 +16,6 @@ const PlaylistSongListItem = ({
   boolean
 }) => {
   const dispatch = useDispatch();
-  console.log("playlist", playlist)
-  console.log("playlistId", playlist.id)
 
   useEffect(() => {
     dispatch(fetchAlbums());
@@ -57,7 +55,7 @@ const PlaylistSongListItem = ({
   };
 
   return (
-    <div className="playlist-song-list-item">
+    <div className="playlist-song-list-item" onClick={onClick}>
       <div className="playlist-song-num">{songNum}</div>
       <img
         className="playlist-song-album-cover-url"

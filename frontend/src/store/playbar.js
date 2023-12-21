@@ -19,11 +19,6 @@ export const playQueue = (songs, currentQueueIdx) => ({
   currentQueueIdx,
 });
 
-// export const playQueue = (songId, albumId) => ({
-//   type: PLAY_QUEUE,
-//   data: { songId, albumId },
-// });
-
 export const playPrev = () => ({
   type: PLAY_PREV
 })
@@ -64,12 +59,6 @@ const playbarReducer = (state = initialState, action) => {
         isPlaying: true,
         currentQueueIdx: action.currentQueueIdx,
       };
-    // return {
-    //   ...state,
-    //   isPlaying: true,
-    //   currentSongId: action.data.songId,
-    //   currentAlbumId: action.data.albumId,
-    // };
     case PLAY_NEXT:
       const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
       return { ...state, currentQueueIdx: newIdx };

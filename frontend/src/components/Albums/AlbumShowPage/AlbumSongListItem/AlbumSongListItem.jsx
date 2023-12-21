@@ -7,7 +7,6 @@ const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
   const currentSongId = useSelector((state) => state.playbar.queue[currentQueueIdx] === song.id);
   // get song duration from AWS
   const [duration, setDuration] = useState(null);
-
   const fetchSongDuration = async (url) => {
     const audio = new Audio(url);
     audio.addEventListener("loadedmetadata", () => {

@@ -5,13 +5,9 @@ import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import "./PlaylistShowPage.css";
 import PlaylistShowPageHeader from "./PlaylistShowPageHeader";
 import SearchSongs from "./SearchSongs";
-import {
-  fetchPlaylistSongs,
-  getPlaylistSongs,
-} from "../../../store/playlistSongs";
-import { fetchSong, fetchSongs, getSong, getSongs } from "../../../store/songs";
-import PlaylistShowPageSongListItem from "./PlaylistSongListItem";
+import { fetchSongs, getSongs } from "../../../store/songs";
 import PlaylistSongListItem from "./PlaylistSongListItem";
+import { playQueue } from "../../../store/playbar";
 
 const PlaylistShowPage = () => {
   const dispatch = useDispatch();
@@ -31,25 +27,44 @@ const PlaylistShowPage = () => {
 
   useEffect(() => {
     setSongsInThisPlaylist([]);
-    array = []
+    array = [];
     const theSongsInThisPlaylist = Object.values(songs)
       .map((song) => {
         playlistSongs?.forEach((playlistSongsId) => {
           if (playlistSongsId[0] === song.id) {
             song.playlistSongId = playlistSongsId[1];
             song.playlistId = playlistId;
-            array.push(song.id)
+            array.push(song.id);
           }
         });
         return song;
       })
-      .filter((song) => song.playlistSongId && song.playlistId === playlistId && array.includes(song.id));
+      .filter(
+        (song) =>
+          song.playlistSongId &&
+          song.playlistId === playlistId &&
+          array.includes(song.id)
+      );
     setSongsInThisPlaylist(theSongsInThisPlaylist);
   }, [dispatch, boolean, playlistId, playlistSongs, songs, playlist]);
 
   useEffect(() => {
     dispatch(fetchSongs());
   }, [dispatch]);
+
+  // play playlist song logic
+  const handlePlaylistSongClick = (songId) => {
+    // const currentQueueIdx = playlist.playlistSongs.indexOf(songId);
+    let currentQueueIdx = null
+    let playlistQueue = []
+    for (let i = 0; i < playlist.playlistSongs.length; i++) {
+      playlistQueue.push(playlist.playlistSongs[i][0]);
+      if (playlist.playlistSongs[i][0] === songId) {
+        currentQueueIdx = i
+      }
+    }
+    dispatch(playQueue(playlistQueue, currentQueueIdx));
+  };
 
   if (!currentUser) return <Redirect to="/" />;
 
@@ -71,7 +86,7 @@ const PlaylistShowPage = () => {
             playlistSongId={song.playlistSongId}
             boolean={setBoolean}
             // artistName={song.artistName}
-            // onClick={() => handleSongClick(song.id)}
+            onClick={() => handlePlaylistSongClick(song.id)}
           />
         ))}
       <SearchSongs />
