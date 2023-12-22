@@ -17,7 +17,6 @@ const SearchSongsSongListItem = ({ song }) => {
   const album = useSelector(getAlbum(albumId));
 
   const handleCreatePlaylistSong = () => {
-    // console.log("handleCreatePlaylistSong", song.id, playlistId);
     dispatch(createPlaylistSong(song.id, playlistId));
   }
 

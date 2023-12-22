@@ -8,11 +8,13 @@
   text-align: start;
   cursor: pointer;
   position: relative;
+  z-index: 0;
 }
 
 .playlist-song-list-item:hover {
   background: #282828;
   transition: background-color 0.8s;
+  z-index: 0;
 }
 
 .playlist-song-list-item .playlist-song-num {
@@ -90,7 +92,7 @@
   border-radius: 5px;
   padding: 10px;
   font-size: .8rem;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
