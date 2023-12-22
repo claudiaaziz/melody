@@ -6,8 +6,8 @@ import "./AlbumShowPage.css";
 import { getSongs } from "../../../store/songs";
 import { playQueue } from "../../../store/playbar";
 import AlbumShowPageHeader from "./AlbumShowPageHeader";
-import SignUpModal from "../../SignupAndLogin/Modal";
-import AlbumSongListItem from "../AlbumSongListItem/AlbumSongListItem";
+import AlbumSongListItem from "./AlbumSongListItem/AlbumSongListItem.jsx";
+import SignUpModal from "../../SignupAndLogin/SignUpModal/index.js";
 
 const AlbumShowPage = () => {
   const dispatch = useDispatch();
@@ -25,9 +25,10 @@ const AlbumShowPage = () => {
   const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
 
   // play album song logic
-  const handleSongClick = (songId) => {
+  const handleAlbumSongClick = (songId) => {
     if (currentUser) {
-      dispatch(playQueue(songId, albumId));
+      const currentQueueIdx = album.albumSongs.indexOf(songId)
+      dispatch(playQueue(album.albumSongs, currentQueueIdx));
     } else {
       setShowSignUpModal(true);
     }
@@ -48,7 +49,7 @@ const AlbumShowPage = () => {
               song={song}
               songNum={idx + 1}
               artistName={album.artistName}
-              onClick={() => handleSongClick(song.id)}
+              onClick={() => handleAlbumSongClick(song.id)}
             />
           ))}
       {showSignUpModal && (

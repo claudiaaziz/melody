@@ -5,15 +5,18 @@ import VolumeControl from "../Playbar/VolumeControl";
 import "./Playbar.css";
 import { getAlbum } from "../../store/albums";
 import { useSelector } from "react-redux";
-import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
+// import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
 
 const Playbar = () => {
-  const currentSongId = useSelector((state) => state?.playbar.currentSongId);
+  const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx);
+  const currentSongId = useSelector(
+    (state) => state.playbar.queue[currentQueueIdx]
+    );
   const songs = useSelector((state) => state?.songs);
   const currentSong = Object.values(songs).find(
     (song) => song.id === currentSongId
   );
-  const currentAlbumId = useSelector((state) => state?.playbar.currentAlbumId);
+  const currentAlbumId = currentSong?.albumId
   const album = useSelector(getAlbum(currentAlbumId));
 
   return (
@@ -26,7 +29,7 @@ const Playbar = () => {
             className="currentSongAlbumCover"
           />
           <div className="currentSongDetails">
-            <span className="currentSongTitle">{currentSong.title}</span>
+            <span className="currentSongTitle">{currentSong?.title}</span>
             <span className="currentSongArtistName">{album?.artistName}</span>
           </div>
         </div>

@@ -2,6 +2,8 @@ import { REMOVE_CURRENT_USER } from "./session";
 
 export const SET_VOLUME = "SET_VOLUME";
 export const PLAY_QUEUE = "PLAY_QUEUE";
+export const PLAY_PREV = "PLAY_PREV";
+export const PLAY_NEXT = "PLAY_NEXT";
 export const PAUSE_SONG = "PAUSE_SONG";
 export const PLAY_SONG = "PLAY_SONG";
 export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
@@ -11,10 +13,19 @@ export const setVolume = (volume) => ({
   volume,
 });
 
-export const playQueue = (songId, albumId) => ({
+export const playQueue = (songs, currentQueueIdx) => ({
   type: PLAY_QUEUE,
-  data: { songId, albumId },
+  songs,
+  currentQueueIdx,
 });
+
+export const playPrev = () => ({
+  type: PLAY_PREV
+})
+
+export const playNext = () => ({
+  type: PLAY_NEXT
+})
 
 export const pauseSong = () => ({
   type: PAUSE_SONG,
@@ -32,8 +43,9 @@ export const updateProgress = (progress) => ({
 const initialState = {
   volume: 0.5,
   isPlaying: false,
-  currentSongId: null,
+  currentQueueIdx: null,
   progress: 0,
+  queue: []
 };
 
 const playbarReducer = (state = initialState, action) => {
@@ -43,10 +55,17 @@ const playbarReducer = (state = initialState, action) => {
     case PLAY_QUEUE:
       return {
         ...state,
+        queue: action.songs,
         isPlaying: true,
-        currentSongId: action.data.songId,
-        currentAlbumId: action.data.albumId,
+        currentQueueIdx: action.currentQueueIdx,
       };
+    case PLAY_NEXT:
+      const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
+      return { ...state, currentQueueIdx: newIdx };
+    case PLAY_PREV:
+      const newSongIdx =
+        (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
+      return { ...state, currentQueueIdx: newSongIdx };
     case PAUSE_SONG:
       return { ...state, isPlaying: false };
     case PLAY_SONG:
@@ -54,7 +73,7 @@ const playbarReducer = (state = initialState, action) => {
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
     case REMOVE_CURRENT_USER:
-      return {}
+      return initialState;
     default:
       return state;
   }

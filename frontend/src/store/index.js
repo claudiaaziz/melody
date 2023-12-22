@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   albums,
   songs,
   playbar,
-  playlists
+  playlists,
 });
 
 let enhancer;

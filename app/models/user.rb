@@ -50,4 +50,5 @@ class User < ApplicationRecord
   end
 
   has_many :playlists
+  has_many :playlist_songs, through: :playlists
 end
