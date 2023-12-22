@@ -28,39 +28,29 @@ const PlaylistSongListItem = ({
   const albumId = song.albumId;
   const album = useSelector(getAlbum(albumId));
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   // start logic for delete song dropdown
   const [isDeleteSongOpen, setIsDeleteSongOpen] = useState(false);
 
-  const toggleDeleteSong = () => {
-    setIsDeleteSongOpen(!isDeleteSongOpen);
-  };
+  const toggleDeleteSong = () => setIsDeleteSongOpen(!isDeleteSongOpen);
 
-  const closeDeleteSongDropdown = () => {
-    setIsDeleteSongOpen(false);
-  };
+  // dont need bc hover
+  // const closeDeleteSongDropdown = () => setIsDeleteSongOpen(false);
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (isDeleteSongOpen) {
+  //       closeDeleteSongDropdown();
+  //     }
+  //   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isDeleteSongOpen) {
-        closeDeleteSongDropdown();
-      }
-    };
+  //   document.addEventListener("click", handleClickOutside);
 
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isDeleteSongOpen]);
+  //   return () => {
+  //     document.removeEventListener("click", handleClickOutside);
+  //   };
+  // }, [isDeleteSongOpen]);
 
   // delete playlist song
   const handleDeletePlaylistSong = () => {

@@ -23,14 +23,10 @@ const SideMenu = () => {
 
   // start logic for create playlist dropdown
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
-
-  const toggleCreatePlaylist = () => {
+  
+  const toggleCreatePlaylist = () =>
     setCreatePlaylistOpen(!isCreatePlaylistOpen);
-  };
-
-  const closeCreatePlaylistModal = () => {
-    setCreatePlaylistOpen(false);
-  };
+  const closeCreatePlaylistModal = () => setCreatePlaylistOpen(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
