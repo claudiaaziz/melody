@@ -1,11 +1,11 @@
 import csrfFetch from "./csrf";
 import {REMOVE_CURRENT_USER} from "./session"
 import {merge} from "lodash"
-import { ADD_SONG_TO_PLAYLIST } from "./playlistSongs";
 
 export const RECEIVE_PLAYLISTS = `RECEIVE_PLAYLISTS`;
 export const RECEIVE_PLAYLIST = `RECEIVE_PLAYLIST`;
 export const REMOVE_PLAYLIST = `REMOVE_PLAYLIST`;
+export const ADD_SONG_TO_PLAYLIST = `ADD_SONG_TO_PLAYLIST`;
 export const REMOVE_SONG_FROM_PLAYLIST = `REMOVE_SONG_FROM_PLAYLIST`;
 
 const receivePlaylists = (playlists) => ({
@@ -21,6 +21,11 @@ const receivePlaylist = (playlist) => ({
 const removePlaylist = (playlistId) => ({
   type: REMOVE_PLAYLIST,
   playlistId,
+});
+
+const addSongToPlaylist = (playlistSong) => ({
+  type: ADD_SONG_TO_PLAYLIST,
+  playlistSong,
 });
 
 const removeSongFromPlaylist = (playlistSongId, playlistId) => ({
@@ -100,6 +105,30 @@ export const deletePlaylist = (playlistId) => async (dispatch) => {
   } 
 };
 
+export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
+  try {
+    const res = await csrfFetch("/api/playlist_songs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ playlistSong: { songId, playlistId } }),
+    });
+
+    if (!res.ok) {
+      throw res;
+    }
+
+    const createdPlaylistSong = await res.json();
+    dispatch(addSongToPlaylist(createdPlaylistSong));
+    dispatch(fetchPlaylist(playlistId));
+    return createdPlaylistSong;
+  } catch (error) {
+    console.error("Error creating playlist song:", error);
+    return null;
+  }
+};
+
 export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
   const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
     method: "DELETE",
@@ -109,7 +138,6 @@ export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatc
     dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
   }
 };
-
 
 const playlistsReducer = (state = {}, action) => {
   let newState = merge({}, state)
@@ -148,6 +176,10 @@ const playlistsReducer = (state = {}, action) => {
       return newState;
     case ADD_SONG_TO_PLAYLIST:
       return newState;
+      // return {
+      //   ...state,
+      //   [action.playlistSong.id]: action.playlistSong,
+      // };
     case REMOVE_CURRENT_USER:
       return {};
     default:

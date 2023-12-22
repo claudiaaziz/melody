@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "./SearchSongsSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbum } from "../../../../../store/albums"
-import { createPlaylistSong } from "../../../../../store/playlistSongs";
+import { createPlaylistSong } from "../../../../../store/playlists";
 
 const SearchSongsSongListItem = ({ song }) => {
   const dispatch = useDispatch();

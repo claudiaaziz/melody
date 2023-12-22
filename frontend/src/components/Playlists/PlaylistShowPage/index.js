@@ -54,7 +54,6 @@ const PlaylistShowPage = () => {
 
   // play playlist song logic
   const handlePlaylistSongClick = (songId) => {
-    // const currentQueueIdx = playlist.playlistSongs.indexOf(songId);
     let currentQueueIdx = null
     let playlistQueue = []
     for (let i = 0; i < playlist.playlistSongs.length; i++) {
@@ -85,7 +84,7 @@ const PlaylistShowPage = () => {
             playlist={playlist}
             playlistSongId={song.playlistSongId}
             boolean={setBoolean}
-            // artistName={song.artistName}
+            artistName={song.artistName}
             onClick={() => handlePlaylistSongClick(song.id)}
           />
         ))}

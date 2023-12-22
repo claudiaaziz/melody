@@ -57,14 +57,12 @@ const SideMenu = () => {
     };
 
     const playlist = await dispatch(createPlaylist(createPlaylistData));
-    // debugger
 
-    if (playlist.playlist) {
-      setCreatedPlaylist(playlist.playlist);
+    if (playlist) {
+      setCreatedPlaylist(playlist);
       setRedirectToPlaylist(true);
     }
   };
-
   // end logic for create playlist dropdown
 
   useEffect(() => {

@@ -67,10 +67,7 @@ const PlaylistSongListItem = ({
         <div className="playlist-song-artist-name">{album?.artistName}</div>
       </div>
       <div className="playlist-song-album-title">{album?.title}</div>
-      <button className="" onClick={handleDeletePlaylistSong}>
-        Delete
-      </button>
-      {/* <DotsIcon className="dotsIcon" /> */}
+      <DotsIcon className="dotsIcon" onClick={handleDeletePlaylistSong} />
       <div className="song-duration">{formatDuration(duration)}</div>
     </div>
   );

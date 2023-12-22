@@ -5,7 +5,6 @@ import albums from "./albums";
 import songs from "./songs";
 import playbar from "./playbar"
 import playlists from "./playlists";
-import playlistSongs from "./playlistSongs";
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +12,6 @@ const rootReducer = combineReducers({
   songs,
   playbar,
   playlists,
-  playlistSongs
 });
 
 let enhancer;
