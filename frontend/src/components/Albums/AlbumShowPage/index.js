@@ -6,8 +6,8 @@ import "./AlbumShowPage.css";
 import { getSongs } from "../../../store/songs";
 import { playQueue } from "../../../store/playbar";
 import AlbumShowPageHeader from "./AlbumShowPageHeader";
-import SignUpModal from "../../SignupAndLogin/Modal";
 import AlbumSongListItem from "./AlbumSongListItem/AlbumSongListItem.jsx";
+import SignUpModal from "../../SignupAndLogin/SignUpModal/index.js";
 
 const AlbumShowPage = () => {
   const dispatch = useDispatch();
