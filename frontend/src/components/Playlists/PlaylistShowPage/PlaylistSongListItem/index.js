@@ -3,6 +3,7 @@ import "./PlaylistSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbum } from "../../../../store/albums";
 import { ReactComponent as DotsIcon } from "../../../../static/LogoAndSVGS/dots.svg";
+import { ReactComponent as TrashIcon } from "../../../../static/LogoAndSVGS/playlists/removeSong.svg";
 import { deletePlaylistSong } from "../../../../store/playlists";
 
 const PlaylistSongListItem = ({
@@ -35,6 +36,31 @@ const PlaylistSongListItem = ({
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  // start logic for delete song dropdown
+  const [isDeleteSongOpen, setIsDeleteSongOpen] = useState(false);
+
+  const toggleDeleteSong = () => {
+    setIsDeleteSongOpen(!isDeleteSongOpen);
+  };
+
+  const closeDeleteSongDropdown = () => {
+    setIsDeleteSongOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isDeleteSongOpen) {
+        closeDeleteSongDropdown();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isDeleteSongOpen]);
 
   // delete playlist song
   const handleDeletePlaylistSong = () => {
@@ -69,7 +95,11 @@ const PlaylistSongListItem = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={`playlist-song-num ${currentSongId ? "currentSongId" : ""}`}> {songNum} </div>
+      <div
+        className={`playlist-song-num ${currentSongId ? "currentSongId" : ""}`}
+      >
+        {songNum}
+      </div>
       <img
         className="playlist-song-album-cover-url"
         src={album?.albumCoverUrl}
@@ -87,7 +117,22 @@ const PlaylistSongListItem = ({
       </div>
       <div className="playlist-song-album-title">{album?.title}</div>
       {isHovered ? (
-        <DotsIcon className="dotsIcon" onClick={handleDeletePlaylistSong} />
+        <>
+          <DotsIcon className="dotsIcon" onClick={toggleDeleteSong} />
+          {isDeleteSongOpen && (
+            <div
+              className="remove-playlist-song-dropdown"
+              onClick={handleDeletePlaylistSong}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="removeSong">
+                <TrashIcon />
+                <p>Remove from this playlist</p>
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <div className="song-duration">{formatDuration(duration)}</div>
       )}

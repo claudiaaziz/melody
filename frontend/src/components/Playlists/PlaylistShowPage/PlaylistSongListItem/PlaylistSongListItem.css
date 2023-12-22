@@ -65,6 +65,12 @@
   /* border: 1px solid pink; */
 }
 
+.playlist-song-list-item .currentSongId {
+  color: #1cd760;
+}
+
+/* delete song */
+
 .playlist-song-list-item .dotsIcon {
   margin-left: auto;
   margin-right: 40px;
@@ -72,8 +78,44 @@
   width: 20px;
   fill: white;
   z-index: 100;
+  position: relative;
 }
 
-.playlist-song-list-item .currentSongId {
-  color: #1cd760;
+.remove-playlist-song-dropdown {
+  position: absolute;
+  width: 13%;
+  top: 50%;
+  right: 5%;
+  background-color: #282828;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: .8rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.remove-playlist-song-dropdown svg {
+  width: 10%;
+  fill: gray;
+  padding-right: 1px;
+}
+
+.remove-playlist-song-dropdown:hover {
+  background: #3E3D3D;
+  transition: background-color 0.8s;
+}
+
+.removeSong {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.removeSong p {
+  color: white;
+  margin-top: 2px;
+  font-size: .85rem;
+}
+
