@@ -64,6 +64,7 @@ const SignupForm = () => {
             } catch {
               // if parsing as JSON fails, get the response body as text
               data = await res.text();
+              debugger
             }
 
             // handling errors in the response data
@@ -71,12 +72,12 @@ const SignupForm = () => {
             else if (data) setErrors([data]);
             else setErrors([res.statusText]);
           })
-      );
-    }
-
-    return setErrors([
-      "Confirm Password field must be the same as the Password field.",
-    ]);
+          );
+        }
+        
+        return setErrors([
+          "Confirm Password field must be the same as the Password field.",
+        ]);
   };
 
   return (
@@ -103,14 +104,10 @@ const SignupForm = () => {
               required
             />
             {errors.map((error) => {
-              if (error.includes("Email is invalid")) {
+              if (error.includes("Email")) {
                 return  <div key={error} className="error-div">
-                          <div>
-                          <ErrorIcon/>
-                          </div>
-                          <div>
-                          This email is invalid. Make sure it's written like example@email.com.
-                          </div>
+                          <div><ErrorIcon/></div>
+                          <div>{error}</div>
                         </div>
               }
               return null;
@@ -148,7 +145,7 @@ const SignupForm = () => {
               if (error.includes("Password")) {
                 return <div key={error} className="error-div">
                     <div><ErrorIcon/></div>
-                    <div>Password should contain at least 6 characters.</div>
+                    <div>{error}</div>
                 </div>;
               }
               return null;
@@ -164,11 +161,11 @@ const SignupForm = () => {
               required
             />
             {errors.map((error) => {
-              if (error.includes("Confirm Password")) {
+              if (error.includes("Password")) {
                 return <div key={error} className="error-div">
                     <div><ErrorIcon/></div>
                     <div>{error}</div>
-                  </div>;
+                  </div>
               }
               return null;
             })}
