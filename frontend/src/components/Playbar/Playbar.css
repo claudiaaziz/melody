@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   gap: 12%;
+  border: 1px solid pink;
 }
 
 /* actionsAndProgressSlider */
@@ -22,6 +23,7 @@
   align-items: center;
   width: 50%;
   gap: 9px;
+  border: 1px solid red;
 }
 
 /* actions */
@@ -110,13 +112,13 @@
   align-items: center;
   justify-content: center;
   width: 11%;
+  border: 1px solid blue;
 }
 
 .volumeSlider {
   width: 50%;
   appearance: none;
   cursor: pointer;
-  margin-top: 17px;
 }
 
 .volumeSlider::-webkit-slider-runnable-track {
@@ -144,6 +146,7 @@
   gap: 10px;
   align-items: center;
   width: 11%;
+  border: 1px solid aqua;
 }
 
 .currentSongAlbumCover {
