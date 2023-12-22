@@ -3,8 +3,7 @@ import "./PlaylistSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbum } from "../../../../store/albums";
 import { ReactComponent as DotsIcon } from "../../../../static/LogoAndSVGS/dots.svg";
-import { deletePlaylistSong, fetchPlaylist } from "../../../../store/playlists";
-
+import { deletePlaylistSong } from "../../../../store/playlists";
 
 const PlaylistSongListItem = ({
   artistName,
@@ -13,8 +12,12 @@ const PlaylistSongListItem = ({
   onClick,
   playlist,
   playlistSongId,
-  boolean
+  boolean,
 }) => {
+  const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx);
+  const currentSongId = useSelector(
+    (state) => state.playbar.queue[currentQueueIdx] === song.id
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,15 +26,20 @@ const PlaylistSongListItem = ({
 
   const albumId = song.albumId;
   const album = useSelector(getAlbum(albumId));
-  // const currentSongId = useSelector(
-  //   (state) => state.playbar.currentSongId === song.id
-  // );
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   // delete playlist song
   const handleDeletePlaylistSong = () => {
-    console.log("💗", playlistSongId)
     dispatch(deletePlaylistSong(playlistSongId, playlist.id));
-    boolean(true)
+    boolean(true);
   };
 
   // get song duration from AWS
@@ -55,20 +63,34 @@ const PlaylistSongListItem = ({
   };
 
   return (
-    <div className="playlist-song-list-item" onClick={onClick}>
-      <div className="playlist-song-num">{songNum}</div>
+    <div
+      className="playlist-song-list-item"
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className={`playlist-song-num ${currentSongId ? "currentSongId" : ""}`}> {songNum} </div>
       <img
         className="playlist-song-album-cover-url"
         src={album?.albumCoverUrl}
         alt=""
       />
       <div className="playlist-song-title-and-name">
-        <div className="playlist-song-song-title">{song.title}</div>
+        <div
+          className={`playlist-song-song-title ${
+            currentSongId ? "currentSongId" : ""
+          }`}
+        >
+          {song.title}
+        </div>
         <div className="playlist-song-artist-name">{album?.artistName}</div>
       </div>
       <div className="playlist-song-album-title">{album?.title}</div>
-      <DotsIcon className="dotsIcon" onClick={handleDeletePlaylistSong} />
-      <div className="song-duration">{formatDuration(duration)}</div>
+      {isHovered ? (
+        <DotsIcon className="dotsIcon" onClick={handleDeletePlaylistSong} />
+      ) : (
+        <div className="song-duration">{formatDuration(duration)}</div>
+      )}
     </div>
   );
 };
