@@ -64,43 +64,43 @@ The playbarReducer ensures smooth transitions of the playbars's state, contribut
 These useEffect hooks collectively contribute to the dynamic and responsive management of audio playback.
 
 ```javascript
-// Play/ pause audio
-useEffect(() => {
-  if (isAudioReady && isPlaying && currentUser) {
-    audioRef.current.play();
-  } else {
-    audioRef.current.pause();
-  }
-}, [isPlaying, isAudioReady, currentUser]);
+  // Play/ pause audio
+  useEffect(() => {
+    if (isAudioReady && isPlaying && currentUser) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying, isAudioReady, currentUser]);
 
-// Update src if currentSongUrl changes
-useEffect(() => {
-  if (currentSongUrl) {
-    setIsAudioReady(false);
-    audioRef.current.src = currentSongUrl;
-  }
-}, [currentSongUrl]);
+  // Update src if currentSongUrl changes
+  useEffect(() => {
+    if (currentSongUrl) {
+      setIsAudioReady(false);
+      audioRef.current.src = currentSongUrl;
+    }
+  }, [currentSongUrl]);
 
-// Update volume if volume state changes
-useEffect(() => {
-  if (volume) {
-    audioRef.current.volume = volume;
-  }
-}, [isPlaying, isAudioReady, volume]);
-```
+  // Update volume if volume state changes
+  useEffect(() => {
+    if (volume) {
+      audioRef.current.volume = volume;
+    }
+  }, [isPlaying, isAudioReady, volume]);
+  ```
 
 ### Queue Handling:
 
 Taking into account the current song index and the total number of songs in the album/ playlist efficiently handles previous and next song actions. Ensuring a smooth transition between songs.
 
 ```javascript
-    case PLAY_NEXT:
-      const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
-      return { ...state, currentQueueIdx: newIdx };
-    case PLAY_PREV:
-      const newSongIdx =
-        (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
-      return { ...state, currentQueueIdx: newSongIdx };
+  case PLAY_NEXT:
+    const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
+    return { ...state, currentQueueIdx: newIdx };
+  case PLAY_PREV:
+    const newSongIdx =
+      (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
+    return { ...state, currentQueueIdx: newSongIdx };
 ```
 
 ## Future Implementations:

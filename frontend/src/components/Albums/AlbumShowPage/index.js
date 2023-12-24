@@ -40,22 +40,24 @@ const AlbumShowPage = () => {
 
       <hr />
 
-      {album &&
-        albumSongs
-          .filter((song) => song) // filter out undefined songs
-          .map((song, idx) => (
-            <AlbumSongListItem
-              key={song.id}
-              song={song}
-              songNum={idx + 1}
-              artistName={album.artistName}
-              onClick={() => handleAlbumSongClick(song.id)}
-            />
-          ))}
-      {showSignUpModal && (
-        <SignUpModal onClose={() => setShowSignUpModal(false)} />
-      )}
-    </div>
+      {/* <div id="album-song-list"> */}
+        {album &&
+          albumSongs
+            .filter((song) => song) // filter out undefined songs
+            .map((song, idx) => (
+              <AlbumSongListItem
+                key={song.id}
+                song={song}
+                songNum={idx + 1}
+                artistName={album.artistName}
+                onClick={() => handleAlbumSongClick(song.id)}
+              />
+            ))}
+        {showSignUpModal && (
+          <SignUpModal onClose={() => setShowSignUpModal(false)} />
+        )}
+      </div>
+    // </div>
   );
 };
 

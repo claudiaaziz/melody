@@ -2,6 +2,7 @@
   cursor: pointer;
   transition: background-color 0.8s;
   margin-bottom: 10px;
+  /* border: 1px solid aqua; */
 }
 
 .songListItem:hover {
