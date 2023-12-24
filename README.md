@@ -27,23 +27,36 @@
 The playbarReducer ensures smooth transitions of the playbars's state, contributing to a seamless music playback experience.
 
 ```javascript
-const playbarReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case PLAY_QUEUE:
-      return {
-        ...state,
-        isPlaying: true,
-        currentSongId: action.data.songId,
-        currentAlbumId: action.data.albumId,
-      };
-    case PAUSE_SONG:
-      return { ...state, isPlaying: false };
-    case PLAY_SONG:
-      return { ...state, isPlaying: true };
-    default:
-      return state;
-  }
-};
+  const playbarReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case SET_VOLUME:
+        return { ...state, volume: action.volume };
+      case PLAY_QUEUE:
+        return {
+          ...state,
+          queue: action.songs,
+          isPlaying: true,
+          currentQueueIdx: action.currentQueueIdx,
+        };
+      case PLAY_NEXT:
+        const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
+        return { ...state, currentQueueIdx: newIdx };
+      case PLAY_PREV:
+        const newSongIdx =
+          (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
+        return { ...state, currentQueueIdx: newSongIdx };
+      case PAUSE_SONG:
+        return { ...state, isPlaying: false };
+      case PLAY_SONG:
+        return { ...state, isPlaying: true };
+      case UPDATE_PROGRESS:
+        return { ...state, progress: action.progress };
+      case REMOVE_CURRENT_USER:
+        return initialState;
+      default:
+        return state;
+    }
+  };
 ```
 
 ### Managing Audio Playback and State Updates
@@ -76,18 +89,20 @@ useEffect(() => {
 }, [isPlaying, isAudioReady, volume]);
 ```
 
-### Previous and Next Song Navigation/ Song Queue Handling:
+### Queue Handling:
 
-Taking into account the current song index and the total number of songs in the album efficiently handles previous and next song actions. Ensuring a smooth transition between songs.
+Taking into account the current song index and the total number of songs in the album/ playlist efficiently handles previous and next song actions. Ensuring a smooth transition between songs.
 
 ```javascript
-const handlePrevious = () => {
-  const newIdx = (currentSongIdx - 1 + albumSongs.length) % albumSongs.length;
-  dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
-};
-
-const handleNext = () => {
-  const newIdx = (currentSongIdx + 1) % albumSongs.length;
-  dispatch(playQueue(albumSongs[newIdx], currentAlbumId));
-};
+    case PLAY_NEXT:
+      const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
+      return { ...state, currentQueueIdx: newIdx };
+    case PLAY_PREV:
+      const newSongIdx =
+        (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
+      return { ...state, currentQueueIdx: newSongIdx };
 ```
+
+## Future Implementations:
+- Follow Artists/ Artist show page
+- Like Songs/ Liked Songs Playlist
