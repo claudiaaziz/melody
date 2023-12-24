@@ -503,6 +503,112 @@
     album_id: le_cose_cambiano.id,
     song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Le+cose+cambiano+-+Ancora_Qua.mp3"
   )
-  
+  # Ya Kahera
+  Song.create!(
+    title: "MSR",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+MSR.mp3"
+  )
+  Song.create!(
+    title: "ERSH",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+ERSH.mp3"
+  )
+  Song.create!(
+    title: "HFK",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+HFK.mp3"
+  )
+  Song.create!(
+    title: "3ALAM",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+3ALAM.mp3"
+  )
+  Song.create!(
+    title: "Sawwah",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+Sawwah.mp3"
+  )
+  Song.create!(
+    title: "YAZMEELY",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+YAZMEELY.mp3"
+  )
+  Song.create!(
+    title: "YA DONYA ANA BAREE2",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+YA+DONYA+ANA+BAREE2.mp3"
+  )
+  Song.create!(
+    title: "RAP",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+RAP.mp3"
+  )
+  Song.create!(
+    title: "SOURA",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+SOURA.mp3"
+  )
+  Song.create!(
+    title: "REZ2Y",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+REZ2Y.mp3"
+  )
+  Song.create!(
+    title: "M3 EL SALAMA",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+M3+EL+SALAMA.mp3"
+  )
+  Song.create!(
+    title: "YA MOSLMEN",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+YA+MOSLMEN.mp3"
+  )
+  Song.create!(
+    title: "HEKAYA",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+HEKAYA.mp3"
+  )
+  Song.create!(
+    title: "BYE",
+    album_id: ya_kahera.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Ya+Kahera+-+BYE.mp3"
+  )
+  # Masum
+  Song.create!(
+    title: "Aman Aman",
+    album_id: masum.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+Aman_Aman.mp3"
+  )
+  Song.create!(
+    title: "Hoşuna Mı Gidiyor?",
+    album_id: masum.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+Hosuna+Mi+Gidiyor%3F.mp3"
+  )
+  Song.create!(
+    title: "Masum",
+    album_id: masum.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+Masum.mp3"
+  )
+  Song.create!(
+    title: "Adeyyo",
+    album_id: masum.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+Adeyyo.mp3"
+  )
+  Song.create!(
+    title: "Karma",
+    album_id: masum.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+Karma.mp3"
+  )
+  Song.create!(
+    title: "Olsun",
+    album_id: masum.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+Olsun.mp3"
+  )
+  Song.create!(
+    title: "Şok Oldum",
+    album_id: masum.id,
+    song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+S%CC%A7ok_Oldum.mp3"
+  )
 
   puts "Done!"
