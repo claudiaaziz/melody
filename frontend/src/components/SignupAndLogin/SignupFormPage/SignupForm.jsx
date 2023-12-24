@@ -64,7 +64,6 @@ const SignupForm = () => {
             } catch {
               // if parsing as JSON fails, get the response body as text
               data = await res.text();
-              debugger
             }
 
             // handling errors in the response data
