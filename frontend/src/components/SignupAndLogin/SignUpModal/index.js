@@ -9,15 +9,17 @@ const SignUpModal = ({ onClose }) => {
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
 
+  const handleModalClick = (e) => e.stopPropagation();
+
   return (
     <div className="modalOverlay" onClick={onClose}>
-      <div className="modal">
+      <div className="modal" onClick={handleModalClick}>
         <img className="signUpModalImg" src={album.albumCoverUrl} alt="" />
         <div className="modalContent">
           <h3>Start listening with a free Spotify account</h3>
           <button
             className="signupModalBtn"
-            onClick={() => history.push("/signup")} 
+            onClick={() => history.push("/signup")}
           >
             Sign up free
           </button>
