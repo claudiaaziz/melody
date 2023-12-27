@@ -92,22 +92,25 @@
 
 .error-div {
   display: flex;
+  align-items: center;
   gap: 3px;
   width: 250px;
   color: #f15e6c;
   font-size: 0.75rem;
+  /* border: 1px solid pink; */
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
 }
 
 .error-div svg {
   fill: #f15e6c;
   height: 20px;
+  /* border: 1px solid pink; */
 }
 
 .signupContainer label {
   display: block;
   margin-bottom: 10px;
-font-size: 0.75rem;
+  font-size: 0.75rem;
 }
 
 .signupContainer input {
