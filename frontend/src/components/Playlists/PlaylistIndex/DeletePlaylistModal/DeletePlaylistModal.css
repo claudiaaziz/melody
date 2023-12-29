@@ -17,7 +17,6 @@
   color: black;
   padding: 30px 22px;
   border-radius: 8px;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -45,6 +44,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .deletePlaylistModalBtns button {

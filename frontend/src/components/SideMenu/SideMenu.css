@@ -19,7 +19,6 @@
 
 .menuList li {
   margin-bottom: 15px;
-  cursor: pointer;
 }
 
 .menuItem {
@@ -75,7 +74,8 @@
   border-radius: 50%;
   background-color: transparent;
   position: relative;
-  border: none
+  border: none;
+  cursor: pointer;
 }
 
 .plusButton:hover {
@@ -103,6 +103,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .createPlaylistDropdown svg {
