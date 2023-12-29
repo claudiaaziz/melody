@@ -1,5 +1,4 @@
 .search-songs-div {
-  /* border: 1px solid pink; */
   display: flex;
   flex-direction: column;
   padding: 20px;
