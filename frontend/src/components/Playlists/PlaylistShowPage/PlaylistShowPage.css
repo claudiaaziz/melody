@@ -10,7 +10,7 @@
   /* temp fix */
   padding-bottom: 9vh;
   /* border: 1px solid red; */
-  overflow: scroll;
+  overflow-y: auto;
   scroll-behavior: smooth;
 }
 
