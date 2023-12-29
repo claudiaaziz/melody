@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx)
   const currentSongId = useSelector((state) => state.playbar.queue[currentQueueIdx] === song.id);
+  
   // get song duration from AWS
   const [duration, setDuration] = useState(null);
   const fetchSongDuration = async (url) => {

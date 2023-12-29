@@ -13,7 +13,6 @@ const AlbumShowPage = () => {
   const dispatch = useDispatch();
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
-
   const songs = useSelector(getSongs);
   const currentUser = useSelector((state) => state.session.user);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
@@ -40,7 +39,6 @@ const AlbumShowPage = () => {
 
       <hr />
 
-      {/* <div id="album-song-list"> */}
         {album &&
           albumSongs
             .filter((song) => song) // filter out undefined songs
@@ -57,7 +55,6 @@ const AlbumShowPage = () => {
           <SignUpModal onClose={() => setShowSignUpModal(false)} />
         )}
       </div>
-    // </div>
   );
 };
 

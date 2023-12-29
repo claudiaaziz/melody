@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setVolume } from "../../store/playbar";
 
 const VolumeControl = () => {
-  const volume = useSelector((state) => state.playbar.volume);
   const dispatch = useDispatch();
+  const volume = useSelector((state) => state.playbar.volume);
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx)
   const currentSongId = useSelector((state) => state.playbar.queue[currentQueueIdx]);
 

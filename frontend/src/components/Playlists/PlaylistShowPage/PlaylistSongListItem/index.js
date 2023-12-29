@@ -31,26 +31,8 @@ const PlaylistSongListItem = ({
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
-  // start logic for delete song dropdown
   const [isDeleteSongOpen, setIsDeleteSongOpen] = useState(false);
-
   const toggleDeleteSong = () => setIsDeleteSongOpen(!isDeleteSongOpen);
-
-  // dont need bc hover
-  // const closeDeleteSongDropdown = () => setIsDeleteSongOpen(false);
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (isDeleteSongOpen) {
-  //       closeDeleteSongDropdown();
-  //     }
-  //   };
-
-  //   document.addEventListener("click", handleClickOutside);
-
-  //   return () => {
-  //     document.removeEventListener("click", handleClickOutside);
-  //   };
-  // }, [isDeleteSongOpen]);
 
   // delete playlist song
   const handleDeletePlaylistSong = () => {

@@ -8,13 +8,11 @@
   text-align: start;
   cursor: pointer;
   position: relative;
-  z-index: 0;
 }
 
 .playlist-song-list-item:hover {
   background: #282828;
   transition: background-color 0.8s;
-  z-index: 0;
 }
 
 .playlist-song-list-item .playlist-song-num {
@@ -56,7 +54,7 @@
   color: gray;
   font-size: .8rem;
   width: 100px;
-  /* text-align: left; */
+  /* border: 1px solid red; */
 }
 
 .playlist-song-list-item .song-duration {

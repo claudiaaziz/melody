@@ -5,7 +5,6 @@ import VolumeControl from "../Playbar/VolumeControl";
 import "./Playbar.css";
 import { getAlbum } from "../../store/albums";
 import { useSelector } from "react-redux";
-// import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
 
 const Playbar = () => {
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx);
@@ -35,7 +34,6 @@ const Playbar = () => {
         </div>
       ) : (
         <div className="currentSongContainer">
-          {/* <MelodyLogo /> */}
         </div>
       )}
 

@@ -7,11 +7,11 @@ import DeletePlaylistModal from "./DeletePlaylistModal/DeletePlaylistModal";
 import "./PlaylistIndex.css";
 
 const PlaylistIndex = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const playlists = useSelector(getPlaylists);
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
   const currentUser = useSelector((state) => state.session.user);
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
