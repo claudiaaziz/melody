@@ -13,7 +13,6 @@
   height: 50%;
   width: 100%;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 33px;
 }

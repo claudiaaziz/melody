@@ -5,6 +5,7 @@
   right: 0;
   width: 77%;
   padding-top: 1vh;
+  z-index: 100;
 }
 
 .navbar {

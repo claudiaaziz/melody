@@ -8,8 +8,10 @@
   flex-direction: column;
   color: white;
   /* temp fix */
-  padding-bottom: 40vh;
+  padding-bottom: 9vh;
   /* border: 1px solid red; */
+  overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 .playlistShowHeader {
