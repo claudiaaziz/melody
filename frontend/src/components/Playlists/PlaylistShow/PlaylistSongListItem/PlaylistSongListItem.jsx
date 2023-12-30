@@ -3,7 +3,7 @@ import "./PlaylistSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbum } from "../../../../store/albums";
 import DeletePlaylistSong from "./DeletePlaylistSong/DeletePlaylistSong";
-import { fetchSongDuration, formatDuration } from "../../../../utils/SongListItemSongDuration"; 
+import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
 
 const PlaylistSongListItem = ({
   song,
@@ -75,7 +75,7 @@ const PlaylistSongListItem = ({
           />
         </>
       ) : (
-        <div className="song-duration">{formatDuration(duration)}</div>
+        <div className="song-duration">{formatSongDuration(duration)}</div>
       )}
     </div>
   );

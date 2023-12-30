@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./AlbumSongListItem.css";
 import { useSelector } from "react-redux";
-import { fetchSongDuration, formatDuration } from "../../../../utils/SongListItemSongDuration"; 
+import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
 
 const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx);
@@ -27,7 +27,7 @@ const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
           </div>
           <div className="artistName">{artistName}</div>
         </div>
-        <div className="songDuration">{formatDuration(duration)}</div>
+        <div className="songDuration">{formatSongDuration(duration)}</div>
       </li>
     </ul>
   );
