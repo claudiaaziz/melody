@@ -3,6 +3,7 @@ import "./PlaylistSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbum } from "../../../../store/albums";
 import DeletePlaylistSong from "./DeletePlaylistSong/DeletePlaylistSong";
+import { fetchSongDuration, formatDuration } from "../../../../utils/SongListItemSongDuration"; 
 
 const PlaylistSongListItem = ({
   song,
@@ -30,25 +31,11 @@ const PlaylistSongListItem = ({
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
-  // get song duration from AWS
   const [duration, setDuration] = useState(null);
 
-  const fetchSongDuration = async (url) => {
-    const audio = new Audio(url);
-    audio.addEventListener("loadedmetadata", () => {
-      setDuration(audio.duration);
-    });
-  };
-
   useEffect(() => {
-    if (song.songUrl) fetchSongDuration(song.songUrl);
+    if (song.songUrl) fetchSongDuration(song.songUrl, setDuration); 
   }, [song.songUrl]);
-
-  const formatDuration = (duration) => {
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
 
   return (
     <div
