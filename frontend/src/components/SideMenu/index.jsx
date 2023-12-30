@@ -5,10 +5,10 @@ import PlaylistIndex from "../Playlists/PlaylistIndex";
 import CreatePlaylist from "./CreatePlaylist";
 import { fetchPlaylists } from "../../store/playlists";
 import "./SideMenu.css";
-import MelodyLogo from "../../static/LogoAndSVGS/MelodyLogo/index.jsx";
 import { ReactComponent as HomeIcon } from "../../static/LogoAndSVGS/sideMenu/home.svg";
 import { ReactComponent as SearchIcon } from "../../static/LogoAndSVGS/search.svg";
 import { ReactComponent as LibraryIcon } from "../../static/LogoAndSVGS/sideMenu/library.svg";
+import MelodyLogo from "../../static/LogoAndSVGS/MelodyLogo";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
