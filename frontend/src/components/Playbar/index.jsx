@@ -1,7 +1,7 @@
 import React from "react";
 import Actions from "./Actions";
-import AudioPlayer from "../Playbar/AudioPlayer";
-import VolumeControl from "../Playbar/VolumeControl";
+import AudioPlayer from "./AudioPlayer";
+import VolumeControl from "./VolumeControl";
 import "./Playbar.css";
 import { getAlbum } from "../../store/albums";
 import { useSelector } from "react-redux";

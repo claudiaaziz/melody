@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "./AlbumIndexPage.css";
-import AlbumIndexItem from "./AlbumIndexItem";
+import "./AlbumIndex.css";
+import AlbumIndexItem from "./AlbumIndexItem.jsx";
 import { fetchAlbums, getAlbums } from "../../../store/albums";
 
-const AlbumIndexPage = () => {
+const AlbumIndex = () => {
   const dispatch = useDispatch();
   const albums = useSelector(getAlbums);
 
@@ -26,4 +26,4 @@ const AlbumIndexPage = () => {
   );
 };
 
-export default AlbumIndexPage;
+export default AlbumIndex;

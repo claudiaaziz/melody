@@ -2,7 +2,7 @@ import React from 'react'
 import playlistCover from "../../../static/images/playlistCover.png";
 import EditPlaylistDropdown from './EditPlaylistModal/EditPlaylistDropdown';
 
-const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
+const PlaylistShowHeader = ({ playlist, currentUser }) => {
   return (
     <>
       <div className="playlistShowHeader">
@@ -22,4 +22,4 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
   );
 };
 
-export default PlaylistShowPageHeader;
+export default PlaylistShowHeader;

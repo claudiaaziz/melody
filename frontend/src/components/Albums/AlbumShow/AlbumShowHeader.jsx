@@ -1,6 +1,6 @@
 import React from "react";
 
-const AlbumShowPageHeader = ({ album }) => {
+const AlbumShowHeader = ({ album }) => {
   return (
     <div className="albumShowPageHeader">
       <img src={album.albumCoverUrl} alt="" />
@@ -21,4 +21,4 @@ const AlbumShowPageHeader = ({ album }) => {
   );
 };
 
-export default AlbumShowPageHeader;
+export default AlbumShowHeader;

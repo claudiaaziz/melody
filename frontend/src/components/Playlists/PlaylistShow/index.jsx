@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
-import "./PlaylistShowPage.css";
-import PlaylistShowPageHeader from "./PlaylistShowPageHeader";
+import "./PlaylistShow.css";
+import PlaylistShowPageHeader from "./PlaylistShowHeader";
 import SearchSongs from "./SearchSongs";
 import { fetchSongs, getSongs } from "../../../store/songs";
-import PlaylistSongListItem from "./PlaylistSongListItem";
+import PlaylistSongListItem from "./PlaylistSongListItem/PlaylistSongListItem";
 import { playQueue } from "../../../store/playbar";
 
-const PlaylistShowPage = () => {
+const PlaylistShow = () => {
   const dispatch = useDispatch();
   const { playlistId } = useParams();
   const playlist = useSelector(getPlaylist(playlistId));
@@ -90,4 +90,4 @@ const PlaylistShowPage = () => {
   );
 };
 
-export default PlaylistShowPage;
+export default PlaylistShow;

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import MelodyLogo from "../../../static/LogoAndSVGS/melodyLogo"
-import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/sessions/error.svg";
+import MelodyLogo from "../../../static/LogoAndSVGS/MelodyLogo/index.jsx"
+import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/error.svg";
+import "./SignupFormPage.css";
 
-const SignupForm = () => {
+const SignupFormPage = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
 
@@ -80,7 +81,7 @@ const SignupForm = () => {
   };
 
   return (
-    <>
+    <div className="signupForm">
       <div className="signupHeader">
         <MelodyLogo />
         <button className="guestUserBtn" onClick={handleGuestUser}>
@@ -179,8 +180,8 @@ const SignupForm = () => {
           Already have an account? <Link to="/login">Log in here.</Link>
         </p>
       </div>
-    </>
+    </div>
   );
 };
 
-export default SignupForm;
+export default SignupFormPage;

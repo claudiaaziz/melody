@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import MelodyLogo from "../../../static/LogoAndSVGS/melodyLogo"
-import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/sessions/error.svg";
+import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/error.svg";
+import "./LoginFormPage.css";
+import MelodyLogo from "../../../static/LogoAndSVGS/MelodyLogo/index.jsx";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ const LoginFormPage = () => {
   };
 
   return (
-    <>
+    <div className="loginForm">
       <div className="loginHeader">
         <MelodyLogo />
         <button className="guestLoginBtn" onClick={handleGuestUser}>
@@ -122,7 +123,7 @@ const LoginFormPage = () => {
           <Link to="/signup">Sign up for Spotify.</Link>
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

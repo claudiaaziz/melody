@@ -5,10 +5,10 @@ import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
 import Navbar from "./components/Navbar";
 import SideMenu from "./components/SideMenu";
 import Playbar from "./components/Playbar";
-import AlbumShowPage from "./components/Albums/AlbumShowPage";
-import PlaylistShowPage from "./components/Playlists/PlaylistShowPage";
+import PlaylistShowPage from "./components/Playlists/PlaylistShow";
 import SearchAlbums from "./components/SearchAlbums";
-import AlbumIndexPage from "./components/Albums/AlbumIndexPage/AlbumIndexPage";
+import AlbumIndex from "./components/Albums/AlbumIndex";
+import AlbumShow from "./components/Albums/AlbumShow";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
           <Navbar />
           <SideMenu />
           <Playbar />
-          <AlbumIndexPage />
+          <AlbumIndex />
         </Route>
         <Route path="/login">
           <LoginFormPage />
@@ -36,7 +36,7 @@ const App = () => {
           <Navbar />
           <SideMenu />
           <Playbar />
-          <AlbumShowPage />
+          <AlbumShow />
         </Route>
         <Route path="/playlists/:playlistId">
           <Navbar />

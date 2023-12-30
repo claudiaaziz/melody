@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import MelodyLogo from "../../static/LogoAndSVGS/melodyLogo";
-import "./SideMenu.css";
-import { NavLink } from "react-router-dom";
-import { ReactComponent as HomeIcon } from "../../static/LogoAndSVGS/sideMenu/home.svg";
-import { ReactComponent as SearchIcon } from "../../static/LogoAndSVGS/sideMenu/search.svg";
-import { ReactComponent as LibraryIcon } from "../../static/LogoAndSVGS/sideMenu/library.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPlaylists } from "../../store/playlists";
+import { NavLink } from "react-router-dom";
 import PlaylistIndex from "../Playlists/PlaylistIndex";
 import CreatePlaylist from "./CreatePlaylist";
+import { fetchPlaylists } from "../../store/playlists";
+import "./SideMenu.css";
+import MelodyLogo from "../../static/LogoAndSVGS/MelodyLogo/index.jsx";
+import { ReactComponent as HomeIcon } from "../../static/LogoAndSVGS/sideMenu/home.svg";
+import { ReactComponent as SearchIcon } from "../../static/LogoAndSVGS/search.svg";
+import { ReactComponent as LibraryIcon } from "../../static/LogoAndSVGS/sideMenu/library.svg";
 
 const SideMenu = () => {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import "./EditPlaylistModal.css"
 import { updatePlaylist } from "../../../../store/playlists";
 import { useDispatch } from "react-redux";
 import { ReactComponent as CloseIcon } from "../../../../static/LogoAndSVGS/close.svg";
-import { ReactComponent as ErrorIcon } from "../../../../static/LogoAndSVGS/sessions/error.svg";
+import { ReactComponent as ErrorIcon } from "../../../../static/LogoAndSVGS/error.svg";
 
 const EditPlaylistModal = ({ playlistId, closeEditPlaylistModal, currentPlaylistName }) => {
   const dispatch = useDispatch();
