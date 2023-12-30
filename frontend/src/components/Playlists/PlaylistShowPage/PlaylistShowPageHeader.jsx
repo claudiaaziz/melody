@@ -1,38 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from 'react'
 import playlistCover from "../../../static/images/playlistCover.png";
-import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
-import { ReactComponent as EditPlaylistIcon } from "../../../static/LogoAndSVGS/playlists/editPlaylist.svg";
-import EditPlaylistModal from "./EditPlaylistModal/EditPlaylistModal"; 
+import EditPlaylistDropdown from './EditPlaylistModal/EditPlaylistDropdown';
 
 const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
-  // edit dropdown
-  const [isEditPlaylistDropdownOpen, setIsEditPlaylistDropdownOpen] = useState(false);
-  const toggleEditPlaylistDropdown = () => setIsEditPlaylistDropdownOpen(!isEditPlaylistDropdownOpen);
-  const closeEditPlaylistDropdown = () => setIsEditPlaylistDropdownOpen(false);
-
-  // if the user clicks off edit dropdown
-  useEffect(() => {
-    const handleClickOutside = () => {
-      if (isEditPlaylistDropdownOpen) {
-        closeEditPlaylistDropdown();
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isEditPlaylistDropdownOpen]);
-  
-  // edit modal
-  const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
-  const openEditPlaylistModal = () => {
-    setIsEditPlaylistModalOpen(true);
-    setIsEditPlaylistDropdownOpen(false); 
-  };
-  const closeEditPlaylistModal = () => setIsEditPlaylistModalOpen(false);
-
   return (
     <>
       <div className="playlistShowHeader">
@@ -46,20 +16,7 @@ const PlaylistShowPageHeader = ({ playlist, currentUser }) => {
         </div>
       </div>
       <div className="dotsContainer">
-        <DotsIcon className="dotsIcon" onClick={toggleEditPlaylistDropdown} />
-        {isEditPlaylistDropdownOpen && (
-          <div onClick={openEditPlaylistModal} className="editPlaylistDropdown">
-            <EditPlaylistIcon />
-            <p>Edit playlist name</p>
-          </div>
-        )}
-        {isEditPlaylistModalOpen && (
-          <EditPlaylistModal
-            onClose={closeEditPlaylistModal}
-            currentPlaylistName={playlist.name}
-            playlistId={playlist.id}
-          />
-        )}
+        <EditPlaylistDropdown playlist={playlist}/>
       </div>
     </>
   );
