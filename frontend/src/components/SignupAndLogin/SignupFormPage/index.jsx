@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/error.svg";
 import "./SignupFormPage.css";
-import MelodyLogo from "../../../static/LogoAndSVGS/MelodyLogo";
+import MelodyLogo from "../../../static/LogoAndSVGS/Logo";
 
 const SignupFormPage = () => {
   const dispatch = useDispatch();

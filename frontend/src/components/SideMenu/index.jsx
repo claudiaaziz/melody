@@ -8,7 +8,7 @@ import "./SideMenu.css";
 import { ReactComponent as HomeIcon } from "../../static/LogoAndSVGS/sideMenu/home.svg";
 import { ReactComponent as SearchIcon } from "../../static/LogoAndSVGS/search.svg";
 import { ReactComponent as LibraryIcon } from "../../static/LogoAndSVGS/sideMenu/library.svg";
-import MelodyLogo from "../../static/LogoAndSVGS/MelodyLogo";
+import MelodyLogo from "../../static/LogoAndSVGS/Logo";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
