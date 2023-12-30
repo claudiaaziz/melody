@@ -17,7 +17,6 @@ const PlaylistShowPage = () => {
   const currentUser = useSelector((state) => state.session.user);
   const songs = useSelector(getSongs);
   const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
-  const [boolean, setBoolean] = useState(false);
 
   let array = [];
 
@@ -46,7 +45,7 @@ const PlaylistShowPage = () => {
           array.includes(song.id)
       );
     setSongsInThisPlaylist(theSongsInThisPlaylist);
-  }, [dispatch, boolean, playlistId, playlistSongs, songs, playlist]);
+  }, [dispatch, playlistId, playlistSongs, songs, playlist]);
 
   useEffect(() => {
     dispatch(fetchSongs());
@@ -83,8 +82,6 @@ const PlaylistShowPage = () => {
             songNum={idx + 1}
             playlist={playlist}
             playlistSongId={song.playlistSongId}
-            boolean={setBoolean}
-            artistName={song.artistName}
             onClick={() => handlePlaylistSongClick(song.id)}
           />
         ))}
