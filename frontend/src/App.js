@@ -5,10 +5,10 @@ import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
 import Navbar from "./components/Navbar";
 import SideMenu from "./components/SideMenu";
 import Playbar from "./components/Playbar";
-import AlbumIndexPage from "./components/Albums/AlbumIndexPage";
 import AlbumShowPage from "./components/Albums/AlbumShowPage";
 import PlaylistShowPage from "./components/Playlists/PlaylistShowPage";
 import SearchAlbums from "./components/SearchAlbums";
+import AlbumIndexPage from "./components/Albums/AlbumIndexPage/AlbumIndexPage";
 
 const App = () => {
   return (
