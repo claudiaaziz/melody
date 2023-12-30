@@ -93,8 +93,8 @@
 
 .createPlaylistDropdown {
   position: absolute;
-  width: 50%;
-  top: 27%;
+  width: 45%;
+  top: 25%;
   background-color: #282828;
   border-radius: 5px;
   padding: 8px;
@@ -107,19 +107,19 @@
 }
 
 .createPlaylistDropdown svg {
-  width: 12%
+  width: 10%;
+  fill: lightgray;
 }
 
 .createPlaylist {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
-.create-a-new-playlist {
-  color: white;
-  margin-top: 2px;
-  font-size: .9rem;
+.createPlaylist p {
+  color: lightgray;
+  font-size: .85rem;
 }
 
 .createPlaylistDropdown:hover {

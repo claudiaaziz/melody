@@ -21,14 +21,8 @@ const CreatePlaylist = () => {
   const closeCreatePlaylistModal = () => setCreatePlaylistOpen(false);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isCreatePlaylistOpen) {
-        closeCreatePlaylistModal();
-      }
-    };
-
+    const handleClickOutside = () => (isCreatePlaylistOpen) && closeCreatePlaylistModal();
     document.addEventListener("click", handleClickOutside);
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
