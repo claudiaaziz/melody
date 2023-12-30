@@ -1,6 +1,6 @@
 import React from 'react'
 import playlistCover from "../../../static/images/playlistCover.png";
-import EditPlaylistDropdown from './EditPlaylistModal/EditPlaylistDropdown';
+import EditPlaylistDropdown from './EditPlaylistDropdownAndModal/EditPlaylistDropdown.jsx';
 
 const PlaylistShowHeader = ({ playlist, currentUser }) => {
   return (

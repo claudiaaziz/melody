@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
-import ProfileBtn from "./ProfileBtn";
+import ProfileBtn from "./ProfileBtn/ProfileBtn.jsx";
 import NavLinks from "../../static/LogoAndSVGS/NavLinks";
 
 const Navbar = () => {

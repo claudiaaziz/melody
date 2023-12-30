@@ -139,5 +139,5 @@ json.partial! "api/playlists/playlist", playlist: @playlist
 
 
 ## Future Implementations:
-- Follow Artists/ Artist show page
+- Follow Artists/ Artist Show Page
 - Like Songs/ Liked Songs Playlist
