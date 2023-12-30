@@ -11,7 +11,6 @@ const PlaylistIndex = () => {
   const history = useHistory();
   const playlists = useSelector(getPlaylists);
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
-  const currentUser = useSelector((state) => state.session.user);
 
   const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
@@ -33,7 +32,6 @@ const PlaylistIndex = () => {
           <PlaylistIndexItem
             key={playlist.id}
             playlist={playlist}
-            currentUser={currentUser}
             onDotsClick={(playlistId) => {
               setSelectedPlaylistId(playlistId);
               setShowDeletePlaylistModal(true);
