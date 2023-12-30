@@ -4,13 +4,17 @@ import { createPlaylist, getPlaylists } from '../../store/playlists';
 import { useHistory } from 'react-router-dom';
 import { ReactComponent as CreatePlaylistIcon } from "../../static/LogoAndSVGS/sideMenu/createPlaylist.svg";
 import { ReactComponent as PlusIcon } from "../../static/LogoAndSVGS/sideMenu/plus.svg";
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-const CreatePlaylist = ({setRedirectToPlaylist, setCreatedPlaylist}) => {
+const CreatePlaylist = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector((state) => state.session.user);
   const playlists = useSelector(getPlaylists);
+
   const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
+  const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
+  const [createdPlaylist, setCreatedPlaylist] = useState(null);
   
   const toggleCreatePlaylist = () =>
     setCreatePlaylistOpen(!isCreatePlaylistOpen);
@@ -68,7 +72,10 @@ const CreatePlaylist = ({setRedirectToPlaylist, setCreatedPlaylist}) => {
             </p>
           </div>
         </div>
-        )}
+      )}
+      {redirectToPlaylist && createdPlaylist && (
+        <Redirect to={`/playlists/${createdPlaylist.id}`} />
+      )}
     </>
   )
 }
