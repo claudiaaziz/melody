@@ -16,7 +16,7 @@ const SignUpModal = ({ onClose }) => {
       <div className="modal" onClick={handleModalClick}>
         <img className="signUpModalImg" src={album.albumCoverUrl} alt="" />
         <div className="modalContent">
-          <h3>Start listening with a free Spotify account</h3>
+          <h3>Start listening with a free Melody account</h3>
           <button
             className="signupModalBtn"
             onClick={() => history.push("/signup")}

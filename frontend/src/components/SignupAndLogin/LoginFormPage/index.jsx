@@ -82,7 +82,7 @@ const LoginFormPage = () => {
       </div>
 
       <div className="loginContainer">
-        <h1>Log in to Spotify</h1>
+        <h1>Log in to Melody</h1>
 
         <hr />
       {errors.length > 0 && (
