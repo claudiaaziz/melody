@@ -17,6 +17,7 @@ const LoginFormPage = () => {
   if (currentUser) return <Redirect to="/" />;
 
   const handleGuestUser = async () => {
+    setErrors([])
     setCredential("")
     setPassword("")
     

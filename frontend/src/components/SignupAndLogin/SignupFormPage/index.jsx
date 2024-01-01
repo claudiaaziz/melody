@@ -19,6 +19,7 @@ const SignupFormPage = () => {
   if (currentUser) return <Redirect to="/" />;
 
   const handleGuestUser = async () => {
+    setErrors([])
     setEmail("")
     setUsername("")
     setPassword("")
