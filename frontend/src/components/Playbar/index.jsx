@@ -5,7 +5,7 @@ import VolumeControl from "./VolumeControl";
 import "./Playbar.css";
 import { getAlbum } from "../../store/albums";
 import { useSelector } from "react-redux";
-import "./SignedOutBanner.css"
+import SignedOutBanner from "./SignedOutBanner";
 
 const Playbar = () => {
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx);
@@ -48,16 +48,7 @@ const Playbar = () => {
           <VolumeControl />
         </div>
       </div>
-      {!currentUser &&
-      <div className="signed-out-banner">
-        <div className="signed-out-banner-text-div">
-          <span>Preview of Spotify</span>
-          <h2>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</h2>
-        </div>
-        <div className="signed-out-banner-btn-div">
-        <button>Sign up free</button>
-        </div>
-      </div>}
+      {!currentUser && <SignedOutBanner />}
     </>
   );
 };
