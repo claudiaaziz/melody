@@ -128,7 +128,7 @@ const SignupFormPage = () => {
               if (error.includes("Username")) {
                 return <div key={error} className="error-div">
                     <div><ErrorIcon/></div>
-                    <div>Username should contain at least 3 characters.</div>
+                    <div>{error}</div>
                   </div>;
               }
               return null;
