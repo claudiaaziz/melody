@@ -23,6 +23,7 @@ const SignupFormPage = () => {
     setUsername("")
     setPassword("")
     setConfirmPassword("")
+    
     // typing effect
     const typingEffect = async (credential, setCredential) => {
       for (const char of credential) {

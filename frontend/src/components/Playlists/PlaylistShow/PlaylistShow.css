@@ -1,14 +1,14 @@
 .playlistShowPage {
-  height: 100%;
+  background: linear-gradient(#121212, black);
   margin-left: 23%;
   margin-top: 8vh;
-  width: 77%;
-  background: linear-gradient(#121212, black);
+  overflow-y: auto;
+  /* height: 100%;
+  width: 77%; */
   display: flex;
   flex-direction: column;
   color: white;
   padding-bottom: 9vh;
-  overflow-y: auto;
 }
 
 .playlistShowHeader {
@@ -16,7 +16,7 @@
   align-items: flex-end;
   height: 40%;
   top: 0;
-  gap: 20px;
+  gap: 18px;
   width: 100%;
 }
 
@@ -47,6 +47,13 @@
   margin-right: 5px;
   font-size: 12px;
 }
+
+.playlistShowPage hr {
+  width: 90%;
+  border: 1px solid #191919;
+}
+
+/* ^ TODO: refactor same exact css as album show  */
 
 /* edit playlist dropdown */
 
@@ -80,11 +87,4 @@
 .editPlaylistDropdown svg {
   width: 13%;
   fill: #A7A7A7;
-}
-
-/* rest */
-
-.playlistShowPage hr {
-  width: 90%;
-  border: 1px solid #191919;
 }
