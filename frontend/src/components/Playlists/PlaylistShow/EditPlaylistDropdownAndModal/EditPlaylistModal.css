@@ -61,11 +61,12 @@
 }
 
 .editPlaylistModal input {
-  background-color: #666666;
+  background-color: hsla(0, 0%, 100%, .1);
   border: none;
   color: white;
   padding: 10px;
   border-radius: 5px;
+  outline: none;
 }
 
 .updatePlaylistName {
