@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getAlbum } from "../../../store/albums.js";
+import { fetchAlbum, getAlbum } from "../../../store/albums.js";
 import "./AlbumShow.css";
 import { getSongs } from "../../../store/songs.js";
 import { playQueue } from "../../../store/playbar.js";
@@ -11,16 +11,19 @@ import SignUpModal from "../../SignupAndLogin/SignUpModal/index.jsx";
 
 const AlbumShow = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.session.user);
-
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
   const songs = useSelector(getSongs);
-  const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
-
+  const currentUser = useSelector((state) => state.session.user);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
 
-  // play album songs
+  useEffect(() => {
+    dispatch(fetchAlbum(albumId));
+  }, [dispatch, albumId]);
+
+  const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
+
+  // play album songs logic
   const handleAlbumSongClick = (songId) => {
     if (currentUser) {
       const currentQueueIdx = album.albumSongs.indexOf(songId)
@@ -38,7 +41,7 @@ const AlbumShow = () => {
 
         {album &&
           albumSongs
-            // .filter((song) => song) // filter out undefined songs (for testing 15)
+            .filter((song) => song) // filter out undefined songs
             .map((song, idx) => (
               <AlbumSongListItem
                 key={song.id}
