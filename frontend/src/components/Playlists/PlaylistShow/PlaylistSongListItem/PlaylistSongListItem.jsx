@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { getAlbum } from "../../../../store/albums";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAlbums, getAlbum } from "../../../../store/albums";
 import DeletePlaylistSong from "./DeletePlaylistSong/DeletePlaylistSong";
 import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
 import "./PlaylistSongListItem.css";
@@ -12,6 +12,12 @@ const PlaylistSongListItem = ({
   playlist,
   playlistSongId
 }) => {
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(fetchAlbums());
+  }, [dispatch]);
+
   const currentQueueIdx = useSelector(
     (state) => state.playbar.currentQueueIdx
   );

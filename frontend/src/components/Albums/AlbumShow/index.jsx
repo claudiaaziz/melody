@@ -41,7 +41,7 @@ const AlbumShow = () => {
 
         {album &&
           albumSongs
-            .filter((song) => song) // filter out undefined songs (for testing 15)
+            .filter((song) => song) // filter out undefined songs 
             .map((song, idx) => (
               <AlbumSongListItem
                 key={song.id}
