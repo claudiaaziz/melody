@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./SearchAlbums.css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAlbums, getAlbums } from "../../store/albums";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { getAlbums } from "../../store/albums";
 import { ReactComponent as SearchIcon } from "../../static/svgs/search.svg";
 import AlbumIndexItem from "../Albums/AlbumIndex/AlbumIndexItem";
 
 const SearchAlbums = () => {
-  const dispatch = useDispatch();
   const albums = useSelector(getAlbums);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredAlbums, setFilteredAlbums] = useState([]);
-
-  useEffect(() => {
-    dispatch(fetchAlbums());
-  }, [dispatch]);
 
   // filtering albums based on query
   useEffect(() => {

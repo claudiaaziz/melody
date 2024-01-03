@@ -5,28 +5,33 @@ import { useHistory, Redirect } from 'react-router-dom';
 import { ReactComponent as CreatePlaylistIcon } from "../../static/svgs/sideMenu/createPlaylist.svg";
 import { ReactComponent as PlusIcon } from "../../static/svgs/sideMenu/plus.svg";
 
-const CreatePlaylist = () => {
+const CreatePlaylistDropdown = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector((state) => state.session.user);
   const playlists = useSelector(getPlaylists);
 
-  const [isCreatePlaylistOpen, setCreatePlaylistOpen] = useState(false);
-  const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
-  const [createdPlaylist, setCreatedPlaylist] = useState(null);
-  
-  const toggleCreatePlaylist = () =>
-    setCreatePlaylistOpen(!isCreatePlaylistOpen);
-  const closeCreatePlaylistModal = () => setCreatePlaylistOpen(false);
+  // create playlist dropdown
+  const [isCreatePlaylistDropdownOpen, setCreatePlaylistDropdownOpen] = useState(false);
+  const openCreatePlaylistDropdown = () => setCreatePlaylistDropdownOpen(true);
+  const closeCreatePlaylistModal = () => setCreatePlaylistDropdownOpen(false);
 
-  useEffect(() => {
-    const handleClickOutside = () => (isCreatePlaylistOpen) && closeCreatePlaylistModal();
+  useEffect(() => { // close dropdown if user clicks off 
+    const handleClickOutside = () => (isCreatePlaylistDropdownOpen) && closeCreatePlaylistModal();
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isCreatePlaylistOpen]);
+  }, [isCreatePlaylistDropdownOpen]);
 
+  const handleCreatePlaylistDropdownClick = () => {
+    currentUser ? handleCreatePlaylist() : history.push("/signup");
+  }
+
+  // create playlist
+  const [createdPlaylist, setCreatedPlaylist] = useState(null);
+  const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
+  
   const handleCreatePlaylist = async () => {
     const amtPlaylists = Object.values(playlists).length;
     const createPlaylistData = {
@@ -44,19 +49,13 @@ const CreatePlaylist = () => {
 
   return (
     <>
-      <button className="plusButton" onClick={toggleCreatePlaylist}>
+      <button className="plusButton" onClick={openCreatePlaylistDropdown}>
         <PlusIcon />
       </button>
-      {isCreatePlaylistOpen && (
+      {isCreatePlaylistDropdownOpen && (
         <div
           className="createPlaylistDropdown"
-          onClick={() => {
-            if (currentUser) {
-              handleCreatePlaylist();
-            } else {
-              history.push("/signup");
-            }
-          }}
+          onClick={handleCreatePlaylistDropdownClick}
         >
           <div className="createPlaylist">
             <CreatePlaylistIcon />
@@ -73,4 +72,4 @@ const CreatePlaylist = () => {
   )
 }
 
-export default CreatePlaylist
+export default CreatePlaylistDropdown

@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import PlaylistIndex from "../Playlists/PlaylistIndex";
-import CreatePlaylist from "./CreatePlaylist";
 import { fetchPlaylists } from "../../store/playlists";
 import "./SideMenu.css";
 import { ReactComponent as HomeIcon } from "../../static/svgs/sideMenu/home.svg";
 import { ReactComponent as SearchIcon } from "../../static/svgs/search.svg";
 import { ReactComponent as LibraryIcon } from "../../static/svgs/sideMenu/library.svg";
 import MelodyLogo from "../MelodyLogo";
+import CreatePlaylistDropdown from "./CreatePlaylistDropdown";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
@@ -49,7 +49,6 @@ const SideMenu = () => {
           </li>
         </ul>
       </div>
-
       <div className="librarySection">
         <ul className="menuList">
           <div className="libraryContainer">
@@ -58,7 +57,7 @@ const SideMenu = () => {
               Your Library
             </li>
             <li className="menuItem">
-              <CreatePlaylist />
+              <CreatePlaylistDropdown />
             </li>
           </div>
           <PlaylistIndex />
