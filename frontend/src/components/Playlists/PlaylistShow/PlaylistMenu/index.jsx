@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { ReactComponent as DotsIcon } from "../../../../static/svgs/dots.svg";
 import { ReactComponent as EditPlaylistIcon } from "../../../../static/svgs/playlists/editPlaylist.svg";
 import { ReactComponent as DeletePlaylistIcon } from "../../../../static/svgs/playlists/delete.svg";
 import EditPlaylistModal from "./EditPlaylistModal"; 
 import "./PlaylistMenu.css"
 import DeletePlaylistModal from "../../PlaylistIndex/DeletePlaylistModal/DeletePlaylistModal";
-import { deletePlaylist } from "../../../../store/playlists";
 
 const PlaylistMenu = ({playlist}) => {
-    const dispatch = useDispatch();
-  const history = useHistory();
   const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
   const togglePlaylistMenu = () => setIsPlaylistMenuOpen(!isPlaylistMenuOpen);
   const closePlaylistMenu = () => setIsPlaylistMenuOpen(false);
@@ -33,13 +28,6 @@ const PlaylistMenu = ({playlist}) => {
 
   // delete modal
   const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
-  
-  const handleDeletePlaylist = async (playlistId) => {
-    await dispatch(deletePlaylist(playlistId));
-    setShowDeletePlaylistModal(false);
-    history.push("/");
-  };
-
 
   return (
     <>
@@ -68,7 +56,6 @@ const PlaylistMenu = ({playlist}) => {
         <DeletePlaylistModal
           playlist={playlist}
           onCancel={() => setShowDeletePlaylistModal(false)}
-          onDelete={() => handleDeletePlaylist(playlist.id)}
         />
       )}
     </>

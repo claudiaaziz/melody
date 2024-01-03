@@ -1,11 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./DeletePlaylistModal.css";
+import { deletePlaylist } from "../../../../store/playlists";
 
-const DeletePlaylistModal = ({ playlist, onCancel, onDelete, setShowDeletePlaylistModal }) => {
-
+const DeletePlaylistModal = ({ playlist, onCancel, setShowDeletePlaylistModal }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleOutsideClick = (e) => {
     if (e.target.classList.contains("deletePlaylistModalOverlay")) onCancel();
+  };
+
+  const handleDeletePlaylist = async (playlistId) => {
+    await dispatch(deletePlaylist(playlistId));
+    setShowDeletePlaylistModal(false);
+    history.push("/");
   };
 
   return (
@@ -21,7 +31,7 @@ const DeletePlaylistModal = ({ playlist, onCancel, onDelete, setShowDeletePlayli
           <button className="deletePlaylistCancelBtn" onClick={onCancel}>
             Cancel
           </button>
-          <button className="deletePlaylistDeleteBtn" onClick={onDelete}>
+          <button className="deletePlaylistDeleteBtn" onClick={() => handleDeletePlaylist(playlist.id)}>
             Delete
           </button>
         </div>
