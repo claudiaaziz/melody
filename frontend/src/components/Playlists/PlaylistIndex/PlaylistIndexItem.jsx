@@ -1,10 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as DotsIcon } from "../../../static/svgs/dots.svg";
 import playlistCover from "../../../static/images/playlistCover.png";
 import { useSelector } from "react-redux";
 
-const PlaylistIndexItem = ({ playlist, onDotsClick }) => {
+const PlaylistIndexItem = ({ playlist }) => {
   const currentUser = useSelector((state) => state.session.user);
 
   return(
@@ -19,13 +18,6 @@ const PlaylistIndexItem = ({ playlist, onDotsClick }) => {
           <div className="playlistName">{playlist.name}</div>
           <div className="username">{currentUser?.username}</div>
         </div>
-        <DotsIcon
-          className="dotsIcon"
-          onClick={(e) => {
-            e.preventDefault();
-            onDotsClick(playlist.id);
-          }}
-        />
       </NavLink>
     </li>
   )

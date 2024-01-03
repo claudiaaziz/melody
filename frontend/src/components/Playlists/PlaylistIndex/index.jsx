@@ -1,29 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { deletePlaylist, getPlaylists } from "../../../store/playlists";
+import React from "react";
+import { useSelector } from "react-redux";
+import { getPlaylists } from "../../../store/playlists";
 import PlaylistIndexItem from "./PlaylistIndexItem";
-import DeletePlaylistModal from "./DeletePlaylistModal/DeletePlaylistModal";
 import "./PlaylistIndex.css";
 
 const PlaylistIndex = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
   const playlists = useSelector(getPlaylists);
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
-
-  const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
-  const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
-
-  const selectedPlaylist = Object.values(playlists).find(
-    (playlist) => playlist.id === selectedPlaylistId
-  );
-
-  const handleDeletePlaylist = async (playlistId) => {
-    await dispatch(deletePlaylist(playlistId));
-    setShowDeletePlaylistModal(false);
-    history.push("/");
-  };
 
   return (
     <div>
@@ -32,21 +15,9 @@ const PlaylistIndex = () => {
           <PlaylistIndexItem
             key={playlist.id}
             playlist={playlist}
-            onDotsClick={(playlistId) => {
-              setSelectedPlaylistId(playlistId);
-              setShowDeletePlaylistModal(true);
-            }}
           />
         ))}
       </ul>
-
-      {showDeletePlaylistModal && (
-        <DeletePlaylistModal
-          selectedPlaylist={selectedPlaylist}
-          onCancel={() => setShowDeletePlaylistModal(false)}
-          onDelete={() => handleDeletePlaylist(selectedPlaylistId)}
-        />
-      )}
     </div>
   );
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import "./DeletePlaylistModal.css";
 
-const DeletePlaylistModal = ({ selectedPlaylist, onCancel, onDelete }) => {
+const DeletePlaylistModal = ({ playlist, onCancel, onDelete, setShowDeletePlaylistModal }) => {
+
+
   const handleOutsideClick = (e) => {
     if (e.target.classList.contains("deletePlaylistModalOverlay")) onCancel();
   };
@@ -12,7 +14,7 @@ const DeletePlaylistModal = ({ selectedPlaylist, onCancel, onDelete }) => {
         <h2 className="deletePlaylistModalBold">Delete from Your Library?</h2>
         <p className="deletePlaylistModalWarning">
           This will delete
-          <span className="deletePlaylistModalBold">{selectedPlaylist && ` ${selectedPlaylist.name} `}</span>
+          <span className="deletePlaylistModalBold">{playlist && ` ${playlist.name} `}</span>
           from <span className="deletePlaylistModalBold">Your Library.</span>
         </p>
         <div className="deletePlaylistModalBtns">
