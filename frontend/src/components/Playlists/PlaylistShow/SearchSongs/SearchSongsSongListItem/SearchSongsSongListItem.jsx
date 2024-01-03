@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import "./SearchSongsSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAlbums, getAlbum } from "../../../../../store/albums"
+import { getAlbum } from "../../../../../store/albums"
 import { createPlaylistSong } from "../../../../../store/playlists";
 
 const SearchSongsSongListItem = ({ song }) => {
   const dispatch = useDispatch();
-  const {playlistId} = useParams()
-
-  useEffect(() => {
-    dispatch(fetchAlbums());
-  }, [dispatch]);
+  const { playlistId } = useParams()
 
   const albumId = song.albumId;
   const album = useSelector(getAlbum(albumId));

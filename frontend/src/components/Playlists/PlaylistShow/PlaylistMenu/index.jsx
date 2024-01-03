@@ -8,7 +8,7 @@ import DeletePlaylistModal from "./DeletePlaylistModal";
 
 const PlaylistMenu = ({playlist}) => {
   const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
-  const openPlaylistMenu = () => setIsPlaylistMenuOpen(!isPlaylistMenuOpen);
+  const openPlaylistMenu = () => setIsPlaylistMenuOpen(true);
   const closePlaylistMenu = () => setIsPlaylistMenuOpen(false);
 
   // close menu if user clicks off 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AlbumSongListItem.css";
 import { useSelector } from "react-redux";
 import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
@@ -10,10 +10,7 @@ const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
   );
 
   const [duration, setDuration] = useState(null);
-
-  useEffect(() => {
-    if (song.songUrl) fetchSongDuration(song.songUrl, setDuration); 
-  }, [song.songUrl]);
+  song.songUrl && fetchSongDuration(song.songUrl, setDuration); 
 
   return (
     <ul className="songListItem" onClick={onClick}>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "./PlaylistSongListItem.css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAlbums, getAlbum } from "../../../../store/albums";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { getAlbum } from "../../../../store/albums";
 import DeletePlaylistSong from "./DeletePlaylistSong/DeletePlaylistSong";
 import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
+import "./PlaylistSongListItem.css";
 
 const PlaylistSongListItem = ({
   song,
@@ -12,12 +12,6 @@ const PlaylistSongListItem = ({
   playlist,
   playlistSongId
 }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAlbums());
-  }, [dispatch]);
-
   const currentQueueIdx = useSelector(
     (state) => state.playbar.currentQueueIdx
   );
@@ -32,10 +26,7 @@ const PlaylistSongListItem = ({
   const handleMouseLeave = () => setIsHovered(false);
 
   const [duration, setDuration] = useState(null);
-
-  useEffect(() => {
-    if (song.songUrl) fetchSongDuration(song.songUrl, setDuration); 
-  }, [song.songUrl]);
+  song.songUrl && fetchSongDuration(song.songUrl, setDuration); 
 
   return (
     <div
@@ -66,14 +57,12 @@ const PlaylistSongListItem = ({
       </div>
       <div className="playlist-song-album-title">{album?.title}</div>
       {isHovered ? (
-        <>
-          <DeletePlaylistSong
-            handleMouseEnter={handleMouseEnter}
-            handleMouseLeave={handleMouseLeave}
-            playlistSongId={playlistSongId}
-            playlist={playlist}
-          />
-        </>
+        <DeletePlaylistSong
+          handleMouseEnter={handleMouseEnter}
+          handleMouseLeave={handleMouseLeave}
+          playlistSongId={playlistSongId}
+          playlist={playlist}
+        />
       ) : (
         <div className="song-duration">{formatSongDuration(duration)}</div>
       )}

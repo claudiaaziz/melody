@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getSongs } from "../../../../store/songs";
 import "./SearchSongs.css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSongs, getSongs } from "../../../../store/songs";
 import { ReactComponent as SearchIcon } from "../../../../static/svgs/search.svg";
 import SearchSongsSongListItem from "./SearchSongsSongListItem/SearchSongsSongListItem";
 
 const SearchSongs = () => {
-  const dispatch = useDispatch();
   const songs = useSelector(getSongs);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
-
-  useEffect(() => {
-    dispatch(fetchSongs());
-  }, [dispatch]);
 
   // filtering songs based on query
   useEffect(() => {

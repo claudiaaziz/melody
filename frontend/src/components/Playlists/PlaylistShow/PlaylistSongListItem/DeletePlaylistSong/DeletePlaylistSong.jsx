@@ -10,9 +10,7 @@ const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId,
   const toggleDeleteSongDropdown = () => setIsDeleteSongDropdownOpen(!isDeleteSongDropdownOpen);
   const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
 
-  const handleDeletePlaylistSong = () => {
-    dispatch(deletePlaylistSong(playlistSongId, playlist.id));
-  };
+  const handleDeletePlaylistSong = () => dispatch(deletePlaylistSong(playlistSongId, playlist.id));
 
   return (
     <>
