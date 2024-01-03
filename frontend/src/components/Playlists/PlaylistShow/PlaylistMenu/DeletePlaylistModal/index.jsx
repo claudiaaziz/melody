@@ -2,9 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./DeletePlaylistModal.css";
-import { deletePlaylist } from "../../../../store/playlists";
+import { deletePlaylist } from "../../../../../store/playlists";
 
-const DeletePlaylistModal = ({ playlist, onCancel, setShowDeletePlaylistModal }) => {
+const DeletePlaylistModal = ({ playlist, onCancel }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -14,7 +14,6 @@ const DeletePlaylistModal = ({ playlist, onCancel, setShowDeletePlaylistModal })
 
   const handleDeletePlaylist = async (playlistId) => {
     await dispatch(deletePlaylist(playlistId));
-    setShowDeletePlaylistModal(false);
     history.push("/");
   };
 

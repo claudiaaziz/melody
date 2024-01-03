@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { ReactComponent as CloseIcon } from "../../../../../static/svgs/close-modal.svg";
 import { ReactComponent as ErrorIcon } from "../../../../../static/svgs/error.svg";
 
-const EditPlaylistModal = ({ playlistId, closeEditPlaylistModal, currentPlaylistName }) => {
+const EditPlaylistModal = ({ playlist, onCancel }) => {
   const dispatch = useDispatch();
-  const [newPlaylistName, setNewPlaylistName] = useState(currentPlaylistName);
+  const [newPlaylistName, setNewPlaylistName] = useState(playlist.name);
   const [error, setError] = useState(null);
 
   const handleNameChange = (e) => {
@@ -19,19 +19,19 @@ const EditPlaylistModal = ({ playlistId, closeEditPlaylistModal, currentPlaylist
     if (newPlaylistName === "") {
       setError("Playlist name is required.");
     } else {
-      dispatch(updatePlaylist({ id: playlistId, name: newPlaylistName }));
-      closeEditPlaylistModal();
+      dispatch(updatePlaylist({ id: playlist.id, name: newPlaylistName }));
+      onCancel()
     }
   };
 
-  const handleOutsideClick = (e) => e.target.classList.contains("editPlaylistModalOverlay") && closeEditPlaylistModal();
-
+  // const handleOutsideClick = (e) => e.target.classList.contains("editPlaylistModalOverlay") && closeEditPlaylistModal();
+// onClick={handleOutsideClick}
   return (
-    <div className="editPlaylistModalOverlay" onClick={handleOutsideClick}>
+    <div className="editPlaylistModalOverlay" >
       <div className="editPlaylistModal">
         <div className="editPlaylistModalHeader">
           <h3>Edit playlist name</h3>
-          <button onClick={closeEditPlaylistModal} className="closeEditPlaylistModal">
+          <button onClick={onCancel} className="closeEditPlaylistModal">
             <CloseIcon />
           </button>
         </div>

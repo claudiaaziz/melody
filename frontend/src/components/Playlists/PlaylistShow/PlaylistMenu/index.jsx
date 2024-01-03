@@ -4,7 +4,7 @@ import { ReactComponent as EditPlaylistIcon } from "../../../../static/svgs/play
 import { ReactComponent as DeletePlaylistIcon } from "../../../../static/svgs/playlists/delete.svg";
 import EditPlaylistModal from "./EditPlaylistModal"; 
 import "./PlaylistMenu.css"
-import DeletePlaylistModal from "../../PlaylistIndex/DeletePlaylistModal/DeletePlaylistModal";
+import DeletePlaylistModal from "./DeletePlaylistModal";
 
 const PlaylistMenu = ({playlist}) => {
   const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
@@ -18,44 +18,36 @@ const PlaylistMenu = ({playlist}) => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isPlaylistMenuOpen]);
   
-  // edit modal
   const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
-  const openEditPlaylistModal = () => {
-    setIsEditPlaylistModalOpen(true);
-    setIsPlaylistMenuOpen(false); 
-  };
-  const closeEditPlaylistModal = () => setIsEditPlaylistModalOpen(false);
-
-  // delete modal
-  const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
+  const [isDeletePlaylistModalOpen, setIsDeletePlaylistModalOpen] = useState(false);
 
   return (
     <>
       <DotsIcon className="dotsIcon" onClick={togglePlaylistMenu} />
       {isPlaylistMenuOpen && (
         <ul className="playlist-menu">
-          <li onClick={openEditPlaylistModal} >
+          <li onClick={() => setIsEditPlaylistModalOpen(true)} >
             <EditPlaylistIcon />
             <p>Edit playlist name</p>
           </li>
-          <li onClick={() => setShowDeletePlaylistModal(true)}>
+          <li onClick={() => setIsDeletePlaylistModalOpen(true)}>
               <DeletePlaylistIcon />
               <p>Delete playlist</p>
           </li>
         </ul>
       )}
+      
       {isEditPlaylistModalOpen && (
         <EditPlaylistModal
-          closeEditPlaylistModal={closeEditPlaylistModal}
-          currentPlaylistName={playlist.name}
-          playlistId={playlist.id}
+          playlist={playlist}
+          onCancel={() => setIsEditPlaylistModalOpen(false)}
         />
       )}
 
-      {showDeletePlaylistModal && (
+      {isDeletePlaylistModalOpen && (
         <DeletePlaylistModal
           playlist={playlist}
-          onCancel={() => setShowDeletePlaylistModal(false)}
+          onCancel={() => setIsDeletePlaylistModalOpen(false)}
         />
       )}
     </>
