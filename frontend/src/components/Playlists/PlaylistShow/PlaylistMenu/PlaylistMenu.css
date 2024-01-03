@@ -1,6 +1,7 @@
 .playlist-menu {
   position: absolute;
   top: 47%;
+  left: 24%;
   width: 200px;
   list-style: none;
   background-color: #282828;
