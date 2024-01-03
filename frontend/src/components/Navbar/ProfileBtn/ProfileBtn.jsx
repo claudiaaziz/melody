@@ -20,7 +20,6 @@ const ProfileBtn = () => {
     return () => document.removeEventListener("click", closeProfileMenu);
   }, [isProfileMenuOpen]);
 
-
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());

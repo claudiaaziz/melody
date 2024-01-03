@@ -7,8 +7,8 @@ import { ReactComponent as TrashIcon } from "../../../../../static/svgs/playlist
 const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId, playlist}) => {
   const dispatch = useDispatch();
 
-  const toggleDeleteSong = () => setIsDeleteSongOpen(!isDeleteSongOpen);
-  const [isDeleteSongOpen, setIsDeleteSongOpen] = useState(false);
+  const toggleDeleteSongDropdown = () => setIsDeleteSongDropdownOpen(!isDeleteSongDropdownOpen);
+  const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
 
   const handleDeletePlaylistSong = () => {
     dispatch(deletePlaylistSong(playlistSongId, playlist.id));
@@ -16,8 +16,8 @@ const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId,
 
   return (
     <>
-      <DotsIcon className="dotsIcon" onClick={toggleDeleteSong} />
-      {isDeleteSongOpen && (
+      <DotsIcon className="dotsIcon" onClick={toggleDeleteSongDropdown} />
+      {isDeleteSongDropdownOpen && (
         <div
           className="remove-playlist-song-dropdown"
           onClick={handleDeletePlaylistSong}

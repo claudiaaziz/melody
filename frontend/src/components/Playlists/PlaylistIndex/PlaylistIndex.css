@@ -1,6 +1,8 @@
 .playlistIndex {
   display: flex;
   flex-direction: column;
+  /* border: 1px solid pink; */
+  box-sizing: border-box;
 }
 
 .playlistIndexItem {
@@ -11,6 +13,7 @@
   display: flex;
   align-items: center;
   border-radius: 5px;
+  /* border: 1px solid beige; */
 }
 
 .playlistIndexItem:hover, .activePlaylistIndexItem {
@@ -31,12 +34,4 @@
 .playlistContent .username {
   font-size: 0.8rem;
   color: gray
-}
-
-.playlistIndex .dotsIcon {
-  margin-left: auto;
-  cursor: pointer;
-  width: 5%;
-  fill: white;
-  z-index: 100;
 }

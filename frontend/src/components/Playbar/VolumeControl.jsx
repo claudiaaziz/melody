@@ -14,16 +14,18 @@ const VolumeControl = () => {
   };
 
   return (
-    <input
-      disabled={!currentSongId}
-      type="range"
-      min="0"
-      max="1"
-      step="0.01"
-      value={volume || 0.5} 
-      onChange={handleVolumeChange}
-      className="volumeSlider" 
-    />
+    <div className="volumeControlContainer">
+      <input
+        disabled={!currentSongId}
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value={volume || 0.5} 
+        onChange={handleVolumeChange}
+        className="volumeSlider" 
+      />
+    </div>
   );
 };
 

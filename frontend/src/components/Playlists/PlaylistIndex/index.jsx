@@ -9,16 +9,16 @@ const PlaylistIndex = () => {
   const sortedPlaylists = Object.values(playlists).sort((a, b) => b.id - a.id);
 
   return (
-    <div>
-      <ul className="playlistIndex">
-        {sortedPlaylists.map((playlist) => (
-          <PlaylistIndexItem
-            key={playlist.id}
-            playlist={playlist}
-          />
-        ))}
-      </ul>
-    </div>
+    <ul className="playlistIndex">
+      {sortedPlaylists.map((playlist) => (
+        <li key={playlist.id}>
+            <PlaylistIndexItem
+              key={playlist.id}
+              playlist={playlist}
+            />
+        </li>
+      ))}
+    </ul>
   );
 };
 

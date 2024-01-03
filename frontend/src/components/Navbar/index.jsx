@@ -13,28 +13,24 @@ const Navbar = () => {
       <div className="navbar">
         <NavLinks />
         {currentUser ? (
-          // loggedInNav
-            <ProfileBtn />
+          <ProfileBtn />
         ) : (
-          <>
-            {/* loggedOutNav */}
-            <ul>
-              <li>
-                <NavLink to="/signup">
-                  <button id="navbarSignupBtn" className="navbarButton">
-                    Sign Up
-                  </button>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/login">
-                  <button id="navbarLoginBtn" className="navbarButton">
-                    Log In
-                  </button>
-                </NavLink>
-              </li>
-            </ul>
-          </>
+          <ul>
+            <li>
+              <NavLink to="/signup">
+                <button id="navbarSignupBtn" className="navbarButton">
+                  Sign Up
+                </button>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">
+                <button id="navbarLoginBtn" className="navbarButton">
+                  Log In
+                </button>
+              </NavLink>
+            </li>
+          </ul>
         )}
       </div>
     </div>
