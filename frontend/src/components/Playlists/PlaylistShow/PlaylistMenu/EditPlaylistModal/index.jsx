@@ -24,10 +24,10 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
     }
   };
 
-  // const handleOutsideClick = (e) => e.target.classList.contains("editPlaylistModalOverlay") && closeEditPlaylistModal();
-// onClick={handleOutsideClick}
+  const handleOutsideClick = (e) => e.target.classList.contains("editPlaylistModalOverlay") && onCancel();
+  
   return (
-    <div className="editPlaylistModalOverlay" >
+    <div className="editPlaylistModalOverlay" onClick={handleOutsideClick}>
       <div className="editPlaylistModal">
         <div className="editPlaylistModalHeader">
           <h3>Edit playlist name</h3>

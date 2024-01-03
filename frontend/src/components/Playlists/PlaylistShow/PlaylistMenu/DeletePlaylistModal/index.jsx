@@ -8,9 +8,7 @@ const DeletePlaylistModal = ({ playlist, onCancel }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleOutsideClick = (e) => {
-    if (e.target.classList.contains("deletePlaylistModalOverlay")) onCancel();
-  };
+  const handleOutsideClick = (e) => e.target.classList.contains("deletePlaylistModalOverlay") && onCancel();
 
   const handleDeletePlaylist = async (playlistId) => {
     await dispatch(deletePlaylist(playlistId));
