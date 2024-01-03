@@ -9,19 +9,17 @@ const ProfileBtn = () => {
   const dispatch = useDispatch();
   const history = useHistory()
 
-  const [showMenu, setShowMenu] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const openProfileMenu = () => setIsProfileMenuOpen(!isProfileMenuOpen);
+  const closeProfileMenu = () => setIsProfileMenuOpen(false);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
-  const closeMenu = () => setShowMenu(false);
-
+  // close menu if user clicks off 
   useEffect(() => {
-    if (!showMenu) return;
-    document.addEventListener("click", closeMenu);
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+    if (!isProfileMenuOpen) return;
+    document.addEventListener("click", closeProfileMenu);
+    return () => document.removeEventListener("click", closeProfileMenu);
+  }, [isProfileMenuOpen]);
+
 
   const logout = (e) => {
     e.preventDefault();
@@ -31,10 +29,10 @@ const ProfileBtn = () => {
 
   return (
     <div className="profileBtnContainer">
-      <button className="profileBtn" onClick={openMenu}>
+      <button className="profileBtn" onClick={openProfileMenu}>
         <ProfileBtnIcon/>
       </button>
-      {showMenu && (
+      {isProfileMenuOpen && (
         <ul className="profileDropdown">
           <li>
             <button className="logoutBtn" onClick={logout}>Log Out</button>

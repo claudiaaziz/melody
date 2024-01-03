@@ -8,14 +8,14 @@ import DeletePlaylistModal from "./DeletePlaylistModal";
 
 const PlaylistMenu = ({playlist}) => {
   const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
-  const togglePlaylistMenu = () => setIsPlaylistMenuOpen(!isPlaylistMenuOpen);
+  const openPlaylistMenu = () => setIsPlaylistMenuOpen(!isPlaylistMenuOpen);
   const closePlaylistMenu = () => setIsPlaylistMenuOpen(false);
 
   // close menu if user clicks off 
   useEffect(() => {
-    const handleClickOutside = () => isPlaylistMenuOpen && closePlaylistMenu();
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    if (!isPlaylistMenuOpen) return;
+    document.addEventListener("click", closePlaylistMenu);
+    return () => document.removeEventListener("click", closePlaylistMenu);
   }, [isPlaylistMenuOpen]);
   
   const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
@@ -23,7 +23,7 @@ const PlaylistMenu = ({playlist}) => {
 
   return (
     <>
-      <DotsIcon className="dotsIcon" onClick={togglePlaylistMenu} />
+      <DotsIcon className="dotsIcon" onClick={openPlaylistMenu} />
       {isPlaylistMenuOpen && (
         <ul className="playlist-menu">
           <li onClick={() => setIsEditPlaylistModalOpen(true)} >
