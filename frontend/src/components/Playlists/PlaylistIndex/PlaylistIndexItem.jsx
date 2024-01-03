@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as DotsIcon } from "../../../static/LogoAndSVGS/dots.svg";
+import { ReactComponent as DotsIcon } from "../../../static/svgs/dots.svg";
 import playlistCover from "../../../static/images/playlistCover.png";
 import { useSelector } from "react-redux";
 

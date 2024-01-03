@@ -1,6 +1,6 @@
 import React from "react";
-import githubIcon from "./githubIcon.png";
-import linkedinIcon from "./linkedinIcon.png"; 
+import githubIcon from "../../../static/images/social-icons/githubIcon.png";
+import linkedinIcon from "../../../static/images/social-icons/linkedinIcon.png"; 
 import "./NavLinks.css";
 
 const NavLinks = () => {

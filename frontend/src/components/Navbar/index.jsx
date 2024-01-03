@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
 import ProfileBtn from "./ProfileBtn/ProfileBtn.jsx";
-import NavLinks from "../../static/LogoAndSVGS/NavLinks";
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   const currentUser = useSelector((state) => state.session.user);

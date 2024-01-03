@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import { ReactComponent as ErrorIcon } from "../../../static/LogoAndSVGS/error.svg";
+import { ReactComponent as ErrorIcon } from "../../../static/svgs/error.svg";
 import "./LoginFormPage.css";
-import MelodyLogo from "../../../static/LogoAndSVGS/Logo";
+import MelodyLogo from "../../MelodyLogo";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();

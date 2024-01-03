@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ReactComponent as DotsIcon } from "../../../../static/LogoAndSVGS/dots.svg";
-import { ReactComponent as EditPlaylistIcon } from "../../../../static/LogoAndSVGS/playlists/editPlaylist.svg";
+import { ReactComponent as DotsIcon } from "../../../../static/svgs/dots.svg";
+import { ReactComponent as EditPlaylistIcon } from "../../../../static/svgs/playlists/editPlaylist.svg";
 import EditPlaylistModal from "./EditPlaylistModal.jsx"; 
 
 function EditPlaylistDropdown({playlist}) {

@@ -1,5 +1,5 @@
 import React from "react";
-import spotifyIcon from "./spotifyIcon.png";
+import spotifyIcon from "../../static/images/spotifyIcon.png";
 import "./MelodyLogo.css";
 import { Link } from "react-router-dom";
 

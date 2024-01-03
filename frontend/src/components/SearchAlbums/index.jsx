@@ -3,7 +3,7 @@ import "./SearchAlbums.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbums } from "../../store/albums";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { ReactComponent as SearchIcon } from "../../static/LogoAndSVGS/search.svg";
+import { ReactComponent as SearchIcon } from "../../static/svgs/search.svg";
 import AlbumIndexItem from "../Albums/AlbumIndex/AlbumIndexItem";
 
 const SearchAlbums = () => {

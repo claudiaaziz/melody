@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { pauseSong, playSong, playNext, playPrev } from '../../store/playbar';
-import { ReactComponent as PlayBtn } from "../../static/LogoAndSVGS/playbar/playBtn.svg";
-import { ReactComponent as PauseBtn } from "../../static/LogoAndSVGS/playbar/pauseBtn.svg";
-import { ReactComponent as PreviousBtn } from "../../static/LogoAndSVGS/playbar/previousBtn.svg";
-import { ReactComponent as NextBtn } from "../../static/LogoAndSVGS/playbar/nextBtn.svg";
+import { ReactComponent as PlayBtn } from "../../static/svgs/playbar/playBtn.svg";
+import { ReactComponent as PauseBtn } from "../../static/svgs/playbar/pauseBtn.svg";
+import { ReactComponent as PreviousBtn } from "../../static/svgs/playbar/previousBtn.svg";
+import { ReactComponent as NextBtn } from "../../static/svgs/playbar/nextBtn.svg";
 
 const Actions = () => {
   const dispatch = useDispatch();

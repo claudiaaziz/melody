@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { deletePlaylistSong } from '../../../../../store/playlists';
-import { ReactComponent as DotsIcon } from "../../../../../static/LogoAndSVGS/dots.svg";
-import { ReactComponent as TrashIcon } from "../../../../../static/LogoAndSVGS/playlists/removeSong.svg";
+import { ReactComponent as DotsIcon } from "../../../../../static/svgs/dots.svg";
+import { ReactComponent as TrashIcon } from "../../../../../static/svgs/playlists/removeSong.svg";
 
 const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId, playlist}) => {
   const dispatch = useDispatch();

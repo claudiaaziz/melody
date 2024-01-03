@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./SearchSongs.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSongs, getSongs } from "../../../../store/songs";
-import { ReactComponent as SearchIcon } from "../../../../static/LogoAndSVGS/search.svg";
+import { ReactComponent as SearchIcon } from "../../../../static/svgs/search.svg";
 import SearchSongsSongListItem from "./SearchSongsSongListItem/SearchSongsSongListItem";
 
 const SearchSongs = () => {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createPlaylist, getPlaylists } from '../../store/playlists';
 import { useHistory, Redirect } from 'react-router-dom';
-import { ReactComponent as CreatePlaylistIcon } from "../../static/LogoAndSVGS/sideMenu/createPlaylist.svg";
-import { ReactComponent as PlusIcon } from "../../static/LogoAndSVGS/sideMenu/plus.svg";
+import { ReactComponent as CreatePlaylistIcon } from "../../static/svgs/sideMenu/createPlaylist.svg";
+import { ReactComponent as PlusIcon } from "../../static/svgs/sideMenu/plus.svg";
 
 const CreatePlaylist = () => {
   const dispatch = useDispatch();
