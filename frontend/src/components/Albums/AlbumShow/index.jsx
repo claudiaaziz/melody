@@ -23,7 +23,7 @@ const AlbumShow = () => {
 
   const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
 
-  // play album songs logic
+  // play album songs 
   const handleAlbumSongClick = (songId) => {
     if (currentUser) {
       const currentQueueIdx = album.albumSongs.indexOf(songId)
@@ -41,7 +41,7 @@ const AlbumShow = () => {
 
         {album &&
           albumSongs
-            .filter((song) => song) // filter out undefined songs
+            .filter((song) => song) // filter out undefined songs (for testing 15)
             .map((song, idx) => (
               <AlbumSongListItem
                 key={song.id}
