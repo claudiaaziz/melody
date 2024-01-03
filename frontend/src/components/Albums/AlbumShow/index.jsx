@@ -11,17 +11,17 @@ import SignUpModal from "../../SignupAndLogin/SignUpModal/index.jsx";
 
 const AlbumShow = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.session.user);
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
   const songs = useSelector(getSongs);
-  const currentUser = useSelector((state) => state.session.user);
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
-  const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   // play album songs 
   const handleAlbumSongClick = (songId) => {
