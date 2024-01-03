@@ -1,6 +1,6 @@
 import React from 'react'
 import playlistCover from "../../../static/images/playlistCover.png";
-import EditPlaylistDropdown from './EditPlaylistDropdownAndModal/EditPlaylistDropdown.jsx';
+import PlaylistMenu from './PlaylistMenu';
 
 const PlaylistShowHeader = ({ playlist, currentUser }) => {
   return (
@@ -16,7 +16,7 @@ const PlaylistShowHeader = ({ playlist, currentUser }) => {
         </div>
       </div>
       <div className="dotsContainer">
-        <EditPlaylistDropdown playlist={playlist}/>
+        <PlaylistMenu playlist={playlist}/>
       </div>
     </>
   );

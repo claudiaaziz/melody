@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./EditPlaylistModal.css"
-import { updatePlaylist } from "../../../../store/playlists";
+import { updatePlaylist } from "../../../../../store/playlists";
 import { useDispatch } from "react-redux";
-import { ReactComponent as CloseIcon } from "../../../../static/svgs/close-modal.svg";
-import { ReactComponent as ErrorIcon } from "../../../../static/svgs/error.svg";
+import { ReactComponent as CloseIcon } from "../../../../../static/svgs/close-modal.svg";
+import { ReactComponent as ErrorIcon } from "../../../../../static/svgs/error.svg";
 
 const EditPlaylistModal = ({ playlistId, closeEditPlaylistModal, currentPlaylistName }) => {
   const dispatch = useDispatch();
