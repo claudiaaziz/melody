@@ -8,6 +8,7 @@ import SearchSongs from "./SearchSongs";
 import { fetchSongs, getSongs } from "../../../store/songs";
 import PlaylistSongListItem from "./PlaylistSongListItem/PlaylistSongListItem";
 import { playQueue } from "../../../store/playbar";
+import { fetchAlbums } from "../../../store/albums";
 
 const PlaylistShow = () => {
   const dispatch = useDispatch();
@@ -18,51 +19,38 @@ const PlaylistShow = () => {
   const songs = useSelector(getSongs);
   const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
 
-  let array = [];
-
+  
   useEffect(() => {
     dispatch(fetchPlaylist(playlistId));
   }, [dispatch, playlistId, songs]);
 
+
   useEffect(() => {
-    setSongsInThisPlaylist([]);
-    array = [];
-    const theSongsInThisPlaylist = Object.values(songs)
-      .map((song) => {
-        playlistSongs?.forEach((playlistSongsId) => {
-          if (playlistSongsId[0] === song.id) {
-            song.playlistSongId = playlistSongsId[1];
-            song.playlistId = playlistId;
-            array.push(song.id);
-          }
-        });
-        return song;
-      })
-      .filter(
-        (song) =>
-          song.playlistSongId &&
-          song.playlistId === playlistId &&
-          array.includes(song.id)
-      );
-    setSongsInThisPlaylist(theSongsInThisPlaylist);
-  }, [dispatch, playlistId, playlistSongs, songs, playlist]);
+    setSongsInThisPlaylist(playlistSongs)
+  }, [playlistSongs])
+  
+
+  
+  useEffect(() => {
+    dispatch(fetchAlbums());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchSongs());
   }, [dispatch]);
 
   // play playlist song logic
-  const handlePlaylistSongClick = (songId) => {
-    let currentQueueIdx = null
-    let playlistQueue = []
-    for (let i = 0; i < playlist.playlistSongs.length; i++) {
-      playlistQueue.push(playlist.playlistSongs[i][0]);
-      if (playlist.playlistSongs[i][0] === songId) {
-        currentQueueIdx = i
-      }
-    }
-    dispatch(playQueue(playlistQueue, currentQueueIdx));
-  };
+  // const handlePlaylistSongClick = (songId) => {
+  //   let currentQueueIdx = null
+  //   let playlistQueue = []
+  //   for (let i = 0; i < playlist.playlistSongs.length; i++) {
+  //     playlistQueue.push(playlist.playlistSongs[i][0]);
+  //     if (playlist.playlistSongs[i][0] === songId) {
+  //       currentQueueIdx = i
+  //     }
+  //   }
+  //   dispatch(playQueue(playlistQueue, currentQueueIdx));
+  // };
 
   if (!currentUser) return <Redirect to="/" />;
 
@@ -75,14 +63,14 @@ const PlaylistShow = () => {
       <hr />
 
       {playlist &&
-        songsInThisPlaylist.map((song, idx) => (
+        songsInThisPlaylist?.map(({playlistSongId, songId}, idx) => (
           <PlaylistSongListItem
-            key={song.id}
-            song={song}
+            key={playlistSongId}
+            songId={songId}
             songNum={idx + 1}
             playlist={playlist}
-            playlistSongId={song.playlistSongId}
-            onClick={() => handlePlaylistSongClick(song.id)}
+            playlistSongId={playlistSongId}
+            // onClick={() => handlePlaylistSongClick(song.id)}
           />
         ))}
       <SearchSongs />

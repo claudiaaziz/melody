@@ -28,11 +28,11 @@ const addSongToPlaylist = (playlistSong) => ({
   playlistSong,
 });
 
-const removeSongFromPlaylist = (playlistSongId, playlistId) => ({
-  type: REMOVE_SONG_FROM_PLAYLIST,
-  playlistSongId,
-  playlistId,
-});
+// const removeSongFromPlaylist = (playlistSongId, playlistId) => ({
+//   type: REMOVE_SONG_FROM_PLAYLIST,
+//   playlistSongId,
+//   playlistId,
+// });
 
 export const getPlaylists = (state) =>
   state?.playlists ? state.playlists : [];
@@ -129,15 +129,15 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
   }
 };
 
-export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
-    method: "DELETE",
-  });
+// export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
+//     method: "DELETE",
+//   });
 
-  if (res.ok) {
-    dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
-  }
-};
+//   if (res.ok) {
+//     dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
+//   }
+// };
 
 const playlistsReducer = (state = {}, action) => {
   let newState = merge({}, state)
@@ -153,27 +153,27 @@ const playlistsReducer = (state = {}, action) => {
     case REMOVE_PLAYLIST:
       delete newState[action.playlistId];
       return newState;
-    case REMOVE_SONG_FROM_PLAYLIST:
-      let indexToDelete = null;
-      for (
-        let i = 0;
-        i < newState[action.playlistId].playlistSongs.length;
-        i++
-      ) {
-        let array = newState[action.playlistId].playlistSongs[i];
-        if (array && array[1] === action.playlistSongId) {
-          indexToDelete = i;
-          break;
-        }
-      }
-      newState[action.playlistId].playlistSongs = newState[
-        action.playlistId
-      ].playlistSongs
-        .slice(0, indexToDelete)
-        .concat(
-          newState[action.playlistId].playlistSongs.slice(indexToDelete + 1)
-        );
-      return newState;
+    // case REMOVE_SONG_FROM_PLAYLIST:
+    //   let indexToDelete = null;
+    //   for (
+    //     let i = 0;
+    //     i < newState[action.playlistId].playlistSongs.length;
+    //     i++
+    //   ) {
+    //     let array = newState[action.playlistId].playlistSongs[i];
+    //     if (array && array[1] === action.playlistSongId) {
+    //       indexToDelete = i;
+    //       break;
+    //     }
+    //   }
+    //   newState[action.playlistId].playlistSongs = newState[
+    //     action.playlistId
+    //   ].playlistSongs
+    //     .slice(0, indexToDelete)
+    //     .concat(
+    //       newState[action.playlistId].playlistSongs.slice(indexToDelete + 1)
+    //     );
+    //   return newState;
     case ADD_SONG_TO_PLAYLIST:
       return newState;
       // return {

@@ -4,19 +4,22 @@ import { fetchAlbums, getAlbum } from "../../../../store/albums";
 import DeletePlaylistSong from "./DeletePlaylistSong/DeletePlaylistSong";
 import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
 import "./PlaylistSongListItem.css";
+import { getSong } from "../../../../store/songs";
 
 const PlaylistSongListItem = ({
-  song,
+  songId,
   songNum,
   onClick,
   playlist,
   playlistSongId
 }) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(fetchAlbums());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchAlbums());
+  // }, [dispatch]);
+
+  const song = useSelector(getSong(songId))
 
   const currentQueueIdx = useSelector(
     (state) => state.playbar.currentQueueIdx
