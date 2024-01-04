@@ -3,7 +3,7 @@ import "./AlbumSongListItem.css";
 import { useSelector } from "react-redux";
 import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
 
-const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
+const AlbumSongListItem = ({ artistName, song, songNum, handleAlbumSongClick }) => {
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx);
   const currentSongId = useSelector(
     (state) => state.playbar.queue[currentQueueIdx] === song.id
@@ -13,7 +13,7 @@ const AlbumSongListItem = ({ artistName, song, songNum, onClick }) => {
   song.songUrl && fetchSongDuration(song.songUrl, setDuration); 
 
   return (
-    <ul className="songListItem" onClick={onClick}>
+    <ul className="songListItem" onClick={handleAlbumSongClick}>
       <li>
         <div className={`songNum ${currentSongId ? "currentSongId" : ""}`}>
           {songNum}

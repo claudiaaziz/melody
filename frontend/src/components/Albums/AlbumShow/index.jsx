@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchAlbum, getAlbum } from "../../../store/albums.js";
-import "./AlbumShow.css";
-import { getSongs } from "../../../store/songs.js";
-import { playQueue } from "../../../store/playbar.js";
 import AlbumSongListItem from "./AlbumSongListItem/AlbumSongListItem.jsx";
 import AlbumShowHeader from "./AlbumShowHeader.jsx";
 import SignUpModal from "../../SignupAndLogin/SignUpModal/index.jsx";
+import { fetchAlbum, getAlbum } from "../../../store/albums.js";
+import { getSongs } from "../../../store/songs.js";
+import { playQueue } from "../../../store/playbar.js";
+import "./AlbumShow.css";
 
 const AlbumShow = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
   const { albumId } = useParams();
-  const album = useSelector(getAlbum(albumId));
-  const songs = useSelector(getSongs);
-  const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
 
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
 
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const album = useSelector(getAlbum(albumId));
+  const songs = useSelector(getSongs);
+  const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
+
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
   // play album songs 
   const handleAlbumSongClick = (songId) => {
@@ -29,7 +30,7 @@ const AlbumShow = () => {
       const currentQueueIdx = album.albumSongs.indexOf(songId)
       dispatch(playQueue(album.albumSongs, currentQueueIdx));
     } else {
-      setShowSignUpModal(true);
+      setIsSignUpModalOpen(true);
     }
   };
 
@@ -48,11 +49,11 @@ const AlbumShow = () => {
                 song={song}
                 songNum={idx + 1}
                 artistName={album.artistName}
-                onClick={() => handleAlbumSongClick(song.id)}
+                handleAlbumSongClick={() => handleAlbumSongClick(song.id)}
               />
             ))}
-        {showSignUpModal && (
-          <SignUpModal onClose={() => setShowSignUpModal(false)} />
+        {isSignUpModalOpen && (
+          <SignUpModal onClose={() => setIsSignUpModalOpen(false)} />
         )}
       </div>
   );
