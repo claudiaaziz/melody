@@ -15,11 +15,11 @@ const AlbumSongListItem = ({ artistName, song, songNum, handleAlbumSongClick }) 
   return (
     <ul className="songListItem" onClick={handleAlbumSongClick}>
       <li>
-        <div className={`songNum ${currentSongId ? "currentSongId" : ""}`}>
+        <div className={`songNum ${currentSongId && "currentSongId"}`}>
           {songNum}
         </div>
         <div className="songContent">
-          <div className={`songTitle ${currentSongId ? "currentSongId" : ""}`}>
+          <div className={`songTitle ${currentSongId && "currentSongId"}`}>
             {song.title}
           </div>
           <div className="artistName">{artistName}</div>

@@ -16,7 +16,7 @@ const NavLinks = () => {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.linkedin.com/in/claudia-aziz-b940b0274"
+        href="https://www.linkedin.com/in/claudiaaziz/"
       >
         <img src={linkedinIcon} alt="Linkedin Icon" className="navLinksIcon" />
       </a>

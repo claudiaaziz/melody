@@ -11,15 +11,16 @@ import "./AlbumShow.css";
 
 const AlbumShow = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.session.user);
   const { albumId } = useParams();
-
+  
   useEffect(() => {
     dispatch(fetchAlbum(albumId));
   }, [dispatch, albumId]);
-
+  
+  const currentUser = useSelector((state) => state.session.user);
   const album = useSelector(getAlbum(albumId));
   const songs = useSelector(getSongs);
+  
   const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
 
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);

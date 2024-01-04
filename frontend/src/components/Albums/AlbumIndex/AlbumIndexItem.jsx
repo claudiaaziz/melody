@@ -1,6 +1,6 @@
 import React from "react";
 
-const AlbumIndexItem = ({album}) => {
+const AlbumIndexItem = ({ album }) => {
   return (
     <div className="albumIndexItem">
       <img src={album.albumCoverUrl} alt="" />
