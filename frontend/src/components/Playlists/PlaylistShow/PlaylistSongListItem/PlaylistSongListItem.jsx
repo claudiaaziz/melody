@@ -25,7 +25,7 @@ const PlaylistSongListItem = ({
     (state) => state.playbar.currentQueueIdx
   );
   const currentSongId = useSelector(
-    (state) => state.playbar.queue[currentQueueIdx] === song.id
+    (state) => state.playbar.queue[currentQueueIdx] === song?.id
   );
   const albumId = song?.albumId;
   const album = useSelector(getAlbum(albumId));
