@@ -21,13 +21,13 @@ const PlaylistSongListItem = ({
 
   const song = useSelector(getSong(songId))
 
-  const currentQueueIdx = useSelector(
-    (state) => state.playbar.currentQueueIdx
-  );
-  const currentSongId = useSelector(
-    (state) => state.playbar.queue[currentQueueIdx] === song.id
-  );
-  const albumId = song.albumId;
+  // const currentQueueIdx = useSelector(
+  //   (state) => state.playbar.currentQueueIdx
+  // );
+  // const currentSongId = useSelector(
+  //   (state) => state.playbar.queue[currentQueueIdx] === song.id
+  // );
+  const albumId = song?.albumId;
   const album = useSelector(getAlbum(albumId));
 
   const [isHovered, setIsHovered] = useState(false);
@@ -35,7 +35,7 @@ const PlaylistSongListItem = ({
   const handleMouseLeave = () => setIsHovered(false);
 
   const [duration, setDuration] = useState(null);
-  song.songUrl && fetchSongDuration(song.songUrl, setDuration); 
+  song?.songUrl && fetchSongDuration(song.songUrl, setDuration); 
 
   return (
     <div
@@ -45,7 +45,7 @@ const PlaylistSongListItem = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={`playlist-song-num ${currentSongId ? "currentSongId" : ""}`}
+        // className={`playlist-song-num ${currentSongId ? "currentSongId" : ""}`}
       >
         {songNum}
       </div>
@@ -56,11 +56,11 @@ const PlaylistSongListItem = ({
       />
       <div className="playlist-song-title-and-name">
         <div
-          className={`playlist-song-song-title ${
-            currentSongId ? "currentSongId" : ""
-          }`}
+          // className={`playlist-song-song-title ${
+          //   currentSongId ? "currentSongId" : ""
+          // }`}
         >
-          {song.title}
+          {song?.title}
         </div>
         <div className="playlist-song-artist-name">{album?.artistName}</div>
       </div>

@@ -19,7 +19,6 @@ const PlaylistShow = () => {
   const songs = useSelector(getSongs);
   const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
 
-  
   useEffect(() => {
     dispatch(fetchPlaylist(playlistId));
   }, [dispatch, playlistId, songs]);
@@ -28,8 +27,6 @@ const PlaylistShow = () => {
   useEffect(() => {
     setSongsInThisPlaylist(playlistSongs)
   }, [playlistSongs])
-  
-
   
   useEffect(() => {
     dispatch(fetchAlbums());
@@ -40,17 +37,19 @@ const PlaylistShow = () => {
   }, [dispatch]);
 
   // play playlist song logic
-  // const handlePlaylistSongClick = (songId) => {
-  //   let currentQueueIdx = null
-  //   let playlistQueue = []
-  //   for (let i = 0; i < playlist.playlistSongs.length; i++) {
-  //     playlistQueue.push(playlist.playlistSongs[i][0]);
-  //     if (playlist.playlistSongs[i][0] === songId) {
-  //       currentQueueIdx = i
-  //     }
-  //   }
-  //   dispatch(playQueue(playlistQueue, currentQueueIdx));
-  // };
+  const handlePlaylistSongClick = (songId) => {
+    let currentQueueIdx = null
+    let playlistQueue = []
+    for (let i = 0; i < playlistSongs.length; i++) {
+      // console.log('🦋🦋🦋 ~ playlistSongs:', playlistSongs);
+      playlistQueue.push(playlistSongs[i].songId);
+      if (playlistSongs[i].songId=== songId) {
+        currentQueueIdx = i
+      }
+    }
+    dispatch(playQueue(playlistQueue, currentQueueIdx));
+  };
+
 
   if (!currentUser) return <Redirect to="/" />;
 
@@ -70,7 +69,7 @@ const PlaylistShow = () => {
             songNum={idx + 1}
             playlist={playlist}
             playlistSongId={playlistSongId}
-            // onClick={() => handlePlaylistSongClick(song.id)}
+            onClick={() => handlePlaylistSongClick(songId)}
           />
         ))}
       <SearchSongs />

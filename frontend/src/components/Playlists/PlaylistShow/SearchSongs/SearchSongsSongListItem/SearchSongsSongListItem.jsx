@@ -14,13 +14,14 @@ const SearchSongsSongListItem = ({ song }) => {
 
   const handleCreatePlaylistSong = () => {
     dispatch(createPlaylistSong(song.id, playlistId));
+
   }
 
   return (
     <div className="search-songs-song-list-item">
       <img className="albumCoverUrl" src={album?.albumCoverUrl} alt="" />
       <div className="title-and-name">
-        <div className="songTitle">{song.title}</div>
+        <div className="songTitle">{song?.title}</div>
         <div className="artistName">{album?.artistName}</div>
       </div>
       <div className="search-songs-album-title">{album?.title}</div>
