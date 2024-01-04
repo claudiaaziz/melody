@@ -23,7 +23,6 @@ const PlaylistShow = () => {
     dispatch(fetchPlaylist(playlistId));
   }, [dispatch, playlistId, songs]);
 
-
   useEffect(() => {
     setSongsInThisPlaylist(playlistSongs)
   }, [playlistSongs])
@@ -40,16 +39,14 @@ const PlaylistShow = () => {
   const handlePlaylistSongClick = (songId) => {
     let currentQueueIdx = null
     let playlistQueue = []
+
     for (let i = 0; i < playlistSongs.length; i++) {
-      // console.log('🦋🦋🦋 ~ playlistSongs:', playlistSongs);
       playlistQueue.push(playlistSongs[i].songId);
-      if (playlistSongs[i].songId=== songId) {
-        currentQueueIdx = i
-      }
+      if (playlistSongs[i].songId === songId) currentQueueIdx = i
     }
+
     dispatch(playQueue(playlistQueue, currentQueueIdx));
   };
-
 
   if (!currentUser) return <Redirect to="/" />;
 

@@ -14,7 +14,6 @@ const SearchSongsSongListItem = ({ song }) => {
 
   const handleCreatePlaylistSong = () => {
     dispatch(createPlaylistSong(song.id, playlistId));
-
   }
 
   return (
