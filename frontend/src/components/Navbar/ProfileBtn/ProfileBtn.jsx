@@ -10,7 +10,7 @@ const ProfileBtn = () => {
   const history = useHistory()
 
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const openProfileMenu = () => setIsProfileMenuOpen(!isProfileMenuOpen);
+  const openProfileMenu = () => setIsProfileMenuOpen(true);
   const closeProfileMenu = () => setIsProfileMenuOpen(false);
 
   // close menu if user clicks off 

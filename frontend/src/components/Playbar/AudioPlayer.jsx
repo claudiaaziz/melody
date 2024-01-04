@@ -4,13 +4,13 @@ import { playNext, setVolume, updateProgress } from "../../store/playbar";
 import ProgressSlider from "../Playbar/ProgressSlider";
 
 const AudioPlayer = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.session.user);
   const isPlaying = useSelector((state) => state.playbar.isPlaying);
+  const volume = useSelector((state) => state.playbar.volume);
   const currentQueueIdx = useSelector((state) => state.playbar.currentQueueIdx)
   const currentSongId = useSelector((state) => state.playbar.queue[currentQueueIdx]);
   const currentSongUrl = useSelector((state) => state.songs[currentSongId]?.songUrl);
-  const volume = useSelector((state) => state.playbar.volume);
-  const currentUser = useSelector((state) => state.session.user);
-  const dispatch = useDispatch();
 
   const audioRef = useRef(null);
   const [isAudioReady, setIsAudioReady] = useState(false);
@@ -34,9 +34,7 @@ const AudioPlayer = () => {
 
   // update volume if volume state changes
   useEffect(() => {
-    if (volume) {
-      audioRef.current.volume = volume;
-    }
+    if (volume) audioRef.current.volume = volume;
   }, [isPlaying, isAudioReady, volume]);
 
 
@@ -44,13 +42,10 @@ const AudioPlayer = () => {
   useEffect(() => {
     const handleNext = () => dispatch(playNext());
     const audioEle = document.querySelector("audio")
-        audioEle.addEventListener("ended", (event) => {
-        handleNext()
-    });
-
+    audioEle.addEventListener("ended", () => handleNext())
   }, [audioRef, dispatch])
 
-  // when metadata is loaded for the audio
+  // when metadata is loaded for the audio 
   const handleLoadedMetadata = () => setIsAudioReady(true);
 
   return (
