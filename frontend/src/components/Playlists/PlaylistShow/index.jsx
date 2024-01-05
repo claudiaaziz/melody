@@ -5,7 +5,7 @@ import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import "./PlaylistShow.css";
 import PlaylistShowPageHeader from "./PlaylistShowHeader";
 import SearchSongs from "./SearchSongs";
-import { fetchSongs, getSongs } from "../../../store/songs";
+import { fetchSongs } from "../../../store/songs";
 import PlaylistSongListItem from "./PlaylistSongListItem/PlaylistSongListItem";
 import { playQueue } from "../../../store/playbar";
 import { fetchAlbums } from "../../../store/albums";
@@ -16,12 +16,11 @@ const PlaylistShow = () => {
   const playlist = useSelector(getPlaylist(playlistId));
   const playlistSongs = playlist?.playlistSongs;
   const currentUser = useSelector((state) => state.session.user);
-  const songs = useSelector(getSongs);
   const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
 
   useEffect(() => {
     dispatch(fetchPlaylist(playlistId));
-  }, [dispatch, playlistId, songs]);
+  }, [dispatch, playlistId]);
 
   useEffect(() => {
     setSongsInThisPlaylist(playlistSongs)
