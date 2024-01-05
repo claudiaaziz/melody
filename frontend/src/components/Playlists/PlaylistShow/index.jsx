@@ -41,8 +41,12 @@ const PlaylistShow = () => {
     let playlistQueue = []
 
     for (let i = 0; i < playlistSongs.length; i++) {
-      playlistQueue.push(playlistSongs[i].songId);
-      if (playlistSongs[i].songId === songId) currentQueueIdx = i
+      if (playlistSongs[i]?.songId) {
+        playlistQueue.push(playlistSongs[i].songId);
+      }
+      // console.log('😆 ~ playlistSongs:', playlistSongs[i].songId);
+      
+      if (playlistSongs[i]?.songId === songId) currentQueueIdx = i
     }
 
     dispatch(playQueue(playlistQueue, currentQueueIdx));
@@ -58,7 +62,7 @@ const PlaylistShow = () => {
 
       <hr />
 
-      {playlist &&
+      {playlist && songsInThisPlaylist?.length > 0 &&
         songsInThisPlaylist?.map(({playlistSongId, songId}, idx) => (
           <PlaylistSongListItem
             key={idx}

@@ -120,7 +120,12 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
     }
 
     const createdPlaylistSong = await res.json();
-    dispatch(addSongToPlaylist(createdPlaylistSong));
+    console.log('🦋🦋🦋 ~ createdPlaylistSong:', createdPlaylistSong);
+
+    // dispatch(addSongToPlaylist(createdPlaylistSong));
+    // dispatch(fetchPlaylist(playlistId)); solves the playlistsong undefined before refresh prob
+    console.log(({ songId: createdPlaylistSong.songId,  playlistSongId: createdPlaylistSong.id }))
+    dispatch(addSongToPlaylist({ songId: createdPlaylistSong.songId, playlistSongId: createdPlaylistSong.id, playlistId }));
     return createdPlaylistSong;
   } catch (error) {
     console.error("Error creating playlist song:", error);
@@ -155,24 +160,28 @@ const playlistsReducer = (state = {}, action) => {
       delete newState[action.playlistId];
       return newState;
     case REMOVE_SONG_FROM_PLAYLIST:
-      // debugger
+      // [] until refresh
       const getIdxOfPlaylistSongInPlaylistSongs = (playlistSongId) => {
         const playlistSongs = state[action.playlistId].playlistSongs;
 
         for (let i = 0; i < playlistSongs.length; i++) {
-          if (playlistSongs[i].playlistSongId === playlistSongId) return i
+          if (playlistSongs[i]?.playlistSongId === playlistSongId) return i;
         }
-      }
+      };
 
-      const indexOfPlaylistSong =
-        getIdxOfPlaylistSongInPlaylistSongs(action.playlistSongId);
-      delete newState[action.playlistId].playlistSongs[indexOfPlaylistSong];
-      return newState
+      const indexOfPlaylistSong = getIdxOfPlaylistSongInPlaylistSongs(
+        action.playlistSongId
+      );
+
+      // delete newState[action.playlistId].playlistSongs[indexOfPlaylistSong];
+      newState[action.playlistId].playlistSongs.splice(indexOfPlaylistSong, 1);
+      return {...newState};
     case ADD_SONG_TO_PLAYLIST:
+        console.log(action)
       newState[action.playlistSong.playlistId].playlistSongs[
-        state[action.playlistSong.playlistId].playlistSongs
-      .length] = action.playlistSong;
-      return newState
+        state[action.playlistSong.playlistId].playlistSongs.length
+      ] = action.playlistSong;
+      return newState;
     case REMOVE_CURRENT_USER:
       return {};
     default:

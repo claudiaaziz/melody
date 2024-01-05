@@ -15,7 +15,7 @@ const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId,
     setIsDeleteSongDropdownOpen(!isDeleteSongDropdownOpen);
   };
   
-  console.log('🦋🦋🦋 ~ playlistSongId:', playlistSongId); // undefined sometimes sometimes not
+  console.log('🦋🦋🦋 ~ playlistSongId:', playlistSongId); // from create undefined before refresh
   const handleDeletePlaylistSong = () => {
     dispatch(deletePlaylistSong(playlistSongId, playlist.id))
     setIsDeleteSongDropdownOpen(false)
