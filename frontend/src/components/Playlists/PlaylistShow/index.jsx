@@ -44,8 +44,7 @@ const PlaylistShow = () => {
       if (playlistSongs[i]?.songId) {
         playlistQueue.push(playlistSongs[i].songId);
       }
-      // console.log('😆 ~ playlistSongs:', playlistSongs[i].songId);
-      
+
       if (playlistSongs[i]?.songId === songId) currentQueueIdx = i
     }
 

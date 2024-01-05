@@ -1,6 +1,6 @@
 import csrfFetch from "./csrf";
-import {REMOVE_CURRENT_USER} from "./session"
-import {merge} from "lodash"
+import { REMOVE_CURRENT_USER } from "./session";
+import { merge } from "lodash";
 
 export const RECEIVE_PLAYLISTS = `RECEIVE_PLAYLISTS`;
 export const RECEIVE_PLAYLIST = `RECEIVE_PLAYLIST`;
@@ -102,7 +102,7 @@ export const deletePlaylist = (playlistId) => async (dispatch) => {
 
   if (res.ok) {
     dispatch(removePlaylist(playlistId));
-  } 
+  }
 };
 
 export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
@@ -120,12 +120,13 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
     }
 
     const createdPlaylistSong = await res.json();
-    console.log('🦋🦋🦋 ~ createdPlaylistSong:', createdPlaylistSong);
-
-    // dispatch(addSongToPlaylist(createdPlaylistSong));
-    // dispatch(fetchPlaylist(playlistId)); solves the playlistsong undefined before refresh prob
-    console.log(({ songId: createdPlaylistSong.songId,  playlistSongId: createdPlaylistSong.id }))
-    dispatch(addSongToPlaylist({ songId: createdPlaylistSong.songId, playlistSongId: createdPlaylistSong.id, playlistId }));
+    dispatch(
+      addSongToPlaylist({
+        songId: createdPlaylistSong.songId,
+        playlistSongId: createdPlaylistSong.id,
+        playlistId,
+      })
+    );
     return createdPlaylistSong;
   } catch (error) {
     console.error("Error creating playlist song:", error);
@@ -133,21 +134,20 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
   }
 };
 
-export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
-    method: "DELETE",
-  });
+export const deletePlaylistSong =
+  (playlistSongId, playlistId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
+      method: "DELETE",
+    });
 
-  if (res.ok) {
-    dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
-  } else {
-    console.error("Error deleting playlist song:");
-  }
-};
+    if (res.ok) {
+      dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
+    }
+  };
 
 const playlistsReducer = (state = {}, action) => {
-  let newState = merge({}, state)
-  
+  let newState = merge({}, state);
+
   switch (action.type) {
     case RECEIVE_PLAYLISTS:
       return { ...action.playlists };
@@ -160,7 +160,6 @@ const playlistsReducer = (state = {}, action) => {
       delete newState[action.playlistId];
       return newState;
     case REMOVE_SONG_FROM_PLAYLIST:
-      // [] until refresh
       const getIdxOfPlaylistSongInPlaylistSongs = (playlistSongId) => {
         const playlistSongs = state[action.playlistId].playlistSongs;
 
@@ -169,15 +168,13 @@ const playlistsReducer = (state = {}, action) => {
         }
       };
 
-      const indexOfPlaylistSong = getIdxOfPlaylistSongInPlaylistSongs(
+      const idxOfPlaylistSong = getIdxOfPlaylistSongInPlaylistSongs(
         action.playlistSongId
       );
 
-      // delete newState[action.playlistId].playlistSongs[indexOfPlaylistSong];
-      newState[action.playlistId].playlistSongs.splice(indexOfPlaylistSong, 1);
-      return {...newState};
+      newState[action.playlistId].playlistSongs.splice(idxOfPlaylistSong, 1);
+      return newState;
     case ADD_SONG_TO_PLAYLIST:
-        console.log(action)
       newState[action.playlistSong.playlistId].playlistSongs[
         state[action.playlistSong.playlistId].playlistSongs.length
       ] = action.playlistSong;

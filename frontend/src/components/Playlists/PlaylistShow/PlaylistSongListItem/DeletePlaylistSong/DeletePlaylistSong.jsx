@@ -5,7 +5,6 @@ import { ReactComponent as DotsIcon } from "../../../../../static/svgs/dots.svg"
 import { ReactComponent as TrashIcon } from "../../../../../static/svgs/playlists/removeSong.svg";
 
 const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId, playlist}) => {
-  // console.log('🦋🦋🦋 ~ playlistSongId:', playlistSongId); works
 
   const dispatch = useDispatch();
   const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
@@ -15,7 +14,6 @@ const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId,
     setIsDeleteSongDropdownOpen(!isDeleteSongDropdownOpen);
   };
   
-  console.log('🦋🦋🦋 ~ playlistSongId:', playlistSongId); // from create undefined before refresh
   const handleDeletePlaylistSong = () => {
     dispatch(deletePlaylistSong(playlistSongId, playlist.id))
     setIsDeleteSongDropdownOpen(false)

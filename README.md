@@ -110,10 +110,9 @@ This Jbuilder file efficiently extracts and structures playlist information, inc
 ```ruby
 # _playlist.json.jbuilder
 
-json.extract! @playlist, :id, :name, :user_id, :created_at, :updated_at
-
+json.extract! playlist, :id, :name, :user_id, :created_at, :updated_at
 json.set! 'playlist_songs' do
-  json.array! @playlist.playlist_songs.pluck(:song_id, :id)
+    json.array! playlist.playlist_songs.pluck(:id, :song_id).map { |id, song_id| { playlist_song_id: id, song_id: song_id } }
 end
 ```
 
@@ -122,12 +121,10 @@ In both the show and index views, playlists are managed with a modular and maint
 ```ruby
 # playlists/index.json.jbuilder
 
-json.playlists do
-  @playlists.each do |playlist|
+@playlists.each do |playlist|
     json.set! playlist.id do
-      json.partial! "api/playlists/playlist", playlist: playlist
+        json.partial! "api/playlists/playlist", playlist: playlist
     end
-  end
 end
 ```
 
