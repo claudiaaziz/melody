@@ -135,6 +135,8 @@ export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatc
 
   if (res.ok) {
     dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
+  } else {
+    console.error("Error deleting playlist song:");
   }
 };
 
@@ -153,27 +155,19 @@ const playlistsReducer = (state = {}, action) => {
       delete newState[action.playlistId];
       return newState;
     case REMOVE_SONG_FROM_PLAYLIST:
+      // debugger
+      const getIdxOfPlaylistSongInPlaylistSongs = (playlistSongId) => {
+        const playlistSongs = state[action.playlistId].playlistSongs;
+
+        for (let i = 0; i < playlistSongs.length; i++) {
+          if (playlistSongs[i].playlistSongId === playlistSongId) return i
+        }
+      }
+
+      const indexOfPlaylistSong =
+        getIdxOfPlaylistSongInPlaylistSongs(action.playlistSongId);
+      delete newState[action.playlistId].playlistSongs[indexOfPlaylistSong];
       return newState
-    //   let indexToDelete = null;
-    //   for (
-    //     let i = 0;
-    //     i < newState[action.playlistId].playlistSongs.length;
-    //     i++
-    //   ) {
-    //     let array = newState[action.playlistId].playlistSongs[i];
-    //     if (array && array[1] === action.playlistSongId) {
-    //       indexToDelete = i;
-    //       break;
-    //     }
-    //   }
-    //   newState[action.playlistId].playlistSongs = newState[
-    //     action.playlistId
-    //   ].playlistSongs
-    //     .slice(0, indexToDelete)
-    //     .concat(
-    //       newState[action.playlistId].playlistSongs.slice(indexToDelete + 1)
-    //     );
-    //   return newState;
     case ADD_SONG_TO_PLAYLIST:
       newState[action.playlistSong.playlistId].playlistSongs[
         state[action.playlistSong.playlistId].playlistSongs

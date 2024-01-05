@@ -5,15 +5,21 @@ import { ReactComponent as DotsIcon } from "../../../../../static/svgs/dots.svg"
 import { ReactComponent as TrashIcon } from "../../../../../static/svgs/playlists/removeSong.svg";
 
 const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId, playlist}) => {
+  // console.log('🦋🦋🦋 ~ playlistSongId:', playlistSongId); works
+
   const dispatch = useDispatch();
+  const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
 
   const toggleDeleteSongDropdown = (e) => {
     e.stopPropagation();
     setIsDeleteSongDropdownOpen(!isDeleteSongDropdownOpen);
   };
-  const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
-
-  const handleDeletePlaylistSong = () => dispatch(deletePlaylistSong(playlistSongId, playlist.id));
+  
+  console.log('🦋🦋🦋 ~ playlistSongId:', playlistSongId); // undefined sometimes sometimes not
+  const handleDeletePlaylistSong = () => {
+    dispatch(deletePlaylistSong(playlistSongId, playlist.id))
+    setIsDeleteSongDropdownOpen(false)
+  }
 
   return (
     <>
