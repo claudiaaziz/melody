@@ -53,7 +53,7 @@ const PlaylistShow = () => {
   return (
     <div className="playlistShowPage">
       {playlist && currentUser && (
-        <PlaylistShowPageHeader playlist={playlist} currentUser={currentUser} />
+        <PlaylistShowPageHeader playlist={playlist} currentUser={currentUser} key={playlist}/>
       )}
 
       <hr />
@@ -61,7 +61,7 @@ const PlaylistShow = () => {
       {playlist &&
         songsInThisPlaylist?.map(({playlistSongId, songId}, idx) => (
           <PlaylistSongListItem
-            key={playlistSongId}
+            key={idx}
             songId={songId}
             songNum={idx + 1}
             playlist={playlist}
