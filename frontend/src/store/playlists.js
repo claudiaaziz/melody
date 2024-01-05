@@ -120,9 +120,7 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
     }
 
     const createdPlaylistSong = await res.json();
-    // console.log('🦋🦋🦋 ~ createdPlaylistSong:', createdPlaylistSong);
     dispatch(addSongToPlaylist(createdPlaylistSong));
-    dispatch(fetchPlaylist(playlistId)); 
     return createdPlaylistSong;
   } catch (error) {
     console.error("Error creating playlist song:", error);
@@ -176,15 +174,10 @@ const playlistsReducer = (state = {}, action) => {
     //     );
     //   return newState;
     case ADD_SONG_TO_PLAYLIST:
+      newState[action.playlistSong.playlistId].playlistSongs[
+        state[action.playlistSong.playlistId].playlistSongs
+      .length] = action.playlistSong;
       return newState
-      // debugger
-      // return {
-      //   ...state,
-      //   [action.playlistId.playlistSongs[]]:
-      //     action.playlistSong,
-
-      //     // switch to playlistSongId => songid or keep fetchplaylist ^ or loop thr playlistSongs to find whichever idx contains that playlistsongid
-      // };
     case REMOVE_CURRENT_USER:
       return {};
     default:
