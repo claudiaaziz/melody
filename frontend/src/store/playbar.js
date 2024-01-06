@@ -6,7 +6,6 @@ export const PLAY_QUEUE = "PLAY_QUEUE";
 export const PLAY_PREV = "PLAY_PREV";
 export const PLAY_NEXT = "PLAY_NEXT";
 export const UPDATE_VOLUME = "UPDATE_VOLUME";
-export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
 
 export const playSong = () => ({
   type: PLAY_SONG,
@@ -16,9 +15,9 @@ export const pauseSong = () => ({
   type: PAUSE_SONG,
 });
 
-export const playQueue = (songs, currentQueueIdx) => ({
+export const playQueue = (songIds, currentQueueIdx) => ({
   type: PLAY_QUEUE,
-  songs,
+  songIds,
   currentQueueIdx,
 });
 
@@ -33,11 +32,6 @@ export const playNext = () => ({
 export const updateVolume = (volume) => ({
   type: UPDATE_VOLUME,
   volume,
-});
-
-export const updateProgress = (progress) => ({
-  type: UPDATE_PROGRESS,
-  progress,
 });
 
 const initialState = {
@@ -57,7 +51,7 @@ const playbarReducer = (state = initialState, action) => {
     case PLAY_QUEUE:
       return {
         ...state,
-        queue: action.songs,
+        queue: action.songIds,
         isPlaying: true,
         currentQueueIdx: action.currentQueueIdx,
       };
@@ -70,8 +64,6 @@ const playbarReducer = (state = initialState, action) => {
       return { ...state, currentQueueIdx: newIdx };
     case UPDATE_VOLUME:
       return { ...state, volume: action.volume };
-    case UPDATE_PROGRESS:
-      return { ...state, progress: action.progress };
     case REMOVE_CURRENT_USER:
       return initialState;
     default:
