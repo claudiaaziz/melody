@@ -1,7 +1,6 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import spotifyIcon from "../../static/images/spotifyIcon.png";
 import "./MelodyLogo.css";
-import { Link } from "react-router-dom";
 
 const MelodyLogo = () => {
   return (

@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { getPlaylists } from "../../../store/playlists";
 import PlaylistIndexItem from "./PlaylistIndexItem";

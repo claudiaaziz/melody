@@ -1,4 +1,3 @@
-import React from 'react'
 import playlistCover from "../../../static/images/playlistCover.png";
 import PlaylistMenu from './PlaylistMenu';
 

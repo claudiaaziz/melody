@@ -1,4 +1,3 @@
-import React from "react";
 import "./SignupModal.css";
 import { getAlbum } from "../../../store/albums";
 import { useSelector } from "react-redux";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as DotsIcon } from "../../../../static/svgs/dots.svg";
 import { ReactComponent as EditPlaylistIcon } from "../../../../static/svgs/playlists/editPlaylist.svg";
 import { ReactComponent as DeletePlaylistIcon } from "../../../../static/svgs/playlists/delete.svg";

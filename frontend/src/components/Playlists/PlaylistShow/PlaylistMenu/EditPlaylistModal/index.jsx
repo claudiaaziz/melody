@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./EditPlaylistModal.css"
 import { updatePlaylist } from "../../../../../store/playlists";
 import { useDispatch } from "react-redux";

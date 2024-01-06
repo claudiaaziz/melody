@@ -1,6 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import ProfileBtn from "./ProfileBtn/ProfileBtn.jsx";
 import NavLinks from "./NavLinks";
