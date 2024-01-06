@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { playNext, setVolume, updateProgress } from "../../store/playbar";
+import { playNext, updateVolume, updateProgress } from "../../store/playbar";
 import ProgressSlider from "../Playbar/ProgressSlider";
 
 const AudioPlayer = () => {
@@ -53,7 +53,7 @@ const AudioPlayer = () => {
       <audio
         ref={audioRef}
         onLoadedMetadata={handleLoadedMetadata}
-        onVolumeChange={(e) => dispatch(setVolume(e.target.volume))}
+        onVolumeChange={(e) => dispatch(updateVolume(e.target.volume))}
         onTimeUpdate={() => dispatch(updateProgress(audioRef.current.currentTime))}
       />
       <ProgressSlider audioRef={audioRef} />

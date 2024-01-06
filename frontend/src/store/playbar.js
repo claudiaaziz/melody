@@ -1,16 +1,19 @@
 import { REMOVE_CURRENT_USER } from "./session";
 
-export const SET_VOLUME = "SET_VOLUME";
+export const PLAY_SONG = "PLAY_SONG";
+export const PAUSE_SONG = "PAUSE_SONG";
 export const PLAY_QUEUE = "PLAY_QUEUE";
 export const PLAY_PREV = "PLAY_PREV";
 export const PLAY_NEXT = "PLAY_NEXT";
-export const PAUSE_SONG = "PAUSE_SONG";
-export const PLAY_SONG = "PLAY_SONG";
+export const UPDATE_VOLUME = "UPDATE_VOLUME";
 export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
 
-export const setVolume = (volume) => ({
-  type: SET_VOLUME,
-  volume,
+export const playSong = () => ({
+  type: PLAY_SONG,
+});
+
+export const pauseSong = () => ({
+  type: PAUSE_SONG,
 });
 
 export const playQueue = (songs, currentQueueIdx) => ({
@@ -20,19 +23,16 @@ export const playQueue = (songs, currentQueueIdx) => ({
 });
 
 export const playPrev = () => ({
-  type: PLAY_PREV
-})
-
-export const playNext = () => ({
-  type: PLAY_NEXT
-})
-
-export const pauseSong = () => ({
-  type: PAUSE_SONG,
+  type: PLAY_PREV,
 });
 
-export const playSong = () => ({
-  type: PLAY_SONG,
+export const playNext = () => ({
+  type: PLAY_NEXT,
+});
+
+export const updateVolume = (volume) => ({
+  type: UPDATE_VOLUME,
+  volume,
 });
 
 export const updateProgress = (progress) => ({
@@ -45,13 +45,15 @@ const initialState = {
   isPlaying: false,
   currentQueueIdx: null,
   progress: 0,
-  queue: []
+  queue: [],
 };
 
 const playbarReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_VOLUME:
-      return { ...state, volume: action.volume };
+    case PLAY_SONG:
+      return { ...state, isPlaying: true };
+    case PAUSE_SONG:
+      return { ...state, isPlaying: false };
     case PLAY_QUEUE:
       return {
         ...state,
@@ -59,17 +61,15 @@ const playbarReducer = (state = initialState, action) => {
         isPlaying: true,
         currentQueueIdx: action.currentQueueIdx,
       };
-    case PLAY_NEXT:
-      const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
-      return { ...state, currentQueueIdx: newIdx };
     case PLAY_PREV:
       const newSongIdx =
         (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
       return { ...state, currentQueueIdx: newSongIdx };
-    case PAUSE_SONG:
-      return { ...state, isPlaying: false };
-    case PLAY_SONG:
-      return { ...state, isPlaying: true };
+    case PLAY_NEXT:
+      const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
+      return { ...state, currentQueueIdx: newIdx };
+    case UPDATE_VOLUME:
+      return { ...state, volume: action.volume };
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
     case REMOVE_CURRENT_USER:
