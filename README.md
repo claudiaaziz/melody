@@ -33,8 +33,10 @@ The playbarReducer ensures smooth transitions of the playbars's state, contribut
 ```javascript
 const playbarReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_VOLUME:
-      return { ...state, volume: action.volume };
+    case PLAY_SONG:
+      return { ...state, isPlaying: true };
+    case PAUSE_SONG:
+      return { ...state, isPlaying: false };
     case PLAY_QUEUE:
       return {
         ...state,
@@ -42,17 +44,14 @@ const playbarReducer = (state = initialState, action) => {
         isPlaying: true,
         currentQueueIdx: action.currentQueueIdx,
       };
+    case PLAY_PREV:
+      const newSongIdx = (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
+      return { ...state, currentQueueIdx: newSongIdx };
     case PLAY_NEXT:
       const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
       return { ...state, currentQueueIdx: newIdx };
-    case PLAY_PREV:
-      const newSongIdx =
-        (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
-      return { ...state, currentQueueIdx: newSongIdx };
-    case PAUSE_SONG:
-      return { ...state, isPlaying: false };
-    case PLAY_SONG:
-      return { ...state, isPlaying: true };
+    case UPDATE_VOLUME:
+      return { ...state, volume: action.volume };
     case UPDATE_PROGRESS:
       return { ...state, progress: action.progress };
     case REMOVE_CURRENT_USER:
@@ -98,13 +97,12 @@ useEffect(() => {
 Taking into account the current song index and the total number of songs in the album/ playlist efficiently handles previous and next song actions. Ensuring a smooth transition between songs.
 
 ```javascript
-  case PLAY_NEXT:
-    const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
-    return { ...state, currentQueueIdx: newIdx };
-  case PLAY_PREV:
-    const newSongIdx =
-      (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
-    return { ...state, currentQueueIdx: newSongIdx };
+case PLAY_PREV:
+  const newSongIdx = (state.currentQueueIdx - 1 + state.queue?.length) % state.queue?.length;
+  return { ...state, currentQueueIdx: newSongIdx };
+case PLAY_NEXT:
+  const newIdx = (state.currentQueueIdx + 1) % state.queue?.length;
+  return { ...state, currentQueueIdx: newIdx };
 ```
 
 ### Formatting of Playlist Data:
