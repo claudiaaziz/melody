@@ -9,11 +9,17 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
   const dispatch = useDispatch();
   const [newPlaylistName, setNewPlaylistName] = useState(playlist.name);
   const [error, setError] = useState(null);
+  const [warning, setWarning] = useState(null);
 
   const handleNameChange = (e) => {
     setNewPlaylistName(e.target.value);
-    setError(e.target.value === "" ? "Playlist name is required." : null);
+    setError(e.target.value === "" && "Playlist name is required.");
   };
+
+  const handleCloseEditPlaylistModal = () => {
+    if (warning) onCancel()
+    setWarning(playlist.name !== newPlaylistName && "Press save to keep changes you've made.")
+  }
 
   const updatePlaylistName = () => {
     if (newPlaylistName === "") {
@@ -31,11 +37,12 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
       <div className="editPlaylistModal">
         <div className="editPlaylistModalHeader">
           <h3>Edit playlist name</h3>
-          <button onClick={onCancel} className="closeEditPlaylistModal">
+          <button onClick={handleCloseEditPlaylistModal} className="closeEditPlaylistModal">
             <CloseIcon />
           </button>
         </div>
         {error && <div className="playlist-name-error"><ErrorIcon /> {error}</div>}
+        {warning && <div className="playlist-name-error warning"><ErrorIcon /> {warning}</div>}
         <input
           type="text"
           value={newPlaylistName}

@@ -104,3 +104,7 @@
   fill: white;
   height: 20px;
 }
+
+.editPlaylistModalOverlay .warning {
+  background-color: #2e77d0;
+}
