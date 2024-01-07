@@ -14,10 +14,11 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
   const handleNameChange = (e) => {
     setNewPlaylistName(e.target.value);
     setError(e.target.value === "" && "Playlist name is required.");
+    setWarning(null)
   };
 
   const handleCloseEditPlaylistModal = () => {
-    if (warning || error) onCancel()
+    if (warning || error || playlist.name === newPlaylistName) onCancel()
     setWarning(playlist.name !== newPlaylistName && !error && "Press save to keep changes you've made.")
   }
 
