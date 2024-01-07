@@ -12,6 +12,7 @@
 
 .playlist-song-list-item:hover {
   background: #282828;
+  /* background: hsla(0, 0%, 100%, .3); */
   transition: background-color 0.8s;
 }
 
@@ -87,7 +88,7 @@
   position: absolute;
   width: 16%;
   top: -60%;
-  right: 5%;
+  right: 2%;
   background-color: #282828;
   border-radius: 5px;
   padding: 10px;

@@ -27,7 +27,10 @@ const PlaylistSongListItem = ({
 
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseLeave = () => {
+    setIsHovered(false) 
+    setIsDeleteSongDropdownOpen(false)
+  };
 
   const [duration, setDuration] = useState(null);
   song?.songUrl && fetchSongDuration(song.songUrl, setDuration); 
