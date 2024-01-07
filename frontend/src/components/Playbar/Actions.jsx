@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { pauseSong, playSong, playNext, playPrev } from '../../store/playbar';
 import { ReactComponent as PlayBtn } from "../../static/svgs/playbar/playBtn.svg";

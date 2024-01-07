@@ -1,5 +1,3 @@
-import React from "react";
-
 const AlbumShowHeader = ({ album }) => {
   return (
     <div className="albumShowPageHeader">

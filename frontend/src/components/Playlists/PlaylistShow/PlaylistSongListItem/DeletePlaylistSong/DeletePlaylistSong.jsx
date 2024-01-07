@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { deletePlaylistSong } from '../../../../../store/playlists';
 import { ReactComponent as DotsIcon } from "../../../../../static/svgs/dots.svg";
 import { ReactComponent as TrashIcon } from "../../../../../static/svgs/playlists/removeSong.svg";
 
-const DeletePlaylistSong = ({handleMouseLeave, handleMouseEnter, playlistSongId, playlist}) => {
+const DeletePlaylistSong = ({ handleMouseLeave, handleMouseEnter, playlistSongId, playlist, setIsDeleteSongDropdownOpen, isDeleteSongDropdownOpen}) => {
   const dispatch = useDispatch();
 
   const toggleDeleteSongDropdown = (e) => {
     e.stopPropagation();
     setIsDeleteSongDropdownOpen(!isDeleteSongDropdownOpen);
   };
-  const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
-
-  const handleDeletePlaylistSong = () => dispatch(deletePlaylistSong(playlistSongId, playlist.id));
+  
+  const handleDeletePlaylistSong = () => {
+    dispatch(deletePlaylistSong(playlistSongId, playlist.id))
+    setIsDeleteSongDropdownOpen(false)
+  }
 
   return (
     <>

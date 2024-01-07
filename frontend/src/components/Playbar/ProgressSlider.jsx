@@ -1,15 +1,9 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateProgress } from "../../store/playbar";
-
-const ProgressSlider = ({ audioRef }) => {
-  const dispatch = useDispatch();
-  const progress = useSelector((state) => state.playbar.progress || 0);
+const ProgressSlider = ({ audioRef, progress, setProgress }) => {
   const duration = audioRef?.current?.duration || 0;
 
   const handleProgressChange = (e) => {
     const newProgress = parseFloat(e.target.value);
-    dispatch(updateProgress(newProgress));
+    setProgress(newProgress);
     if (audioRef?.current) audioRef.current.currentTime = newProgress;
   };
 

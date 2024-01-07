@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 import { fetchPlaylist, getPlaylist } from "../../../store/playlists";
 import "./PlaylistShow.css";
 import PlaylistShowPageHeader from "./PlaylistShowHeader";
 import SearchSongs from "./SearchSongs";
-import { fetchSongs, getSongs } from "../../../store/songs";
+import { fetchSongs } from "../../../store/songs";
 import PlaylistSongListItem from "./PlaylistSongListItem/PlaylistSongListItem";
 import { playQueue } from "../../../store/playbar";
+import { fetchAlbums } from "../../../store/albums";
 
 const PlaylistShow = () => {
   const dispatch = useDispatch();
@@ -15,37 +16,20 @@ const PlaylistShow = () => {
   const playlist = useSelector(getPlaylist(playlistId));
   const playlistSongs = playlist?.playlistSongs;
   const currentUser = useSelector((state) => state.session.user);
-  const songs = useSelector(getSongs);
   const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
-
-  let array = [];
+  const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchPlaylist(playlistId));
-  }, [dispatch, playlistId, songs]);
+  }, [dispatch, playlistId]);
 
   useEffect(() => {
-    setSongsInThisPlaylist([]);
-    array = [];
-    const theSongsInThisPlaylist = Object.values(songs)
-      .map((song) => {
-        playlistSongs?.forEach((playlistSongsId) => {
-          if (playlistSongsId[0] === song.id) {
-            song.playlistSongId = playlistSongsId[1];
-            song.playlistId = playlistId;
-            array.push(song.id);
-          }
-        });
-        return song;
-      })
-      .filter(
-        (song) =>
-          song.playlistSongId &&
-          song.playlistId === playlistId &&
-          array.includes(song.id)
-      );
-    setSongsInThisPlaylist(theSongsInThisPlaylist);
-  }, [dispatch, playlistId, playlistSongs, songs, playlist]);
+    setSongsInThisPlaylist(playlistSongs)
+  }, [playlistSongs])
+  
+  useEffect(() => {
+    dispatch(fetchAlbums());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchSongs());
@@ -53,14 +37,19 @@ const PlaylistShow = () => {
 
   // play playlist song logic
   const handlePlaylistSongClick = (songId) => {
+    if (isDeleteSongDropdownOpen) return;
+
     let currentQueueIdx = null
     let playlistQueue = []
-    for (let i = 0; i < playlist.playlistSongs.length; i++) {
-      playlistQueue.push(playlist.playlistSongs[i][0]);
-      if (playlist.playlistSongs[i][0] === songId) {
-        currentQueueIdx = i
+
+    for (let i = 0; i < playlistSongs.length; i++) {
+      if (playlistSongs[i]?.songId) {
+        playlistQueue.push(playlistSongs[i].songId);
       }
+
+      if (playlistSongs[i]?.songId === songId) currentQueueIdx = i
     }
+
     dispatch(playQueue(playlistQueue, currentQueueIdx));
   };
 
@@ -69,20 +58,22 @@ const PlaylistShow = () => {
   return (
     <div className="playlistShowPage">
       {playlist && currentUser && (
-        <PlaylistShowPageHeader playlist={playlist} currentUser={currentUser} />
+        <PlaylistShowPageHeader playlist={playlist} currentUser={currentUser} key={playlist}/>
       )}
 
       <hr />
 
-      {playlist &&
-        songsInThisPlaylist.map((song, idx) => (
+      {playlist && songsInThisPlaylist?.length > 0 &&
+        songsInThisPlaylist?.map(({playlistSongId, songId}, idx) => (
           <PlaylistSongListItem
-            key={song.id}
-            song={song}
+            key={idx}
+            songId={songId}
             songNum={idx + 1}
             playlist={playlist}
-            playlistSongId={song.playlistSongId}
-            onClick={() => handlePlaylistSongClick(song.id)}
+            playlistSongId={playlistSongId}
+            handlePlaylistSongClick={() => handlePlaylistSongClick(songId)}
+            isDeleteSongDropdownOpen={isDeleteSongDropdownOpen}
+            setIsDeleteSongDropdownOpen={setIsDeleteSongDropdownOpen}
           />
         ))}
       <SearchSongs />

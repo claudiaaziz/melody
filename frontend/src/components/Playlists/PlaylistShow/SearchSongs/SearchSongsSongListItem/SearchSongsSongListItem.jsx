@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import "./SearchSongsSongListItem.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +19,7 @@ const SearchSongsSongListItem = ({ song }) => {
     <div className="search-songs-song-list-item">
       <img className="albumCoverUrl" src={album?.albumCoverUrl} alt="" />
       <div className="title-and-name">
-        <div className="songTitle">{song.title}</div>
+        <div className="songTitle">{song?.title}</div>
         <div className="artistName">{album?.artistName}</div>
       </div>
       <div className="search-songs-album-title">{album?.title}</div>

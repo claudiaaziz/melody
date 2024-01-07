@@ -1,6 +1,6 @@
 import csrfFetch from "./csrf";
-import {REMOVE_CURRENT_USER} from "./session"
-import {merge} from "lodash"
+import { REMOVE_CURRENT_USER } from "./session";
+import { merge } from "lodash";
 
 export const RECEIVE_PLAYLISTS = `RECEIVE_PLAYLISTS`;
 export const RECEIVE_PLAYLIST = `RECEIVE_PLAYLIST`;
@@ -102,7 +102,7 @@ export const deletePlaylist = (playlistId) => async (dispatch) => {
 
   if (res.ok) {
     dispatch(removePlaylist(playlistId));
-  } 
+  }
 };
 
 export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
@@ -120,8 +120,13 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
     }
 
     const createdPlaylistSong = await res.json();
-    dispatch(addSongToPlaylist(createdPlaylistSong));
-    dispatch(fetchPlaylist(playlistId));
+    dispatch(
+      addSongToPlaylist({
+        songId: createdPlaylistSong.songId,
+        playlistSongId: createdPlaylistSong.id,
+        playlistId,
+      })
+    );
     return createdPlaylistSong;
   } catch (error) {
     console.error("Error creating playlist song:", error);
@@ -129,19 +134,20 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
   }
 };
 
-export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
-    method: "DELETE",
-  });
+export const deletePlaylistSong =
+  (playlistSongId, playlistId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
+      method: "DELETE",
+    });
 
-  if (res.ok) {
-    dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
-  }
-};
+    if (res.ok) {
+      dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
+    }
+  };
 
 const playlistsReducer = (state = {}, action) => {
-  let newState = merge({}, state)
-  
+  let newState = merge({}, state);
+
   switch (action.type) {
     case RECEIVE_PLAYLISTS:
       return { ...action.playlists };
@@ -154,32 +160,25 @@ const playlistsReducer = (state = {}, action) => {
       delete newState[action.playlistId];
       return newState;
     case REMOVE_SONG_FROM_PLAYLIST:
-      let indexToDelete = null;
-      for (
-        let i = 0;
-        i < newState[action.playlistId].playlistSongs.length;
-        i++
-      ) {
-        let array = newState[action.playlistId].playlistSongs[i];
-        if (array && array[1] === action.playlistSongId) {
-          indexToDelete = i;
-          break;
+      const getIdxOfPlaylistSongInPlaylistSongs = (playlistSongId) => {
+        const playlistSongs = state[action.playlistId].playlistSongs;
+
+        for (let i = 0; i < playlistSongs.length; i++) {
+          if (playlistSongs[i]?.playlistSongId === playlistSongId) return i;
         }
-      }
-      newState[action.playlistId].playlistSongs = newState[
-        action.playlistId
-      ].playlistSongs
-        .slice(0, indexToDelete)
-        .concat(
-          newState[action.playlistId].playlistSongs.slice(indexToDelete + 1)
-        );
+      };
+
+      const idxOfPlaylistSong = getIdxOfPlaylistSongInPlaylistSongs(
+        action.playlistSongId
+      );
+
+      newState[action.playlistId].playlistSongs.splice(idxOfPlaylistSong, 1);
       return newState;
     case ADD_SONG_TO_PLAYLIST:
+      newState[action.playlistSong.playlistId].playlistSongs[
+        state[action.playlistSong.playlistId].playlistSongs.length
+      ] = action.playlistSong;
       return newState;
-      // return {
-      //   ...state,
-      //   [action.playlistSong.id]: action.playlistSong,
-      // };
     case REMOVE_CURRENT_USER:
       return {};
     default:

@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAlbums, getAlbum } from "../../../../store/albums";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getAlbum } from "../../../../store/albums";
 import DeletePlaylistSong from "./DeletePlaylistSong/DeletePlaylistSong";
 import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
 import "./PlaylistSongListItem.css";
+import { getSong } from "../../../../store/songs";
 
 const PlaylistSongListItem = ({
-  song,
+  songId,
   songNum,
-  onClick,
+  handlePlaylistSongClick,
   playlist,
-  playlistSongId
+  playlistSongId,
+  isDeleteSongDropdownOpen,
+  setIsDeleteSongDropdownOpen
 }) => {
-  const dispatch = useDispatch()
-  
-  useEffect(() => {
-    dispatch(fetchAlbums());
-  }, [dispatch]);
-
+  const song = useSelector(getSong(songId))
   const currentQueueIdx = useSelector(
     (state) => state.playbar.currentQueueIdx
   );
   const currentSongId = useSelector(
-    (state) => state.playbar.queue[currentQueueIdx] === song.id
+    (state) => state.playbar.queue[currentQueueIdx] === song?.id
   );
-  const albumId = song.albumId;
+  const albumId = song?.albumId;
   const album = useSelector(getAlbum(albumId));
 
   const [isHovered, setIsHovered] = useState(false);
@@ -32,12 +30,12 @@ const PlaylistSongListItem = ({
   const handleMouseLeave = () => setIsHovered(false);
 
   const [duration, setDuration] = useState(null);
-  song.songUrl && fetchSongDuration(song.songUrl, setDuration); 
+  song?.songUrl && fetchSongDuration(song.songUrl, setDuration); 
 
   return (
     <div
       className="playlist-song-list-item"
-      onClick={onClick}
+      onClick={handlePlaylistSongClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -57,7 +55,7 @@ const PlaylistSongListItem = ({
             currentSongId ? "currentSongId" : ""
           }`}
         >
-          {song.title}
+          {song?.title}
         </div>
         <div className="playlist-song-artist-name">{album?.artistName}</div>
       </div>
@@ -68,6 +66,8 @@ const PlaylistSongListItem = ({
           handleMouseLeave={handleMouseLeave}
           playlistSongId={playlistSongId}
           playlist={playlist}
+          isDeleteSongDropdownOpen={isDeleteSongDropdownOpen}
+          setIsDeleteSongDropdownOpen={setIsDeleteSongDropdownOpen}
         />
       ) : (
         <div className="song-duration">{formatSongDuration(duration)}</div>

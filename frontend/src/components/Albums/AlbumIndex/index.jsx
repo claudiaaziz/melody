@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./AlbumIndex.css";
@@ -11,7 +11,7 @@ const AlbumIndex = () => {
 
   useEffect(() => {
     dispatch(fetchAlbums());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="albumIndexPage">
