@@ -60,7 +60,8 @@ const PlaylistSongListItem = ({
         <div className="playlist-song-artist-name">{album?.artistName}</div>
       </div>
       <div className="playlist-song-album-title">{album?.title}</div>
-      {isHovered ? (
+      <div className="song-duration">{formatSongDuration(duration)}</div>
+      {isHovered && (
         <DeletePlaylistSong
           handleMouseEnter={handleMouseEnter}
           handleMouseLeave={handleMouseLeave}
@@ -69,8 +70,6 @@ const PlaylistSongListItem = ({
           isDeleteSongDropdownOpen={isDeleteSongDropdownOpen}
           setIsDeleteSongDropdownOpen={setIsDeleteSongDropdownOpen}
         />
-      ) : (
-        <div className="song-duration">{formatSongDuration(duration)}</div>
       )}
     </div>
   );
