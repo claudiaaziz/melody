@@ -9,9 +9,11 @@ import { getSong } from "../../../../store/songs";
 const PlaylistSongListItem = ({
   songId,
   songNum,
-  onClick,
+  handlePlaylistSongClick,
   playlist,
-  playlistSongId
+  playlistSongId,
+  isDeleteSongDropdownOpen,
+  setIsDeleteSongDropdownOpen
 }) => {
   const song = useSelector(getSong(songId))
   const currentQueueIdx = useSelector(
@@ -33,7 +35,7 @@ const PlaylistSongListItem = ({
   return (
     <div
       className="playlist-song-list-item"
-      onClick={onClick}
+      onClick={handlePlaylistSongClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -64,6 +66,8 @@ const PlaylistSongListItem = ({
           handleMouseLeave={handleMouseLeave}
           playlistSongId={playlistSongId}
           playlist={playlist}
+          isDeleteSongDropdownOpen={isDeleteSongDropdownOpen}
+          setIsDeleteSongDropdownOpen={setIsDeleteSongDropdownOpen}
         />
       ) : (
         <div className="song-duration">{formatSongDuration(duration)}</div>

@@ -17,6 +17,7 @@ const PlaylistShow = () => {
   const playlistSongs = playlist?.playlistSongs;
   const currentUser = useSelector((state) => state.session.user);
   const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
+  const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchPlaylist(playlistId));
@@ -36,6 +37,8 @@ const PlaylistShow = () => {
 
   // play playlist song logic
   const handlePlaylistSongClick = (songId) => {
+    if (isDeleteSongDropdownOpen) return;
+
     let currentQueueIdx = null
     let playlistQueue = []
 
@@ -68,7 +71,9 @@ const PlaylistShow = () => {
             songNum={idx + 1}
             playlist={playlist}
             playlistSongId={playlistSongId}
-            onClick={() => handlePlaylistSongClick(songId)}
+            handlePlaylistSongClick={() => handlePlaylistSongClick(songId)}
+            isDeleteSongDropdownOpen={isDeleteSongDropdownOpen}
+            setIsDeleteSongDropdownOpen={setIsDeleteSongDropdownOpen}
           />
         ))}
       <SearchSongs />

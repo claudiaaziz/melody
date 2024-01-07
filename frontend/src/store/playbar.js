@@ -38,7 +38,6 @@ const initialState = {
   volume: 0.5,
   isPlaying: false,
   currentQueueIdx: null,
-  progress: 0,
   queue: [],
 };
 
