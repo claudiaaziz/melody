@@ -17,8 +17,8 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
   };
 
   const handleCloseEditPlaylistModal = () => {
-    if (warning) onCancel()
-    setWarning(playlist.name !== newPlaylistName && "Press save to keep changes you've made.")
+    if (warning || error) onCancel()
+    setWarning(playlist.name !== newPlaylistName && !error && "Press save to keep changes you've made.")
   }
 
   const updatePlaylistName = () => {
@@ -42,7 +42,7 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
           </button>
         </div>
         {error && <div className="playlist-name-error"><ErrorIcon /> {error}</div>}
-        {warning && <div className="playlist-name-error warning"><ErrorIcon /> {warning}</div>}
+        {warning && !error && <div className="playlist-name-error warning"><ErrorIcon /> {warning}</div>}
         <input
           type="text"
           value={newPlaylistName}
