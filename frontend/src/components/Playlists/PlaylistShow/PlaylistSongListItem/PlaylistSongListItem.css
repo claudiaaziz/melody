@@ -81,7 +81,7 @@
   width: 20px;
   fill: white;
   /* z-index: 100; */
-  position: fixed;
+  position: absolute;
 }
 
 .remove-playlist-song-dropdown {

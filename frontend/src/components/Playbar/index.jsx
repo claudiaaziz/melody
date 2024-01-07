@@ -18,7 +18,7 @@ const Playbar = () => {
           <AudioPlayer />
         </div>
           <VolumeControl />
-        </div>
+      </div>
       {!currentUser && <SignedOutBanner />}
     </>
   );
