@@ -19,16 +19,12 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
 
   const handleCloseEditPlaylistModal = () => {
     if (warning || error || playlist.name === newPlaylistName) onCancel()
-    setWarning(playlist.name !== newPlaylistName && !error && "Press save to keep changes you've made.")
+    setWarning(playlist.name !== newPlaylistName && "Press save to keep changes you've made.")
   }
 
   const updatePlaylistName = () => {
-    if (newPlaylistName === "") {
-      setError("Playlist name is required.");
-    } else {
-      dispatch(updatePlaylist({ id: playlist.id, name: newPlaylistName }));
-      onCancel()
-    }
+    dispatch(updatePlaylist({ id: playlist.id, name: newPlaylistName }));
+    onCancel()
   };
 
   const handleOutsideClick = (e) => e.target.classList.contains("editPlaylistModalOverlay") && onCancel();
@@ -43,7 +39,7 @@ const EditPlaylistModal = ({ playlist, onCancel }) => {
           </button>
         </div>
         {error && <div className="playlist-name-error"><ErrorIcon /> {error}</div>}
-        {warning && !error && <div className="playlist-name-error warning"><ErrorIcon /> {warning}</div>}
+        {warning && <div className="playlist-name-error warning"><ErrorIcon /> {warning}</div>}
         <input
           type="text"
           value={newPlaylistName}
