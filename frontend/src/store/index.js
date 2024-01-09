@@ -5,6 +5,7 @@ import albums from "./albums";
 import songs from "./songs";
 import playbar from "./playbar"
 import playlists from "./playlists";
+import modals from "./modals";
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   songs,
   playbar,
   playlists,
+  modals
 });
 
 let enhancer;

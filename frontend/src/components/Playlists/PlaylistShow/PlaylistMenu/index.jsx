@@ -5,8 +5,11 @@ import { ReactComponent as DeletePlaylistIcon } from "../../../../static/svgs/pl
 import EditPlaylistModal from "./EditPlaylistModal"; 
 import "./PlaylistMenu.css"
 import DeletePlaylistModal from "./DeletePlaylistModal";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleEditPlaylistModal } from "../../../../store/modals"
 
 const PlaylistMenu = ({playlist}) => {
+  const dispatch = useDispatch()
   const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
   const openPlaylistMenu = () => setIsPlaylistMenuOpen(true);
   const closePlaylistMenu = () => setIsPlaylistMenuOpen(false);
@@ -18,7 +21,7 @@ const PlaylistMenu = ({playlist}) => {
     return () => document.removeEventListener("click", closePlaylistMenu);
   }, [isPlaylistMenuOpen]);
   
-  const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
+  const isEditPlaylistModalOpen = useSelector((state) => state.modals.isEditPlaylistModalOpen);
   const [isDeletePlaylistModalOpen, setIsDeletePlaylistModalOpen] = useState(false);
 
   return (
@@ -26,7 +29,7 @@ const PlaylistMenu = ({playlist}) => {
       <DotsIcon className="dotsIcon" onClick={openPlaylistMenu} />
       {isPlaylistMenuOpen && (
         <ul className="playlist-menu">
-          <li onClick={() => setIsEditPlaylistModalOpen(true)} >
+          <li onClick={() => dispatch(toggleEditPlaylistModal(true))} >
             <EditPlaylistIcon />
             <p>Edit playlist name</p>
           </li>
@@ -40,7 +43,7 @@ const PlaylistMenu = ({playlist}) => {
       {isEditPlaylistModalOpen && (
         <EditPlaylistModal
           playlist={playlist}
-          onCancel={() => setIsEditPlaylistModalOpen(false)}
+          onCancel={() => dispatch(toggleEditPlaylistModal(false))}
         />
       )}
 

@@ -54,7 +54,7 @@ const AlbumShow = () => {
               />
             ))}
         {isSignUpModalOpen && (
-          <SignUpModal onClose={() => setIsSignUpModalOpen(false)} />
+          <SignUpModal closeSignUpModal={() => setIsSignUpModalOpen(false)} />
         )}
       </div>
   );

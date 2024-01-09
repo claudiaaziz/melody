@@ -41,6 +41,7 @@
 .playlistDetails h2 {
   font-size: 5em;
   font-family: 'CircularSpotifyBold';
+  cursor: pointer;
 }
 
 .playlistDetails span {

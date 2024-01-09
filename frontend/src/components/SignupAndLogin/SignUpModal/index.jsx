@@ -3,7 +3,7 @@ import { getAlbum } from "../../../store/albums";
 import { useSelector } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
 
-const SignUpModal = ({ onClose }) => {
+const SignUpModal = ({ closeSignUpModal }) => {
   const history = useHistory();
   const { albumId } = useParams();
   const album = useSelector(getAlbum(albumId));
@@ -11,7 +11,7 @@ const SignUpModal = ({ onClose }) => {
   const handleModalClick = (e) => e.stopPropagation();
 
   return (
-    <div className="modalOverlay" onClick={onClose}>
+    <div className="modalOverlay" onClick={closeSignUpModal}>
       <div className="modal" onClick={handleModalClick}>
         <img className="signUpModalImg" src={album.albumCoverUrl} alt="" />
         <div className="modalContent">
@@ -30,7 +30,7 @@ const SignUpModal = ({ onClose }) => {
           </p>
         </div>
       </div>
-      <button onClick={onClose} className="signupModalCloseBtn">
+      <button onClick={closeSignUpModal} className="signupModalCloseBtn">
         Close
       </button>
     </div>
