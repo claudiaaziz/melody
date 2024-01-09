@@ -11,6 +11,12 @@ const PlaylistShowHeader = ({ playlist, currentUser }) => {
           <h2>{playlist.name}</h2>
           <div>
             <span>{currentUser.username}</span>
+            {playlist.playlistSongs.length > 0 && 
+              <>
+                <span>‧</span>
+                <span>{playlist.playlistSongs.length} songs</span>
+              </>
+            }
           </div>
         </div>
       </div>

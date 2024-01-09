@@ -34,7 +34,7 @@ const ProfileBtn = () => {
       {isProfileMenuOpen && (
         <ul className="profileDropdown">
           <li>
-            <button className="logoutBtn" onClick={logout}>Log Out</button>
+            <button className="logoutBtn" onClick={logout}>Log out</button>
           </li>
         </ul>
       )}
