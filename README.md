@@ -19,8 +19,7 @@
 
 ### In Melody, users are able to:
 
-- Sign up, sign in, log out, or experience the platform as a guest
-![Login](./frontend/src/static/images/readme/login.gif)
+- Sign up, sign in, log out, or experience the platform as a guest 
 - Explore and play songs by clicking on an album
 - Control playback with options to play, pause, rewind, skip, adjust volume, and navigate through the song using a progress bar
 - Create, update, and delete personal playlists
