@@ -12,40 +12,38 @@ import AlbumShow from "./components/Albums/AlbumShow";
 
 const App = () => {
   return (
-    <>
-      <Switch>
-        <Route path="/" exact>
-          <Navbar />
-          <SideMenu />
-          <Playbar />
-          <AlbumIndex />
-        </Route>
-        <Route path="/login">
-          <LoginFormPage />
-        </Route>
-        <Route path="/signup">
-          <SignupFormPage />
-        </Route>
-        <Route path="/search" exact>
-          <Navbar />
-          <SideMenu />
-          <Playbar />
-          <SearchAlbums/>
-        </Route>
-        <Route path="/albums/:albumId">
-          <Navbar />
-          <SideMenu />
-          <Playbar />
-          <AlbumShow />
-        </Route>
-        <Route path="/playlists/:playlistId">
-          <Navbar />
-          <SideMenu />
-          <Playbar />
-          <PlaylistShowPage />
-        </Route>
-      </Switch>
-    </>
+    <Switch>
+      <Route path="/" exact>
+        <Navbar />
+        <SideMenu />
+        <Playbar />
+        <AlbumIndex />
+      </Route>
+      <Route path="/login">
+        <LoginFormPage />
+      </Route>
+      <Route path="/signup">
+        <SignupFormPage />
+      </Route>
+      <Route path="/search" exact>
+        <Navbar />
+        <SideMenu />
+        <Playbar />
+        <SearchAlbums/>
+      </Route>
+      <Route path="/albums/:albumId">
+        <Navbar />
+        <SideMenu />
+        <Playbar />
+        <AlbumShow />
+      </Route>
+      <Route path="/playlists/:playlistId">
+        <Navbar />
+        <SideMenu />
+        <Playbar />
+        <PlaylistShowPage />
+      </Route>
+    </Switch>
   );
 };
 

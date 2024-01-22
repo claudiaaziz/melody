@@ -8,7 +8,7 @@ import DeletePlaylistModal from "./DeletePlaylistModal";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleEditPlaylistModal } from "../../../../store/modals"
 
-const PlaylistMenu = ({playlist}) => {
+const PlaylistMenu = ({ playlist }) => {
   const dispatch = useDispatch()
   const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
   const openPlaylistMenu = () => setIsPlaylistMenuOpen(true);
@@ -27,6 +27,7 @@ const PlaylistMenu = ({playlist}) => {
   return (
     <>
       <DotsIcon className="dotsIcon" onClick={openPlaylistMenu} />
+      
       {isPlaylistMenuOpen && (
         <ul className="playlist-menu">
           <li onClick={() => dispatch(toggleEditPlaylistModal(true))} >

@@ -3,7 +3,6 @@
 @font-face {
   font-family: 'CircularSpotifyBook';
   src: url('./static/Circular-Font/CircularSpotifyText-Book.otf') format('opentype');
-  
 }
 
 @font-face {
@@ -14,6 +13,6 @@
 html, body {
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
   background-color: black;
-  height: 100vh;
+  /* height: 100vh; */
   box-sizing: border-box;
 }

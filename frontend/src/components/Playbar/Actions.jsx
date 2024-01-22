@@ -19,14 +19,14 @@ const Actions = () => {
 
   return (
     <div className="actionsContainer">
-      <button onClick={handlePrevious} className='previousBtn' disabled={!currentSongId}>
-        <PreviousBtn className='previousIcon' />
+      <button className='previousBtn' disabled={!currentSongId}>
+        <PreviousBtn className='previousIcon'onClick={handlePrevious} />
       </button>
       <button onClick={isPlaying ? handlePause : handlePlay} className='playAndPauseBtn' disabled={!currentSongId}>
         {isPlaying ? <PauseBtn className='playAndPauseIcon' /> : <PlayBtn className="playAndPauseIcon" />}
       </button>
-      <button onClick={handleNext} className='nextBtn' disabled={!currentSongId}>
-        <NextBtn className='nextIcon' />
+      <button className='nextBtn' disabled={!currentSongId}>
+        <NextBtn className='nextIcon' onClick={handleNext}/>
       </button>
     </div>
   );

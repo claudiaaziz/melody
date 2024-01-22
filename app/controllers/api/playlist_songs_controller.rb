@@ -1,7 +1,7 @@
 class Api::PlaylistSongsController < ApplicationController 
-  def index
-    @playlist_songs = current_user.playlist_songs
-  end
+  # def index
+  #   @playlist_songs = current_user.playlist_songs
+  # end
 
   def show
     @playlist_song = PlaylistSong.find(params[:id])
