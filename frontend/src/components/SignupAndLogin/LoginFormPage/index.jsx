@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../../../static/svgs/error.svg";
 import "./LoginFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
+import { loginGuest } from "../../../utils/loginGuest";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -15,34 +16,6 @@ const LoginFormPage = () => {
   const [errors, setErrors] = useState([]);
 
   if (currentUser) return <Redirect to="/" />;
-
-  const handleGuestUser = async () => {
-    setErrors([])
-    setCredential("")
-    setPassword("")
-    
-    // typing effect
-    const typingEffect = async (credential, setCredential) => {
-      for (const char of credential) {
-        // typing in the credential one char at a time
-        await new Promise((resolve) => setTimeout(() => {
-          setCredential((prev) => prev + char);
-          resolve();
-        }, 30)); 
-      }
-    };
-
-    await typingEffect("guest@guest.com", setCredential);
-    await typingEffect("guestpassword", setPassword);
-
-    // login guest after typing effect is complete
-      const guestCredentials = {
-      credential: "guest@guest.com",
-      password: "guestpassword",
-    };
-    await new Promise((resolve) => setTimeout(resolve, 300)); // short pause 
-    dispatch(sessionActions.login(guestCredentials));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,7 +49,7 @@ const LoginFormPage = () => {
     <div className="loginForm">
       <div className="loginHeader">
         <MelodyLogo />
-        <button className="guestLoginBtn" onClick={handleGuestUser}>
+        <button className="guestLoginBtn" onClick={() => loginGuest(setErrors, setCredential, setPassword, dispatch)}>
           Login As Guest
         </button>
       </div>
