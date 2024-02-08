@@ -30,11 +30,7 @@
   font-size: 1.3rem;
 }
 
-.deletePlaylistModalBold {
-  font-family: 'CircularSpotifyBold';
-}
-
-.deletePlaylistModalWarning {
+.deletePlaylistWarning {
   font-size: .8rem;
   margin-bottom: 10px;
 }

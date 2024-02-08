@@ -17,11 +17,11 @@ const DeletePlaylistModal = ({ playlist, onCancel }) => {
   return (
     <div className="deletePlaylistModalOverlay" onClick={handleOutsideClick}>
       <div className="deletePlaylistModal">
-        <h2 className="deletePlaylistModalBold">Delete from Your Library?</h2>
-        <p className="deletePlaylistModalWarning">
+        <h2 className="bold">Delete from Your Library?</h2>
+        <p className="deletePlaylistWarning">
           This will delete
-          <span className="deletePlaylistModalBold">{playlist && ` ${playlist.name} `}</span>
-          from <span className="deletePlaylistModalBold">Your Library.</span>
+          <span className="bold">{playlist && ` ${playlist.name} `}</span>
+          from <span className="bold">Your Library.</span>
         </p>
         <div className="deletePlaylistModalBtns">
           <button className="deletePlaylistCancelBtn" onClick={onCancel}>

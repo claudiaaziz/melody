@@ -13,6 +13,9 @@
 html, body {
   font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
   background-color: black;
-  /* height: 100vh; */
   box-sizing: border-box;
+}
+
+.bold {
+  font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
 }
