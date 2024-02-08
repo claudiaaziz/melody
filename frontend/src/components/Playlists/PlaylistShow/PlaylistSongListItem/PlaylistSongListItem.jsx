@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getAlbum } from "../../../../store/albums";
 import DeletePlaylistSong from "./DeletePlaylistSong/DeletePlaylistSong";
-import { fetchSongDuration, formatSongDuration } from "../../../../utils/fetchAndFormatSongDuration"; 
 import "./PlaylistSongListItem.css";
 import { getSong } from "../../../../store/songs";
+import { fetchSongDuration } from "../../../../utils/fetchSongDuration";
+import { formatDuration } from "../../../../utils/formatDuration";
 
 const PlaylistSongListItem = ({
   songId,
@@ -63,7 +64,7 @@ const PlaylistSongListItem = ({
         <div className="playlist-song-artist-name">{album?.artistName}</div>
       </div>
       <div className="playlist-song-album-title">{album?.title}</div>
-      <div className="song-duration">{formatSongDuration(duration)}</div>
+      <div className="song-duration">{formatDuration(duration)}</div>
       {isHovered && (
         <DeletePlaylistSong
           handleMouseEnter={handleMouseEnter}

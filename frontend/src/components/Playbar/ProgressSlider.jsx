@@ -1,3 +1,5 @@
+import { formatDuration } from "../../utils/formatDuration";
+
 const ProgressSlider = ({ audioRef, progress, setProgress }) => {
   const duration = audioRef?.current?.duration || 0;
 
@@ -7,15 +9,9 @@ const ProgressSlider = ({ audioRef, progress, setProgress }) => {
     if (audioRef?.current) audioRef.current.currentTime = newProgress;
   };
 
-  const formatTime = (timeInSeconds) => {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = Math.floor(timeInSeconds % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
-
   return (
     <div className="progressSliderContainer">
-      <span className="progressTime">{formatTime(progress)}</span>
+      <span className="progressTime">{formatDuration(progress)}</span>
       <input
         type="range"
         min="0"
@@ -25,7 +21,7 @@ const ProgressSlider = ({ audioRef, progress, setProgress }) => {
         onChange={handleProgressChange}
         className="progressSlider"
       />
-      <span className="progressTime">{formatTime(duration)}</span>
+      <span className="progressTime">{formatDuration(duration)}</span>
     </div>
   );
 };
