@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { getSongs } from "../../../../store/songs";
 import "./SearchSongs.css";
@@ -8,15 +8,13 @@ import SearchSongsSongListItem from "./SearchSongsSongListItem/SearchSongsSongLi
 const SearchSongs = () => {
   const songs = useSelector(getSongs);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredSongs, setFilteredSongs] = useState([]);
 
   // filtering songs based on query
-  useEffect(() => {
-    const filtered = Object.values(songs).filter((song) =>
+  const filteredSongs = useMemo(() => {
+    return Object.values(songs).filter((song) =>
       song.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredSongs(filtered);
-  }, [searchQuery, songs]);
+  }, [searchQuery, songs])
 
   return (
     <div className="search-songs-div">

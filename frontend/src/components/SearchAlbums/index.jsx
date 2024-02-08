@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./SearchAlbums.css";
@@ -9,14 +9,12 @@ import AlbumIndexItem from "../Albums/AlbumIndex/AlbumIndexItem";
 const SearchAlbums = () => {
   const albums = useSelector(getAlbums);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredAlbums, setFilteredAlbums] = useState([]);
 
   // filtering albums based on query
-  useEffect(() => {
-    const filtered = Object.values(albums).filter((album) =>
+  const filteredAlbums = useMemo(() => {
+    return Object.values(albums).filter((album) =>
       album.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredAlbums(filtered);
   }, [searchQuery, albums]);
 
   return (
