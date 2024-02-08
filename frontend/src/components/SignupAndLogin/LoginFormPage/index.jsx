@@ -96,6 +96,7 @@ const LoginFormPage = () => {
           <label>
             Email or username
             <input
+              autoFocus
               type="text"
               value={credential}
               placeholder="Email or username"
