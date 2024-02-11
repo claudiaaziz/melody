@@ -13,8 +13,8 @@ const AlbumSongListItem = ({ album, song, songNum }) => {
     (state) => state.playbar.queue[currentQueueIdx] === song.id
   );
     
-    const [duration, setDuration] = useState(null);
-    song.songUrl && fetchSongDuration(song.songUrl, setDuration); 
+  const [duration, setDuration] = useState(null);
+  song.songUrl && fetchSongDuration(song.songUrl, setDuration); 
     
   const currentUser = useSelector((state) => state.session.user);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);

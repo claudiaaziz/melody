@@ -9,6 +9,7 @@ import PlaylistShowPage from "./components/Playlists/PlaylistShow";
 import SearchAlbums from "./components/SearchAlbums";
 import AlbumIndex from "./components/Albums/AlbumIndex";
 import AlbumShow from "./components/Albums/AlbumShow";
+import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   return (
@@ -29,7 +30,7 @@ const App = () => {
         <Navbar />
         <SideMenu />
         <Playbar />
-        <SearchAlbums/>
+        <SearchAlbums />
       </Route>
       <Route path="/albums/:albumId">
         <Navbar />
@@ -42,6 +43,9 @@ const App = () => {
         <SideMenu />
         <Playbar />
         <PlaylistShowPage />
+      </Route>
+      <Route>
+        <PageNotFound />
       </Route>
     </Switch>
   );

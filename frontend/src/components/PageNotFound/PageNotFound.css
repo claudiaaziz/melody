@@ -1,0 +1,45 @@
+.page-not-found {
+  background: #121212;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-not-found .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 35%;
+}
+
+.page-not-found img {
+  width: 17%;
+}
+
+.page-not-found h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.page-not-found p {
+  color: #a7a7a7;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+.page-not-found button {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-family: 'CircularSpotifyBold';
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.page-not-found button:hover {
+  transform: scale(1.05);
+}

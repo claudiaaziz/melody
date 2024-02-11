@@ -24,18 +24,18 @@ const AlbumShow = () => {
     <div className="albumShowPage">
       {album && <AlbumShowHeader album={album} />}
       <hr />
-        {album &&
-          albumSongs
-            .filter((song) => song) // filter out undefined songs 
-            .map((song, idx) => (
-              <AlbumSongListItem
-                key={song.id}
-                song={song}
-                songNum={idx + 1}
-                album={album}
-              />
-            ))}
-      </div>
+      {album &&
+        albumSongs
+          .filter((song) => song) // filter out undefined songs 
+          .map((song, idx) => (
+            <AlbumSongListItem
+              key={song.id}
+              song={song}
+              songNum={idx + 1}
+              album={album}
+            />
+          ))}
+    </div>
   );
 };
 
