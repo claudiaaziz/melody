@@ -4,7 +4,13 @@ class Api::AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.find(params[:id])
+    @album = Album.find(params[:id]) 
+    # working on getting page not found to trigger
+    # if @album
+    #   render :show
+    # else
+    #   render json: { errors: @album.errors.full_messages }, status: :unprocessable_content
+    # end
   end
 
   private

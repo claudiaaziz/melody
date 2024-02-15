@@ -10,17 +10,19 @@
 
   # ApplicationRecord.transaction do 
   puts "Destroying tables..."
+  PlaylistSong.destroy_all
   Playlist.destroy_all
   Song.destroy_all
   Album.destroy_all
   Artist.destroy_all
   User.destroy_all
 
-  ApplicationRecord.connection.reset_pk_sequence!('artists')
-  ApplicationRecord.connection.reset_pk_sequence!('users')
-  ApplicationRecord.connection.reset_pk_sequence!('albums')
+  ApplicationRecord.connection.reset_pk_sequence!('playlist_songs')
   ApplicationRecord.connection.reset_pk_sequence!('playlists')
   ApplicationRecord.connection.reset_pk_sequence!('songs')
+  ApplicationRecord.connection.reset_pk_sequence!('albums')
+  ApplicationRecord.connection.reset_pk_sequence!('artists')
+  ApplicationRecord.connection.reset_pk_sequence!('users')
 
   puts "Creating guest user..."
   guest = User.create!(
@@ -609,6 +611,28 @@
     title: "Şok Oldum",
     album_id: masum.id,
     song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Masum+-+S%CC%A7ok_Oldum.mp3"
+  )
+
+  puts "Creating playlists..."
+  Playlist.create!(
+    name: "My Playlist #1",
+    user_id: 1,
+  )
+  Playlist.create!(
+    name: "🦋🦋🦋",
+    user_id: 1,
+  )
+  Playlist.create!(
+    name: "My Playlist #3",
+    user_id: 1,
+  )
+  Playlist.create!(
+    name: "💗💗💗",
+    user_id: 1,
+  )
+  Playlist.create!(
+    name: "My Playlist #5",
+    user_id: 1,
   )
 
   puts "Done!"
