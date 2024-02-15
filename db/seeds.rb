@@ -635,4 +635,130 @@
     user_id: 1,
   )
 
+  puts "Creating playlist songs..."
+  # playlist 1
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 1,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 4,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 6,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 10,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 12,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 14,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 16,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 18,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 21,
+  )
+  PlaylistSong.create!(
+    playlist_id: 1,
+    song_id: 9,
+  )
+  # playlist 2
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 2,
+  )
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 13,
+  )
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 15,
+  )
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 23,
+  )
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 27,
+  )
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 35,
+  )
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 39,
+  )
+  PlaylistSong.create!(
+    playlist_id: 2,
+    song_id: 42,
+  )
+  # playlist 4
+  PlaylistSong.create!(
+    playlist_id: 4,
+    song_id: 98,
+  )
+  PlaylistSong.create!(
+    playlist_id: 4,
+    song_id: 99,
+  )
+  PlaylistSong.create!(
+    playlist_id: 4,
+    song_id: 94,
+  )
+  PlaylistSong.create!(
+    playlist_id: 4,
+    song_id: 37,
+  )
+  PlaylistSong.create!(
+    playlist_id: 4,
+    song_id: 42,
+  )
+  PlaylistSong.create!(
+    playlist_id: 4,
+    song_id: 13,
+  )
+  PlaylistSong.create!(
+    playlist_id: 4,
+    song_id: 14,
+  )
+  # playlist 5
+  PlaylistSong.create!(
+    playlist_id: 5,
+    song_id: 51,
+  )
+  PlaylistSong.create!(
+    playlist_id: 5,
+    song_id: 73,
+  )
+  PlaylistSong.create!(
+    playlist_id: 5,
+    song_id: 77,
+  )
+  PlaylistSong.create!(
+    playlist_id: 5,
+    song_id: 85,
+  )
+  PlaylistSong.create!(
+    playlist_id: 5,
+    song_id: 89,
+  )
+
   puts "Done!"
