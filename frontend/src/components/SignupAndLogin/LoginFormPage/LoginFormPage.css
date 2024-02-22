@@ -89,6 +89,7 @@
 .loginContainer form {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .loginError {
@@ -127,13 +128,22 @@
   background-color: #121212;
   border-radius: 5px;
   color: white;
+  outline: none;
 }
 
-.loginContainer svg {
-  fill: pink;
-  position: fixed;
-  top: 435px;
-  right: 640px;
+.loginContainer input:hover, .loginContainer input:focus {
+  border: 1px solid white;
+}
+
+.show-password  {
+  fill: #4f4f4f;
+  position: absolute;
+  top: 55%;
+  right: 5%;
+}
+
+.show-password:hover {
+  fill: white;
 }
 
 .loginBtn {
