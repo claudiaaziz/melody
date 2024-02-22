@@ -82,15 +82,17 @@ const LoginFormPage = () => {
           </label>
           <label>
             Password
-            <input
-              type={showPassword ? "text" : "password"}
-              value={password}
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                />
+            <div className="password-div">
+              {showPassword ? <ShowPassword onClick={() => setShowPassword(false)}/> : <HidePassword onClick={() => setShowPassword(true)}/> }
+          </div>
           </label>
-          {showPassword ? <ShowPassword onClick={() => setShowPassword(false)}/> : <HidePassword onClick={() => setShowPassword(true)}/> }
           <button type="submit" className="loginBtn">
             Log In
           </button>

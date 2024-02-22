@@ -131,6 +131,9 @@
 
 .loginContainer svg {
   fill: pink;
+  position: fixed;
+  top: 435px;
+  right: 640px;
 }
 
 .loginBtn {
