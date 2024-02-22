@@ -44,7 +44,7 @@ const PlaylistSongListItem = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={`playlist-song-num ${currentSongId ? "currentSongId" : ""}`}
+        className={`playlist-song-num ${currentSongId && "currentSongId"}`}
       >
         {songNum}
       </div>
@@ -56,8 +56,7 @@ const PlaylistSongListItem = ({
       <div className="playlist-song-title-and-name">
         <div
           className={`playlist-song-song-title ${
-            currentSongId ? "currentSongId" : ""
-          }`}
+            currentSongId && "currentSongId"}`}
         >
           {song?.title}
         </div>

@@ -129,6 +129,10 @@
   color: white;
 }
 
+.loginContainer svg {
+  fill: pink;
+}
+
 .loginBtn {
   padding: 10px;
   background-color: #1cd760;
