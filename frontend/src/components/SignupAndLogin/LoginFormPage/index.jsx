@@ -3,6 +3,8 @@ import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../../../static/svgs/error.svg";
+import { ReactComponent as ShowPassword } from "../../../static/svgs/sessionForms/showPassword.svg";
+import { ReactComponent as HidePassword } from "../../../static/svgs/sessionForms/hidePassword.svg";
 import "./LoginFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
 import { loginGuest } from "../../../utils/loginGuest";
@@ -14,6 +16,7 @@ const LoginFormPage = () => {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showPassword, setShowPassword] = useState(false)
 
   if (currentUser) return <Redirect to="/" />;
 
@@ -79,13 +82,14 @@ const LoginFormPage = () => {
           </label>
           <label>
             Password
-            <input
-              type="password"
-              value={password}
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                />
+              {showPassword ? <ShowPassword className="show-password" onClick={() => setShowPassword(false)}/> : <HidePassword className="show-password" onClick={() => setShowPassword(true)}/> }
           </label>
           <button type="submit" className="loginBtn">
             Log In

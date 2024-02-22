@@ -123,6 +123,12 @@
   background-color: #121212;
   border-radius: 5px;
   color: white;
+  outline: none;
+}
+
+.signupContainer input:hover,
+.signupContainer input:focus {
+  border: 1px solid white;
 }
 
 .signUpBtn {
