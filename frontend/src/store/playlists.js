@@ -67,9 +67,7 @@ export const createPlaylist = (playlist) => async (dispatch) => {
       body: JSON.stringify(playlist),
     });
 
-    if (!res.ok) {
-      throw res;
-    }
+    if (!res.ok) throw res;
 
     const createdPlaylist = await res.json();
     dispatch(receivePlaylist(createdPlaylist));

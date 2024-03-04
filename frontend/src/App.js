@@ -44,6 +44,9 @@ const App = () => {
         <Playbar />
         <PlaylistShowPage />
       </Route>
+      <Route path="page-not-found">
+        <PageNotFound />
+      </Route>
       <Route>
         <PageNotFound />
       </Route>

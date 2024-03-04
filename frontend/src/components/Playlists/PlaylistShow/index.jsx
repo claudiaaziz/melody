@@ -29,9 +29,6 @@ const PlaylistShow = () => {
   
   useEffect(() => {
     dispatch(fetchAlbums());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(fetchSongs());
   }, [dispatch]);
 
@@ -53,7 +50,7 @@ const PlaylistShow = () => {
     dispatch(playQueue(playlistQueue, currentQueueIdx));
   };
 
-  if (!currentUser) return <Redirect to="/" />;
+  if (!currentUser || !playlist) return <Redirect to="/page-not-found" />;
 
   return (
     <div className="playlistShowPage">

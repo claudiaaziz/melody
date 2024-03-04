@@ -23,8 +23,10 @@ export const fetchAlbums = () => async (dispatch) => {
 
 export const fetchAlbum = (albumId) => async (dispatch) => {
   const res = await fetch(`/api/albums/${albumId}`);
-  const album = await res.json();
-  dispatch(receiveAlbum(album));
+  if (res.ok) {
+    const album = await res.json();
+    dispatch(receiveAlbum(album));
+  }
 };
 
 const albumsReducer = (state = {}, action) => {
