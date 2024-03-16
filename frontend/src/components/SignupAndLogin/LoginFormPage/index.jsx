@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as sessionActions from "../../../store/session";
+import { login } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../../../static/svgs/error.svg";
@@ -8,6 +8,7 @@ import { ReactComponent as HidePassword } from "../../../static/svgs/sessionForm
 import "./LoginFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
 import { loginGuest } from "../../../utils/loginGuest";
+import { useSubmit } from "../../../hooks";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -15,38 +16,13 @@ const LoginFormPage = () => {
 
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
   const [showPassword, setShowPassword] = useState(false)
 
+  const [errors, onSubmit, setErrors] = useSubmit({
+    action: login({ credential, password })
+  });
+
   if (currentUser) return <Redirect to="/" />;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors([]);
-
-    return dispatch(sessionActions.login({ credential, password })).catch(
-      async (res) => {
-        let data;
-
-        // attempting to clone and parse the response as JSON
-        try {
-          data = await res.clone().json();
-        } catch {
-          // if parsing fails, try to get the response as plain text
-          data = await res.text();
-        }
-
-        // handling errors in the response data
-        if (data?.errors) {
-          setErrors(data.errors);
-        } else if (data) {
-          setErrors([data]);
-        } else {
-          setErrors([res.statusText]);
-        }
-      }
-    );
-  };
 
   return (
     <div className="loginForm">
@@ -68,7 +44,7 @@ const LoginFormPage = () => {
         </div>
       )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <label>
             Email or username
             <input

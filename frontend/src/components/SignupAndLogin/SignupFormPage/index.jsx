@@ -1,11 +1,12 @@
 import { useState } from "react";
-import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../../../static/svgs/error.svg";
 import "./SignupFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
 import { signupGuest } from "../../../utils/signupGuest";
+import { useSubmit } from "../../../hooks";
+import { signup } from "../../../store/session";
 
 const SignupFormPage = () => {
   const dispatch = useDispatch();
@@ -15,41 +16,17 @@ const SignupFormPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+
+  const [errors, onSubmit, setErrors] = useSubmit({ 
+    action: signup({ email, username, password }),
+    validate: () => {
+      if (password !== confirmPassword) {
+        return ['Confirm Password field must be the same as the Password field'];
+      }
+    }
+  });
 
   if (currentUser) return <Redirect to="/" />;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (password === confirmPassword) {
-      setErrors([]);
-
-      return (
-        dispatch(sessionActions.signup({ email, username, password }))
-          // handling any errors that occur during the signup process
-          .catch(async (res) => {
-            let data;
-            try {
-              // attempting to parse the response body as JSON
-              data = await res.clone().json();
-            } catch {
-              // if parsing as JSON fails, get the response body as text
-              data = await res.text();
-            }
-
-            // handling errors in the response data
-            if (data?.errors) setErrors(data.errors);
-            else if (data) setErrors([data]);
-            else setErrors([res.statusText]);
-          })
-          );
-        }
-        
-        return setErrors([
-          "Confirm Password field must be the same as the Password field.",
-        ]);
-  };
 
   return (
     <div className="signupForm">
@@ -65,7 +42,7 @@ const SignupFormPage = () => {
 
         <hr/>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <label>
             Email address
             <input
