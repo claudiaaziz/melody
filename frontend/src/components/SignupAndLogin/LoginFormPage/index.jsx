@@ -7,7 +7,7 @@ import { ReactComponent as ShowPassword } from "../../../static/svgs/sessionForm
 import { ReactComponent as HidePassword } from "../../../static/svgs/sessionForms/hidePassword.svg";
 import "./LoginFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
-import { loginGuest } from "../../../utils/loginGuest";
+import { guestCredentials, typingEffect } from "../../../utils/loginGuest";
 import { useSubmit } from "../../../hooks";
 
 const LoginFormPage = () => {
@@ -22,13 +22,26 @@ const LoginFormPage = () => {
     action: login({ credential, password })
   });
 
+  const loginGuest = async () => {
+    setErrors([]);
+    setCredential("");
+    setPassword("");
+
+    await typingEffect("guest@guest.com", setCredential);
+    await typingEffect("guestpassword", setPassword);
+
+    await new Promise((resolve) => setTimeout(resolve, 300)); // short pause right before login
+
+    dispatch(login(guestCredentials));
+  }
+
   if (currentUser) return <Redirect to="/" />;
 
   return (
     <div className="loginForm">
       <div className="loginHeader">
         <MelodyLogo />
-        <button className="guestLoginBtn" onClick={() => loginGuest(setErrors, setCredential, setPassword, dispatch)}>
+        <button className="guestLoginBtn" onClick={loginGuest}>
           Login As Guest
         </button>
       </div>

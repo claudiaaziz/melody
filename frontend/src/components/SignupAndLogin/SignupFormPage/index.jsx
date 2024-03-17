@@ -4,9 +4,9 @@ import { Redirect, Link } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../../../static/svgs/error.svg";
 import "./SignupFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
-import { signupGuest } from "../../../utils/signupGuest";
 import { useSubmit } from "../../../hooks";
-import { signup } from "../../../store/session";
+import { login, signup } from "../../../store/session";
+import { guestCredentials, typingEffect } from "../../../utils/loginGuest";
 
 const SignupFormPage = () => {
   const dispatch = useDispatch();
@@ -26,13 +26,29 @@ const SignupFormPage = () => {
     }
   });
 
+  const loginGuest = async () => {
+    setErrors([]);
+    setEmail("");
+    setUsername("");
+    setPassword("");
+    setConfirmPassword("");
+
+    await typingEffect("guest@guest.com", setEmail);
+    await typingEffect("guest", setUsername);
+    await typingEffect("guestpassword", setPassword);
+    await typingEffect("guestpassword", setConfirmPassword);
+
+    await new Promise((resolve) => setTimeout(resolve, 300)); // short pause
+    dispatch(login(guestCredentials));
+  };
+
   if (currentUser) return <Redirect to="/" />;
 
   return (
     <div className="signupForm">
       <div className="signupHeader">
         <MelodyLogo />
-        <button className="guestUserBtn" onClick={() => signupGuest(setErrors, setEmail, setUsername, setPassword, setConfirmPassword, dispatch)}>
+        <button className="guestUserBtn" onClick={loginGuest}>
           Guest
         </button>
       </div>
