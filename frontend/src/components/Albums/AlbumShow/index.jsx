@@ -6,7 +6,6 @@ import AlbumShowHeader from "./AlbumShowHeader.jsx";
 import { fetchAlbum, getAlbum } from "../../../store/albums.js";
 import { getSongs } from "../../../store/songs.js";
 import "./AlbumShow.css";
-import { Redirect } from "react-router-dom";
 
 const AlbumShow = () => {
   const dispatch = useDispatch();
@@ -20,8 +19,6 @@ const AlbumShow = () => {
   
   const songs = useSelector(getSongs);
   const albumSongs = album?.albumSongs?.map((songId) => songs[songId]);
-
-  if (!album) return <Redirect to="/page-not-found"/>
   
   return (
     <div className="albumShowPage">

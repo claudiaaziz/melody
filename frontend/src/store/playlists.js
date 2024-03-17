@@ -57,25 +57,36 @@ export const fetchPlaylist = (playlistId) => async (dispatch) => {
   }
 };
 
+// export const createPlaylist = (playlist) => async (dispatch) => {
+//   try {
+//     const res = await csrfFetch("/api/playlists", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(playlist),
+//     });
+
+//     if (!res.ok) throw res;
+
+//     const createdPlaylist = await res.json();
+//     dispatch(receivePlaylist(createdPlaylist));
+//     return createdPlaylist;
+//   } catch (error) {
+//     console.error("Error creating playlist:", error);
+//     return null;
+//   }
+// };
+
 export const createPlaylist = (playlist) => async (dispatch) => {
-  try {
-    const res = await csrfFetch("/api/playlists", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(playlist),
-    });
-
-    if (!res.ok) throw res;
-
-    const createdPlaylist = await res.json();
-    dispatch(receivePlaylist(createdPlaylist));
-    return createdPlaylist;
-  } catch (error) {
-    console.error("Error creating playlist:", error);
-    return null;
-  }
+  const res = await csrfFetch("/api/playlists", {
+    method: "POST",
+    body: JSON.stringify(playlist),
+  });
+  
+  const createdPlaylist = await res.json();
+  dispatch(receivePlaylist(createdPlaylist));
+  return createdPlaylist;
 };
 
 export const updatePlaylist = (playlist) => async (dispatch) => {

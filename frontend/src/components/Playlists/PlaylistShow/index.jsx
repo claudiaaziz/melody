@@ -50,7 +50,7 @@ const PlaylistShow = () => {
     dispatch(playQueue(playlistQueue, currentQueueIdx));
   };
 
-  if (!currentUser || !playlist) return <Redirect to="/page-not-found" />;
+  if (!currentUser) return <Redirect to="/page-not-found" />;
 
   return (
     <div className="playlistShowPage">
