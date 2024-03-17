@@ -57,33 +57,12 @@ export const fetchPlaylist = (playlistId) => async (dispatch) => {
   }
 };
 
-// export const createPlaylist = (playlist) => async (dispatch) => {
-//   try {
-//     const res = await csrfFetch("/api/playlists", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(playlist),
-//     });
-
-//     if (!res.ok) throw res;
-
-//     const createdPlaylist = await res.json();
-//     dispatch(receivePlaylist(createdPlaylist));
-//     return createdPlaylist;
-//   } catch (error) {
-//     console.error("Error creating playlist:", error);
-//     return null;
-//   }
-// };
-
 export const createPlaylist = (playlist) => async (dispatch) => {
   const res = await csrfFetch("/api/playlists", {
     method: "POST",
     body: JSON.stringify(playlist),
   });
-  
+
   const createdPlaylist = await res.json();
   dispatch(receivePlaylist(createdPlaylist));
   return createdPlaylist;
@@ -109,38 +88,24 @@ export const deletePlaylist = (playlistId) => async (dispatch) => {
     method: "DELETE",
   });
 
-  if (res.ok) {
-    dispatch(removePlaylist(playlistId));
-  }
+  if (res.ok) dispatch(removePlaylist(playlistId));
 };
 
 export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
-  try {
-    const res = await csrfFetch("/api/playlist_songs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ playlistSong: { songId, playlistId } }),
-    });
+  const res = await csrfFetch("/api/playlist_songs", {
+    method: "POST",
+    body: JSON.stringify({ playlistSong: { songId, playlistId } }),
+  });
 
-    if (!res.ok) {
-      throw res;
-    }
-
-    const createdPlaylistSong = await res.json();
-    dispatch(
-      addSongToPlaylist({
-        songId: createdPlaylistSong.songId,
-        playlistSongId: createdPlaylistSong.id,
-        playlistId,
-      })
-    );
-    return createdPlaylistSong;
-  } catch (error) {
-    console.error("Error creating playlist song:", error);
-    return null;
-  }
+  const createdPlaylistSong = await res.json();
+  dispatch(
+    addSongToPlaylist({
+      songId: createdPlaylistSong.songId,
+      playlistSongId: createdPlaylistSong.id,
+      playlistId,
+    })
+  );
+  return createdPlaylistSong;
 };
 
 export const deletePlaylistSong =
@@ -149,9 +114,7 @@ export const deletePlaylistSong =
       method: "DELETE",
     });
 
-    if (res.ok) {
-      dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
-    }
+    if (res.ok) dispatch(removeSongFromPlaylist(playlistSongId, playlistId));
   };
 
 const playlistsReducer = (state = {}, action) => {
