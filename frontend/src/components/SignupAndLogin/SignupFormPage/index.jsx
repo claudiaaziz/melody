@@ -6,7 +6,7 @@ import "./SignupFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
 import { useSubmit } from "../../../hooks";
 import { login, signup } from "../../../store/session";
-import { guestCredentials, typingEffect } from "../../../utils/loginGuest";
+import { guestCredentials, shortPause, typingEffect } from "../../../utils/loginGuest";
 
 const SignupFormPage = () => {
   const dispatch = useDispatch();
@@ -38,9 +38,21 @@ const SignupFormPage = () => {
     await typingEffect("guestpassword", setPassword);
     await typingEffect("guestpassword", setConfirmPassword);
 
-    await new Promise((resolve) => setTimeout(resolve, 300)); // short pause
+    await shortPause()
+
     dispatch(login(guestCredentials));
   };
+
+  const displayErrors = type => {
+    return errors
+      .filter(error => error.includes(type))
+      .map((error, index) => (
+        <div key={index} className="error-div">
+          <div><ErrorIcon/></div>
+          <div>{error}</div>
+        </div>
+      ));
+  }
 
   if (currentUser) return <Redirect to="/" />;
 
@@ -62,39 +74,21 @@ const SignupFormPage = () => {
           <label>
             Email address
             <input
-              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            {errors.map((error) => {
-              if (error.includes("Email")) {
-                return  <div key={error} className="error-div">
-                          <div><ErrorIcon/></div>
-                          <div>{error}</div>
-                        </div>
-              }
-              return null;
-            })}
+          {displayErrors("Email")}
           </label>
           
           <label>
             Username
             <input
-              type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-            {errors.map((error) => {
-              if (error.includes("Username")) {
-                return <div key={error} className="error-div">
-                    <div><ErrorIcon/></div>
-                    <div>{error}</div>
-                  </div>;
-              }
-              return null;
-            })}
+          {displayErrors("Username")}
           </label>
           
           <label>
@@ -105,15 +99,7 @@ const SignupFormPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            {errors.map((error) => {
-              if (error.includes("Password")) {
-                return <div key={error} className="error-div">
-                    <div><ErrorIcon/></div>
-                    <div>{error}</div>
-                </div>;
-              }
-              return null;
-            })}
+          {displayErrors("Password")}
           </label>
           
           <label>
@@ -124,15 +110,7 @@ const SignupFormPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            {errors.map((error) => {
-              if (error.includes("Password")) {
-                return <div key={error} className="error-div">
-                    <div><ErrorIcon/></div>
-                    <div>{error}</div>
-                  </div>
-              }
-              return null;
-            })}
+          {displayErrors("Password")}
           </label>
           
           <button type="submit" className="signUpBtn">Sign up</button>

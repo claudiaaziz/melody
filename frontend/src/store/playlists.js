@@ -51,6 +51,7 @@ export const fetchPlaylists = () => async (dispatch) => {
 
 export const fetchPlaylist = (playlistId) => async (dispatch) => {
   const res = await fetch(`/api/playlists/${playlistId}`);
+  
   if (res.ok) {
     const playlist = await res.json();
     dispatch(receivePlaylist(playlist));

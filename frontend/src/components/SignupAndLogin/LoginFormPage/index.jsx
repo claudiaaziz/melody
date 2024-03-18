@@ -7,7 +7,7 @@ import { ReactComponent as ShowPassword } from "../../../static/svgs/sessionForm
 import { ReactComponent as HidePassword } from "../../../static/svgs/sessionForms/hidePassword.svg";
 import "./LoginFormPage.css";
 import MelodyLogo from "../../MelodyLogo";
-import { guestCredentials, typingEffect } from "../../../utils/loginGuest";
+import { guestCredentials, shortPause, typingEffect } from "../../../utils/loginGuest";
 import { useSubmit } from "../../../hooks";
 
 const LoginFormPage = () => {
@@ -30,7 +30,7 @@ const LoginFormPage = () => {
     await typingEffect("guest@guest.com", setCredential);
     await typingEffect("guestpassword", setPassword);
 
-    await new Promise((resolve) => setTimeout(resolve, 300)); // short pause right before login
+    await shortPause()
 
     dispatch(login(guestCredentials));
   }
@@ -50,6 +50,7 @@ const LoginFormPage = () => {
         <h1>Log in to Melody</h1>
 
         <hr />
+        
       {errors.length > 0 && (
         <div className="loginError">
           <ErrorIcon/>
@@ -68,6 +69,7 @@ const LoginFormPage = () => {
               required
             />
           </label>
+
           <label>
             Password
               <input
@@ -77,12 +79,12 @@ const LoginFormPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 />
-              {showPassword ? <ShowPassword className="show-password" onClick={() => setShowPassword(false)}/> : <HidePassword className="show-password" onClick={() => setShowPassword(true)}/> }
+              {showPassword ? <ShowPassword className="show-password" onClick={() => setShowPassword(false)}/> : <HidePassword className="show-password" onClick={() => setShowPassword(true)}/>}
           </label>
-          <button type="submit" className="loginBtn">
-            Log In
-          </button>
+
+          <button type="submit" className="loginBtn">Log In</button>
         </form>
+
         <hr />
         
         <p className="signupLink">
