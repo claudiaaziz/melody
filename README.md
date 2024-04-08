@@ -8,11 +8,9 @@
 
 ### Melody leverages the following technologies:
 
-- Frontend: React, Redux, Javascript, HTML, and CSS
-- Backend: Ruby, Ruby on Rails, and Jbuilder
+- Frontend: React, Redux, CSS
+- Backend: Ruby on Rails, Jbuilder
 - Database: PostgreSQL
-- Build Tools: Webpack
-- Package Management: npm for managing project dependencies
 - Cloud Services: AWS S3
 
 ## Functionality & MVPs
