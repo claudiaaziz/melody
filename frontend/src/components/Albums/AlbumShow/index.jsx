@@ -13,12 +13,6 @@ const AlbumShow = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    // function hasLetter(str) {
-    //   return /[a-zA-Z]/.test(str);
-    // }
-
-    // if (hasLetter(albumId)) history.push('/page-not-found')
-
     const album = useSelector(getAlbum(albumId));
     const songs = useSelector(getSongs);
     const albumSongs = album?.albumSongs
