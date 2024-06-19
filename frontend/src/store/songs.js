@@ -22,19 +22,19 @@ export const fetchSongs = () => async (dispatch) => {
   dispatch(receiveSongs(songs));
 };
 
-export const fetchSong = () => (songId) => async (dispatch) => {
-  const res = await fetch(`/api/songs/${songId}`);
-  const song = await res.json();
-  dispatch(receiveSong(song));
-};
+// export const fetchSong = () => (songId) => async (dispatch) => {
+//   const res = await fetch(`/api/songs/${songId}`);
+//   const song = await res.json();
+//   dispatch(receiveSong(song));
+// };
 
 
 const songsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SONGS:
       return { ...action.songs };
-    case RECEIVE_SONG:
-      return { ...state, [action.song.song.id]: action.song.song };
+    // case RECEIVE_SONG:
+    //   return { ...state, [action.song.song.id]: action.song.song };
     case RECEIVE_ALBUM:
       return { ...state, ...action.album.songs };
     default:

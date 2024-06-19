@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupAndLogin/SignupFormPage";
 import LoginFormPage from "./components/SignupAndLogin/LoginFormPage";
