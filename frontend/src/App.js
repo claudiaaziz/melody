@@ -9,7 +9,7 @@ import SearchAlbums from './components/SearchAlbums';
 import AlbumIndex from './components/Albums/AlbumIndex';
 import AlbumShow from './components/Albums/AlbumShow';
 import PageNotFound from './components/PageNotFound';
-import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
+import { AuthRoute } from './components/Routes/Routes';
 
 const App = () => {
     return (
@@ -34,12 +34,12 @@ const App = () => {
                 <Playbar />
                 <AlbumShow />
             </Route>
-            <ProtectedRoute path='/playlists/:playlistId'>
+            <Route path='/playlists/:playlistId'>
                 <Navbar />
                 <SideMenu />
                 <Playbar />
                 <PlaylistShowPage />
-            </ProtectedRoute>
+            </Route>
             <Route path='/page-not-found'>
                 <PageNotFound />
             </Route>
