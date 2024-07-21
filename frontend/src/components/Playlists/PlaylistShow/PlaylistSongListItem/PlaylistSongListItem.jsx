@@ -15,7 +15,7 @@ export default function PlaylistSongListItem({
     playlist,
     playlistSongId,
     playlistSongs,
-    test
+    idx,
 }) {
     const dispatch = useDispatch();
 
@@ -40,35 +40,29 @@ export default function PlaylistSongListItem({
 
     song?.songUrl && fetchSongDuration(song.songUrl, setDuration);
 
-    const handlePlaylistSongClick = () => {
-        let currentQueueIdx = null;
+    const handlePlaylistSongClick = (idx) => {
         let playlistQueue = [];
 
-        for (let i = 0; i < playlistSongs.length; i++) {
-            if (playlistSongs[i]?.songId) {
-                playlistQueue.push(playlistSongs[i].songId);
-            }
-
-            if (playlistSongs[i]?.songId === songId) currentQueueIdx = i;
+        for (const playlistSong of playlistSongs) {
+            playlistQueue.push(playlistSong.songId);
         }
 
-        dispatch(playQueue(playlistQueue, currentQueueIdx));
+        dispatch(playQueue(playlistQueue, idx));
     };
+
+    const isCurrentSongPlaying = isCurrentSongId && currentQueueIdx === idx;
 
     return (
         <div
             className='playlist-song-list-item'
-            onClick={handlePlaylistSongClick}
+            onClick={() => handlePlaylistSongClick(idx)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             <div
                 className={`playlist-song-num ${
-                    isCurrentSongId && 'currentSongId'
+                    isCurrentSongPlaying && 'currentSongId'
                 }`}
-                // className={`playlist-song-num ${
-                //     isCurrentSongPlaying() && 'currentSongId'
-                // }`}
             >
                 {songNum}
             </div>
@@ -80,11 +74,8 @@ export default function PlaylistSongListItem({
             <div className='playlist-song-title-and-name'>
                 <div
                     className={`playlist-song-song-title ${
-                        isCurrentSongId && 'currentSongId'
+                        isCurrentSongPlaying && 'currentSongId'
                     }`}
-                    // className={`playlist-song-song-title ${
-                    //     isCurrentSongPlaying() && 'currentSongId'
-                    // }`}
                 >
                     {song?.title}
                 </div>

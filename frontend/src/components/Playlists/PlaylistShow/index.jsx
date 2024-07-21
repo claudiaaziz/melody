@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { fetchPlaylist, getPlaylist } from '../../../store/playlists';
@@ -17,7 +17,6 @@ const PlaylistShow = () => {
 
     const playlist = useSelector(getPlaylist(playlistId));
     const playlistSongs = playlist?.playlistSongs;
-    const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
 
     useEffect(() => {
         dispatch(fetchPlaylist(playlistId, history));
@@ -28,10 +27,6 @@ const PlaylistShow = () => {
         dispatch(fetchSongs());
     }, [dispatch]);
 
-    useEffect(() => {
-        setSongsInThisPlaylist(playlistSongs);
-    }, [playlistSongs]);
-
     return (
         <div className='playlistShowPage'>
             {playlist && <PlaylistShowPageHeader playlist={playlist} />}
@@ -39,8 +34,8 @@ const PlaylistShow = () => {
             <hr />
 
             {playlist &&
-                songsInThisPlaylist?.length > 0 &&
-                songsInThisPlaylist.map(({ playlistSongId, songId }, idx) => (
+                playlistSongs?.length > 0 &&
+                playlistSongs.map(({ playlistSongId, songId }, idx) => (
                     <PlaylistSongListItem
                         key={idx}
                         songId={songId}
@@ -48,6 +43,7 @@ const PlaylistShow = () => {
                         playlist={playlist}
                         playlistSongId={playlistSongId}
                         playlistSongs={playlistSongs}
+                        idx={idx}
                     />
                 ))}
             <SearchSongs />

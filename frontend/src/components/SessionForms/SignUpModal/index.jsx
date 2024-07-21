@@ -27,12 +27,21 @@ const SignUpModal = ({ props }) => {
                     </div>
                     <button
                         className='signupModalBtn'
-                        onClick={() => history.push('/signup')}
+                        onClick={() => {
+                            history.push('/signup');
+                            dispatch(closeModal());
+                        }}
                     >
                         Sign up free
                     </button>
                     <p className='signupModalLoginLink'>
-                        Already have an account? <Link to='/login'>Log in</Link>
+                        Already have an account?{' '}
+                        <Link
+                            to='/login'
+                            onClick={() => dispatch(closeModal())}
+                        >
+                            Log in
+                        </Link>
                     </p>
                 </div>
             </div>
