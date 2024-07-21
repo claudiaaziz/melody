@@ -12,7 +12,7 @@ import {
     shortPause,
     typingEffect,
 } from '../../../utils/loginGuest';
-import { useSubmit } from '../../../hooks';
+import { useSubmit } from '../../../hooks/useSubmit';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();

@@ -22,8 +22,10 @@ const EditPlaylistModal = ({ props }) => {
     };
 
     const handleCloseEditPlaylistModal = () => {
-        if (warning || error || playlist.name === newPlaylistName)
+        if (warning || error || playlist.name === newPlaylistName) {
             dispatch(closeModal());
+        }
+
         setWarning(
             playlist.name !== newPlaylistName &&
                 "Press save to keep changes you've made."
@@ -31,8 +33,9 @@ const EditPlaylistModal = ({ props }) => {
     };
 
     const updatePlaylistName = () => {
+        if (error) return;
+
         dispatch(updatePlaylist({ id: playlist.id, name: newPlaylistName }));
-        dispatch(closeModal());
     };
 
     return (
@@ -46,6 +49,7 @@ const EditPlaylistModal = ({ props }) => {
                     <CloseIcon />
                 </button>
             </div>
+
             {error && (
                 <div className='playlist-name-error'>
                     <ErrorIcon /> {error}
@@ -56,11 +60,13 @@ const EditPlaylistModal = ({ props }) => {
                     <ErrorIcon /> {warning}
                 </div>
             )}
+
             <input
                 type='text'
                 value={newPlaylistName}
                 onChange={handleNameChange}
             />
+
             <button
                 disabled={error}
                 className='updatePlaylistName'

@@ -11,7 +11,10 @@ const DeletePlaylistModal = ({ props }) => {
     const history = useHistory();
 
     const handleDeletePlaylist = (playlistId) => {
-        dispatch(deletePlaylist(playlistId)).then(() => history.push('/'));
+        dispatch(deletePlaylist(playlistId)).then(() => {
+            dispatch(closeModal())
+            history.push('/');
+        });
     };
 
     return (

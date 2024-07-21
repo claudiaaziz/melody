@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as ErrorIcon } from '../../../static/svgs/error.svg';
 import './SignupFormPage.css';
 import MelodyLogo from '../../MelodyLogo';
-import { useSubmit } from '../../../hooks';
+import { useSubmit } from '../../../hooks/useSubmit';
 import { login, signup } from '../../../store/session';
 import {
     guestCredentials,

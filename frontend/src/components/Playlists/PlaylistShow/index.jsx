@@ -18,8 +18,6 @@ const PlaylistShow = () => {
     const playlist = useSelector(getPlaylist(playlistId));
     const playlistSongs = playlist?.playlistSongs;
     const [songsInThisPlaylist, setSongsInThisPlaylist] = useState([]);
-    const [isDeleteSongDropdownOpen, setIsDeleteSongDropdownOpen] =
-        useState(false);
 
     useEffect(() => {
         dispatch(fetchPlaylist(playlistId, history));
@@ -42,7 +40,7 @@ const PlaylistShow = () => {
 
             {playlist &&
                 songsInThisPlaylist?.length > 0 &&
-                songsInThisPlaylist?.map(({ playlistSongId, songId }, idx) => (
+                songsInThisPlaylist.map(({ playlistSongId, songId }, idx) => (
                     <PlaylistSongListItem
                         key={idx}
                         songId={songId}
@@ -50,8 +48,6 @@ const PlaylistShow = () => {
                         playlist={playlist}
                         playlistSongId={playlistSongId}
                         playlistSongs={playlistSongs}
-                        isDeleteSongDropdownOpen={isDeleteSongDropdownOpen}
-                        setIsDeleteSongDropdownOpen={setIsDeleteSongDropdownOpen}
                     />
                 ))}
             <SearchSongs />

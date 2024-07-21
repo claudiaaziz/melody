@@ -24,7 +24,6 @@
     align-items: center;
     justify-content: flex-end;
     margin-top: 10px;
-    cursor: pointer;
 }
 
 .deletePlaylistModalBtns button {
@@ -34,6 +33,7 @@
     cursor: pointer;
     font-family: 'CircularSpotifyBold';
     border: none;
+    cursor: pointer;
 }
 
 .deletePlaylistDeleteBtn {
