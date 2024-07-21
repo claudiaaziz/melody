@@ -11,12 +11,8 @@ const DeletePlaylistSong = ({
 }) => {
     const dispatch = useDispatch();
 
-    const toggleDeleteSongDropdown = (e) => {
+    const handleDeletePlaylistSong = (e) => {
         e.stopPropagation();
-        toggleDropdown();
-    };
-
-    const handleDeletePlaylistSong = () => {
         dispatch(deletePlaylistSong(playlistSongId, playlist.id));
         toggleDropdown();
     };
@@ -25,7 +21,10 @@ const DeletePlaylistSong = ({
         <>
             <button
                 className='dots-icon-button'
-                onClick={toggleDeleteSongDropdown}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    toggleDropdown();
+                }}
             >
                 <DotsIcon className='dotsIcon' />
             </button>
@@ -34,8 +33,6 @@ const DeletePlaylistSong = ({
                 <div
                     className='remove-playlist-song-dropdown'
                     onClick={handleDeletePlaylistSong}
-                    // onMouseEnter={handleMouseEnter}
-                    // onMouseLeave={handleMouseLeave}
                 >
                     <div className='removeSong'>
                         <TrashIcon />

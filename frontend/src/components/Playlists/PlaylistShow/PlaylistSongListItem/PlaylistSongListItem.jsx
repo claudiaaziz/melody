@@ -15,6 +15,7 @@ export default function PlaylistSongListItem({
     playlist,
     playlistSongId,
     playlistSongs,
+    test
 }) {
     const dispatch = useDispatch();
 
@@ -57,7 +58,7 @@ export default function PlaylistSongListItem({
     return (
         <div
             className='playlist-song-list-item'
-            onMouseDown={handlePlaylistSongClick}
+            onClick={handlePlaylistSongClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
