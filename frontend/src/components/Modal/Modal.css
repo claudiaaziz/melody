@@ -1,0 +1,28 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    z-index: 3;
+}
+
+/* todo modals on mobile take up full screen */
+
+/* @media (max-width: 699px) {
+    {
+        overflow-y: auto !important;
+        min-height: 100vh !important;
+        min-width: 100vw !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
+} */

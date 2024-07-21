@@ -1,6 +1,6 @@
 import playlistCover from '../../../static/images/playlistCover.png';
 import PlaylistMenu from './PlaylistMenu';
-import { toggleEditPlaylistModal } from '../../../store/modals';
+import { openModal } from '../../../store/ui';
 import { useDispatch, useSelector } from 'react-redux';
 
 const PlaylistShowHeader = ({ playlist }) => {
@@ -17,7 +17,11 @@ const PlaylistShowHeader = ({ playlist }) => {
                 />
                 <div className='playlistDetails'>
                     <p>Playlist</p>
-                    <h2 onClick={() => dispatch(toggleEditPlaylistModal(true))}>
+                    <h2
+                        onClick={() =>
+                            dispatch(openModal('edit-playlist', { playlist }))
+                        }
+                    >
                         {playlist.name}
                     </h2>
                     <div>

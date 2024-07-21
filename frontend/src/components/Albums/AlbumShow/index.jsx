@@ -15,13 +15,14 @@ const AlbumShow = () => {
 
     const album = useSelector(getAlbum(albumId));
     const songs = useSelector(getSongs);
-    const albumSongs = album?.albumSongs
-        ?.map((songId) => songs[songId])
-        .filter((song) => song); // filter out undefined songs
 
     useEffect(() => {
         dispatch(fetchAlbum(albumId, history));
     }, [dispatch, albumId, history]);
+
+    const albumSongs = album?.albumSongs
+        ?.map((songId) => songs[songId])
+        .filter((song) => song); // filter out undefined songs
 
     return (
         <div className='albumShowPage'>

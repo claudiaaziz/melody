@@ -1,18 +1,20 @@
-import './SignupModal.css';
+import './SignUpModal.css';
 import { getAlbum } from '../../../store/albums';
-import { useSelector } from 'react-redux';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { closeModal } from '../../../store/ui';
 
-const SignUpModal = ({ closeSignUpModal }) => {
+const SignUpModal = ({ props }) => {
+    const albumId = props.albumId;
+
     const history = useHistory();
-    const { albumId } = useParams();
+    const dispatch = useDispatch();
+
     const album = useSelector(getAlbum(albumId));
 
-    const handleModalClick = (e) => e.stopPropagation();
-
     return (
-        <div className='modalOverlay' onClick={closeSignUpModal}>
-            <div className='modal' onClick={handleModalClick}>
+        <div className='sign-up-modal-container'>
+            <div className='sign-up-modal'>
                 <img
                     className='signUpModalImg'
                     src={album.albumCoverUrl}
@@ -34,7 +36,10 @@ const SignUpModal = ({ closeSignUpModal }) => {
                     </p>
                 </div>
             </div>
-            <button onClick={closeSignUpModal} className='signupModalCloseBtn'>
+            <button
+                onClick={() => dispatch(closeModal())}
+                className='signupModalCloseBtn'
+            >
                 Close
             </button>
         </div>
