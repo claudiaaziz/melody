@@ -1,6 +1,7 @@
 import csrfFetch from './csrf';
 import { REMOVE_CURRENT_USER } from './session';
 import { merge } from 'lodash';
+import { closeModal } from './ui';
 
 export const RECEIVE_PLAYLISTS = `RECEIVE_PLAYLISTS`;
 export const RECEIVE_PLAYLIST = `RECEIVE_PLAYLIST`;
@@ -80,9 +81,11 @@ export const updatePlaylist = (playlist) => async (dispatch) => {
         body: JSON.stringify(playlist),
     });
 
+    const updatedPlaylist = await res.json();
+
     if (res.ok) {
-        const updatedPlaylist = await res.json();
         dispatch(receivePlaylist(updatedPlaylist));
+        dispatch(closeModal());
     }
 };
 
@@ -101,6 +104,7 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
     });
 
     const createdPlaylistSong = await res.json();
+
     dispatch(
         addSongToPlaylist({
             songId: createdPlaylistSong.songId,
@@ -108,11 +112,11 @@ export const createPlaylistSong = (songId, playlistId) => async (dispatch) => {
             playlistId,
         })
     );
+
     return createdPlaylistSong;
 };
 
-export const deletePlaylistSong =
-    (playlistSongId, playlistId) => async (dispatch) => {
+export const deletePlaylistSong = (playlistSongId, playlistId) => async (dispatch) => {
         const res = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
             method: 'DELETE',
         });

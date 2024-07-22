@@ -1,75 +1,65 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPlaylist, getPlaylists } from '../../store/playlists';
 import { useHistory, Redirect } from 'react-router-dom';
-import { ReactComponent as CreatePlaylistIcon } from "../../static/svgs/sideMenu/createPlaylist.svg";
-import { ReactComponent as PlusIcon } from "../../static/svgs/sideMenu/plus.svg";
+import { ReactComponent as CreatePlaylistIcon } from '../../static/svgs/sideMenu/createPlaylist.svg';
+import { ReactComponent as PlusIcon } from '../../static/svgs/sideMenu/plus.svg';
+import useDropdown from '../../hooks/useDropdown';
 
 const CreatePlaylistDropdown = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const currentUser = useSelector((state) => state.session.user);
-  const playlists = useSelector(getPlaylists);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-  // create playlist dropdown
-  const [isCreatePlaylistDropdownOpen, setCreatePlaylistDropdownOpen] = useState(false);
-  const openCreatePlaylistDropdown = () => setCreatePlaylistDropdownOpen(true);
-  const closeCreatePlaylistModal = () => setCreatePlaylistDropdownOpen(false);
+    const currentUser = useSelector((state) => state.session.user);
+    const playlists = useSelector(getPlaylists);
 
-  useEffect(() => { // close dropdown if user clicks off 
-    const handleClickOutside = () => (isCreatePlaylistDropdownOpen) && closeCreatePlaylistModal();
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isCreatePlaylistDropdownOpen]);
+    const { isDropdownOpen, toggleDropdown, dropdownRef } = useDropdown();
+    const [createdPlaylist, setCreatedPlaylist] = useState(null);
+    const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
 
-  const handleCreatePlaylistDropdownClick = () => {
-    currentUser ? handleCreatePlaylist() : history.push("/signup");
-  }
-
-  // create playlist
-  const [createdPlaylist, setCreatedPlaylist] = useState(null);
-  const [redirectToPlaylist, setRedirectToPlaylist] = useState(false);
-  
-  const handleCreatePlaylist = async () => {
-    const amtPlaylists = Object.values(playlists).length;
-    const createPlaylistData = {
-      name: `My Playlist #${amtPlaylists + 1}`,
-      user_id: currentUser.id,
+    const handleDropdownClick = () => {
+        currentUser ? handleCreatePlaylist() : history.push('/signup');
     };
 
-    const playlist = await dispatch(createPlaylist(createPlaylistData));
+    const handleCreatePlaylist = async () => {
+        const amtPlaylists = Object.values(playlists).length;
 
-    if (playlist) {
-      setCreatedPlaylist(playlist);
-      setRedirectToPlaylist(true);
-    }
-  };
+        const createdPlaylistData = {
+            name: `My Playlist #${amtPlaylists + 1}`,
+        };
 
-  return (
-    <>
-      <button className="plusButton" onClick={openCreatePlaylistDropdown}>
-        <PlusIcon />
-      </button>
-      {isCreatePlaylistDropdownOpen && (
-        <div
-          className="createPlaylistDropdown"
-          onClick={handleCreatePlaylistDropdownClick}
-        >
-          <div className="createPlaylist">
-            <CreatePlaylistIcon />
-            <p className="create-a-new-playlist">
-              Create a new playlist
-            </p>
-          </div>
+        dispatch(createPlaylist(createdPlaylistData)).then((playlist) => {
+            toggleDropdown();
+            setCreatedPlaylist(playlist);
+            setRedirectToPlaylist(true);
+        });
+    };
+
+    return (
+        <div ref={dropdownRef}>
+            <button className='plusButton' onClick={toggleDropdown}>
+                <PlusIcon />
+            </button>
+
+            {isDropdownOpen && (
+                <div
+                    className='createPlaylistDropdown'
+                    onClick={handleDropdownClick}
+                >
+                    <div className='createPlaylist'>
+                        <CreatePlaylistIcon />
+                        <p className='create-a-new-playlist'>
+                            Create a new playlist
+                        </p>
+                    </div>
+                </div>
+            )}
+
+            {redirectToPlaylist && createdPlaylist && (
+                <Redirect to={`/playlists/${createdPlaylist.id}`} />
+            )}
         </div>
-      )}
-      {redirectToPlaylist && createdPlaylist && (
-        <Redirect to={`/playlists/${createdPlaylist.id}`} />
-      )}
-    </>
-  )
-}
+    );
+};
 
-export default CreatePlaylistDropdown
+export default CreatePlaylistDropdown;

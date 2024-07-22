@@ -16,11 +16,12 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def create
-        @playlist = Playlist.new(playlist_params)
+        @playlist = current_user.playlists.new(playlist_params)
+
         if @playlist.save
-        render :show
+            render :show
         else
-        render json: { errors: @playlist.errors.full_messages }, status: :unprocessable_content
+            render json: { errors: @playlist.errors.full_messages }, status: :unprocessable_entity
         end
     end
 

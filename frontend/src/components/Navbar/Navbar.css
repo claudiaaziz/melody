@@ -1,59 +1,59 @@
 .navbarContainer {
-  background-color: black;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 77%;
-  padding-top: 1vh;
-  z-index: 100;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 77%;
+    padding-top: 1vh;
+    z-index: 1;
 }
 
 .navbar {
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-radius: 8px 8px 0 0;
-  height: 7vh;
-  width: 100%;
-  background-color: #141414;
-  z-index: 1000;
-  /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    height: 7vh;
+    width: 100%;
+    background-color: #141414;
+    z-index: 2;
+    /* border: 1px solid red; */
 }
 
 .navbar ul {
-  list-style: none;
-  display: flex;
-  margin-left: auto;
-  margin-right: 1.5%;
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    margin-right: 1.5%;
 }
 
 .navbar a {
-  text-decoration: none;
-  font-size: 1rem;
+    text-decoration: none;
+    font-size: 1rem;
 }
 
 .navbarButton {
-  border: none;
-  padding: 12px 25px;
-  border-radius: 20px;
-  font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
-  cursor: pointer;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
+    cursor: pointer;
 }
 
 .navbarButton:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 #navbarSignupBtn {
-  background-color: transparent;
-  color: gray;
+    background-color: transparent;
+    color: gray;
 }
 
 #navbarSignupBtn:hover {
-  color: white;
+    color: white;
 }
 
 #navbarLoginBtn {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }

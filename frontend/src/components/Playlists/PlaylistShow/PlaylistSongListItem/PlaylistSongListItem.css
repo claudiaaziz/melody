@@ -1,124 +1,126 @@
 .playlist-song-list-item {
-  transition: background-color 0.8s;
-  display: flex;
-  /* border: 1px solid red; */
-  align-items: center;
-  padding: 7px;
-  border-radius: 5px;
-  text-align: start;
-  cursor: pointer;
-  position: relative;
+    transition: background-color 0.8s;
+    display: flex;
+    /* border: 1px solid red; */
+    align-items: center;
+    padding: 7px;
+    border-radius: 5px;
+    text-align: start;
+    cursor: pointer;
+    position: relative;
 }
 
 .playlist-song-list-item:hover {
-  background: #282828;
-  /* background: hsla(0, 0%, 100%, .3); */
-  transition: background-color 0.8s;
+    background: #282828;
+    /* background: hsla(0, 0%, 100%, .3); */
+    transition: background-color 0.8s;
 }
 
 .playlist-song-list-item .playlist-song-num {
-  margin-left: 20px;
-  color: gray;
-  width: 10px;
-} 
+    margin-left: 20px;
+    color: gray;
+    width: 10px;
+}
 
 .playlist-song-list-item .playlist-song-album-cover-url {
-  width: 40px;
-  /* border: 1px solid blue; */
-  border-radius: 5px;
-  margin-left: 20px;
+    width: 40px;
+    /* border: 1px solid blue; */
+    border-radius: 5px;
+    margin-left: 20px;
 }
 
 .playlist-song-list-item .playlist-song-title-and-name {
-  display: flex;
-  flex-direction: column;
-  /* padding-left: 15px; */
-  margin-left: 15px;
-  /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 15px; */
+    margin-left: 15px;
+    /* border: 1px solid red; */
 }
 
 .playlist-song-list-item .playlist-song-song-title {
-  font-size: .9rem;
-  width: 250px;
-  /* border: 1px solid red; */
+    font-size: 0.9rem;
+    width: 250px;
+    /* border: 1px solid red; */
 }
 
 .playlist-song-list-item .playlist-song-artist-name {
-  color: gray;
-  margin-top: 6px;
-  font-size: .8rem;
+    color: gray;
+    margin-top: 6px;
+    font-size: 0.8rem;
 }
 
 .playlist-song-list-item .playlist-song-album-title {
-  margin-left: auto;
-  margin-right: auto;
-  color: gray;
-  font-size: .8rem;
-  width: 130px;
-  /* border: 1px solid rgb(97, 53, 53); */
+    margin-left: auto;
+    margin-right: auto;
+    color: gray;
+    font-size: 0.8rem;
+    width: 130px;
+    /* border: 1px solid rgb(97, 53, 53); */
 }
 
 .playlist-song-list-item .song-duration {
-  margin-left: auto;
-  margin-right: 30px;
-  color: gray;
-  font-size: .8rem;
-  width: 50px;
-  /* border: 1px solid pink; */
+    margin-left: auto;
+    margin-right: 30px;
+    color: gray;
+    font-size: 0.8rem;
+    width: 50px;
+    /* border: 1px solid pink; */
 }
 
 .playlist-song-list-item .currentSongId {
-  color: #1cd760;
+    color: #1cd760;
 }
 
 /* delete song */
+.playlist-song-list-item .dots-icon-button {
+    background-color: transparent;
+    right: 0;
+    height: 100%;
+    margin-right: 15px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
 
 .playlist-song-list-item .dotsIcon {
-  /* margin-left: auto; */
-  right: 0;
-  margin-right: 25px;
-  cursor: pointer;
-  width: 20px;
-  fill: white;
-  /* z-index: 100; */
-  position: absolute;
+    width: 20px;
+    fill: white;
 }
 
 .remove-playlist-song-dropdown {
-  position: absolute;
-  width: 16%;
-  top: -60%;
-  right: 2%;
-  background-color: #282828;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: .8rem;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    position: absolute;
+    width: 16%;
+    top: -60%;
+    right: 2%;
+    background-color: #282828;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.8rem;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .remove-playlist-song-dropdown svg {
-  width: 10%;
-  fill: gray;
-  padding-right: 1px;
+    width: 10%;
+    fill: gray;
+    padding-right: 1px;
 }
 
 .remove-playlist-song-dropdown:hover {
-  background: #3E3D3D;
-  transition: background-color 0.8s;
+    background: #3e3d3d;
+    transition: background-color 0.8s;
 }
 
 .removeSong {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .removeSong p {
-  color: white;
-  margin-top: 2px;
-  font-size: .85rem;
+    color: white;
+    margin-top: 2px;
+    font-size: 0.85rem;
 }
-

@@ -1,0 +1,162 @@
+.loginForm {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#191919, black);
+    font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
+}
+
+/* header */
+
+.loginHeader {
+    display: flex;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 9vh;
+    z-index: 1000;
+    align-items: center;
+}
+
+.guestLoginBtn {
+    color: #e7b8cf;
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+    font-size: 1.5em;
+    font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    margin-right: 1.5%;
+}
+
+.guestLoginBtn:hover {
+    color: white;
+}
+
+.loginHeader .melodyLogoLink {
+    margin-left: 0.5vw;
+}
+
+.loginHeader .melodyLogoContainer {
+    margin-left: 1.5%;
+}
+
+/* container */
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50vw;
+    background: black;
+    color: white;
+    height: 77vh;
+    border-radius: 10px;
+    min-width: 350px;
+}
+
+.loginContainer h1 {
+    font-size: 2.5rem;
+}
+
+.loginContainer hr {
+    width: 70%;
+    border: 1px solid #191919;
+}
+
+.signupLink {
+    color: #a7a7a7;
+    font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+}
+
+.signupLink a {
+    color: white;
+    margin-left: 0.5vh;
+}
+
+.signupLink a:hover {
+    color: #1cd760;
+}
+
+/* form */
+
+.loginContainer form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.loginError {
+    list-style: none;
+    background-color: #e91529;
+    position: absolute;
+    top: 240px;
+    height: 45px;
+    width: 40%;
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    gap: 10px;
+    font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+}
+
+.loginError svg {
+    fill: white;
+}
+
+.loginContainer label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+}
+
+.loginContainer input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #4f4f4f;
+    background-color: #121212;
+    border-radius: 5px;
+    color: white;
+    outline: none;
+}
+
+.loginContainer input:hover,
+.loginContainer input:focus {
+    border: 1px solid white;
+}
+
+.show-password {
+    fill: #4f4f4f;
+    position: absolute;
+    top: 55%;
+    right: 5%;
+}
+
+.show-password:hover {
+    fill: white;
+}
+
+.loginBtn {
+    padding: 10px;
+    background-color: #1cd760;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.loginBtn:hover {
+    transform: scale(1.05);
+}

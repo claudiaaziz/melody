@@ -1,129 +1,128 @@
 .sideMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 23%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  padding: .5%;
-  background-color: black;
-  color: gray;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 23%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5%;
+    background-color: black;
+    color: gray;
+    z-index: 1;
 }
 
 .menuList {
-  margin: 12px;
+    margin: 12px;
 }
 
 .menuList li {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .menuItem {
-  text-decoration: none;
-  color: gray;
-  align-items: center;
-  display: flex;
+    text-decoration: none;
+    color: gray;
+    align-items: center;
+    display: flex;
 }
 
 .menuItem:hover,
 .menuItem.activeLink {
-  color: white;
+    color: white;
 }
 
 .menuItem svg {
-  fill: gray;
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
+    fill: gray;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
 }
 
 .menuItem:hover svg,
 .menuItem.activeLink svg {
-  fill: white;
-  stroke: transparent;
+    fill: white;
+    stroke: transparent;
 }
 
 .linkSection {
-  background-color: #141414;
-  border-radius: 8px;
-  margin-bottom: 8px;
+    background-color: #141414;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
 
 .librarySection {
-  background-color: #141414;
-  border-radius: 8px;
-  flex: 1;
+    background-color: #141414;
+    border-radius: 8px;
+    flex: 1;
 }
 
 .libraryContainer {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* create playlist */
 
 .plusButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: transparent;
-  position: relative;
-  border: none;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: relative;
+    border: none;
+    cursor: pointer;
 }
 
 .plusButton:hover {
-  background: #282828;
-  transition: background-color 0.8s;
+    background: #282828;
+    transition: background-color 0.8s;
 }
 
 .plusButton svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
 }
 
 .createPlaylistDropdown {
-  position: absolute;
-  width: 45%;
-  top: 25%;
-  background-color: #282828;
-  border-radius: 5px;
-  padding: 8px;
-  font-size: .8rem;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    position: absolute;
+    width: 45%;
+    top: 25%;
+    background-color: #282828;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 0.8rem;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .createPlaylistDropdown svg {
-  width: 10%;
-  fill: lightgray;
+    width: 10%;
+    fill: lightgray;
 }
 
 .createPlaylist {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .createPlaylist p {
-  color: lightgray;
-  font-size: .85rem;
+    color: lightgray;
+    font-size: 0.85rem;
 }
 
 .createPlaylistDropdown:hover {
-  background: #3E3D3D;
-  transition: background-color 0.8s;
+    background: #3e3d3d;
+    transition: background-color 0.8s;
 }
-

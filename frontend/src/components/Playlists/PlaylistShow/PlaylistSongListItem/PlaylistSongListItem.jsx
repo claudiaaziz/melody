@@ -7,79 +7,62 @@ import { getSong } from '../../../../store/songs';
 import { fetchSongDuration } from '../../../../utils/fetchSongDuration';
 import { formatDuration } from '../../../../utils/formatDuration';
 import { playQueue } from '../../../../store/playbar';
+import useDropdown from '../../../../hooks/useDropdown';
 
-const PlaylistSongListItem = ({
+export default function PlaylistSongListItem({
     songId,
     songNum,
     playlist,
     playlistSongId,
     playlistSongs,
-    isDeleteSongDropdownOpen,
-    setIsDeleteSongDropdownOpen,
-}) => {
+    idx,
+}) {
     const dispatch = useDispatch();
-
-    const handlePlaylistSongClick = () => {
-        if (isDeleteSongDropdownOpen) return;
-
-        let currentQueueIdx = null;
-        let playlistQueue = [];
-
-        for (let i = 0; i < playlistSongs.length; i++) {
-            if (playlistSongs[i]?.songId) {
-                playlistQueue.push(playlistSongs[i].songId);
-            }
-
-            if (playlistSongs[i]?.songId === songId) currentQueueIdx = i;
-        }
-
-        dispatch(playQueue(playlistQueue, currentQueueIdx));
-    };
 
     const song = useSelector(getSong(songId));
     const currentQueueIdx = useSelector(
         (state) => state.playbar.currentQueueIdx
     );
-
     const isCurrentSongId = useSelector(
         (state) => state.playbar.queue[currentQueueIdx] === song?.id
     );
     const albumId = song?.albumId;
     const album = useSelector(getAlbum(albumId));
 
+    const { isDropdownOpen, toggleDropdown, closeDropdown } = useDropdown();
     const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => {
         setIsHovered(false);
-        setIsDeleteSongDropdownOpen(false);
+        closeDropdown();
     };
-
     const [duration, setDuration] = useState(null);
+
     song?.songUrl && fetchSongDuration(song.songUrl, setDuration);
 
-    // const isCurrentSongPlaying = () => {
-    //     if (!isCurrentSongId) return false
+    const handlePlaylistSongClick = (idx) => {
+        let playlistQueue = [];
 
-    //     // if (currentQueueIdx === 1 && songNum === 1) return true
-    //     console.log('isCurrentSongPlaying 🩷 songNum:', songNum);
-    //     console.log('isCurrentSongPlaying 🩷 currentQueueIdx:', currentQueueIdx);
-    //     return isCurrentSongId && currentQueueIdx === songNum-1;
-    // };
+        for (const playlistSong of playlistSongs) {
+            playlistQueue.push(playlistSong.songId);
+        }
+
+        dispatch(playQueue(playlistQueue, idx));
+    };
+
+    const isCurrentSongPlaying = isCurrentSongId && currentQueueIdx === idx;
 
     return (
         <div
             className='playlist-song-list-item'
-            onMouseDown={handlePlaylistSongClick}
+            onClick={() => handlePlaylistSongClick(idx)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             <div
                 className={`playlist-song-num ${
-                    isCurrentSongId && 'currentSongId'
+                    isCurrentSongPlaying && 'currentSongId'
                 }`}
-                // className={`playlist-song-num ${
-                //     isCurrentSongPlaying() && 'currentSongId'
-                // }`}
             >
                 {songNum}
             </div>
@@ -91,11 +74,8 @@ const PlaylistSongListItem = ({
             <div className='playlist-song-title-and-name'>
                 <div
                     className={`playlist-song-song-title ${
-                        isCurrentSongId && 'currentSongId'
+                        isCurrentSongPlaying && 'currentSongId'
                     }`}
-                    // className={`playlist-song-song-title ${
-                    //     isCurrentSongPlaying() && 'currentSongId'
-                    // }`}
                 >
                     {song?.title}
                 </div>
@@ -105,18 +85,15 @@ const PlaylistSongListItem = ({
             </div>
             <div className='playlist-song-album-title'>{album?.title}</div>
             <div className='song-duration'>{formatDuration(duration)}</div>
+
             {isHovered && (
                 <DeletePlaylistSong
-                    handleMouseEnter={handleMouseEnter}
-                    handleMouseLeave={handleMouseLeave}
                     playlistSongId={playlistSongId}
                     playlist={playlist}
-                    isDeleteSongDropdownOpen={isDeleteSongDropdownOpen}
-                    setIsDeleteSongDropdownOpen={setIsDeleteSongDropdownOpen}
+                    isDropdownOpen={isDropdownOpen}
+                    toggleDropdown={toggleDropdown}
                 />
             )}
         </div>
     );
-};
-
-export default PlaylistSongListItem;
+}

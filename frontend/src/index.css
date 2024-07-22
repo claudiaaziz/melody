@@ -1,21 +1,24 @@
 @import './reset.css';
 
 @font-face {
-  font-family: 'CircularSpotifyBook';
-  src: url('./static/Circular-Font/CircularSpotifyText-Book.otf') format('opentype');
+    font-family: 'CircularSpotifyBook';
+    src: url('./static/Circular-Font/CircularSpotifyText-Book.otf')
+        format('opentype');
 }
 
 @font-face {
-  font-family: 'CircularSpotifyBold';
-  src: url('./static/Circular-Font/CircularSpotifyText-Bold.otf') format('opentype');
+    font-family: 'CircularSpotifyBold';
+    src: url('./static/Circular-Font/CircularSpotifyText-Bold.otf')
+        format('opentype');
 }
 
-html, body {
-  font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
-  background-color: black;
-  box-sizing: border-box;
+html,
+body {
+    font-family: 'CircularSpotifyBook', Arial, Helvetica, sans-serif;
+    background-color: black;
+    box-sizing: border-box;
 }
 
 .bold {
-  font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
+    font-family: 'CircularSpotifyBold', Arial, Helvetica, sans-serif;
 }

@@ -1,39 +1,47 @@
 import { useDispatch } from 'react-redux';
 import { deletePlaylistSong } from '../../../../../store/playlists';
-import { ReactComponent as DotsIcon } from "../../../../../static/svgs/dots.svg";
-import { ReactComponent as TrashIcon } from "../../../../../static/svgs/playlists/removeSong.svg";
+import { ReactComponent as DotsIcon } from '../../../../../static/svgs/dots.svg';
+import { ReactComponent as TrashIcon } from '../../../../../static/svgs/playlists/removeSong.svg';
 
-const DeletePlaylistSong = ({ handleMouseLeave, handleMouseEnter, playlistSongId, playlist, setIsDeleteSongDropdownOpen, isDeleteSongDropdownOpen}) => {
-  const dispatch = useDispatch();
+const DeletePlaylistSong = ({
+    playlistSongId,
+    playlist,
+    isDropdownOpen,
+    toggleDropdown,
+}) => {
+    const dispatch = useDispatch();
 
-  const toggleDeleteSongDropdown = (e) => {
-    e.stopPropagation();
-    setIsDeleteSongDropdownOpen(!isDeleteSongDropdownOpen);
-  };
-  
-  const handleDeletePlaylistSong = () => {
-    dispatch(deletePlaylistSong(playlistSongId, playlist.id))
-    setIsDeleteSongDropdownOpen(false)
-  }
+    const handleDeletePlaylistSong = (e) => {
+        e.stopPropagation();
+        dispatch(deletePlaylistSong(playlistSongId, playlist.id));
+        toggleDropdown();
+    };
 
-  return (
-    <>
-      <DotsIcon className="dotsIcon" onClick={toggleDeleteSongDropdown} />
-      {isDeleteSongDropdownOpen && (
-        <div
-          className="remove-playlist-song-dropdown"
-          onClick={handleDeletePlaylistSong}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="removeSong">
-            <TrashIcon />
-            <p>Remove from this playlist</p>
-          </div>
-        </div>
-      )}
-    </>
-  )
-}
+    return (
+        <>
+            <button
+                className='dots-icon-button'
+                onClick={(e) => {
+                    e.stopPropagation();
+                    toggleDropdown();
+                }}
+            >
+                <DotsIcon className='dotsIcon' />
+            </button>
 
-export default DeletePlaylistSong
+            {isDropdownOpen && (
+                <div
+                    className='remove-playlist-song-dropdown'
+                    onClick={handleDeletePlaylistSong}
+                >
+                    <div className='removeSong'>
+                        <TrashIcon />
+                        <p>Remove from this playlist</p>
+                    </div>
+                </div>
+            )}
+        </>
+    );
+};
+
+export default DeletePlaylistSong;
