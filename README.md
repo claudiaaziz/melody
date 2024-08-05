@@ -2,7 +2,7 @@
 
 [Melody](https://melody-0euk.onrender.com/), a Spotify clone, is a music streaming platform that lets users listen to a vast library of songs, create playlists, and enjoy a seamless music playback experience.
 
-![Melody Interface](./frontend/src/static/images/readme/updated-melody-interface.png)
+![Melody Interface](./frontend/src/static/images/readme/melody-interface.png)
 
 ## Technologies, Libraries, APIs
 

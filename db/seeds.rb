@@ -38,6 +38,8 @@
     muhab = Artist.create!(name: "Muhab")
     massimo_pericolo = Artist.create!(name: "Massimo Pericolo")
     ece_seçkin = Artist.create!(name: "Ece Seçkin")
+    butrint_imeri = Artist.create!(name: "Butrint Imeri")
+    dafina_zeqiri = Artist.create!(name: "Dafina Zeqiri")
 
     puts "Creating albums..."
     fil_rouge = Album.create!(
@@ -61,26 +63,26 @@
     sapiential = Album.create!(
         title: "Sapiential",
         artist_id: sami_yusuf.id,
-        release_year: 2020,
+        release_year: 2024,
         album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential.png'
     )
-    without_you = Album.create!(
-        title: "Without You",
-        artist_id: sami_yusuf.id,
-        release_year: 2009,
-        album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You.png'
+    psikopat = Album.create!(
+        title: "Psikopat",
+        artist_id: butrint_imeri.id,
+        release_year: 2024,
+        album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/butrint.jpeg'
+    )
+    a_te_ka_mungu = Album.create!(
+        title: "A Te Ka Mungu",
+        artist_id: dafina_zeqiri.id,
+        release_year: 2024,
+        album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/dafina.jpeg'
     )
     bye = Album.create!(
         title: "Bye",
         artist_id: muhab.id,
         release_year: 2023,
         album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/Bye.png'
-    )
-    my_ummah = Album.create!(
-        title: "My Ummah",
-        artist_id: sami_yusuf.id,
-        release_year: 2005,
-        album_cover_url: 'https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah.png'
     )
     le_cose_cambiano = Album.create!(
         title: "Le cose cambiano",
@@ -204,6 +206,11 @@
         album_id: marre_x_e_di.id,
         song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Elvana+Gjata+-+E+di.mp3"
     )
+    Song.create!(
+        title: "NO LOVE",
+        album_id: marre_x_e_di.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Elvana+Gjata+-+NO+LOVE.mp3"
+    )
     # Maëlle
     Song.create!(
         title: "Toutes les machines ont un cœur",
@@ -257,49 +264,24 @@
     )
     # Sapiential
     Song.create!(
+        title: "River of Paradise",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/sami+-+River.of.Paradise.mp3"
+    )
+    Song.create!(
+        title: "Breeze",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/sami+-+Breeze.mp3"
+    )
+    Song.create!( 
         title: "Nasimi",
         album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/The+Sapiential+Album+-+Nasimi.mp3"
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential+-+Nasimi.mp3"
     )
     Song.create!(
-        title: "The Centre",
+        title: "The Journey",
         album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/The+Sapiential+Album+-+The+Centre.mp3"
-    )
-    Song.create!(
-        title: "Cadence",
-        album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/The+Sapiential+Album+-+Cadence.mp3"
-    )
-    Song.create!(
-        title: "Let Us Not Forget",
-        album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/The+Sapiential+Album++-+Let_Us_Not_Forget.mp3"
-    )
-    Song.create!(
-        title: "Prism",
-        album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/The+Sapiential+Album++-+Prism.mp3"
-    )
-    Song.create!(
-        title: "Khorasan",
-        album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/The+Sapiential+Album++-+Khorasan.mp3"
-    )
-    Song.create!(
-        title: "Al-Mu'allim",
-        album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_Al-Mu'allim.mp3"
-    )
-    Song.create!(
-        title: "Ya Mustafa",
-        album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_Meditation.mp3"
-    )
-    Song.create!(
-        title: "Supplication",
-        album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sami_Yusuf_Supplication.mp3"
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/sami+-+The+Journey.mp3"
     )
     Song.create!(
         title: "Jaaneh Jaanaan",
@@ -307,55 +289,125 @@
         song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential+-+Jaaneh_Jaanaan.mp3"
     )
     Song.create!(
-        title: "The Journey",
+        title: "كداب",
         album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential+-+The_Journey.mp3"
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/%D9%83%D8%AF%D8%A7%D8%A8+Cravata.mp3"
     )
     Song.create!(
-        title: "The Praised One",
+        title: "Shabe Royaei",
         album_id: sapiential.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Sapiential+-+The_Praised_One.mp3"
-    )
-    # Without You
-    Song.create!(
-        title: "Asma Allah",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+asma-allah.mp3"
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Shabe+Royaei.mp3"
     )
     Song.create!(
-        title: "Without You",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+Without_You.mp3"
+        title: "Motadetam",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Motadetam.mp3"
     )
     Song.create!(
-        title: "Make Me Strong",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+_Make_Me_Strong.mp3"
+        title: "Atre Bahar",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Atre+Bahar.mp3"
     )
     Song.create!(
-        title: "No Word Is Worthy",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+No_Word_Is_Worthy.mp3"
+        title: "Bi Bahooneh",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Bi+Bahooneh.mp3"
     )
     Song.create!(
-        title: "Salaam",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+Salaam.mp3"
+        title: "Dor Doneh Yar",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Dor+Doneh+Yar.mp3"
     )
     Song.create!(
-        title: "You Came To Me",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+You_came_to_me_Arabic.mp3"
+        title: "Aman Güzel Yavaş Yürü",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Aman+Gu%CC%88zel+Yavas%CC%A7+Yu%CC%88ru%CC%88.mp3"
     )
     Song.create!(
-        title: "Wherever You Are",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+Wherever_You_Are.mp3"
+        title: "DOĞUŞTAN BERİ HAKLIYIM (tmm)",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/DOG%CC%86US%CC%A7TAN+BERI%CC%87+HAKLIYIM+(tmm).mp3"
     )
     Song.create!(
-        title: "The Dawn",
-        album_id: without_you.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Without+You+-+The_Dawn.mp3"
+        title: "Bertaraf",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Bertaraf.mp3"
+    )
+    Song.create!(
+        title: "Wayah",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Wayah.mp3"
+    )
+    Song.create!(
+        title: "اليوم الحلو ده",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/%D8%A7%D9%84%D9%8A%D9%88%D9%85+%D8%A7%D9%84%D8%AD%D9%84%D9%88+%D8%AF%D9%87.mp3"
+    )
+    Song.create!(
+        title: "اول ما سحبت حزامي",
+        album_id: sapiential.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/%D8%A7%D9%88%D9%84+%D9%85%D8%A7+%D8%B3%D8%AD%D8%A8%D8%AA+%D8%AD%D8%B2%D8%A7%D9%85%D9%8A.mp3"
+    )
+    # Psikopat
+    Song.create!(
+        title: "Corazon",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Corazon.mp3"
+    )
+    Song.create!(
+        title: "AM",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+AM.mp3"
+    )
+    Song.create!(
+        title: "PM",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+PM.mp3"
+    )
+    Song.create!(
+        title: "Dale",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Dale.mp3"
+    )
+    Song.create!(
+        title: "Diskoteka",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Diskoteka.mp3"
+    )
+    Song.create!(
+        title: "Dujem",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Dujem.mp3"
+    )
+    Song.create!(
+        title: "Kuku",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Kuku.mp3"
+    )
+    Song.create!(
+        title: "Lejla",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Lejla.mp3"
+    )
+    Song.create!(
+        title: "Moj Dashni",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Moj+Dashni.mp3"
+    )
+    Song.create!(
+        title: "PARE",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+PARE.mp3"
+    )
+    Song.create!(
+        title: "Psikopat",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Psikopat.mp3"
+    )
+    Song.create!(
+        title: "Tu Menu",
+        album_id: psikopat.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Psikopat+-+Tu+Menu.mp3"
     )
     # Bye
     Song.create!(
@@ -403,41 +455,46 @@
         album_id: bye.id,
         song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Bye+-+Rehla.mp3"
     )
-    # My Ummah
+    # A Te Ka Mungu
     Song.create!(
-        title: "My Ummah",
-        album_id: my_ummah.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah+-+My_Ummah.mp3"
+        title: "Dumlla Dumlla",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Dafina+-+Dumlla+Dumlla.mp3"
     )
     Song.create!(
-        title: "Hasbi Rabbi",
-        album_id: my_ummah.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah+-+Hasbi_Rabbi.mp3"
+        title: "Ku Je Ti",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Dafina+-+Ku+Je+Ti.mp3"
     )
     Song.create!(
-        title: "Munajat",
-        album_id: my_ummah.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah+-+Munajat.mp3"
+        title: "A Te Ka Mungu",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Dafina+-+A+Te+Ka+Mungu.mp3"
     )
     Song.create!(
-        title: "Mother",
-        album_id: my_ummah.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah+-+Mother.mp3"
+        title: "Dasma",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Dafina+-+DASMA.mp3"
     )
     Song.create!(
-        title: "Healing",
-        album_id: my_ummah.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah+-+Healing.mp3"
+        title: "Luj",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Dafina+-+LUJ.mp3"
     )
     Song.create!(
-        title: "Ya Nabi",
-        album_id: my_ummah.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/My+Ummah+-+Ya_Nabi.mp3"
+        title: "Si Ai",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Si+Ai.mp3"
     )
     Song.create!(
-        title: "To Guide You Home",
-        album_id: my_ummah.id,
-        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/My_Ummah+-+To_Guide_You_Home.mp3"
+        title: "Malli",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/-+MALLI+2024.mp3"
+    )
+    Song.create!(
+        title: "Paro",
+        album_id: a_te_ka_mungu.id,
+        song_url: "https://melody-seeds.s3.us-east-2.amazonaws.com/Paro.mp3"
     )
     # Le cose cambiano
     Song.create!(
@@ -619,7 +676,7 @@
         user_id: 1,
     )
     Playlist.create!(
-        name: "🦋🦋🦋",
+        name: "🦋🎧",
         user_id: 1,
     )
     Playlist.create!(
@@ -627,7 +684,7 @@
         user_id: 1,
     )
     Playlist.create!(
-        name: "💗💗💗",
+        name: "🤍🩰",
         user_id: 1,
     )
     Playlist.create!(
@@ -700,15 +757,15 @@
     )
     PlaylistSong.create!(
         playlist_id: 2,
-        song_id: 35,
+        song_id: 76,
     )
     PlaylistSong.create!(
         playlist_id: 2,
-        song_id: 39,
+        song_id: 72,
     )
     PlaylistSong.create!(
         playlist_id: 2,
-        song_id: 42,
+        song_id: 58,
     )
     # playlist 4
     PlaylistSong.create!(
@@ -729,7 +786,7 @@
     )
     PlaylistSong.create!(
         playlist_id: 4,
-        song_id: 42,
+        song_id: 107,
     )
     PlaylistSong.create!(
         playlist_id: 4,

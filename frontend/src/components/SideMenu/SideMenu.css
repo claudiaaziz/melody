@@ -95,9 +95,10 @@
     position: absolute;
     width: 45%;
     top: 25%;
+    right: 25px;
     background-color: #282828;
     border-radius: 5px;
-    padding: 8px;
+    padding: 8px 12px;
     font-size: 0.8rem;
     z-index: 1;
     display: flex;
